@@ -67,7 +67,7 @@ include '../common/header.php';
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="header">System option</li>
-                                <li data-toggle="modal" data-target="#"><a href="javascript:void(0);"><i class="material-icons link_log">assignment_ind</i>Change Password</a></li>
+                                <li  data-toggle="modal" data-target="#change_pass"><a href="javascript:void(0);"><i class="material-icons link_log">assignment_ind</i>Change Password</a></li>
                                 <li><a href="../js/logout.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
                             </ul>
                         </li>
@@ -591,47 +591,62 @@ include '../common/header.php';
             <!-- #END# Right Sidebar -->
         </section>
 
-<!--         Jquery Core Js 
-        <script src="../plugins/jquery/jquery.min.js"></script>
-
-         Bootstrap Core Js 
-        <script src="../plugins/bootstrap/js/bootstrap.js"></script>
-
-         Select Plugin Js 
-        <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-         Slimscroll Plugin Js 
-        <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-         Waves Effect Plugin Js 
-        <script src="../plugins/node-waves/waves.js"></script>
-
-         Jquery CountTo Plugin Js 
-        <script src="../plugins/jquery-countto/jquery.countTo.js"></script>
-
-         Morris Plugin Js 
-        <script src="../plugins/raphael/raphael.min.js"></script>
-        <script src="../plugins/morrisjs/morris.js"></script>
-
-         ChartJs 
-        <script src="../plugins/chartjs/Chart.bundle.js"></script>
-
-         Flot Charts Plugin Js 
-        <script src="../plugins/flot-charts/jquery.flot.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.resize.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.pie.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.categories.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.time.js"></script>
-
-         Sparkline Chart Plugin Js 
-        <script src="../plugins/jquery-sparkline/jquery.sparkline.js"></script>
-
-         Custom Js 
-        <script src="../js/admin.js"></script>
-        <script src="../js/pages/index.js"></script>
-
-         Demo Js 
-        <script src="../js/demo.js"></script>-->
+        <div class="modal fade" id="change_pass" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="signup-box">
+                            <div class="font-bold col-pink font-18 align-center">
+                                <b>เปลี่ยนรหัสผ่าน</b>
+                            </div>
+                            <div class="card">
+                                <div class="body">
+                                    <form id="ch_pass" method="POST">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">person</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" id="username" placeholder="Acount ผู้ใช้งาน" required autofocus>
+                                                <label style="display:none" id="error-username" class="error">รหัสผู้ใช้งานไม่ถูกต้อง</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock_outline</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="password" class="form-control" id="old_pass" placeholder="รหัสผ่านเก่า" required>
+                                                <label style="display:none" id="error-old-pass" class="error">รหัสผ่านไม่ถูกต้อง</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="password" class="form-control" id="password" minlength="6" placeholder="รหัสผ่านใหม่" required>
+                                                <label style="display:none" id="error-new-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="password" class="form-control" id="confirm" minlength="6" placeholder="ยืนยันรหัสผ่านใหม่" required>
+                                                <label style="display:none" id="error-confirm-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit" onclick="javascript: btn_chPass('CHPASS')">บันทึก</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php include ("../common/headerScript.php"); ?>
         <?php include ("../js/script.php"); ?>
     </body>

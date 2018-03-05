@@ -6,9 +6,13 @@
     $(document).ready(function () {
         $("#username").focus(function () {
             $('#error-username').fadeOut(100);
+            console.log('dasdas');
         });
         $("#password").focus(function () {
             $('#error-password').fadeOut(100);
+        });
+        $('#old_pass').focus(function () {
+            $('#error-old-pass').fadeOut(100);
         });
     });
     function btn_login(LOGIN) {
@@ -62,6 +66,30 @@
             }
         };
 //        event.preventDefault(); หยุดการทำงาน
+    }
+    function btn_chPass(CHPASS) {
+        cls.GetJSON("../PS_processDB/login_DB.php", "CHK_USER", [$('#username').val()], true, function (data) {
+            if (data == 0) {
+                $('#username').parents('.form-line').addClass('form-line focused error');
+                $('#error-username').fadeIn(100);
+            } else {
+                $('#username').parents('.form-line').removeClass('form-line focused error');
+                $('#error-username').fadeOut(100);
+            }
+        });
+        cls.GetJSON("../PS_processDB/login_DB.php", "CHK_PASS", [$('#old_pass').val(), $('input[name=password]').val()], false, function (data) {
+            if (data == 0) {
+                $('#old_pass').parents('.form-line').addClass('form-line focused error');
+                $('#error-old-pass').fadeIn(100);
+            } else {
+                $('#old_pass').parents('.form-line').removeClass('form-line focused error');
+                $('#error-old-pass').fadeOut(100);
+            }
+        });
+
+
+//       $('#password').val();
+//       $('#confirm').val();
     }
 
 </script>
