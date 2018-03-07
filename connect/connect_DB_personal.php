@@ -57,6 +57,12 @@ class management {
         return $ret;
     }
 
+    function mysqli_num_rows($sql) {
+        $Query = $this->Connect->query($sql);
+        $num = mysqli_num_rows($Query);
+        return $num;
+    }
+
 }
 
 ?>

@@ -594,53 +594,52 @@ include '../common/header.php';
         <div class="modal fade" id="change_pass" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title font-bold col-pink font-18 align-center" id="defaultModalLabel">เปลี่ยนรหัสผ่าน</h4>
+                    </div>
                     <div class="modal-body">
-                        <div class="signup-box">
-                            <div class="font-bold col-pink font-18 align-center">
-                                <b>เปลี่ยนรหัสผ่าน</b>
-                            </div>
-                            <div class="card">
-                                <div class="body">
-                                    <form id="ch_pass" method="POST">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">person</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" id="username" placeholder="Acount ผู้ใช้งาน" required autofocus>
-                                                <label style="display:none" id="error-username" class="error">รหัสผู้ใช้งานไม่ถูกต้อง</label>
-                                            </div>
+                        <div class="card">
+                            <div class="body">
+
+                                <form id="ch_pass" method="POST">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">person</i>
+                                        </span>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" id="username" placeholder="Acount ผู้ใช้งาน" required autofocus>
+                                            <label style="display:none" id="error-username" class="error">รหัสผู้ใช้งานไม่ถูกต้อง</label>
                                         </div>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">lock_outline</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="password" class="form-control" id="old_pass" placeholder="รหัสผ่านเก่า" required>
-                                                <label style="display:none" id="error-old-pass" class="error">รหัสผ่านไม่ถูกต้อง</label>
-                                            </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                        <div class="form-line">
+                                            <input type="password" class="form-control" id="old_pass" placeholder="รหัสผ่านเก่า" required>
+                                            <label style="display:none" id="error-old-pass" class="error">รหัสผ่านไม่ถูกต้อง</label>
                                         </div>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">lock</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="password" class="form-control" id="password" minlength="6" placeholder="รหัสผ่านใหม่" required>
-                                                <label style="display:none" id="error-new-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
-                                            </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock</i>
+                                        </span>
+                                        <div class="form-line">
+                                            <input type="password" class="form-control" id="password" minlength="6" placeholder="รหัสผ่านใหม่" required>
+                                            <label style="display:none" id="error-new-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
                                         </div>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">lock</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="password" class="form-control" id="confirm" minlength="6" placeholder="ยืนยันรหัสผ่านใหม่" required>
-                                                <label style="display:none" id="error-confirm-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
-                                            </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock</i>
+                                        </span>
+                                        <div class="form-line">
+                                            <input type="password" class="form-control" id="confirm" minlength="6" placeholder="ยืนยันรหัสผ่านใหม่" required>
+                                            <label style="display:none" id="error-confirm-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
                                         </div>
-                                        <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit" onclick="javascript: btn_chPass('CHPASS')">บันทึก</button>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="button" onclick ="javascript: btn_chPass('CHPASS')">บันทึก</button>
+                                </form>
                             </div>
                         </div>
                     </div>

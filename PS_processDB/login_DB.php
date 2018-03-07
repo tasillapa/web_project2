@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 @ob_start();
 @session_start();
 require_once '../connect/connect_DB_personal.php';
@@ -45,9 +45,10 @@ function check_user() {
         $get_data = explode(",", $_POST["PARM"]);
         $user = $get_data[0];
         $sql = "select * from tb_personnel where username='" . $user . "' and status = '1'";
-        $query = $cn->Connect->query($sql);
-        echo mysqli_num_rows($query);
+        $nq = $cn->mysqli_num_rows($sql);
+        echo $nq;
     }
+    exit();
 }
 
 function check_pass() {
@@ -58,9 +59,10 @@ function check_pass() {
         $user = $get_data[0];
         $pass = $get_data[1];
         $sql = "select * from tb_personnel where username='" . $user . "' and password='" . $pass . "' and status = '1'";
-        $query = $cn->Connect->query($sql);
-        echo mysqli_num_rows($query);
+        $nq = $cn->mysqli_num_rows($sql);
+        echo $nq;
     }
+    exit();
 }
 ?>
 

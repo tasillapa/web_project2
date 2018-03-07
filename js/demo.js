@@ -30,9 +30,9 @@ function setSkinListHeightAndScroll(isFirstTime) {
     var height = $(window).height() - ($('.navbar').innerHeight() + $('.right-sidebar .nav-tabs').outerHeight());
     var $el = $('.demo-choose-skin');
 
-    if (!isFirstTime){
-      $el.slimScroll({ destroy: true }).height('auto');
-      $el.parent().find('.slimScrollBar, .slimScrollRail').remove();
+    if (!isFirstTime) {
+        $el.slimScroll({destroy: true}).height('auto');
+        $el.parent().find('.slimScrollBar, .slimScrollRail').remove();
     }
 
     $el.slimscroll({
@@ -50,9 +50,9 @@ function setSettingListHeightAndScroll(isFirstTime) {
     var height = $(window).height() - ($('.navbar').innerHeight() + $('.right-sidebar .nav-tabs').outerHeight());
     var $el = $('.right-sidebar .demo-settings');
 
-    if (!isFirstTime){
-      $el.slimScroll({ destroy: true }).height('auto');
-      $el.parent().find('.slimScrollBar, .slimScrollRail').remove();
+    if (!isFirstTime) {
+        $el.slimScroll({destroy: true}).height('auto');
+        $el.parent().find('.slimScrollBar, .slimScrollRail').remove();
     }
 
     $el.slimscroll({
@@ -95,75 +95,80 @@ function addLoadEvent(func) {
 
 function loadTracking() {
     (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
             (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', trackingId, 'auto');
     ga('send', 'pageview');
 }
 //========================================================================================================
-var Call_Service = function() {
-      
-        this.GetJSON = function(URL,FN, _data,blockUI_open,callback) {
-			
-            var i = 0;
-            var _array_param = "";
-            
-            if(_data.length>0){
-                for(i;i<_data.length;i++){
-                    if(i==0){
-                        _array_param += _data[i];
-                    }else{
-                        _array_param += "|"+_data[i];
-                    }
-                }
-            }
-           
-            $.ajax({
-              type : 'POST',
-              url : URL, 
-              data: { FN : FN, PARM: _array_param },
-                                 beforeSend : function(){
-                  if(blockUI_open){ 
-                      
-                  } 
-              },  
-              success : function(data){
-                  if(blockUI_open){ 
-                    }
-                  callback(data); 
-              },
-                             error : function(XMLHttpRequest, textStatus, errorThrown) { 
-                 alert("พบข้อผิดพลาดบางอย่างในการรับส่งข้อมูล กรุณาตรวจสอบการเชื่อมต่ออินเตอร์เน็ต หรือแจ้งผู้ดูแลระบบ");
-                    console.log("พบข้อผิดพลาดบางอย่างในการรับส่งข้อมูล");
-                 return false;
-              }
-            });
+var Call_Service = function () {
 
-        }
-        
-                      this.Check_Before_POST = function(_data){
-            var i = 0;
-            
-            if(_data.length>0){
-                for(i;i<_data.length;i++){
-                    if(_data[i]==""||_data[i]=="null"){
-                        alert('กรุณาใส่ข้อมูลให้ครบถ้วน');
-                        return false;
-                    }
+    this.GetJSON = function (URL, FN, _data, blockUI_open, callback) {
+
+        var i = 0;
+        var _array_param = "";
+
+        if (_data.length > 0) {
+            for (i; i < _data.length; i++) {
+                if (i == 0) {
+                    _array_param += _data[i];
+                } else {
+                    _array_param += "|" + _data[i];
                 }
             }
-            return true;
         }
-        
-        this.Check_Null_Json = function(length_number){
-            if(length_number==0){
-                Warning('ไม่พบข้อมูลที่ต้องการ');
+
+        $.ajax({
+            type: 'POST',
+            url: URL,
+            data: {FN: FN, PARM: _array_param},
+            beforeSend: function () {
+                if (blockUI_open) {
+
+                }
+            },
+            success: function (data) {
+                if (blockUI_open) {
+                }
+                callback(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("พบข้อผิดพลาดบางอย่างในการรับส่งข้อมูล กรุณาตรวจสอบการเชื่อมต่ออินเตอร์เน็ต หรือแจ้งผู้ดูแลระบบ");
+                console.log("พบข้อผิดพลาดบางอย่างในการรับส่งข้อมูล");
                 return false;
             }
-        }
-        
+        });
+
     }
+
+    this.Check_Before_POST = function (_data) {
+        var i = 0;
+
+        if (_data.length > 0) {
+            for (i; i < _data.length; i++) {
+                if (_data[i] == "" || _data[i] == "null") {
+                    alert('กรุณาใส่ข้อมูลให้ครบถ้วน');
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    this.Check_Null_Json = function (length_number) {
+        if (length_number == 0) {
+            Warning('ไม่พบข้อมูลที่ต้องการ');
+            return false;
+        }
+    }
+
+}

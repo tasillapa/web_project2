@@ -6,13 +6,16 @@
     $(document).ready(function () {
         $("#username").focus(function () {
             $('#error-username').fadeOut(100);
-            console.log('dasdas');
         });
         $("#password").focus(function () {
             $('#error-password').fadeOut(100);
+            $('#error-new-pass').fadeOut(100);
         });
         $('#old_pass').focus(function () {
             $('#error-old-pass').fadeOut(100);
+        });
+        $("#confirm").focus(function () {
+            $('#error-confirm-pass').fadeOut(100);
         });
     });
     function btn_login(LOGIN) {
@@ -45,7 +48,7 @@
                     $(".loading").show();
                     $('#chkststus').hide();
                     cls.GetJSON("PS_processDB/login_DB.php", "CHK_USER", [$('input[name=username]').val()], false, function (data) {
-                        if (data == 0) {
+                        if ((data == 0) && ($('#username').val() != '')) {
                             $('#username').parents('.form-line').addClass('form-line focused error');
                             $('#error-username').fadeIn(100);
                         } else {
@@ -54,7 +57,7 @@
                         }
                     });
                     cls.GetJSON("PS_processDB/login_DB.php", "CHK_PASS", [$('input[name=username]').val(), $('input[name=password]').val()], false, function (data) {
-                        if (data == 0) {
+                        if ((data == 0) && ($('#password').val() != '')) {
                             $('#password').parents('.form-line').addClass('form-line focused error');
                             $('#error-password').fadeIn(100);
                         } else {
@@ -68,28 +71,49 @@
 //        event.preventDefault(); หยุดการทำงาน
     }
     function btn_chPass(CHPASS) {
-        cls.GetJSON("../PS_processDB/login_DB.php", "CHK_USER", [$('#username').val()], true, function (data) {
-            if (data == 0) {
-                $('#username').parents('.form-line').addClass('form-line focused error');
-                $('#error-username').fadeIn(100);
-            } else {
-                $('#username').parents('.form-line').removeClass('form-line focused error');
-                $('#error-username').fadeOut(100);
-            }
-        });
-        cls.GetJSON("../PS_processDB/login_DB.php", "CHK_PASS", [$('#old_pass').val(), $('input[name=password]').val()], false, function (data) {
-            if (data == 0) {
-                $('#old_pass').parents('.form-line').addClass('form-line focused error');
-                $('#error-old-pass').fadeIn(100);
-            } else {
-                $('#old_pass').parents('.form-line').removeClass('form-line focused error');
-                $('#error-old-pass').fadeOut(100);
-            }
-        });
+        var user = '';
+        var pass = '';
+        if ($('#username').val() != '') {
+            cls.GetJSON("../PS_processDB/login_DB.php", "CHK_USER", [$('#username').val()], true, function (data) {
+                console.log(data);
+                if (data == 0) {
+                    $('#username').parents('.form-line').addClass('form-line focused error');
+                    $('#error-username').fadeIn(100);
+                } else {
+                    $('#username').parents('.form-line').removeClass('form-line focused error');
+                    $('#error-username').fadeOut(100);
+                    user = 'success';
+                    if ($('#old_pass').val() != '') {
+                        cls.GetJSON("../PS_processDB/login_DB.php", "CHK_PASS", [$('#username').val(), $('#old_pass').val()], true, function (data) {
+                            if (data == 0) {
+                                $('#old_pass').parents('.form-line').addClass('form-line focused error');
+                                $('#error-old-pass').fadeIn(100);
+                            } else {
+                                $('#old_pass').parents('.form-line').removeClass('form-line focused error');
+                                $('#error-old-pass').fadeOut(100);
+                                pass = 'success';
+                                if (($('#password').val() && $('#confirm').val()) != '') {
+                                    if ($('#password').val() != $('#confirm').val()) {
 
+                                        $('#error-new-pass ,#error-confirm-pass').parents('.form-line').addClass('form-line focused error');
+                                        $('#error-new-pass ,#error-confirm-pass').fadeIn(100);
+                                    }
+                                    if (($('#password').val() == $('#confirm').val()) && user == pass) {
+                                        $('#error-new-pass ,#error-confirm-pass').parents('.form-line').removeClass('form-line focused error');
+                                        $('#error-new-pass ,#error-confirm-pass').fadeOut(100);
+                                        cls.GetJSON("../PS_processDB/change_pass.php", CHPASS, [card_id, $('#confirm').val()], true, function (data) {
+                                            swal("บันทึกสำเร็จ!", "รหัสใหม่พร้อมใช้งาน", "success");
+                                            $('#change_pass').modal('hide');
+                                        });
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
 
-//       $('#password').val();
-//       $('#confirm').val();
     }
 
 </script>

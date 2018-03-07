@@ -47,11 +47,14 @@
         <!-- Validation Plugin Js -->
         <script src="../plugins/jquery-validation/jquery.validate.js"></script>
 
+        <!-- SweetAlert Plugin Js -->
+        <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
         <!-- Custom Js -->
         <script src="../js/admin.js"></script>
         <script src="../js/pages/index.js"></script>
         <script src="../js/pages/forms/form-validation.js"></script>
-         <script src="../js/pages/forms/basic-form-elements.js"></script>
+        <script src="../js/pages/forms/basic-form-elements.js"></script>
 
         <!-- Demo Js -->
         <script src="../js/demo.js"></script>

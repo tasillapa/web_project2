@@ -32,12 +32,6 @@
 
         <!-- Jquery Core Js -->
 
-        <!-- Sweet Alert Css -->
-        <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-
-        <!-- Sweet Alert Css -->
-        <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-
         <!-- Dropzone Css -->
         <link href="../plugins/dropzone/dropzone.css" rel="stylesheet">
 
@@ -61,6 +55,9 @@
 
         <!-- Wait Me Css -->
         <link href="../plugins/waitme/waitMe.css" rel="stylesheet" />
+        
+         <!-- Sweetalert Css -->
+    <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
     </head>
 </html>
