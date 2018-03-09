@@ -7,8 +7,13 @@
         $("#username").focus(function () {
             $('#error-username').fadeOut(100);
         });
+        $("#cp_username").focus(function () {
+            $('#error-username-cp').fadeOut(100);
+        });
         $("#password").focus(function () {
             $('#error-password').fadeOut(100);
+        });
+        $("#cp_password").focus(function () {
             $('#error-new-pass').fadeOut(100);
         });
         $('#old_pass').focus(function () {
@@ -113,6 +118,11 @@
                                     if (($('#cp_password').val() == $('#confirm').val()) && user == pass) {
                                         $('#error-new-pass ,#error-confirm-pass').parents('.form-line').removeClass('form-line focused error');
                                         $('#error-new-pass ,#error-confirm-pass').fadeOut(100);
+                                        if (CHPASS == 'CHPASS') {
+                                            path = "../PS_processDB/change_pass.php";
+                                        } else {
+                                            path = "PS_processDB/change_pass.php";
+                                        }
                                         cls.GetJSON(path, 'CHPASS', [card_id, $('#confirm').val()], true, function (data) {
                                             swal("บันทึกสำเร็จ!", "รหัสใหม่พร้อมใช้งาน", "success");
                                             $('#change_pass').modal('hide');

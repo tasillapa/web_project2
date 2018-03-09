@@ -56,8 +56,8 @@
         <!-- Wait Me Css -->
         <link href="../plugins/waitme/waitMe.css" rel="stylesheet" />
         
-         <!-- Sweetalert Css -->
-    <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+        <!-- Sweetalert Css -->
+        <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
     </head>
 </html>
