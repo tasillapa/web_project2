@@ -590,7 +590,7 @@ include '../common/header.php';
             </aside>
             <!-- #END# Right Sidebar -->
         </section>
-
+        <!--Change Pass-->
         <div class="modal fade" id="change_pass" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -607,8 +607,8 @@ include '../common/header.php';
                                             <i class="material-icons">person</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="text" class="form-control" id="username" placeholder="Acount ผู้ใช้งาน" required autofocus>
-                                            <label style="display:none" id="error-username" class="error">รหัสผู้ใช้งานไม่ถูกต้อง</label>
+                                            <input type="text" class="form-control" id="cp_username" placeholder="Acount ผู้ใช้งาน" required autofocus>
+                                            <label style="display:none" id="error-username-cp" class="error">รหัสผู้ใช้งานไม่ถูกต้อง</label>
                                         </div>
                                     </div>
                                     <div class="input-group">
@@ -625,7 +625,7 @@ include '../common/header.php';
                                             <i class="material-icons">lock</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="password" class="form-control" id="password" minlength="6" placeholder="รหัสผ่านใหม่" required>
+                                            <input type="password" class="form-control" id="cp_password" minlength="6" placeholder="รหัสผ่านใหม่" required>
                                             <label style="display:none" id="error-new-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
                                         </div>
                                     </div>
@@ -646,6 +646,7 @@ include '../common/header.php';
                 </div>
             </div>
         </div>
+        <!--#End# Change Pass-->
         <?php include ("../common/headerScript.php"); ?>
         <?php include ("../js/script.php"); ?>
     </body>

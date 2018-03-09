@@ -73,18 +73,30 @@
     function btn_chPass(CHPASS) {
         var user = '';
         var pass = '';
+        var path = '';
         if ($('#username').val() != '') {
-            cls.GetJSON("../PS_processDB/login_DB.php", "CHK_USER", [$('#username').val()], true, function (data) {
+            if (CHPASS == 'CHPASS') {
+                path = "../PS_processDB/login_DB.php";
+            } else {
+                path = "PS_processDB/login_DB.php";
+            }
+            cls.GetJSON(path, "CHK_USER", [$('#cp_username').val()], true, function (data) {
                 console.log(data);
                 if (data == 0) {
-                    $('#username').parents('.form-line').addClass('form-line focused error');
-                    $('#error-username').fadeIn(100);
+                    $('#cp_username').parents('.form-line').addClass('form-line focused error');
+                    $('#error-username-cp').fadeIn(100);
+                    cls.GetJSON(path, "CHK_PASS", [$('#cp_username').val(), $('#old_pass').val()], true, function (data) {
+                        if (data == 0) {
+                            $('#old_pass').parents('.form-line').addClass('form-line focused error');
+                            $('#error-old-pass').fadeIn(100);
+                        }
+                    });
                 } else {
-                    $('#username').parents('.form-line').removeClass('form-line focused error');
-                    $('#error-username').fadeOut(100);
+                    $('#cp_username').parents('.form-line').removeClass('form-line focused error');
+                    $('#error-username-cp').fadeOut(100);
                     user = 'success';
                     if ($('#old_pass').val() != '') {
-                        cls.GetJSON("../PS_processDB/login_DB.php", "CHK_PASS", [$('#username').val(), $('#old_pass').val()], true, function (data) {
+                        cls.GetJSON(path, "CHK_PASS", [$('#cp_username').val(), $('#old_pass').val()], true, function (data) {
                             if (data == 0) {
                                 $('#old_pass').parents('.form-line').addClass('form-line focused error');
                                 $('#error-old-pass').fadeIn(100);
@@ -92,16 +104,16 @@
                                 $('#old_pass').parents('.form-line').removeClass('form-line focused error');
                                 $('#error-old-pass').fadeOut(100);
                                 pass = 'success';
-                                if (($('#password').val() && $('#confirm').val()) != '') {
-                                    if ($('#password').val() != $('#confirm').val()) {
+                                if (($('#cp_password').val() && $('#confirm').val()) != '') {
+                                    if ($('#cp_password').val() != $('#confirm').val()) {
 
                                         $('#error-new-pass ,#error-confirm-pass').parents('.form-line').addClass('form-line focused error');
                                         $('#error-new-pass ,#error-confirm-pass').fadeIn(100);
                                     }
-                                    if (($('#password').val() == $('#confirm').val()) && user == pass) {
+                                    if (($('#cp_password').val() == $('#confirm').val()) && user == pass) {
                                         $('#error-new-pass ,#error-confirm-pass').parents('.form-line').removeClass('form-line focused error');
                                         $('#error-new-pass ,#error-confirm-pass').fadeOut(100);
-                                        cls.GetJSON("../PS_processDB/change_pass.php", CHPASS, [card_id, $('#confirm').val()], true, function (data) {
+                                        cls.GetJSON(path, 'CHPASS', [card_id, $('#confirm').val()], true, function (data) {
                                             swal("บันทึกสำเร็จ!", "รหัสใหม่พร้อมใช้งาน", "success");
                                             $('#change_pass').modal('hide');
                                         });
