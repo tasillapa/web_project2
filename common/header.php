@@ -58,6 +58,9 @@
         
         <!-- Sweetalert Css -->
         <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+        
+        <!-- New Css -->
+        <link href="../css/newcss.css" rel="stylesheet" />
 
     </head>
 </html>

@@ -106,26 +106,35 @@ include '../common/header.php';
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">
-                                    <img src="../images/personal.png" width="40" height="40" alt="User" /> 
+                                    <img src="../images/personnal.png" width="40" height="40" alt="User" /> 
                                 </div>
-
                                 <span>จัดการบุคลากร</span>
                             </a>
                             <ul class="ml-menu">
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
+                                    <a href="personnal_hierarchy.php"><img src="../images/hierarchy.png" width="30" height="30" alt="User" /> 
+                                        <span>จัดการข้อมูลพื้นฐาน</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
+                                    <a href="javascript:void(0);"><img src="../images/add_personnal.png" width="30" height="30" alt="User" /> 
+                                        <span>จัดการข้อมูลบุคคลากร</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
+                                    <a href="javascript:void(0);"><img src="../images/promotion.png" width="30" height="30" alt="User" /> 
+                                        <span>ขั้นตำแหน่งงาน</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
+                                    <a href="javascript:void(0);"><img src="../images/salary.png" width="30" height="30" alt="User" /> 
+                                        <span>ขั้นเงินเดือน</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
+                                    <a href="javascript:void(0);"><img src="../images/setting_personnal.png" width="30" height="30" alt="User" /> 
+                                        <span>ตั้งค่าสิทธ์เข้าใช้งาน</span>
+                                    </a>
                                 </li>
                             </ul>
 
