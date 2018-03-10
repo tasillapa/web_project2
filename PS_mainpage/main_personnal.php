@@ -112,7 +112,7 @@ include '../common/header.php';
                             </a>
                             <ul class="ml-menu">
                                 <li>
-                                    <a href="personnal_hierarchy.php"><img src="../images/hierarchy.png" width="30" height="30" alt="User" /> 
+                                    <a href="personnal_manageBasic.php"><img src="../images/hierarchy.png" width="30" height="30" alt="User" /> 
                                         <span>จัดการข้อมูลพื้นฐาน</span>
                                     </a>
                                 </li>

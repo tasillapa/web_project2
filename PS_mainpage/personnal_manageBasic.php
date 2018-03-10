@@ -29,7 +29,7 @@
                                     </li>
                                     <li role="presentation">
                                         <a href="#profile_with_icon_title" data-toggle="tab">
-                                            <img src="../images/ph_outside.png" width="25" height="25" /> 
+                                           <img class="btn-delete"/>
                                             <span>หน่วยงานภายนอก</span>
                                         </a>
                                     </li>
@@ -49,19 +49,14 @@
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="home_with_icon_title">
-                                        <button type="button" class="btn bg-green waves-effect">เพิ่มหน่วยงาน</button>
-                                        <!--<br>-->
-
-
+                                        <button type="button" data-toggle="modal" data-target="#addDepart" class="btn bg-green waves-effect">เพิ่มหน่วยงาน</button><br>
                                         <!-- Basic Examples -->
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="card">
                                                     <div class="body">
                                                         <div class="table-responsive">
-                                                            <table class="table table-bordered table-striped table-hover table_inside dataTable">
-
-                                                            </table>
+                                                            <div id="table_inside_show"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -104,7 +99,53 @@
             </div>
             <!-- #END# Tabs With Icon Title -->
 
-            <?php include ("../PS_script/per_hierarchy.php"); ?>
         </section>
+
+        <div class="modal fade" id="addDepart" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-green">
+                        <h4 class="modal-title " >เพิ่มหน่วยงาน</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="card">-->
+                            <form id="" method="POST">
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label>รหัส</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="code_class" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                        <label>ชื่อหน่วยงาน</label>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="name_class" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        <!--</div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addDepart('ADDEP')">เพิม</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Personnal Hierarchy -->
+        <?php include ("../PS_script/per_department.php"); ?>
     </body>
 </html>
