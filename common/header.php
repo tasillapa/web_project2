@@ -55,10 +55,13 @@
 
         <!-- Wait Me Css -->
         <link href="../plugins/waitme/waitMe.css" rel="stylesheet" />
-        
+
         <!-- Sweetalert Css -->
         <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-        
+
+        <!-- JQuery DataTable Css -->
+        <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
         <!-- New Css -->
         <link href="../css/newcss.css" rel="stylesheet" />
 

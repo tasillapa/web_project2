@@ -4,7 +4,7 @@
 include_once("../connect/connect_DB_personal.php");
 include '../common/header.php';
 ?>
-
+﻿<!DOCTYPE html>
 <html>
     <style>
     </style>
@@ -658,6 +658,7 @@ include '../common/header.php';
         <!--#End# Change Pass-->
         <?php include ("../common/headerScript.php"); ?>
         <?php include ("../js/script.php"); ?>
+        
     </body>
 
 </html>
