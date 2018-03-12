@@ -151,7 +151,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addBnIn('ADDBNIN')">เพิม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addBnIn('ADDBNIN')">เพิ่ม</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" id="name_classE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
-                                            <input type="hidden" id="id_classE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            <input type="hidden" id="id_classE" class="form-control" placeholder="กรอกชื่อหน่วยงาน">
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +244,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addBnOut('ADDBNOUT')">เพิม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addBnOut('ADDBNOUT')">เพิ่ม</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -337,7 +337,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addPosi('APOSI')">เพิม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addPosi('APOSI')">เพิ่ม</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>

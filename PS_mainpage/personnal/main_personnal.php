@@ -48,7 +48,7 @@ include '../../common/header.php';
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a href="javascript:void(0);" class="bars"></a>
 
-                    <a class="navbar-brand" href="../index.php">
+                    <a class="navbar-brand" href="../../index.php">
                         <span>
                             <img src="../../images/logo2.png" width="40" height="35"  />
                             สำนักงานกรมป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี
