@@ -34,7 +34,7 @@
         var value = "FN=" + LOGIN
                 + "&username=" + $('input[name=username]').val()
                 + "&password=" + $('input[name=password]').val();
-        xmlhttp.open("POST", "PS_processDB/login_DB.php", true);
+        xmlhttp.open("POST", "PS_processDB/personnal/login_DB.php", true);
 //    xmlhttp.addEventListener("load", btn_login); โหลดฟังชันก์เรียกอีกครั้ง
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xmlhttp.send(value);
@@ -48,11 +48,11 @@
             if (this.readyState == 4 && this.status == 200) {
                 if (xmlhttp.responseText == "ok") {
                     $('#error-username ,#error-password').hide();
-                    window.location.href = 'PS_mainpage/main_personnal.php';
+                    window.location.href = 'PS_mainpage/personnal/main_personnal.php';
                 } else {
                     $(".loading").show();
                     $('#chkststus').hide();
-                    cls.GetJSON("PS_processDB/login_DB.php", "CHK_USER", [$('input[name=username]').val()], false, function (data) {
+                    cls.GetJSON("PS_processDB/personnal/login_DB.php", "CHK_USER", [$('input[name=username]').val()], false, function (data) {
                         if ((data == 0) && ($('#username').val() != '')) {
                             $('#username').parents('.form-line').addClass('form-line focused error');
                             $('#error-username').fadeIn(100);
@@ -61,7 +61,7 @@
                             $('#error-username').fadeOut(100);
                         }
                     });
-                    cls.GetJSON("PS_processDB/login_DB.php", "CHK_PASS", [$('input[name=username]').val(), $('input[name=password]').val()], false, function (data) {
+                    cls.GetJSON("PS_processDB/personnal/login_DB.php", "CHK_PASS", [$('input[name=username]').val(), $('input[name=password]').val()], false, function (data) {
                         if ((data == 0) && ($('#password').val() != '')) {
                             $('#password').parents('.form-line').addClass('form-line focused error');
                             $('#error-password').fadeIn(100);
@@ -81,9 +81,9 @@
         var path = '';
         if ($('#username').val() != '') {
             if (CHPASS == 'CHPASS') {
-                path = "../PS_processDB/login_DB.php";
+                path = "../PS_processDB/personnal/login_DB.php";
             } else {
-                path = "PS_processDB/login_DB.php";
+                path = "PS_processDB/personnal/login_DB.php";
             }
             cls.GetJSON(path, "CHK_USER", [$('#cp_username').val()], true, function (data) {
                 console.log(data);
@@ -119,9 +119,9 @@
                                         $('#error-new-pass ,#error-confirm-pass').parents('.form-line').removeClass('form-line focused error');
                                         $('#error-new-pass ,#error-confirm-pass').fadeOut(100);
                                         if (CHPASS == 'CHPASS') {
-                                            path = "../PS_processDB/change_pass.php";
+                                            path = "../PS_processDB/personnal/change_pass.php";
                                         } else {
-                                            path = "PS_processDB/change_pass.php";
+                                            path = "PS_processDB/personnal/change_pass.php";
                                         }
                                         cls.GetJSON(path, 'CHPASS', [card_id, $('#confirm').val()], true, function (data) {
                                             swal("บันทึกสำเร็จ!", "รหัสใหม่พร้อมใช้งาน", "success");

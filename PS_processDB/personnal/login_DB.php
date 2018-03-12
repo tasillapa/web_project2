@@ -3,7 +3,7 @@
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 @ob_start();
 @session_start();
-require_once '../connect/connect_DB_personal.php';
+require_once '../../connect/connect_DB_personal.php';
 header("Content-type: application/json;charset=utf-8");
 if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
     switch ($_POST["FN"]) {

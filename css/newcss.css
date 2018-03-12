@@ -1,3 +1,4 @@
+/*Navigater*/
 .breadcrumb {
     margin-bottom: -15px;
     margin-top: -50px;   
@@ -5,6 +6,23 @@
 .nav {
     margin-top: -10px; 
 }
+/*Logo Tap*/
+.logo-bn-in {
+    content:url("../images/ph_inside.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-bn-out {
+    content:url("../images/ph_outside.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-position {
+    content:url("../images/ph_position.png");
+    width: 25px;
+    height: 25px;   
+}
+/*Button Management*/
 .btn-delete {
     content:url("../images/delete.png");
     cursor: pointer;

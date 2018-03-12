@@ -1,8 +1,8 @@
 <?php
 @ob_start();
 @session_start();
-include_once("../connect/connect_DB_personal.php");
-include '../common/header.php';
+include_once("../../connect/connect_DB_personal.php");
+include '../../common/header.php';
 ?>
 ﻿<!DOCTYPE html>
 <html>
@@ -50,7 +50,7 @@ include '../common/header.php';
 
                     <a class="navbar-brand" href="../index.php">
                         <span>
-                            <img src="../images/logo2.png" width="40" height="35"  />
+                            <img src="../../images/logo2.png" width="40" height="35"  />
                             สำนักงานกรมป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี
                         </span>
                     </a>
@@ -68,7 +68,7 @@ include '../common/header.php';
                             <ul class="dropdown-menu">
                                 <li class="header">System option</li>
                                 <li  data-toggle="modal" data-target="#change_pass"><a href="javascript:void(0);"><i class="material-icons link_log">assignment_ind</i>Change Password</a></li>
-                                <li><a href="../js/logout.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                                <li><a href="../../js/logout.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
                             </ul>
                         </li>
                         <!-- #END# Login -->
@@ -84,7 +84,7 @@ include '../common/header.php';
                 <!-- User Info -->
                 <div class="user-info">
                     <div class="image">
-                        <img src="../images/user.png" width="60" height="60" alt="User" /> 
+                        <img src="../../images/user.png" width="60" height="60" alt="User" /> 
                     </div>
                     <div class="info-container">
                         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ศิลปะ พรมจินดา</div>
@@ -98,7 +98,7 @@ include '../common/header.php';
                     <ul class="list">
                         <li class="header">MAIN NAVIGATION</li>
                         <li class="active">
-                            <a href="../index.php">
+                            <a href="../../index.php">
                                 <i class="material-icons">home</i>
                                 <span>DashBoard</span>
                             </a>
@@ -106,33 +106,33 @@ include '../common/header.php';
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">
-                                    <img src="../images/personnal.png" width="40" height="40" alt="User" /> 
+                                    <img src="../../images/personnal.png" width="40" height="40" alt="User" /> 
                                 </div>
                                 <span>จัดการบุคลากร</span>
                             </a>
                             <ul class="ml-menu">
                                 <li>
-                                    <a href="personnal_manageBasic.php"><img src="../images/hierarchy.png" width="30" height="30" alt="User" /> 
+                                    <a href="personnal_manageBasic.php"><img src="../../images/hierarchy.png" width="30" height="30" alt="User" /> 
                                         <span>จัดการข้อมูลพื้นฐาน</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img src="../images/add_personnal.png" width="30" height="30" alt="User" /> 
+                                    <a href="javascript:void(0);"><img src="../../images/add_personnal.png" width="30" height="30" alt="User" /> 
                                         <span>จัดการข้อมูลบุคคลากร</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img src="../images/promotion.png" width="30" height="30" alt="User" /> 
+                                    <a href="javascript:void(0);"><img src="../../images/promotion.png" width="30" height="30" alt="User" /> 
                                         <span>ขั้นตำแหน่งงาน</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img src="../images/salary.png" width="30" height="30" alt="User" /> 
+                                    <a href="javascript:void(0);"><img src="../../images/salary.png" width="30" height="30" alt="User" /> 
                                         <span>ขั้นเงินเดือน</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img src="../images/setting_personnal.png" width="30" height="30" alt="User" /> 
+                                    <a href="javascript:void(0);"><img src="../../images/setting_personnal.png" width="30" height="30" alt="User" /> 
                                         <span>ตั้งค่าสิทธ์เข้าใช้งาน</span>
                                     </a>
                                 </li>
@@ -142,7 +142,7 @@ include '../common/header.php';
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">
-                                    <img src="../images/calculation.png" width="40" height="40" alt="User" /> 
+                                    <img src="../../images/calculation.png" width="40" height="40" alt="User" /> 
                                 </div>
                                 <span>กรอบอัตรากำลัง</span>
                             </a>
@@ -167,7 +167,7 @@ include '../common/header.php';
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">
-                                    <img src="../images/writing.png" width="40" height="40" alt="User" /> 
+                                    <img src="../../images/writing.png" width="40" height="40" alt="User" /> 
                                 </div>
                                 <span>รายงาน</span>
                             </a>
@@ -215,27 +215,27 @@ include '../common/header.php';
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">
-                                    <img src="../images/leaves.png" width="40" height="40" alt="User" /> 
+                                    <img src="../../images/leaves.png" width="40" height="40" alt="User" /> 
                                 </div>
                                 <span>การลา</span>
                             </a>
                             <ul class="ml-menu">
                                 <li>
                                     <div class="image">
-                                        <a href="leave_history.php"><img src="../images/leave.png" width="25" height="25" alt="User" /> 
+                                        <a href="leave_history.php"><img src="../../images/leave.png" width="25" height="25" alt="User" /> 
                                             <span>ประวัติการลา</span></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <a class="ddd"><img src="../images/printer.png" width="25" height="25" alt="User" /> 
+                                        <a class="ddd"><img src="../../images/printer.png" width="25" height="25" alt="User" /> 
                                             <span>ตรวจสอบสถานะเเละพิมพ์ฟอร์ม</span></a>
                                     </div>
                                 </li>
                                 <li>
 
                                     <div class="image">
-                                        <a><img src="../images/doleave.png" width="25" height="25" alt="User" /> 
+                                        <a><img src="../../images/doleave.png" width="25" height="25" alt="User" /> 
                                             <span>ทำเรื่องการลา</span></a>
                                     </div>
                                 </li>
@@ -244,32 +244,32 @@ include '../common/header.php';
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">
-                                    <img src="../images/lecture.png" width="40" height="40" alt="User" /> 
+                                    <img src="../../images/lecture.png" width="40" height="40" alt="User" /> 
                                 </div>
                                 <span>อบรม สัมนา ดูงาน</span>
                             </a>
                             <ul class="ml-menu">
                                 <li>
                                     <div class="image">
-                                        <a><img src="../images/notes.png" width="30" height="30" alt="User" /> 
+                                        <a><img src="../../images/notes.png" width="30" height="30" alt="User" /> 
                                             <span>หลักสูตรการอบรม</span></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <a><img src="../images/ereader.png" width="30" height="30" alt="User" /> 
+                                        <a><img src="../../images/ereader.png" width="30" height="30" alt="User" /> 
                                             <span>ทำเรื่องไปอบรม</span></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <a><img src="../images/printer.png" width="30" height="30" alt="User" /> 
+                                        <a><img src="../../images/printer.png" width="30" height="30" alt="User" /> 
                                             <span>ตรวจสอบสถานะเเละพิมพ์ฟอร์ม</span></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <a><img src="../images/report.png" width="30" height="30" alt="User" /> 
+                                        <a><img src="../../images/report.png" width="30" height="30" alt="User" /> 
                                             <span>รายงานการอบรม</span></a>
                                     </div>
                                 </li>
@@ -656,8 +656,8 @@ include '../common/header.php';
             </div>
         </div>
         <!--#End# Change Pass-->
-        <?php include ("../common/headerScript.php"); ?>
-        <?php include ("../js/script.php"); ?>
+        <?php include ("../../common/headerScript.php"); ?>
+        <?php include ("../../js/script.php"); ?>
         
     </body>
 
