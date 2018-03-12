@@ -47,8 +47,8 @@
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="branch-in">
-                                        <button type="button" data-toggle="modal" data-target="#addBnIn" class="btn bg-green waves-effect">เพิ่มหน่วยงาน</button><br><br>
                                         <!-- หน่วยงานภายใน -->
+                                        <button type="button" data-toggle="modal" data-target="#addBnIn" class="btn bg-green waves-effect">เพิ่มหน่วยงาน</button><br><br>
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="card">
@@ -63,8 +63,8 @@
                                         <!-- #END# หน่วยงานภายใน -->
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
-                                        <button type="button" data-toggle="modal" data-target="#addBnOut" class="btn bg-green waves-effect">เพิ่มหน่วยงาน</button><br><br>
                                         <!-- หน่วยงานภายนอก -->
+                                        <button type="button" data-toggle="modal" data-target="#addBnOut" class="btn bg-green waves-effect">เพิ่มหน่วยงาน</button><br><br>
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="card">
@@ -79,13 +79,20 @@
                                         <!-- #END# หน่วยงานภายนอก -->
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="messages_with_icon_title">
-                                        <b>Message Content</b>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                            Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                            pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                            sadipscing mel.
-                                        </p>
+                                        <!-- ตำแหน่ง -->
+                                        <button type="button" data-toggle="modal" data-target="#addPosi" class="btn bg-green waves-effect">เพิ่มตำแหน่ง</button><br><br>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="card">
+                                                    <div class="body">
+                                                        <div class="table-responsive">
+                                                            <div id="table_position_show"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- #END# ตำแหน่ง -->
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="settings_with_icon_title">
                                         <b>Settings Content</b>
@@ -106,12 +113,12 @@
 
         </section>
 
-        <!-- Modal BnIN -->
+        <!-- Modal Add BnIN -->
         <div class="modal fade" id="addBnIn" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >เพิ่มหน่วยงาน</h4>
+                        <h4 class="modal-title " >หน่วยงานภายใน</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -150,14 +157,61 @@
                 </div>
             </div>
         </div>
-        <!-- #END# Modal BnIN -->
-        
+        <!-- #END# Modal Add BnIN -->
+
+        <!-- Modal Edit BnIN -->
+        <div class="modal fade" id="editBnIn" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-green">
+                        <h4 class="modal-title " >หน่วยงานภายใน</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="card">-->
+                        <form id="fm_editBnIn" method="POST">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="code_classE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label>ชื่อหน่วยงาน</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="name_classE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            <input type="hidden" id="id_classE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--</div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editBnIn('EBNIN')">อัพเดท</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Modal Edit BnIN -->
+
         <!-- Modal Add BnOut -->
         <div class="modal fade" id="addBnOut" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >เพิ่มหน่วยงาน</h4>
+                        <h4 class="modal-title ">หน่วยงานภายนอก</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -197,13 +251,13 @@
             </div>
         </div>
         <!-- #END# Modal Add BnOut -->
-        
+
         <!-- Modal Edit BnOut -->
         <div class="modal fade" id="editBnOut" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >เพิ่มหน่วยงาน</h4>
+                        <h4 class="modal-title " >หน่วยงานภายนอก</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -237,16 +291,110 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editBnOut('EBNOUT')">เพิม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editBnOut('EBNOUT')">อัพเดท</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- #END# Modal BnOut -->
-        
+
+        <!-- Modal Add BnPosi -->
+        <div class="modal fade" id="addPosi" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-green">
+                        <h4 class="modal-title ">ตำแหน่ง</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="card">-->
+                        <form id="fm_addPosi" method="POST">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="pos_code" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label>ชื่อตำแหน่ง</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="pos_name" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--</div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addPosi('APOSI')">เพิม</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Modal Add Posi -->
+
+        <!-- Modal Edit Posi -->
+        <div class="modal fade" id="editPosi" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-green">
+                        <h4 class="modal-title ">ตำแหน่ง</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="card">-->
+                        <form id="fm_editPosi" method="POST">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="pos_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label>ชื่อตำแหน่ง</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="pos_nameE" class="form-control" placeholder="กรอกชื่อตำแหน่ง">
+                                            <input type="hidden" id="pos_idE" class="form-control" placeholder="กรอกชื่อตำแหน่ง">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--</div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPosi('EPOSI')">เพิม</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Modal Edit Posi -->
+
         <!-- Manage Personnal Script -->
         <?php include ("../../PS_script/personnal/per_branchIn.php"); ?>
         <?php include ("../../PS_script/personnal/per_branchOut.php"); ?>
+        <?php include ("../../PS_script/personnal/per_position.php"); ?>
     </body>
 </html>
