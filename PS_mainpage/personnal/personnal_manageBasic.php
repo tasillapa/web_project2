@@ -8,7 +8,7 @@
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
                         <li><a href="main_personnal.php"><i class="material-icons">home</i> Home</a></li>
-                        <li  class="active font-bold col-cyan"><i class="material-icons">library_books</i> จัดการข้อมูลพื้นฐาน</li>
+                        <li  class="active font-bold col-cyan font-14"><i class="material-icons">library_books</i> จัดการข้อมูลพื้นฐาน</li>
                     </ol>
                 </div>
                 <!-- Tabs With Icon Title -->
