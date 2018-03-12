@@ -384,7 +384,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPosi('EPOSI')">เพิม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPosi('EPOSI')">อัพเดท</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>

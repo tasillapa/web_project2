@@ -81,7 +81,7 @@
         var path = '';
         if ($('#username').val() != '') {
             if (CHPASS == 'CHPASS') {
-                path = "../PS_processDB/personnal/login_DB.php";
+                path = "../../PS_processDB/personnal/login_DB.php";
             } else {
                 path = "PS_processDB/personnal/login_DB.php";
             }
@@ -119,7 +119,7 @@
                                         $('#error-new-pass ,#error-confirm-pass').parents('.form-line').removeClass('form-line focused error');
                                         $('#error-new-pass ,#error-confirm-pass').fadeOut(100);
                                         if (CHPASS == 'CHPASS') {
-                                            path = "../PS_processDB/personnal/change_pass.php";
+                                            path = "../../PS_processDB/personnal/change_pass.php";
                                         } else {
                                             path = "PS_processDB/personnal/change_pass.php";
                                         }
