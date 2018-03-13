@@ -29,3 +29,34 @@
     width: 25px;
     height: 25px;   
 }
+/* Logo Menu Main Personnal */
+.logo-head-person {
+    content:url("../images/personnal.png");
+    width: 40px;
+    height: 40px;   
+}
+.logo-data-basic {
+    content:url("../images/hierarchy.png");
+    width: 30px;
+    height: 30px;   
+}
+.logo-add-person {
+    content:url("../images/add_personnal.png");
+    width: 30px;
+    height: 30px;   
+}
+.logo-promotion {
+    content:url("../images/promotion.png");
+    width: 30px;
+    height: 30px;   
+}
+.logo-salary {
+    content:url("../images/salary.png");
+    width: 30px;
+    height: 30px;   
+}
+.logo-setting-person {
+    content:url("../images/setting_personnal.png");
+    width: 30px;
+    height: 30px;   
+}

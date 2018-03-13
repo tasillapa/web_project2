@@ -64,17 +64,18 @@
     function delBnOut(data) {
         console.log(data);
         swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this imaginary file!",
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
             closeOnConfirm: false
         }, function () {
             cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "DELBNOUT", [$(data).attr("id")], true, function (data) {
                 show_outside();
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                swal("ลบสำเร็จ!", "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว", "success");
             });
         });
     }

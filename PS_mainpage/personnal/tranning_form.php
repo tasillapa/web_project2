@@ -1,5 +1,5 @@
 <?php include 'main_personnal.php'; ?>
-
+<html>
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
@@ -27,7 +27,6 @@
                             </ul>
                         </div>
       <div class="body">
-		<div class="panel-body" style="font-family: &quot;TH SarabunPSK&quot;; font-size: 20px; display: block;">
 		<div class="row" style="padding: 10px 0px 10px 0px;">
         <div class="col-md-7"></div>
         <div class="col-md-2" style="text-align:right;">เลขที่หนังสือ</div>
@@ -680,4 +679,4 @@
 
 	
     </section>
-       
+</html>

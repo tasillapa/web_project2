@@ -19,7 +19,7 @@ function change_pass() {
         $get_data = explode("|", $_POST["PARM"]);
         $card_id = $get_data[0];
         $new_pass = $get_data[1];
-        $sql = "UPDATE tb_personnel SET password = '$new_pass' WHERE card_id = '$card_id'";
+        $sql = "UPDATE ps_personnel SET password = '$new_pass' WHERE card_id = '$card_id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

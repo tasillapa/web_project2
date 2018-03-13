@@ -20,7 +20,7 @@ function chklogin() {
     if (!empty($_POST["username"]) && !empty($_POST["password"])) {
         $cn = new management;
         $cn->con_db();
-        $sql = "select * from tb_personnel where username='" . $_POST["username"] . "' and password='" . $_POST["password"] . "' and status = '1'";
+        $sql = "select * from ps_personnel where username='" . $_POST["username"] . "' and password='" . $_POST["password"] . "' and status = '1'";
         $query = $cn->Connect->query($sql);
         if (mysqli_num_rows($query) >= 1) {
             while ($rs = mysqli_fetch_array($query)) {
@@ -44,7 +44,7 @@ function check_user() {
     if ($cn->Connect) {
         $get_data = explode(",", $_POST["PARM"]);
         $user = $get_data[0];
-        $sql = "select * from tb_personnel where username='" . $user . "' and status = '1'";
+        $sql = "select * from ps_personnel where username='" . $user . "' and status = '1'";
         $nq = $cn->mysqli_num_rows($sql);
         echo $nq;
     }
@@ -58,7 +58,7 @@ function check_pass() {
         $get_data = explode("|", $_POST["PARM"]);
         $user = $get_data[0];
         $pass = $get_data[1];
-        $sql = "select * from tb_personnel where username='" . $user . "' and password='" . $pass . "' and status = '1'";
+        $sql = "select * from ps_personnel where username='" . $user . "' and password='" . $pass . "' and status = '1'";
         $nq = $cn->mysqli_num_rows($sql);
         echo $nq;
     }

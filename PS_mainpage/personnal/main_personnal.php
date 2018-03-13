@@ -106,33 +106,33 @@ include '../../common/header.php';
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">
-                                    <img src="../../images/personnal.png" width="40" height="40" alt="User" /> 
+                                    <img class="logo-head-person"/> 
                                 </div>
                                 <span>จัดการบุคลากร</span>
                             </a>
                             <ul class="ml-menu">
                                 <li>
-                                    <a href="personnal_manageBasic.php"><img src="../../images/hierarchy.png" width="30" height="30" alt="User" /> 
+                                    <a href="person_manageBasic.php"><img class="logo-data-basic"/> 
                                         <span>จัดการข้อมูลพื้นฐาน</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img src="../../images/add_personnal.png" width="30" height="30" alt="User" /> 
+                                    <a href="javascript:void(0);"><img class="logo-add-person"/> 
                                         <span>จัดการข้อมูลบุคคลากร</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img src="../../images/promotion.png" width="30" height="30" alt="User" /> 
+                                    <a href="javascript:void(0);"><img class="logo-promotion"/> 
                                         <span>ขั้นตำแหน่งงาน</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img src="../../images/salary.png" width="30" height="30" alt="User" /> 
+                                    <a href="javascript:void(0);"><img class="logo-salary"/> 
                                         <span>ขั้นเงินเดือน</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img src="../../images/setting_personnal.png" width="30" height="30" alt="User" /> 
+                                    <a href="javascript:void(0);"><img class="logo-setting-person"/> 
                                         <span>ตั้งค่าสิทธ์เข้าใช้งาน</span>
                                     </a>
                                 </li>
@@ -658,7 +658,7 @@ include '../../common/header.php';
         <!--#End# Change Pass-->
         <?php include ("../../common/headerScript.php"); ?>
         <?php include ("../../js/script.php"); ?>
-        
+
     </body>
 
 </html>
