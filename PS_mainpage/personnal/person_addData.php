@@ -209,20 +209,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- #END# Input -->
-
-                <div id="aniimated-thumbnials" class="list-unstyled">
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <a href="../../images/image-gallery/1.jpg" data-sub-html="Demo Description">
-                            <img class="img-responsive thumbnail" id="blah" src="../../images/image-gallery/thumb/thumb-1.jpg">
-                        </a>
-                    </div>
-                </div>
-               
-                    <input type='file' id="imgInp" />
-                    <img id="blah" src="#" alt="your image" width="50" height="50"/>
-                
+                <!-- #END# Input --> 
         </section>
-       
     </body>
 </html>

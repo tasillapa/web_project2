@@ -67,12 +67,32 @@
         <!-- Light Gallery Plugin Js -->
         <script src="../../plugins/light-gallery/js/lightgallery-all.js"></script>
 
+        noUISlider Plugin Js -->
+        <script src="../../plugins/nouislider/nouislider.js"></script>
+
+        <!-- Bootstrap Tags Input Plugin Js -->
+        <script src="../../plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+        <!-- Jquery Spinner Plugin Js -->
+        <script src="../../plugins/jquery-spinner/js/jquery.spinner.js"></script>
+
+        <!-- Dropzone Plugin Js -->
+        <script src="../../plugins/dropzone/dropzone.js"></script>
+
+        <!-- Multi Select Plugin Js -->
+        <script src="../../plugins/multi-select/js/jquery.multi-select.js"></script>
+
+        <!-- Input Mask Plugin Js -->
+        <script src="../../plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+
+
         <!-- Custom Js -->
         <script src="../../js/admin.js"></script>
         <script src="../../js/pages/index.js"></script>
         <script src="../../js/pages/forms/form-validation.js"></script>
         <script src="../../js/pages/forms/basic-form-elements.js"></script>
         <script src="../../js/pages/medias/image-gallery.js"></script>
+        <!--<script src="../../js/pages/forms/advanced-form-elements.js"></script>-->
 
         <!-- Demo Js -->
         <script src="../../js/demo.js"></script>

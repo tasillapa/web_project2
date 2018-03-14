@@ -7,6 +7,17 @@ include '../../common/header.php';
 ﻿<!DOCTYPE html>
 <html>
     <style>
+        input[type="file"] {
+            display: none;
+        }
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 2px 18px;
+            cursor: pointer;
+            color: white;
+            font-size: 12px;
+        }
     </style>
     <body class="theme-green">
         <!-- Page Loader -->
@@ -84,13 +95,26 @@ include '../../common/header.php';
                 <!-- User Info -->
                 <div class="user-info">
                     <div class="image">
-                        <img src="../../images/user.png" width="60" height="60" alt="User" /> 
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div id="aniimated-thumbnials" class="list-unstyled">
+                                <a href="../../images/image-gallery/1.jpg" id="zoom" data-sub-html="รูปประจำตัว">
+                                    <img class="img-responsive thumbnail" id="blah" src="../../images/aor.jpg" width="100%" height="100%" alt="User">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="info-container">
+                                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">พรพิมล บุญทองคำ</div>
+                                <div class="email">Online</div>
+                            </div><br><br>
+                            <label class="custom-file-upload">
+                                <input type='file' id="imgInp" />
+                                เปลี่ยนรูป
+                            </label>
+                        </div>
                     </div>
-                    <div class="info-container">
-                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ศิลปะ พรมจินดา</div>
-                        <div class="email">se57160333@gmail.com</div>
+                </div>
 
-                    </div>
                 </div>
                 <!-- #User Info -->
                 <!-- Menu -->

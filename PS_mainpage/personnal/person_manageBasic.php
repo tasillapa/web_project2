@@ -25,13 +25,13 @@
                                     <li role="presentation" class="active">
                                         <a href="#branch-in" data-toggle="tab">
                                             <img class="logo-bn-in"/> 
-                                            <span>หน่วยงานภายใน</span>
+                                            <span>กลุ่มงานภายใน</span>
                                         </a>
                                     </li>
                                     <li role="presentation">
                                         <a href="#profile_with_icon_title" data-toggle="tab">
                                             <img class="logo-bn-out"/>
-                                            <span>หน่วยงานภายนอก</span>
+                                            <span>กลุ่มงานภายนอก</span>
                                         </a>
                                     </li>
                                     <li role="presentation">
@@ -40,18 +40,18 @@
                                             <span>ตำแหน่ง</span>
                                         </a>
                                     </li>
-                                    <!--                                    <li role="presentation">
-                                                                            <a href="#settings_with_icon_title" data-toggle="tab">
-                                                                                <i class="material-icons">settings</i> SETTINGS
-                                                                            </a>
-                                                                        </li>-->
+                                    <li role="presentation">
+                                        <a href="#settings_with_icon_title" data-toggle="tab">
+                                            <i class="material-icons">settings</i> SETTINGS
+                                        </a>
+                                    </li>
                                 </ul>
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="branch-in">
-                                        <!-- หน่วยงานภายใน -->
-                                        <button type="button" data-toggle="modal" data-target="#addBnIn" class="btn bg-green waves-effect">เพิ่มหน่วยงาน</button><br><br>
+                                        <!-- กลุ่มงานภายใน -->
+                                        <button type="button" data-toggle="modal" data-target="#addBnIn" class="btn bg-green waves-effect">เพิ่มกลุ่มงาน</button><br><br>
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="card">
@@ -63,11 +63,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- #END# หน่วยงานภายใน -->
+                                        <!-- #END# กลุ่มงานภายใน -->
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
-                                        <!-- หน่วยงานภายนอก -->
-                                        <button type="button" data-toggle="modal" data-target="#addBnOut" class="btn bg-green waves-effect">เพิ่มหน่วยงาน</button><br><br>
+                                        <!-- กลุ่มงานภายนอก -->
+                                        <button type="button" data-toggle="modal" data-target="#addBnOut" class="btn bg-green waves-effect">เพิ่มกลุ่มงาน</button><br><br>
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="card">
@@ -79,7 +79,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- #END# หน่วยงานภายนอก -->
+                                        <!-- #END# กลุ่มงานภายนอก -->
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="messages_with_icon_title">
                                         <!-- ตำแหน่ง -->
@@ -121,7 +121,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >หน่วยงานภายใน</h4>
+                        <h4 class="modal-title " >กลุ่มงานภายใน</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -167,7 +167,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >หน่วยงานภายใน</h4>
+                        <h4 class="modal-title " >กลุ่มงานภายใน</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -214,7 +214,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">หน่วยงานภายนอก</h4>
+                        <h4 class="modal-title ">กลุ่มงานภายนอก</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -260,7 +260,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >หน่วยงานภายนอก</h4>
+                        <h4 class="modal-title " >กลุ่มงานภายนอก</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
