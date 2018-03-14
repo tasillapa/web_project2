@@ -1,6 +1,8 @@
 <?php include 'main_personnal.php'; ?>
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
     </head>
     <body>
         <section class="content">

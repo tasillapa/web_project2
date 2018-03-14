@@ -117,7 +117,7 @@ include '../../common/header.php';
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img class="logo-add-person"/> 
+                                    <a href="person_addData.php"><img class="logo-add-person"/> 
                                         <span>จัดการข้อมูลบุคคลากร</span>
                                     </a>
                                 </li>

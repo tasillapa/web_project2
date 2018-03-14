@@ -64,11 +64,15 @@
         <!-- Bootstrap Notify Plugin Js -->
         <script src="../../plugins/bootstrap-notify/bootstrap-notify.js"></script>
 
+        <!-- Light Gallery Plugin Js -->
+        <script src="../../plugins/light-gallery/js/lightgallery-all.js"></script>
+
         <!-- Custom Js -->
         <script src="../../js/admin.js"></script>
         <script src="../../js/pages/index.js"></script>
         <script src="../../js/pages/forms/form-validation.js"></script>
         <script src="../../js/pages/forms/basic-form-elements.js"></script>
+        <script src="../../js/pages/medias/image-gallery.js"></script>
 
         <!-- Demo Js -->
         <script src="../../js/demo.js"></script>

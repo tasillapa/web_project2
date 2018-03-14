@@ -62,6 +62,9 @@
         <!-- JQuery DataTable Css -->
         <link href="../../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
+        <!-- Light Gallery Plugin Css -->
+        <link href="../../plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
+
         <!-- New Css -->
         <link href="../../css/newcss.css" rel="stylesheet" />
 
