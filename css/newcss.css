@@ -1,24 +1,61 @@
 /*Navigater*/
+.logo-head {
+    content:url("../images/logo.png");
+    width: 45px;
+    height: 35px;   
+}
+
 .breadcrumb {
     margin-bottom: -15px;
-    margin-top: -50px;   
+    margin-top: -70px;   
 }
-.nav {
+/*.nav {
     margin-top: -10px; 
+}*/
+/* Image รูปภาพประจำตัว*/
+.img-responsive{
+    height: 100px;
+    width: 100px;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 2px 18px;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
 }
 /*Logo Tap*/
 .logo-bn-in {
-    content:url("../images/ph_inside.png");
+    content:url("../images/btn-tap/teamwork.png");
     width: 25px;
     height: 25px;   
 }
 .logo-bn-out {
-    content:url("../images/ph_outside.png");
+    content:url("../images/btn-tap/ph_outside.png");
     width: 25px;
     height: 25px;   
 }
 .logo-position {
-    content:url("../images/ph_position.png");
+    content:url("../images/btn-tap/ph_position.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-bn-lv {
+    content:url("../images/btn-tap/level.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-bn-type {
+    content:url("../images/btn-tap/cv.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-bn-mnm {
+    content:url("../images/btn-tap/recruit.png");
     width: 25px;
     height: 25px;   
 }
@@ -31,32 +68,32 @@
 }
 /* Logo Menu Main Personnal */
 .logo-head-person {
-    content:url("../images/personnal.png");
+    content:url("../images/btn-menu/personnal.png");
     width: 40px;
     height: 40px;   
 }
 .logo-data-basic {
-    content:url("../images/hierarchy.png");
+    content:url("../images/btn-menu/hierarchy.png");
     width: 30px;
     height: 30px;   
 }
 .logo-add-person {
-    content:url("../images/add_personnal.png");
+    content:url("../images/btn-menu/add_personnal.png");
     width: 30px;
     height: 30px;   
 }
 .logo-promotion {
-    content:url("../images/promotion.png");
+    content:url("../images/btn-menu/promotion.png");
     width: 30px;
     height: 30px;   
 }
 .logo-salary {
-    content:url("../images/salary.png");
+    content:url("../images/btn-menu/salary.png");
     width: 30px;
     height: 30px;   
 }
 .logo-setting-person {
-    content:url("../images/setting_personnal.png");
+    content:url("../images/btn-menu/setting_personnal.png");
     width: 30px;
     height: 30px;   
 }

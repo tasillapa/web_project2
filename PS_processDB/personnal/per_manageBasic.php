@@ -37,6 +37,36 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "sl_dataEdit_Posi":sl_data_position();
             break;
+        case "sl_table_level":sl_data_level();
+            break;
+        case "sl_dataEdit_Level":sl_data_level();
+            break;
+        case "ALV":add_level();
+            break;
+        case "DLV":del_level();
+            break;
+        case "ELV":edit_level();
+            break;
+        case "sl_table_type":sl_data_type();
+            break;
+        case "sl_dataEdit_type":sl_data_type();
+            break;
+        case "ATYPE":add_type();
+            break;
+        case "DTYPE":del_type();
+            break;
+        case "ETYPE":edit_type();
+            break;
+        case "sl_table_lvboss":sl_data_lvboss();
+            break;
+        case "sl_dataEdit_lvboss":sl_data_lvboss();
+            break;
+        case "ALVB":add_lvboss();
+            break;
+        case "DLVB":del_lvboss();
+            break;
+        case "ELVB":edit_lvboss();
+            break;
     }
 }
 
@@ -187,7 +217,7 @@ function sl_data_position() {
         } else {
             $sql = "SELECT * from ps_position WHERE pos_id ='$id'";
         }
-        
+
         $rs = $cn->select($sql);
         $json = json_encode($rs);
         echo $json;
@@ -231,6 +261,179 @@ function edit_Posi() {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
         $sql = "UPDATE ps_position SET pos_code = '$get_data[1]', pos_name = '$get_data[2]' WHERE pos_id = '$id'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_data_level() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * from ps_level";
+        } else {
+            $sql = "SELECT * from ps_level WHERE lv_id ='$id'";
+        }
+
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_level() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_level (lv_name)"
+                . "VALUES('$get_data[0]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_level() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "DELETE FROM ps_level WHERE lv_id = '$id'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function edit_level() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "UPDATE ps_level SET lv_name = '$get_data[1]' WHERE lv_id = '$id'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_data_type() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * from ps_type";
+        } else {
+            $sql = "SELECT * from ps_type WHERE type_id ='$id'";
+        }
+
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_type() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_type (type_name)"
+                . "VALUES('$get_data[0]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_type() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "DELETE FROM ps_type WHERE type_id = '$id'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function edit_type() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "UPDATE ps_type SET type_name = '$get_data[1]' WHERE type_id = '$id'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+function sl_data_lvboss() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * from ps_leveboss";
+        } else {
+            $sql = "SELECT * from ps_leveboss WHERE lvb_id ='$id'";
+        }
+
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_lvboss() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_leveboss (lvb_name)"
+                . "VALUES('$get_data[0]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_lvboss() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "DELETE FROM ps_leveboss WHERE lvb_id = '$id'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function edit_lvboss() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "UPDATE ps_leveboss SET lvb_name = '$get_data[1]' WHERE lvb_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

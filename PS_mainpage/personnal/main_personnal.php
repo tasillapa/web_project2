@@ -6,19 +6,6 @@ include '../../common/header.php';
 ?>
 ﻿<!DOCTYPE html>
 <html>
-    <style>
-        input[type="file"] {
-            display: none;
-        }
-        .custom-file-upload {
-            border: 1px solid #ccc;
-            display: inline-block;
-            padding: 2px 18px;
-            cursor: pointer;
-            color: white;
-            font-size: 12px;
-        }
-    </style>
     <body class="theme-green">
         <!-- Page Loader -->
         <div class="page-loader-wrapper">
@@ -61,7 +48,7 @@ include '../../common/header.php';
 
                     <a class="navbar-brand" href="../../index.php">
                         <span>
-                            <img src="../../images/logo2.png" width="40" height="35"  />
+                            <img class="logo-head" />
                             สำนักงานกรมป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี
                         </span>
                     </a>
@@ -97,8 +84,8 @@ include '../../common/header.php';
                     <div class="image">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <div id="aniimated-thumbnials" class="list-unstyled">
-                                <a href="../../images/image-gallery/1.jpg" id="zoom" data-sub-html="รูปประจำตัว">
-                                    <img class="img-responsive thumbnail" id="blah" src="../../images/aor.jpg" width="100%" height="100%" alt="User">
+                                <a href="../../images/moon.jpg" id="zoom" data-sub-html="รูปประจำตัว">
+                                    <img class="img-responsive thumbnail" id="blah" src="../../images/moon.jpg" width="100%" height="100%" alt="User">
                                 </a>
                             </div>
                         </div>
@@ -300,170 +287,6 @@ include '../../common/header.php';
 
                             </ul>
                         </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">view_list</i>
-                                <span>Tables</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="pages/tables/normal-tables.html">Normal Tables</a>
-                                </li>
-                                <li>
-                                    <a href="pages/tables/jquery-datatable.html">Jquery Datatables</a>
-                                </li>
-                                <li>
-                                    <a href="pages/tables/editable-table.html">Editable Tables</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">perm_media</i>
-                                <span>Medias</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="pages/medias/image-gallery.html">Image Gallery</a>
-                                </li>
-                                <li>
-                                    <a href="pages/medias/carousel.html">Carousel</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">pie_chart</i>
-                                <span>Charts</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="pages/charts/morris.html">Morris</a>
-                                </li>
-                                <li>
-                                    <a href="pages/charts/flot.html">Flot</a>
-                                </li>
-                                <li>
-                                    <a href="pages/charts/chartjs.html">ChartJS</a>
-                                </li>
-                                <li>
-                                    <a href="pages/charts/sparkline.html">Sparkline</a>
-                                </li>
-                                <li>
-                                    <a href="pages/charts/jquery-knob.html">Jquery Knob</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">content_copy</i>
-                                <span>Example Pages</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="pages/examples/sign-in.html">Sign In</a>
-                                </li>
-                                <li>
-                                    <a href="pages/examples/sign-up.html">Sign Up</a>
-                                </li>
-                                <li>
-                                    <a href="pages/examples/forgot-password.html">Forgot Password</a>
-                                </li>
-                                <li>
-                                    <a href="pages/examples/blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="pages/examples/404.html">404 - Not Found</a>
-                                </li>
-                                <li>
-                                    <a href="pages/examples/500.html">500 - Server Error</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">map</i>
-                                <span>Maps</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="pages/maps/google.html">Google Map</a>
-                                </li>
-                                <li>
-                                    <a href="pages/maps/yandex.html">YandexMap</a>
-                                </li>
-                                <li>
-                                    <a href="pages/maps/jvectormap.html">jVectorMap</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">trending_down</i>
-                                <span>Multi Level Menu</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <span>Menu Item</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <span>Menu Item - 2</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <span>Level - 2</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="javascript:void(0);">
-                                                <span>Menu Item</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" class="menu-toggle">
-                                                <span>Level - 3</span>
-                                            </a>
-                                            <ul class="ml-menu">
-                                                <li>
-                                                    <a href="javascript:void(0);">
-                                                        <span>Level - 4</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="pages/changelogs.html">
-                                <i class="material-icons">update</i>
-                                <span>Changelogs</span>
-                            </a>
-                        </li>
-                        <li class="header">LABELS</li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons col-red">donut_large</i>
-                                <span>Important</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons col-amber">donut_large</i>
-                                <span>Warning</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i class="material-icons col-light-blue">donut_large</i>
-                                <span>Information</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <!-- #Menu -->
@@ -479,149 +302,7 @@ include '../../common/header.php';
                 <!-- #Footer -->
             </aside>
             <!-- #END# Left Sidebar -->
-            <!-- Right Sidebar -->
-            <aside id="rightsidebar" class="right-sidebar">
-                <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                    <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>
-                    <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
-                        <ul class="demo-choose-skin">
-                            <li data-theme="red" class="active">
-                                <div class="red"></div>
-                                <span>Red</span>
-                            </li>
-                            <li data-theme="pink">
-                                <div class="pink"></div>
-                                <span>Pink</span>
-                            </li>
-                            <li data-theme="purple">
-                                <div class="purple"></div>
-                                <span>Purple</span>
-                            </li>
-                            <li data-theme="deep-purple">
-                                <div class="deep-purple"></div>
-                                <span>Deep Purple</span>
-                            </li>
-                            <li data-theme="indigo">
-                                <div class="indigo"></div>
-                                <span>Indigo</span>
-                            </li>
-                            <li data-theme="blue">
-                                <div class="blue"></div>
-                                <span>Blue</span>
-                            </li>
-                            <li data-theme="light-blue">
-                                <div class="light-blue"></div>
-                                <span>Light Blue</span>
-                            </li>
-                            <li data-theme="cyan">
-                                <div class="cyan"></div>
-                                <span>Cyan</span>
-                            </li>
-                            <li data-theme="teal">
-                                <div class="teal"></div>
-                                <span>Teal</span>
-                            </li>
-                            <li data-theme="green">
-                                <div class="green"></div>
-                                <span>Green</span>
-                            </li>
-                            <li data-theme="light-green">
-                                <div class="light-green"></div>
-                                <span>Light Green</span>
-                            </li>
-                            <li data-theme="lime">
-                                <div class="lime"></div>
-                                <span>Lime</span>
-                            </li>
-                            <li data-theme="yellow">
-                                <div class="yellow"></div>
-                                <span>Yellow</span>
-                            </li>
-                            <li data-theme="amber">
-                                <div class="amber"></div>
-                                <span>Amber</span>
-                            </li>
-                            <li data-theme="orange">
-                                <div class="orange"></div>
-                                <span>Orange</span>
-                            </li>
-                            <li data-theme="deep-orange">
-                                <div class="deep-orange"></div>
-                                <span>Deep Orange</span>
-                            </li>
-                            <li data-theme="brown">
-                                <div class="brown"></div>
-                                <span>Brown</span>
-                            </li>
-                            <li data-theme="grey">
-                                <div class="grey"></div>
-                                <span>Grey</span>
-                            </li>
-                            <li data-theme="blue-grey">
-                                <div class="blue-grey"></div>
-                                <span>Blue Grey</span>
-                            </li>
-                            <li data-theme="black">
-                                <div class="black"></div>
-                                <span>Black</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="settings">
-                        <div class="demo-settings">
-                            <p>GENERAL SETTINGS</p>
-                            <ul class="setting-list">
-                                <li>
-                                    <span>Report Panel Usage</span>
-                                    <div class="switch">
-                                        <label><input type="checkbox" checked><span class="lever"></span></label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Email Redirect</span>
-                                    <div class="switch">
-                                        <label><input type="checkbox"><span class="lever"></span></label>
-                                    </div>
-                                </li>
-                            </ul>
-                            <p>SYSTEM SETTINGS</p>
-                            <ul class="setting-list">
-                                <li>
-                                    <span>Notifications</span>
-                                    <div class="switch">
-                                        <label><input type="checkbox" checked><span class="lever"></span></label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Auto Updates</span>
-                                    <div class="switch">
-                                        <label><input type="checkbox" checked><span class="lever"></span></label>
-                                    </div>
-                                </li>
-                            </ul>
-                            <p>ACCOUNT SETTINGS</p>
-                            <ul class="setting-list">
-                                <li>
-                                    <span>Offline</span>
-                                    <div class="switch">
-                                        <label><input type="checkbox"><span class="lever"></span></label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Location Permission</span>
-                                    <div class="switch">
-                                        <label><input type="checkbox" checked><span class="lever"></span></label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-            <!-- #END# Right Sidebar -->
+            
         </section>
         <!--Change Pass-->
         <div class="modal fade" id="change_pass" tabindex="-1" role="dialog">
