@@ -58,7 +58,7 @@
             $('#editType').modal('hide');
         });
     }
-    function delType(data) {
+    function delType(data) { 
         swal({
             title: "คุณต้องการลบหรือไม่?",
             text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",

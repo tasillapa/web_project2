@@ -48,7 +48,7 @@
                                     </li>
                                     <li role="presentation">
                                         <a href="#tab-type" data-toggle="tab">
-                                           <img class="logo-bn-type"/> 
+                                            <img class="logo-bn-type"/> 
                                             <span>ประเภท</span>
                                         </a>
                                     </li>
@@ -165,7 +165,6 @@
                 </div>
             </div>
             <!-- #END# Tabs With Icon Title -->
-
         </section>
 
         <!-- Modal Add BnIN -->
@@ -447,7 +446,7 @@
         </div>
         <!-- #END# Modal Edit Posi -->
 
-         <!-- Modal Add Level -->
+        <!-- Modal Add Level -->
         <div class="modal fade" id="addLevel" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -515,8 +514,8 @@
             </div>
         </div>
         <!-- #END# Modal Edit Level -->
-        
-         <!-- Modal Add Type -->
+
+        <!-- Modal Add Type -->
         <div class="modal fade" id="addType" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -584,8 +583,8 @@
             </div>
         </div>
         <!-- #END# Modal Edit Level -->
-        
-         <!-- Modal Add LVB -->
+
+        <!-- Modal Add LVB -->
         <div class="modal fade" id="addLVB" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -653,7 +652,7 @@
             </div>
         </div>
         <!-- #END# Modal Edit Level -->
-        
+
         <!-- Manage Personnal Script -->
         <?php include ("../../PS_script/personnal/per_branchIn.php"); ?>
         <?php include ("../../PS_script/personnal/per_branchOut.php"); ?>

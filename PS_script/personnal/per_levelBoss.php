@@ -26,7 +26,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].lvb_name, '<img class="btn-delete" id="' + data[i].lvb_id + '" onclick="javascript: delType(this)"/>']);
+            dataSet.push([a, data[i].lvb_name, '<img class="btn-delete" id="' + data[i].lvb_id + '" onclick="javascript: delLVB(this)"/>']);
         });
         $('#table_lvboss_show').html('<table class="table table-bordered table-striped table-hover table_lvboss dataTable" width="100%"></table>');
         $('.table_lvboss').DataTable({
@@ -58,7 +58,7 @@
             $('#editLVB').modal('hide');
         });
     }
-    function delType(data) {
+    function delLVB(data) {
         swal({
             title: "คุณต้องการลบหรือไม่?",
             text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",

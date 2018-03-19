@@ -20,217 +20,174 @@
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    เพิ่มข้อมูลบุคคลากร
+                                    จัดการข้อมูลบุคคลากร
                                 </h2>
-                                <ul class="header-dropdown m-r--5">
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                            <i class="material-icons">more_vert</i>
-                                        </a>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li><a href="javascript:void(0);">Action</a></li>
-                                            <li><a href="javascript:void(0);">Another action</a></li>
-                                            <li><a href="javascript:void(0);">Something else here</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
                             </div>
                             <div class="body">
-
-                                <h2 class="card-inside-title">Basic Examples</h2>
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Username" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="password" class="form-control" placeholder="Password" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h2 class="card-inside-title">Different Widths</h2>
-                                <div class="row clearfix">
-                                    <div class="col-md-1 form-control-label">
-                                        <label>asdfgg</label>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-6" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-6" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-4" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-4" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-4" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-3" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-3" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-3" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="col-sm-3" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h2 class="card-inside-title">Different Sizes</h2>
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-group-lg">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Large Input" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Default Input" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Small Input" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h2 class="card-inside-title">Floating Label Examples</h2>
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control">
-                                                <label class="form-label">Username</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="password" class="form-control">
-                                                <label class="form-label">Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-float form-group-lg">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" />
-                                                <label class="form-label">Large Input</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" />
-                                                <label class="form-label">Default Input</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-float form-group-sm">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" />
-                                                <label class="form-label">Small Input</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h2 class="card-inside-title">Input Status</h2>
-                                <div class="row clearfix">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-line focused">
-                                                <input type="text" class="form-control" value="Focused" placeholder="Statu Focused" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-line disabled">
-                                                <input type="text" class="form-control" placeholder="Disabled" disabled />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button type="button" data-toggle="modal" data-target="#addPerson" class="btn btn-success btn-circle-lg waves-effect waves-circle waves-float">
+                                    <i class="material-icons">add</i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Input --> 
-            <div class="media">
-                <div class="media-left media-middle">
-                    <a href="javascript:void(0);">
-                        <img class="media-object" src="http://placehold.it/64x64" width="64" height="64">
-                    </a>
+            <!-- Modal Add DataPerson -->
+            <div class="modal fade" id="addPerson" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-green">
+                            <h4 class="modal-title" id="addPersonLabel">เพิ่มข้อมูลบุคลากร</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="body">
+                                            <div class="demo-masked-input">
+                                                <form class="form-horizontal">
+                                                    <div class="row clearfix">
+                                                        <div class="image">
+                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-control-label" style="margin-bottom: 0px">
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-control-label">
+                                                                        <label >เลขที่ตำแหน่ง</label>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="code_profile" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-control-label">
+                                                                        <label >เลขบัตรประชาชน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="g" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                                                        <label >คำนำหน้า</label>
+                                                                    </div>
+                                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
+                                                                        <label >ชื่อ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="f" class="form-control" placeholder="กรอกชื่อ">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
+                                                                        <label >สกุล</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="d" class="form-control" placeholder="กรอกนามสกุล">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-control-label">
+                                                                        <label >ชื่อเล่น</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="nickname" class="form-control" placeholder="กรอกชื่อเล่น">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
+                                                                        <label >เพศ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 align-left">
+                                                                        <input name="group4" type="radio" id="sex_men" class="radio-col-pink" />
+                                                                        <label for="sex_men">ชาย</label>
+                                                                        <input name="group4" type="radio" id="sex_feman" class="radio-col-pink" />
+                                                                        <label for="sex_feman">หญิง</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 align-center" >
+                                                                <div id="aniimated-thumbnials" class="list-unstyled">
+                                                                    <a href="../../images/moon.jpg" id="zoom-img" data-sub-html="รูปประจำตัว">
+                                                                        <img class="img-responsive" id="imgS" src="../../images/moon.jpg" style="max-height: 150px; max-width: 150px;"alt="User">
+                                                                    </a>
+                                                                </div>
+                                                                <label class="btn-file-upload align-center">
+                                                                    <input type='file' id="upload-img" />
+                                                                    อัพโหลดรูปภาพ
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
+                                                            <label >วันเดือนปีเกิด</label>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-bottom: 0px">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="material-icons">date_range</i>
+                                                                </span>
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control date" placeholder="Ex: 30/07/2561">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
+                                                            <label >สถานะ</label>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 align-left">
+                                                            <input name="group4" type="radio" id="status-alone" class="radio-col-pink" />
+                                                            <label for="status-alone">โสด</label>
+                                                            <input name="group4" type="radio" id="status-marry" class="radio-col-pink" />
+                                                            <label for="status-marry">สมรส</label>
+                                                            <input name="group4" type="radio" id="status-halt" class="radio-col-pink" />
+                                                            <label for="status-halt">หย่า</label>
+                                                            <input name="group4" type="radio" id="status-widow" class="radio-col-pink" />
+                                                            <label for="status-widow">หม้าย</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
+                                                            <label >คำนำหน้า</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id="" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary waves-effect">บันทึก</button>
+                                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="media-body">
-                    <h4 class="media-heading">Middle aligned media</h4>
-                    <p>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                        commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                        Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                        in faucibus.
-                    </p>
-                    <p>
-                        Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis
-                        natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    </p>
-                </div>
-            </div>
+                <!-- #END# Modal Add DataPerson -->
         </section>
+        <?php include ("../../PS_script/personnal/per_addData.php"); ?>
     </body>
 </html>

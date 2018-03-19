@@ -67,7 +67,7 @@
         <!-- Light Gallery Plugin Js -->
         <script src="../../plugins/light-gallery/js/lightgallery-all.js"></script>
 
-        noUISlider Plugin Js -->
+        <!-- noUISlider Plugin Js -->
         <script src="../../plugins/nouislider/nouislider.js"></script>
 
         <!-- Bootstrap Tags Input Plugin Js -->
@@ -85,6 +85,8 @@
         <!-- Input Mask Plugin Js -->
         <script src="../../plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
 
+        <!-- Bootstrap Colorpicker Js -->
+        <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
 
         <!-- Custom Js -->
         <script src="../../js/admin.js"></script>
@@ -92,7 +94,7 @@
         <script src="../../js/pages/forms/form-validation.js"></script>
         <script src="../../js/pages/forms/basic-form-elements.js"></script>
         <script src="../../js/pages/medias/image-gallery.js"></script>
-        <!--<script src="../../js/pages/forms/advanced-form-elements.js"></script>-->
+        <script src="../../js/newScript.js"></script>
 
         <!-- Demo Js -->
         <script src="../../js/demo.js"></script>

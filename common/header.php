@@ -41,6 +41,9 @@
         <!-- Bootstrap Spinner Css -->
         <link href="../../plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
 
+        <!-- Colorpicker Css -->
+        <link href="../../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+
         <!-- Bootstrap Tagsinput Css -->
         <link href="../../plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
 
