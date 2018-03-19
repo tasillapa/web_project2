@@ -20,7 +20,7 @@
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    จัดการข้อมูลบุคคลากร
+                                    จัดการข้อมูลบุคลากร
                                 </h2>
                             </div>
                             <div class="body">
@@ -78,11 +78,10 @@
                                                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
                                                                     <label >คำนำหน้า</label>
                                                                 </div>
-                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 form-control-label-l">
-                                                                    <select class="form-control show-tick" data-live-search="true">
-                                                                        <option>Hot Dog, Fries and a Soda</option>
-                                                                        <option>Burger, Shake and a Smile</option>
-                                                                        <option>Sugar, Spice and all things nice</option>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 ">
+                                                                    <select class="form-control show-tick" data-live-search="true" id="p_prefix">
+                                                                        
+                                                                       
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -90,10 +89,10 @@
                                                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
                                                                     <label >ชื่อ</label>
                                                                 </div>
-                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
-                                                                            <input type="text" id="f" class="form-control" placeholder="กรอกชื่อ">
+                                                                            <input type="text" id="p_name" class="form-control" placeholder="กรอกชื่อ">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -105,7 +104,7 @@
                                                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 form-control-label-l">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
-                                                                            <input type="text" id="d" class="form-control" placeholder="กรอกนามสกุล">
+                                                                            <input type="text" id="p_lastname" class="form-control" placeholder="กรอกนามสกุล">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -120,7 +119,7 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="g" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
+                                                                    <input type="text" id="card_id" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -132,17 +131,17 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="nickname" class="form-control" placeholder="กรอกชื่อเล่น">
+                                                                    <input type="text" id="p_nickname" class="form-control" placeholder="กรอกชื่อเล่น">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 form-control-label-l">
                                                             <label >เพศ</label>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 align-left form-control-radio">
-                                                            <input name="group4" type="radio" id="sex_men" class="radio-col-amber" />
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 align-left form-control-radio" id="p_sax">
+                                                            <input name="group4" type="radio" value="1" id="sex_men" class="radio-col-amber" />
                                                             <label for="sex_men">ชาย</label>
-                                                            <input name="group4" type="radio" id="sex_feman" class="radio-col-amber" />
+                                                            <input name="group4" type="radio" value="2" id="sex_feman" class="radio-col-amber" />
                                                             <label for="sex_feman">หญิง</label>
                                                         </div>
                                                     </div>
@@ -156,14 +155,14 @@
                                                                     <i class="material-icons">date_range</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="text" class="form-control date" placeholder="Ex: 30/07/2561">
+                                                                    <input type="text" id="p_birthday" class="form-control date" placeholder="Ex: 30/07/2561">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-1 col-md-1 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >สถานะ</label>
                                                         </div>
-                                                        <div class="col-lg-5 col-md-5 col-sm-9 col-xs-12 form-control-radio">
+                                                        <div class="col-lg-5 col-md-5 col-sm-9 col-xs-12 form-control-radio" id="p_status">
                                                             <input name="group4" type="radio" id="status-alone" class="radio-col-amber" />
                                                             <label for="status-alone">โสด</label>
                                                             <input name="group4" type="radio" id="status-marry" class="radio-col-amber" />
@@ -175,10 +174,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >ประเภท</label>
                                                         </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                             <select class="form-control show-tick" data-live-search="true">
                                                                 <option>Hot Dog, Fries and a Sodaasdasdsasafsd</option>
                                                                 <option>Burger, Shake and a Smile</option>
@@ -187,10 +186,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >ตำแหน่ง</label>
                                                         </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                             <select class="form-control show-tick" data-live-search="true">
                                                                 <option>Hot Dog, Fries and a Soda</option>
                                                                 <option>Burger, Shake and a Smile</option>
@@ -199,10 +198,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >ระดับ</label>
                                                         </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                             <select class="form-control show-tick" data-live-search="true">
                                                                 <option>Hot Dog, Fries and a Soda</option>
                                                                 <option>Burger, Shake and a Smile</option>
@@ -211,10 +210,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >สายงาน</label>
                                                         </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                             <select class="form-control show-tick" data-live-search="true">
                                                                 <option>Hot Dog, Fries and a Soda</option>
                                                                 <option>Burger, Shake and a Smile</option>
@@ -223,10 +222,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >กลุ่มงาน</label>
                                                         </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                             <select class="form-control show-tick" data-live-search="true">
                                                                 <option>Hot Dog, Fries and a Soda</option>
                                                                 <option>Burger, Shake and a Smile</option>
@@ -235,10 +234,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >สังกัด</label>
                                                         </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-10 col-md-10t col-sm-9 col-xs-12">
                                                             <select class="form-control show-tick" data-live-search="true">
                                                                 <option>Hot Dog, Fries and a Soda</option>
                                                                 <option>Burger, Shake and a Smile</option>
@@ -253,7 +252,7 @@
                                                         <div class="col-lg-4 col-md-3 col-sm-9 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                    <input type="text" id="p_dateIn" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -263,7 +262,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                    <input type="text" id="p_dateOut" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -273,13 +272,16 @@
                                                             <label >เงินเดือน</label>
                                                         </div>
                                                         <div class="col-lg-3 col-md-3 col-sm-9 col-xs-8">
-                                                            <div class="form-group">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="material-icons">monetization_on</i>
+                                                                </span>
                                                                 <div class="form-line">
-                                                                    <input type="number" id="" class="form-control" placeholder="กรุณาระบุจำนวนเงิน">
+                                                                    <input type="number" id="p_salary" class="form-control" placeholder="กรุณาระบุจำนวนเงิน">
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
