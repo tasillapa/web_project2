@@ -48,96 +48,109 @@
                                                 <form class="form-horizontal">
                                                     <div class="row clearfix">
                                                         <div class="image">
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-control-label" style="margin-bottom: 0px">
-                                                                <div class="row clearfix">
-                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-control-label">
-                                                                        <label >เลขที่ตำแหน่ง</label>
-                                                                    </div>
-                                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                                                                        <div class="form-group">
-                                                                            <div class="form-line">
-                                                                                <input type="text" id="code_profile" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row clearfix">
-                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-control-label">
-                                                                        <label >เลขบัตรประชาชน</label>
-                                                                    </div>
-                                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                                                                        <div class="form-group">
-                                                                            <div class="form-line">
-                                                                                <input type="text" id="g" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
-                                                                        <label >คำนำหน้า</label>
-                                                                    </div>
-                                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
-                                                                        <label >ชื่อ</label>
-                                                                    </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                        <div class="form-group">
-                                                                            <div class="form-line">
-                                                                                <input type="text" id="f" class="form-control" placeholder="กรอกชื่อ">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
-                                                                        <label >สกุล</label>
-                                                                    </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                        <div class="form-group">
-                                                                            <div class="form-line">
-                                                                                <input type="text" id="d" class="form-control" placeholder="กรอกนามสกุล">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row clearfix">
-                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-control-label">
-                                                                        <label >ชื่อเล่น</label>
-                                                                    </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                        <div class="form-group">
-                                                                            <div class="form-line">
-                                                                                <input type="text" id="nickname" class="form-control" placeholder="กรอกชื่อเล่น">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
-                                                                        <label >เพศ</label>
-                                                                    </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 align-left">
-                                                                        <input name="group4" type="radio" id="sex_men" class="radio-col-pink" />
-                                                                        <label for="sex_men">ชาย</label>
-                                                                        <input name="group4" type="radio" id="sex_feman" class="radio-col-pink" />
-                                                                        <label for="sex_feman">หญิง</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 align-center" >
+                                                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
                                                                 <div id="aniimated-thumbnials" class="list-unstyled">
                                                                     <a href="../../images/moon.jpg" id="zoom-img" data-sub-html="รูปประจำตัว">
-                                                                        <img class="img-responsive" id="imgS" src="../../images/moon.jpg" style="max-height: 150px; max-width: 150px;"alt="User">
+                                                                        <center><img class="img-responsive" id="imgS" src="../../images/moon.jpg" style="max-height: 150px; max-width: 150px;"alt="User"></center>
                                                                     </a>
                                                                 </div>
-                                                                <label class="btn-file-upload align-center">
+                                                                <label class="btn-file-upload ">
                                                                     <input type='file' id="upload-img" />
                                                                     อัพโหลดรูปภาพ
                                                                 </label>
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12" style="margin-bottom: 0px">
+                                                            <div class="row clearfix">
+                                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <label >เลขที่ตำแหน่ง</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <div class="form-line">
+                                                                            <input type="text" id="code_profile" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row clearfix">
+                                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <label >คำนำหน้า</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 form-control-label-l">
+                                                                    <select class="form-control show-tick" data-live-search="true">
+                                                                        <option>Hot Dog, Fries and a Soda</option>
+                                                                        <option>Burger, Shake and a Smile</option>
+                                                                        <option>Sugar, Spice and all things nice</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row clearfix">
+                                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <label >ชื่อ</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 form-control-label-l">
+                                                                    <div class="form-group">
+                                                                        <div class="form-line">
+                                                                            <input type="text" id="f" class="form-control" placeholder="กรอกชื่อ">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row clearfix">
+                                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <label >สกุล</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 form-control-label-l">
+                                                                    <div class="form-group">
+                                                                        <div class="form-line">
+                                                                            <input type="text" id="d" class="form-control" placeholder="กรอกนามสกุล">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
+                                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                            <label >เลขบัตรประชาชน</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id="g" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 form-control-label-l">
+                                                            <label >ชื่อเล่น</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id="nickname" class="form-control" placeholder="กรอกชื่อเล่น">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 form-control-label-l">
+                                                            <label >เพศ</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 align-left form-control-radio">
+                                                            <input name="group4" type="radio" id="sex_men" class="radio-col-amber" />
+                                                            <label for="sex_men">ชาย</label>
+                                                            <input name="group4" type="radio" id="sex_feman" class="radio-col-amber" />
+                                                            <label for="sex_feman">หญิง</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-control-label-l">
                                                             <label >วันเดือนปีเกิด</label>
                                                         </div>
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="margin-bottom: 0px">
+                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-8" style="margin-bottom: 0px">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon">
                                                                     <i class="material-icons">date_range</i>
@@ -147,25 +160,107 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 form-control-label">
+                                                        <div class="col-lg-1 col-md-1 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >สถานะ</label>
                                                         </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 align-left">
-                                                            <input name="group4" type="radio" id="status-alone" class="radio-col-pink" />
+                                                        <div class="col-lg-5 col-md-5 col-sm-9 col-xs-12 form-control-radio">
+                                                            <input name="group4" type="radio" id="status-alone" class="radio-col-amber" />
                                                             <label for="status-alone">โสด</label>
-                                                            <input name="group4" type="radio" id="status-marry" class="radio-col-pink" />
+                                                            <input name="group4" type="radio" id="status-marry" class="radio-col-amber" />
                                                             <label for="status-marry">สมรส</label>
-                                                            <input name="group4" type="radio" id="status-halt" class="radio-col-pink" />
+                                                            <input name="group4" type="radio" id="status-halt" class="radio-col-amber" />
                                                             <label for="status-halt">หย่า</label>
-                                                            <input name="group4" type="radio" id="status-widow" class="radio-col-pink" />
+                                                            <input name="group4" type="radio" id="status-widow" class="radio-col-amber" />
                                                             <label for="status-widow">หม้าย</label>
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-control-label">
-                                                            <label >คำนำหน้า</label>
+                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ประเภท</label>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                            <select class="form-control show-tick" data-live-search="true">
+                                                                <option>Hot Dog, Fries and a Sodaasdasdsasafsd</option>
+                                                                <option>Burger, Shake and a Smile</option>
+                                                                <option>Sugar, Spice and all things nice</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ตำแหน่ง</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                            <select class="form-control show-tick" data-live-search="true">
+                                                                <option>Hot Dog, Fries and a Soda</option>
+                                                                <option>Burger, Shake and a Smile</option>
+                                                                <option>Sugar, Spice and all things nice</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ระดับ</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                            <select class="form-control show-tick" data-live-search="true">
+                                                                <option>Hot Dog, Fries and a Soda</option>
+                                                                <option>Burger, Shake and a Smile</option>
+                                                                <option>Sugar, Spice and all things nice</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >สายงาน</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                            <select class="form-control show-tick" data-live-search="true">
+                                                                <option>Hot Dog, Fries and a Soda</option>
+                                                                <option>Burger, Shake and a Smile</option>
+                                                                <option>Sugar, Spice and all things nice</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >กลุ่มงาน</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                            <select class="form-control show-tick" data-live-search="true">
+                                                                <option>Hot Dog, Fries and a Soda</option>
+                                                                <option>Burger, Shake and a Smile</option>
+                                                                <option>Sugar, Spice and all things nice</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >สังกัด</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                            <select class="form-control show-tick" data-live-search="true">
+                                                                <option>Hot Dog, Fries and a Soda</option>
+                                                                <option>Burger, Shake and a Smile</option>
+                                                                <option>Sugar, Spice and all things nice</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >วันเข้ารับราชการ</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id="" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >วันเกษียณอายุ</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
                                                                     <input type="text" id="" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
@@ -173,6 +268,18 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-control-label-l">
+                                                            <label >เงินเดือน</label>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3 col-sm-9 col-xs-8">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="number" id="" class="form-control" placeholder="กรุณาระบุจำนวนเงิน">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                 </form>
                                             </div>
                                         </div>
