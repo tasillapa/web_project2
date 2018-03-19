@@ -5,12 +5,13 @@
     var password = '<?= $_SESSION["password"]; ?>';
     $(function () {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_prefix", "", true, function (data) {
-//            console.log(data);
-//            alert(data);
+
+            $('#p_prefix').html('');
             $('#p_prefix').html('<option  value="">เลือก</opition>');
             $.each(data, function (i) {
                 $("#p_prefix").append('<option  value="' + data[i].pf_id + '">' + data[i].pf_name + '</opition>');
             });
+            select2();
         });
     });
     $('#addPerson').find("#upload-img").change(function () {

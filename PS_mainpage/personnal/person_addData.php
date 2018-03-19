@@ -1,4 +1,5 @@
 <?php include 'main_personnal.php'; ?>
+<?php include ("../../PS_script/personnal/per_addData.php"); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -80,8 +81,6 @@
                                                                 </div>
                                                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 ">
                                                                     <select class="form-control show-tick" data-live-search="true" id="p_prefix">
-                                                                        
-                                                                       
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -297,6 +296,5 @@
                 </div>
                 <!-- #END# Modal Add DataPerson -->
         </section>
-        <?php include ("../../PS_script/personnal/per_addData.php"); ?>
     </body>
 </html>
