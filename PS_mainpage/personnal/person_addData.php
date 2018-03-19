@@ -177,10 +177,7 @@
                                                             <label >ประเภท</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true">
-                                                                <option>Hot Dog, Fries and a Sodaasdasdsasafsd</option>
-                                                                <option>Burger, Shake and a Smile</option>
-                                                                <option>Sugar, Spice and all things nice</option>
+                                                            <select class="form-control show-tick" data-live-search="true" id="p_type">
                                                             </select>
                                                         </div>
                                                     </div>
@@ -189,10 +186,7 @@
                                                             <label >ตำแหน่ง</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true">
-                                                                <option>Hot Dog, Fries and a Soda</option>
-                                                                <option>Burger, Shake and a Smile</option>
-                                                                <option>Sugar, Spice and all things nice</option>
+                                                            <select class="form-control show-tick" data-live-search="true" id="p_position">
                                                             </select>
                                                         </div>
                                                     </div>
@@ -255,6 +249,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="row clearfix">
                                                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                             <label >วันเกษียณอายุ</label>
                                                         </div>

@@ -9,9 +9,9 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
     switch ($_POST["FN"]) {
         case "get_prefix":get_prefix();
             break;
-        case "CHK_USER":check_user();
+        case "get_type":get_type();
             break;
-        case "CHK_PASS":check_pass();
+        case "get_position":get_position();
             break;
     }
 }
@@ -28,29 +28,26 @@ function get_prefix() {
     exit();
 }
 
-function check_user() {
+function get_type() {
     $cn = new management;
     $cn->con_db();
     if ($cn->Connect) {
-        $get_data = explode(",", $_POST["PARM"]);
-        $user = $get_data[0];
-        $sql = "select * from ps_personnel where username='" . $user . "' and status = '1'";
-        $nq = $cn->mysqli_num_rows($sql);
-        echo $nq;
+        $sql = "select * from ps_type";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
     }
     exit();
 }
 
-function check_pass() {
+function get_position() {
     $cn = new management;
     $cn->con_db();
     if ($cn->Connect) {
-        $get_data = explode("|", $_POST["PARM"]);
-        $user = $get_data[0];
-        $pass = $get_data[1];
-        $sql = "select * from ps_personnel where username='" . $user . "' and password='" . $pass . "' and status = '1'";
-        $nq = $cn->mysqli_num_rows($sql);
-        echo $nq;
+        $sql = "select * from ps_position";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
     }
     exit();
 }
