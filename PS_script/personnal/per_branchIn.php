@@ -12,7 +12,7 @@
                 $.each(data, function (i, k) {
                     $("#code_classE").val(data[i].code_class);
                     $("#name_classE").val(data[i].name_class);
-                    $("#id_classE").val(data[i].id_class);
+                    $("#class_idE").val(data[i].class_id);
                 });
                 $("#editBnIn").modal("show");
             });
@@ -28,7 +28,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].code_class, data[i].name_class, '<img class="btn-delete" id="' + data[i].id_class + '" onclick="javascript: delBnIn(this)"/>']);
+            dataSet.push([a, data[i].code_class, data[i].name_class, '<img class="btn-delete" id="' + data[i].class_id + '" onclick="javascript: delBnIn(this)"/>']);
         });
         $('#table_inside_show').html('<table class="table table-bordered table-striped table-hover table_inside dataTable" width="100%"></table>');
         $('.table_inside').DataTable({
@@ -55,7 +55,7 @@
         });
     }
     function editBnIn(EBNIN) {
-        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", EBNIN, [$('#id_classE').val(), $('#code_classE').val(), $('#name_classE').val()], true, function (data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", EBNIN, [$('#class_idE').val(), $('#code_classE').val(), $('#name_classE').val()], true, function (data) {
             show_inside();
             swal("แก้ไขสำเร็จ!", "ตำแหน่งของคุณ อัพเดทเเล้ว", "success");
             $('#editBnIn').modal('hide');

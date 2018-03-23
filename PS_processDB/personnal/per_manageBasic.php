@@ -67,6 +67,16 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "ELVB":edit_lvboss();
             break;
+        case "sl_table_depart":sl_data_depart();
+            break;
+        case "sl_dataEdit_depart":sl_data_depart();
+            break;
+        case "ADPM":add_depart();
+            break;
+        case "DDPM":del_depart();
+            break;
+        case "EDPM":edit_depart ();
+            break;
     }
 }
 
@@ -104,7 +114,7 @@ function del_BnIn() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "DELETE FROM ps_class WHERE id_class = '$id'";
+        $sql = "DELETE FROM ps_class WHERE class_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -117,7 +127,7 @@ function sl_dataEdit_BnIn() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "SELECT * from ps_class WHERE id_class ='$id'";
+        $sql = "SELECT * from ps_class WHERE class_id ='$id'";
         $rs = $cn->select($sql);
         $json = json_encode($rs);
         echo $json;
@@ -131,7 +141,7 @@ function edit_BnIn() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "UPDATE ps_class SET code_class = '$get_data[1]', name_class = '$get_data[2]' WHERE id_class = '$id'";
+        $sql = "UPDATE ps_class SET code_class = '$get_data[1]', name_class = '$get_data[2]' WHERE class_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -434,6 +444,63 @@ function edit_lvboss() {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
         $sql = "UPDATE ps_leveboss SET lvb_name = '$get_data[1]' WHERE lvb_id = '$id'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+function sl_data_depart() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * from ps_department";
+        } else {
+            $sql = "SELECT * from ps_department WHERE dep_code ='$id'";
+        }
+
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_depart() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_department (dep_code, dep_name)"
+                . "VALUES('$get_data[0]','$get_data[1]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_depart() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "DELETE FROM ps_department WHERE dep_id = '$id'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function edit_depart() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "UPDATE ps_department SET dep_code = '$get_data[1]', dep_name = '$get_data[2]' WHERE dep_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

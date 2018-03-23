@@ -47,14 +47,14 @@
     function addLVB(ALVB) {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ALVB,[$('#lvb_name').val()], true, function (data) {
             show_levelBoss();
-            swal("บันทึกสำเร็จ!", "ประเภทใหม่พร้อมใช้งาน", "success");
+            swal("บันทึกสำเร็จ!", "ตำแหน่งใหม่พร้อมใช้งาน", "success");
             $('#addLVB').modal('hide');
         });
     }
     function editLVB(ELVB) {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ELVB, [$('#lvb_idE').val(), $('#lvb_nameE').val()], true, function (data) {
             show_levelBoss();
-            swal("แก้ไขสำเร็จ!", "ประเภทของคุณ อัพเดทเเล้ว", "success");
+            swal("แก้ไขสำเร็จ!", "ตำแหน่งของคุณ อัพเดทเเล้ว", "success");
             $('#editLVB').modal('hide');
         });
     }

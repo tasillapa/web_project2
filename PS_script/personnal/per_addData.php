@@ -4,26 +4,41 @@
     var username = '<?= $_SESSION["username"]; ?>';
     var password = '<?= $_SESSION["password"]; ?>';
     $(function () {
-        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_prefix", "", true, function (data) {
-            $('#p_prefix').html('<option  value="">เลือก</opition>');
-            $.each(data, function (i) {
-                $("#p_prefix").append('<option  value="' + data[i].pf_id + '">' + data[i].pf_name + '</opition>');
-            });
-        });
-        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_type", "", true, function (data) {
-            $('#p_type').html('<option  value="">เลือก</opition>');
-            $.each(data, function (i) {
-                $("#p_type").append('<option  value="' + data[i].type_id + '">' + data[i].type_name + '</opition>');
-            });
-        });
-        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_position", "", true, function (data) {
-            $('#p_position').html('<option  value="">เลือก</opition>');
-            $.each(data, function (i) {
-                $("#p_position").append('<option  value="' + data[i].pos_code + '">' + data[i].pos_name + '</opition>');
-            });
-        });
+        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
     });
-    $('#addPerson').find("#upload-img").change(function () {
+    function show_inside() {
+        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
+    }
+
+    function table_profile(data) {
+        $(".table_profile").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push([a, data[i].pro_idpos, data[i].card_id, data[i].pro_prefix + data[i].pro_fname+' '+data[i].pro_lname, data[i].pro_dateIn, '<img class="btn-delete" id="' + data[i].class_id + '" onclick="javascript: delBnIn(this)"/>']);
+        });
+        $('#table_profile_show').html('<table class="table table-bordered table-striped table-hover table_profile dataTable" width="100%"></table>');
+        $('.table_profile').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "เลขตำแหน่ง"},
+                {title: "รหัสบัตรประชาชน"},
+                {title: "ชื่อ-สกุล"},
+                {title: "วันเข้ารับราชการ"},
+                {title: "..."},
+            ],
+            "fnRowCallback": function (nRow) {
+//                console.log($(nRow).find('img').attr('id'));
+                $(nRow).attr('id', $(nRow).find('img').attr('id'));
+                $(nRow).css('cursor', 'pointer');
+            }
+        });
+    }
+
+    $('#addPerson').find("#pro_picture").change(function () {
         readURLProfile(this);
     });
 
@@ -39,5 +54,11 @@
             reader.readAsDataURL(input.files[0]);
             console.log(reader);
         }
+    }
+    
+    function addPerson(APS){
+        var array[];
+        array.push();
+        alert($('#pro_prefix').val());
     }
 </script>

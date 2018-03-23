@@ -55,7 +55,13 @@
                                     <li role="presentation">
                                         <a href="#tab-manager" data-toggle="tab">
                                             <img class="logo-bn-mnm"/> 
-                                            <span>กลุ่มบริหาร</span>
+                                            <span>ตำแหน่งบริหาร</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#tab-department" data-toggle="tab">
+                                            <img class="logo-bn-department"/> 
+                                            <span>สังกัด</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -143,8 +149,8 @@
                                         <!-- #END# ประเภท -->
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab-manager">
-                                        <!-- กลุ่มบริหาร -->
-                                        <button type="button" data-toggle="modal" data-target="#addLVB" class="btn bg-green waves-effect">เพิ่มกลุ่มบริหาร</button><br><br>
+                                        <!-- ตำแหน่งบริหาร -->
+                                        <button type="button" data-toggle="modal" data-target="#addLVB" class="btn bg-green waves-effect">เพิ่มตำแหน่งบริหาร</button><br><br>
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="card">
@@ -156,7 +162,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- #END# กลุ่มบริหาร -->
+                                        <!-- #END# ตำแหน่งบริหาร -->
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab-department">
+                                        <!-- สังกัด -->
+                                        <button type="button" data-toggle="modal" data-target="#addDPM" class="btn bg-green waves-effect">เพิ่มสังกัด</button><br><br>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="card">
+                                                    <div class="body">
+                                                        <div class="table-responsive">
+                                                            <div id="table_depart_show"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- #END# สังกัด -->
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +265,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" id="name_classE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
-                                            <input type="hidden" id="id_classE" class="form-control" placeholder="กรอกชื่อหน่วยงาน">
+                                            <input type="hidden" id="class_idE" class="form-control" placeholder="กรอกชื่อหน่วยงาน">
                                         </div>
                                     </div>
                                 </div>
@@ -589,19 +611,19 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">กลุ่มบริหาร</h4>
+                        <h4 class="modal-title ">ตำแหน่งบริหาร</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
                         <form id="fm_addLVB" method="POST">
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
-                                    <label>ชื่อกลุ่มบริหาร</label>
+                                    <label>ชื่อตำแหน่งบริหาร</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="lvb_name" class="form-control" placeholder="กรอกชื่อกลุ่มบริหาร">
+                                            <input type="text" id="lvb_name" class="form-control" placeholder="กรอกชื่อตำแหน่งบริหาร">
                                         </div>
                                     </div>
                                 </div>
@@ -623,19 +645,19 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">กลุ่มบริหาร</h4>
+                        <h4 class="modal-title ">ตำแหน่งบริหาร</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
                         <form id="fm_editLVB" method="POST">
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
-                                    <label>ชื่อกลุ่มบริหาร</label>
+                                    <label>ชื่อตำแหน่งบริหาร</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="lvb_nameE" class="form-control" placeholder="กรอกชื่อกลุ่มบริหาร">
+                                            <input type="text" id="lvb_nameE" class="form-control" placeholder="กรอกชื่อตำแหน่งบริหาร">
                                             <input type="hidden" id="lvb_idE" class="form-control">
                                         </div>
                                     </div>
@@ -652,6 +674,99 @@
             </div>
         </div>
         <!-- #END# Modal Edit Level -->
+        
+        <!-- Modal Add Department -->
+        <div class="modal fade" id="addDPM" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-green">
+                        <h4 class="modal-title ">สังกัด</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="card">-->
+                        <form id="fm_addDPM" method="POST">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="dep_code" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-control-label">
+                                    <label>ชื่อสังกัด</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="dep_name" class="form-control" placeholder="กรอกชื่อสังกัด">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--</div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addDPM('ADPM')">เพิ่ม</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Modal Add Department -->
+
+        <!-- Modal Edit Department -->
+        <div class="modal fade" id="editDPM" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-green">
+                        <h4 class="modal-title ">สังกัด</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="card">-->
+                        <form id="fm_editDPM" method="POST">
+                             <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="dep_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-control-label">
+                                    <label>ชื่อสังกัด</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="dep_nameE" class="form-control" placeholder="กรอกชื่อสังกัด">
+                                            <input type="hidden" id="dep_idE" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--</div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editDPM('EDPM')">อัพเดท</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Modal Edit Department -->
 
         <!-- Manage Personnal Script -->
         <?php include ("../../PS_script/personnal/per_branchIn.php"); ?>
@@ -660,5 +775,6 @@
         <?php include ("../../PS_script/personnal/per_level.php"); ?>
         <?php include ("../../PS_script/personnal/per_type.php"); ?>
         <?php include ("../../PS_script/personnal/per_levelBoss.php"); ?>
+        <?php include ("../../PS_script/personnal/per_department.php"); ?>
     </body>
 </html>

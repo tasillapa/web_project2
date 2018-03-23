@@ -293,10 +293,10 @@ include '../../common/header.php';
                 <!-- Footer -->
                 <div class="legal">
                     <div class="copyright">
-                        &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+                        new. version(2018) <a href="javascript:void(0);">Personnal System</a>.
                     </div>
                     <div class="version">
-                        <b>Version: </b> 1.0.5
+                        <b>Version: </b> 1.55
                     </div>
                 </div>
                 <!-- #Footer -->
