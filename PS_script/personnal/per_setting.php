@@ -3,30 +3,32 @@
     var card_id = '<?= $_SESSION["card_id"]; ?>';
     var name = '<?= $_SESSION["name"]; ?>';
     $(function () {
-        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_table_setting", "", true, table_setting);
     });
-    function show_profile() {
-        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
+    function show_setting() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageSitting.php", "sl_table_setting", "", true, table_setting);
     }
 
-    function table_profile(data) {
-        $(".table_profile").html('');
+    function table_setting(data) {
+        $(".table_setting").html('');
         var dataSet = [];
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].pro_idpos, data[i].card_id, data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, DateThai(data[i].pro_dateIn), '<img class="btn-detail" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/><img class="btn-edit" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/><img class="btn-delete" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/>']);
+            dataSet.push([a, data[i].card_id, data[i].nameuser + ' ' + data[i].lastname, data[i].pos_name, data[i].name_class, data[i].tel, data[i].email, '<img class="btn-detail" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/><img class="btn-edit" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/><img class="btn-delete" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/>']);
         });
-        $('#table_profile_show').html('<table class="table table-bordered table-striped table-hover table_profile dataTable" width="100%"></table>');
-        $('.table_profile').DataTable({
+        $('#table_setting_show').html('<table class="table table-bordered table-striped table-hover table_setting dataTable" width="100%"></table>');
+        $('.table_setting').DataTable({
             responsive: true,
             data: dataSet,
             columns: [
                 {title: "ลำดับ"},
-                {title: "เลขตำแหน่ง"},
                 {title: "รหัสบัตรประชาชน"},
                 {title: "ชื่อ-สกุล"},
-                {title: "วันเข้ารับราชการ"},
+                {title: "ตำแหน่ง"},
+                {title: "กลุ่ม"},
+                {title: "เบอร์โทรศัพท์"},
+                {title: "E-mail"},
                 {title: "..."},
             ],
             "fnRowCallback": function (nRow) {
@@ -36,25 +38,7 @@
             }
         });
     }
-
-    $('#addPerson').find("#pro_picture").change(function () {
-        readURLProfile(this);
-    });
-
-    function readURLProfile(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgS').attr('src', e.target.result);
-                $('#zoom-img').attr('href', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-            console.log(reader);
-        }
-    }
-
+    
     function formatDateDB(date) {
         var newdate = date.split("/").reverse().join("-");
         return newdate;
@@ -90,32 +74,16 @@
         return today + ' ' + strTime;
     }
 
-    function addPerson(APS) {
+    function addPersong(APS) {
         var array = [];
         array.push($('#card_id').val(), $('#pro_idpos').val(), $('input[name=group1]:checked', '#pro_sax').val(), $('#pro_prefix').val(), $('#pro_fname').val(), $('#pro_lname').val()
                 , formatDateDB($('#pro_birthday').val()), $('input[name=group2]:checked', '#pro_status').val(), $('#pos_id').val(), $('#type_id').val(), $('#lvb_id').val(), $('#lv_id').val()
                 , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), $('#pro_dateIn').val(), $('#pro_dateOut').val(), $('#pro_picture').val(), name, name, formatDate(), '0');
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", APS, array, true, function (data) {
-            show_profile()
+            show_setting()
             swal("บันทึกสำเร็จ!", "บันทึกข้อมูลบุคลากรลงในระบบเเล้ว", "success");
             $('#addPerson').modal('hide');
         });
     }
-    function delProfile(data) {
-        swal({
-            title: "คุณต้องการลบหรือไม่?",
-            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "ใช่, ต้องการลบ!",
-            cancelButtonText: "ยกเลิก",
-            closeOnConfirm: false
-        }, function () {
-            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "DPS", [$(data).attr("id")], true, function (data) {
-                show_profile();
-                swal("ลบสำเร็จ!", "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว", "success");
-            });
-        });
-    }
+    
 </script>

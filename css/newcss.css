@@ -9,11 +9,11 @@
     margin-top: -50px;   
 }
 
-/* Image รูปภาพประจำตัว*/
-/*.img-responsive{
-    height: 100px;
-    width: 100px;
-}*/
+/* Taps*/
+.nav-tabs{
+    margin-top: -15px;
+}
+
 input[type="file"] {
     display: none;
 }
@@ -72,10 +72,47 @@ input[type="file"] {
     width: 25px;
     height: 25px;   
 }
+.logo-btn-personIn {
+    content:url("../images/btn-tap/curriculum.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-btn-address {
+    content:url("../images/btn-tap/shop.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-btn-education {
+    content:url("../images/btn-tap/office.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-btn-education {
+    content:url("../images/btn-tap/office.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-btn-hiswork {
+    content:url("../images/btn-tap/management.png");
+    width: 25px;
+    height: 25px;   
+}
 
 /*Button Management*/
 .btn-delete {
-    content:url("../images/delete.png");
+    content:url("../images/btn-management/delete.png");
+    cursor: pointer;
+    width: 25px;
+    height: 25px;   
+}
+.btn-detail {
+    content:url("../images/btn-management/loupe.png");
+    cursor: pointer;
+    width: 25px;
+    height: 25px;   
+}
+.btn-edit {
+    content:url("../images/btn-management/pencil.png");
     cursor: pointer;
     width: 25px;
     height: 25px;   

@@ -48,7 +48,7 @@
             if (this.readyState == 4 && this.status == 200) {
                 if (xmlhttp.responseText == "ok") {
                     $('#error-username ,#error-password').hide();
-                    window.location.href = 'PS_mainpage/personnal/main_personnal.php';
+                    window.location.href = 'PS_mainpage/personnal/person_DataProfile.php';
                 } else {
                     $(".loading").show();
                     $('#chkststus').hide();

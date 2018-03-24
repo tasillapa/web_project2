@@ -9,8 +9,8 @@
             <div class="container-fluid">
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
-                        <li><a href="main_personnal.php"><i class="material-icons">home</i> Home</a></li>
-                        <li><a href="main_personnal.php"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
+                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">home</i> Home</a></li>
+                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
                         <li  class="active font-bold col-cyan font-14"><i class="material-icons">library_books</i> จัดการข้อมูลพื้นฐาน</li>
                     </ol>
                 </div>

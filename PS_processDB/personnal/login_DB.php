@@ -27,6 +27,7 @@ function chklogin() {
                 $_SESSION['card_id'] = $rs['card_id'];
                 $_SESSION['username'] = $rs['username'];
                 $_SESSION['password'] = $rs['password'];
+                $_SESSION['name'] = $rs['nameuser'].' '.$rs['lastname'];
             }
             echo "ok";
         } else {

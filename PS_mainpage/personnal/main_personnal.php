@@ -109,7 +109,7 @@ include '../../common/header.php';
                     <ul class="list">
                         <li class="header">MAIN NAVIGATION</li>
                         <li class="active">
-                            <a href="../../index.php">
+                            <a href="../../PS_mainpage/personnal/person_DataProfile.php">
                                 <i class="material-icons">home</i>
                                 <span>DashBoard</span>
                             </a>
@@ -143,7 +143,7 @@ include '../../common/header.php';
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);"><img class="logo-setting-person"/> 
+                                    <a href="person_setting.php"><img class="logo-setting-person"/> 
                                         <span>ตั้งค่าสิทธ์เข้าใช้งาน</span>
                                     </a>
                                 </li>

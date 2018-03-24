@@ -7,7 +7,7 @@ require_once '../../connect/connect_DB_personal.php';
 header("Content-type: application/json;charset=utf-8");
 if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
     switch ($_POST["FN"]) {
-        case "sl_table_profile":sl_data_profile();
+        case "sl_table_setting":sl_data_setting();
             break;
         case "APS":add_profile();
             break;
@@ -16,16 +16,16 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
     }
 }
 
-function sl_data_profile() {
+function sl_data_setting() {
     $cn = new management;
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
         if ($id == '') {
-            $sql = "SELECT * from ps_profile";
+            $sql = "SELECT * from ps_personnel AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.code_class LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_code";
         } else {
-            $sql = "SELECT * from ps_profile WHERE pro_id ='$id'";
+            $sql = "SELECT * from ps_personnel WHERE member_id ='$id'";
         }
         $rs = $cn->select($sql);
         $json = json_encode($rs);

@@ -11,9 +11,9 @@
             <div class="container-fluid">
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
-                        <li><a href="main_personnal.php"><i class="material-icons">home</i> Home</a></li>
-                        <li><a href="main_personnal.php"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
-                        <li  class="active font-bold col-cyan font-14"><i class="material-icons">library_books</i> จัดการข้อมูลบุคลากร</li>
+                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">home</i> Home</a></li>
+                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
+                        <li  class="active font-bold col-cyan font-14"><i class="material-icons">assignment_ind</i> จัดการข้อมูลบุคลากร</li>
                     </ol>
                 </div>
                 <!-- Input -->
@@ -170,9 +170,9 @@
                                                             <label >เพศ</label>
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 align-left form-control-radio" id="pro_sax">
-                                                            <input name="group4" type="radio" value="1" id="sex_men" class="with-gap radio-col-purple" />
+                                                            <input name="group1" type="radio" value="1" id="sex_men" class="with-gap radio-col-purple" />
                                                             <label for="sex_men">ชาย</label>
-                                                            <input name="group4" type="radio" value="2" id="sex_feman" class="with-gap radio-col-purple" />
+                                                            <input name="group1" type="radio" value="2" id="sex_feman" class="with-gap radio-col-purple" />
                                                             <label for="sex_feman">หญิง</label>
                                                         </div>
                                                     </div>
@@ -194,13 +194,13 @@
                                                             <label >สถานะ</label>
                                                         </div>
                                                         <div class="col-lg-5 col-md-5 col-sm-9 col-xs-12 form-control-radio" id="pro_status">
-                                                            <input name="group4" type="radio" id="status-alone" class="with-gap radio-col-purple" />
+                                                            <input name="group2" type="radio" value="โสด" id="status-alone" class="with-gap radio-col-purple" />
                                                             <label for="status-alone">โสด</label>
-                                                            <input name="group4" type="radio" id="status-marry" class="with-gap radio-col-purple" />
+                                                            <input name="group2" type="radio" value="สมรส" id="status-marry" class="with-gap radio-col-purple" />
                                                             <label for="status-marry">สมรส</label>
-                                                            <input name="group4" type="radio" id="status-halt" class="with-gap radio-col-purple" />
+                                                            <input name="group2" type="radio" value="หย่า" id="status-halt" class="with-gap radio-col-purple" />
                                                             <label for="status-halt">หย่า</label>
-                                                            <input name="group4" type="radio" id="status-widow" class="with-gap radio-col-purple" />
+                                                            <input name="group2" type="radio" value="หม้าย" id="status-widow" class="with-gap radio-col-purple" />
                                                             <label for="status-widow">หม้าย</label>
                                                         </div>
                                                     </div>
@@ -209,7 +209,7 @@
                                                             <label >ประเภท</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="pro_type">
+                                                            <select class="form-control show-tick" data-live-search="true" id="type_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -228,7 +228,7 @@
                                                             <label >ตำแหน่ง</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="pro_position">
+                                                            <select class="form-control show-tick" data-live-search="true" id="pos_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -236,7 +236,7 @@
                                                                 $sql = "select * from ps_position ";
                                                                 $query = $cn->Connect->query($sql);
                                                                 while ($rs = mysqli_fetch_array($query)) {
-                                                                    echo '<option  value="' . $rs['pos_code'] . '">' . $rs['pos_name'] . '</opition>';
+                                                                    echo '<option  value="' . $rs['pos_id'] . '">' . $rs['pos_name'] . '</opition>';
                                                                 }
                                                                 ?>
                                                             </select>
@@ -247,7 +247,7 @@
                                                             <label >ระดับ</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="pro_level">
+                                                            <select class="form-control show-tick" data-live-search="true" id="lv_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -266,7 +266,7 @@
                                                             <label >ตำแหน่งบริหาร</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="pro_levelBoss">
+                                                            <select class="form-control show-tick" data-live-search="true" id="lvb_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -285,7 +285,7 @@
                                                             <label >กลุ่มงาน</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="pro_class">
+                                                            <select class="form-control show-tick" data-live-search="true" id="class_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -293,7 +293,7 @@
                                                                 $sql = "select * from ps_class ";
                                                                 $query = $cn->Connect->query($sql);
                                                                 while ($rs = mysqli_fetch_array($query)) {
-                                                                    echo '<option  value="' . $rs['code_class'] . '">' . $rs['name_class'] . '</opition>';
+                                                                    echo '<option  value="' . $rs['class_id'] . '">' . $rs['name_class'] . '</opition>';
                                                                 }
                                                                 ?>
                                                             </select>
@@ -304,7 +304,7 @@
                                                             <label >สังกัด</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10t col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="pro_depart">
+                                                            <select class="form-control show-tick" data-live-search="true" id="dep_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -312,32 +312,30 @@
                                                                 $sql = "select * from ps_department ";
                                                                 $query = $cn->Connect->query($sql);
                                                                 while ($rs = mysqli_fetch_array($query)) {
-                                                                    echo '<option  value="' . $rs['dep_code'] . '">' . $rs['dep_name'] . '</opition>';
+                                                                    echo '<option  value="' . $rs['dep_id'] . '">' . $rs['dep_name'] . '</opition>';
                                                                 }
                                                                 ?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                             <label >วันเข้ารับราชการ</label>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_dateIn" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                    <input type="date" id="pro_dateIn" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                             <label >วันเกษียณอายุ</label>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_dateOut" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                    <input type="date" id="pro_dateOut" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -375,6 +373,7 @@
                 </div>
                 <!-- #END# Modal Add DataPerson -->
         </section>
+        <!-- Script -->
         <?php include ("../../PS_script/personnal/per_addData.php"); ?>
     </body>
 </html>
