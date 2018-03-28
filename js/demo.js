@@ -172,3 +172,38 @@ var Call_Service = function () {
     }
 
 }
+
+function formatDateDB(date) {
+    var newdate = date.split("/").reverse().join("-");
+    return newdate;
+}
+
+function DateThai(date) {
+    var strDate = new Date(date);
+    var dd = strDate.getDate();
+    var mm = strDate.getMonth() + 1; //January is 0!
+    var yyyy = strDate.getFullYear() + 543;
+    var strMonthCut = Array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษภาคม", "ธันวาคม");
+    var strMonthThai = strMonthCut[mm];
+    return dd + " " + strMonthThai + " พ.ศ. " + yyyy;
+}
+
+function formatDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    var curr_hour = today.getHours();
+    var curr_min = today.getMinutes();
+    var curr_sec = today.getSeconds();
+    var strTime = curr_hour + ':' + curr_min + ':' + curr_sec;
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+    return today + ' ' + strTime;
+}

@@ -54,6 +54,24 @@
         return dd + " " + strMonthThai + " พ.ศ. " + yyyy;
     }
 
+     $('#addPerson').find("#pro_picture").change(function () {
+        readURLProfile(this);
+    });
+
+    function readURLProfile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgS').attr('src', e.target.result);
+                $('#zoom-img').attr('href', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+            console.log(reader);
+        }
+    }
+
     function formatDate() {
         var today = new Date();
         var dd = today.getDate();

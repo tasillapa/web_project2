@@ -13,6 +13,10 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "DPS":del_profile();
             break;
+        case "SLEPS":sl_data_profile();
+            break;
+        case "SLPF":sl_prefix();
+            break;
     }
 }
 
@@ -47,6 +51,7 @@ function add_profile() {
     }
     exit();
 }
+
 function del_profile() {
     $cn = new management;
     $cn->con_db();
@@ -55,6 +60,19 @@ function del_profile() {
         $sql = "DELETE FROM ps_profile WHERE pro_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
+    }
+    exit();
+}
+
+function sl_prefix() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "SELECT * FROM ps_prefix";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
     }
     exit();
 }

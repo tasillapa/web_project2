@@ -7,7 +7,7 @@
         <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
 
         <!-- Select Plugin Js -->
-        <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+        <!--<script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>-->
 
         <!-- Slimscroll Plugin Js -->
         <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
@@ -95,10 +95,11 @@
         <script src="../../js/pages/forms/basic-form-elements.js"></script>
         <script src="../../js/pages/medias/image-gallery.js"></script>
         <script src="../../js/newScript.js"></script>
+        <script src="../../js/pages/ui/modals.js"></script>
 
         <!-- Demo Js -->
         <script src="../../js/demo.js"></script>
-
+        <script src="../../dist/js/select2.js"></script>
     </head>
 </html>
 

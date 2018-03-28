@@ -71,5 +71,8 @@
         <!-- New Css -->
         <link href="../../css/newcss.css" rel="stylesheet" />
 
+        <link href="../../dist/css/select2.css" rel="stylesheet" />
+
+
     </head>
 </html>

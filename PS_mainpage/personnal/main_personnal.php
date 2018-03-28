@@ -132,7 +132,7 @@ include '../../common/header.php';
                                         <span>จัดการข้อมูลบุคคลากร</span>
                                     </a>
                                 </li>
-                                <li>
+<!--                                <li>
                                     <a href="javascript:void(0);"><img class="logo-promotion"/> 
                                         <span>ขั้นตำแหน่งงาน</span>
                                     </a>
@@ -141,7 +141,7 @@ include '../../common/header.php';
                                     <a href="javascript:void(0);"><img class="logo-salary"/> 
                                         <span>ขั้นเงินเดือน</span>
                                     </a>
-                                </li>
+                                </li>-->
                                 <li>
                                     <a href="person_setting.php"><img class="logo-setting-person"/> 
                                         <span>ตั้งค่าสิทธ์เข้าใช้งาน</span>
