@@ -57,7 +57,7 @@
                 </div>
             </div>
             <!-- Modal Add DataPerson -->
-            <div class="modal fade" id="addPerson" tabindex="-1" role="dialog">
+            <div class="modal fade" id="addPerson" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-green">
@@ -102,8 +102,8 @@
                                                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
                                                                     <label >คำนำหน้า</label>
                                                                 </div>
-                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 ">
-                                                                    <select class="form-control show-tick" data-live-search="true" id="pro_prefix">
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                                    <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pro_prefix">
                                                                         <?php
                                                                         $cn = new management;
                                                                         $cn->con_db();
@@ -209,7 +209,7 @@
                                                             <label >ประเภท</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="type_id">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="type_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -228,7 +228,7 @@
                                                             <label >ตำแหน่ง</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="pos_id">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pos_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -247,7 +247,7 @@
                                                             <label >ระดับ</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="lv_id">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="lv_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -266,7 +266,7 @@
                                                             <label >ตำแหน่งบริหาร</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="lvb_id">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="lvb_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -285,7 +285,7 @@
                                                             <label >กลุ่มงาน</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="class_id">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="class_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -304,7 +304,7 @@
                                                             <label >สังกัด</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10t col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="dep_id">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="dep_id">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -375,7 +375,7 @@
             <!-- #END# Modal Add DataPerson -->
 
             <!-- Modal edit DataPerson -->
-            <div class="modal fade" id="editPerson" tabindex="-1" role="dialog">
+            <div class="modal fade" id="editPerson" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-green">
@@ -422,9 +422,7 @@
                                                                     <label >คำนำหน้า</label>
                                                                 </div>
                                                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 ">
-                                                                    <select style="width: 100%"  id="pro_prefixE">
-                                                                        
-                                                                    </select>
+                                                                    <select style="width: 100%"  id="pro_prefixE"></select>
                                                                 </div>
                                                             </div>
                                                             <div class="row clearfix">
@@ -519,18 +517,7 @@
                                                             <label >ประเภท</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="type_idE">
-<?php
-$cn = new management;
-$cn->con_db();
-echo '<option  value="">เลือก</opition>';
-$sql = "select * from ps_type ";
-$query = $cn->Connect->query($sql);
-while ($rs = mysqli_fetch_array($query)) {
-    echo '<option  value="' . $rs['type_id'] . '">' . $rs['type_name'] . '</opition>';
-}
-?>
-                                                            </select>
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="type_idE"></select>
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
@@ -538,18 +525,7 @@ while ($rs = mysqli_fetch_array($query)) {
                                                             <label >ตำแหน่ง</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="pos_idE">
-<?php
-$cn = new management;
-$cn->con_db();
-echo '<option  value="">เลือก</opition>';
-$sql = "select * from ps_position ";
-$query = $cn->Connect->query($sql);
-while ($rs = mysqli_fetch_array($query)) {
-    echo '<option  value="' . $rs['pos_id'] . '">' . $rs['pos_name'] . '</opition>';
-}
-?>
-                                                            </select>
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pos_idE"></select>
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
@@ -557,18 +533,7 @@ while ($rs = mysqli_fetch_array($query)) {
                                                             <label >ระดับ</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="lv_idE">
-<?php
-$cn = new management;
-$cn->con_db();
-echo '<option  value="">เลือก</opition>';
-$sql = "select * from ps_level ";
-$query = $cn->Connect->query($sql);
-while ($rs = mysqli_fetch_array($query)) {
-    echo '<option  value="' . $rs['lv_id'] . '">' . $rs['lv_name'] . '</opition>';
-}
-?>
-                                                            </select>
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="lv_idE"></select>
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
@@ -576,18 +541,7 @@ while ($rs = mysqli_fetch_array($query)) {
                                                             <label >ตำแหน่งบริหาร</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="lvb_idE">
-<?php
-$cn = new management;
-$cn->con_db();
-echo '<option  value="">เลือก</opition>';
-$sql = "select * from ps_leveboss ";
-$query = $cn->Connect->query($sql);
-while ($rs = mysqli_fetch_array($query)) {
-    echo '<option  value="' . $rs['lvb_id'] . '">' . $rs['lvb_name'] . '</opition>';
-}
-?>
-                                                            </select>
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="lvb_idE"></select>
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
@@ -595,18 +549,7 @@ while ($rs = mysqli_fetch_array($query)) {
                                                             <label >กลุ่มงาน</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="class_idE">
-<?php
-$cn = new management;
-$cn->con_db();
-echo '<option  value="">เลือก</opition>';
-$sql = "select * from ps_class ";
-$query = $cn->Connect->query($sql);
-while ($rs = mysqli_fetch_array($query)) {
-    echo '<option  value="' . $rs['class_id'] . '">' . $rs['name_class'] . '</opition>';
-}
-?>
-                                                            </select>
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="class_idE"></select>
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
@@ -614,18 +557,7 @@ while ($rs = mysqli_fetch_array($query)) {
                                                             <label >สังกัด</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10t col-sm-9 col-xs-12">
-                                                            <select class="form-control show-tick" data-live-search="true" id="dep_idE">
-<?php
-$cn = new management;
-$cn->con_db();
-echo '<option  value="">เลือก</opition>';
-$sql = "select * from ps_department ";
-$query = $cn->Connect->query($sql);
-while ($rs = mysqli_fetch_array($query)) {
-    echo '<option  value="' . $rs['dep_id'] . '">' . $rs['dep_name'] . '</opition>';
-}
-?>
-                                                            </select>
+                                                            <select class="form-control show-tick" style="width: 100%"data-live-search="true" id="dep_idE"></select>
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
@@ -686,6 +618,6 @@ while ($rs = mysqli_fetch_array($query)) {
 
         </section>
         <!-- Script -->
-<?php include ("../../PS_script/personnal/per_addData.php"); ?>
+        <?php include ("../../PS_script/personnal/per_addData.php"); ?>
     </body>
 </html>

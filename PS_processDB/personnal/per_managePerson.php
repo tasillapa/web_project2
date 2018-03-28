@@ -17,6 +17,18 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "SLPF":sl_prefix();
             break;
+        case "get_type":get_type();
+            break;
+        case "get_position":get_position();
+            break;
+        case "get_level":get_level();
+            break;
+        case "get_levelBoss":get_levelBoss();
+            break;
+        case "get_class":get_classG();
+            break;
+        case "get_department":get_department();
+            break;
     }
 }
 
@@ -70,6 +82,78 @@ function sl_prefix() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $sql = "SELECT * FROM ps_prefix";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function get_type() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $sql = "select * from ps_type";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function get_position() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $sql = "select * from ps_position";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function get_level() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $sql = "select * from ps_level";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function get_levelBoss() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $sql = "select * from ps_leveboss";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function get_classG() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $sql = "select * from ps_class";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function get_department() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $sql = "select * from ps_department ";
         $rs = $cn->select($sql);
         $json = json_encode($rs);
         echo $json;

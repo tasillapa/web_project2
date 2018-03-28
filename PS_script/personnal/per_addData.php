@@ -4,6 +4,13 @@
     var name = '<?= $_SESSION["name"]; ?>';
     $(function () {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
+        $('#pro_prefix').select2();
+        $('#type_id').select2();
+        $('#pos_id').select2();
+        $('#lv_id').select2();
+        $('#lvb_id').select2();
+        $('#class_id').select2();
+        $('#dep_id').select2();
     });
     function show_profile() {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
@@ -40,11 +47,9 @@
     $('#addPerson').find("#pro_picture").change(function () {
         readURLProfile(this);
     });
-
     function readURLProfile(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
                 $('#imgS').attr('src', e.target.result);
                 $('#zoom-img').attr('href', e.target.result);
@@ -94,14 +99,83 @@
             $("#pro_sexE input[name=group1E][value=" + data[0].pro_sex + "]").prop("checked", true);
             $("#pro_statusE input[name=group2E][value=" + data[0].pro_status + "]").prop("checked", true);
             $('#pro_salaryE').val(parseInt(data[0].pro_salary));
-            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLPF", [$(data).pro_prefix], true, function (data) {
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLPF", [$(data).pro_prefix], true, function (data2) {
                 $('#pro_prefixE').html('<option  value="">เลือก</opition>');
-                $.each(data, function (i, k) {
-                    $("#pro_prefixE").append('<option  value="' + data[i].pf_name + '">' + data[i].pf_name + '</opition>');
+                $.each(data2, function (i, k) {
+                    if (data[0].pro_prefix == data2[i].pf_name) {
+                        $("#pro_prefixE").append('<option selected="selected" value="' + data2[i].pf_name + '">' + data2[i].pf_name + '</opition>');
+                    } else {
+                        $("#pro_prefixE").append('<option value="' + data2[i].pf_name + '">' + data2[i].pf_name + '</opition>');
+                    }
                 });
                 $('#pro_prefixE').select2();
             });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_type", "", true, function (data2) {
+                $('#type_idE').html('<option  value="">เลือก</opition>');
+                $.each(data2, function (i) {
+                    if (data[0].type_id == data2[i].type_id) {
+                        $("#type_idE").append('<option selected="selected" value="' + data2[i].type_id + '">' + data2[i].type_name + '</opition>');
+                    } else {
+                        $("#type_idE").append('<option value="' + data2[i].type_id + '">' + data2[i].type_name + '</opition>');
+                    }
+                });
+                $('#type_idE').select2();
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_position", "", true, function (data2) {
+                $('#pos_idE').html('<option  value="">เลือก</opition>');
+                $.each(data2, function (i) {
+                    if (data[0].pos_id == data2[i].pos_id) {
+                        $("#pos_idE").append('<option selected="selected" value="' + data2[i].pos_id + '">' + data2[i].pos_name + '</opition>');
+                    } else {
+                        $("#pos_idE").append('<option value="' + data2[i].pos_id + '">' + data2[i].pos_name + '</opition>');
+                    }
+                });
+                $('#pos_idE').select2();
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_level", "", true, function (data2) {
+                $('#lv_idE').html('<option  value="">เลือก</opition>');
+                $.each(data2, function (i) {
+                    if (data[0].lv_id == data2[i].lv_id) {
+                        $("#lv_idE").append('<option selected="selected" value="' + data2[i].lv_id + '">' + data2[i].lv_name + '</opition>');
+                    } else {
+                        $("#lv_idE").append('<option value="' + data2[i].lv_id + '">' + data2[i].lv_name + '</opition>');
+                    }
+                });
+                $('#lv_idE').select2();
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_levelBoss", "", true, function (data2) {
+                $('#lvb_idE').html('<option  value="">เลือก</opition>');
+                $.each(data2, function (i) {
+                    if (data[0].lvb_id == data2[i].lvb_id) {
+                        $("#lvb_idE").append('<option selected="selected" value="' + data2[i].lvb_id + '">' + data2[i].lvb_name + '</opition>');
+                    } else {
+                        $("#lvb_idE").append('<option value="' + data2[i].lvb_id + '">' + data2[i].lvb_name + '</opition>');
+                    }
+                });
+                $('#lvb_idE').select2();
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_class", "", true, function (data2) {
+                $('#class_idE').html('<option  value="">เลือก</opition>');
+                $.each(data2, function (i) {
+                    if (data[0].class_id == data2[i].class_id) {
+                        $("#class_idE").append('<option selected="selected" value="' + data2[i].class_id + '">' + data2[i].name_class + '</opition>');
+                    } else {
+                        $("#class_idE").append('<option value="' + data2[i].class_id + '">' + data2[i].name_class + '</opition>');
+                    }
+                });
+                $('#class_idE').select2();
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_department", "", true, function (data2) {
+                $('#dep_idE').html('<option  value="">เลือก</opition>');
+                $.each(data2, function (i) {
+                    if (data[0].dep_id == data2[i].dep_id) {
+                        $("#dep_idE").append('<option selected="selected" value="' + data2[i].dep_id + '">' + data2[i].dep_name + '</opition>');
+                    } else {
+                        $("#dep_idE").append('<option value="' + data2[i].dep_id + '">' + data2[i].dep_name + '</opition>');
+                    }
+                });
+                $('#dep_idE').select2();
+            });
         });
     }
-
 </script>
