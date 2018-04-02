@@ -13,6 +13,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "DPS":del_profile();
             break;
+        case "EPS":edit_profile();
+            break;
         case "SLEPS":sl_data_profile();
             break;
         case "SLPF":sl_prefix();
@@ -70,6 +72,21 @@ function del_profile() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $sql = "DELETE FROM ps_profile WHERE pro_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function edit_profile() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "UPDATE ps_profile
+        SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_birthday = '$get_data[6]', pro_status = '$get_data[7]', pos_id = '$get_data[8]', type_id = '$get_data[9]', lvb_id = '$get_data[10]'
+            , lv_id = '$get_data[11]', class_id = '$get_data[12]', dep_id = '$get_data[13]', pro_salary = '$get_data[14]', pro_dateIn = '$get_data[15]', pro_dateOut = '$get_data[16]', pro_picture = '$get_data[17]', pro_person_update = '$get_data[18]', pro_date_update = '$get_data[19]'
+        WHERE pro_id = '$get_data[20]'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

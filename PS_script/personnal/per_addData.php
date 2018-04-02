@@ -3,6 +3,85 @@
     var card_id = '<?= $_SESSION["card_id"]; ?>';
     var name = '<?= $_SESSION["name"]; ?>';
     $(function () {
+        $.datetimepicker.setLocale('th');
+        $("#pro_birthday").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+        $("#pro_dateIn").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+        $("#pro_dateOut").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+        $("#pro_birthdayE").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+        $("#pro_dateInE").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+        $("#pro_dateOutE").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
         $('#pro_prefix').select2();
         $('#type_id').select2();
@@ -56,7 +135,6 @@
             }
 
             reader.readAsDataURL(input.files[0]);
-            console.log(reader);
         }
     }
 
@@ -64,7 +142,7 @@
         var array = [];
         array.push($('#card_id').val(), $('#pro_idpos').val(), $('input[name=group1]:checked', '#pro_sax').val(), $('#pro_prefix').val(), $('#pro_fname').val(), $('#pro_lname').val()
                 , formatDateDB($('#pro_birthday').val()), $('input[name=group2]:checked', '#pro_status').val(), $('#pos_id').val(), $('#type_id').val(), $('#lvb_id').val(), $('#lv_id').val()
-                , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), $('#pro_dateIn').val(), $('#pro_dateOut').val(), $('#pro_picture').val(), name, name, formatDate(), '0');
+                , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), formatDateDB($('#pro_dateIn').val()), formatDateDB($('#pro_dateOut').val()), $('#pro_picture').val(), name, name, formatDateToday(), '0');
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", APS, array, true, function (data) {
             show_profile()
             swal("บันทึกสำเร็จ!", "บันทึกข้อมูลบุคลากรลงในระบบเเล้ว", "success");
@@ -99,6 +177,9 @@
             $("#pro_sexE input[name=group1E][value=" + data[0].pro_sex + "]").prop("checked", true);
             $("#pro_statusE input[name=group2E][value=" + data[0].pro_status + "]").prop("checked", true);
             $('#pro_salaryE').val(parseInt(data[0].pro_salary));
+            $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));
+            $('#pro_dateInE').val(formatDateShow(data[0].pro_dateIn));
+            $('#pro_dateOutE').val(formatDateShow(data[0].pro_dateOut));
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLPF", [$(data).pro_prefix], true, function (data2) {
                 $('#pro_prefixE').html('<option  value="">เลือก</opition>');
                 $.each(data2, function (i, k) {
@@ -176,6 +257,17 @@
                 });
                 $('#dep_idE').select2();
             });
+        });
+    }
+    function editPerson(EPS) {
+        var array = [];
+        array.push($('#card_idE').val(), $('#pro_idposE').val(), $('input[name=group1]:checked', '#pro_saxE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val()
+                , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
+                , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), $('#pro_pictureE').val(), name, formatDateToday(), $('#pro_id').val());
+        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPS, array, true, function (data) {
+            show_profile()
+            swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
+            $('#editPerson').modal('hide');
         });
     }
 </script>

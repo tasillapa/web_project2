@@ -174,9 +174,30 @@ var Call_Service = function () {
 }
 
 function formatDateDB(date) {
-    var newdate = date.split("/").reverse().join("-");
+    var reverse = date.split("/").reverse().join("-");
+    var strDate = new Date(reverse);
+    var dd = strDate.getDate();
+    var mm = strDate.getMonth() + 1; //January is 0!
+    var yyyy = strDate.getFullYear() - 543;
+    var newdate = yyyy + '-' + mm + '-' + dd;
+    if (date == "00/00/0000") {
+        newdate = '0000-00-00';
+    }
     return newdate;
 }
+
+function formatDateShow(date) {
+    var strDate = new Date(date);
+    var dd = strDate.getDate();
+    var mm = strDate.getMonth() + 1; //January is 0!
+    var yyyy = strDate.getFullYear() + 543;
+    var newdate = dd + '/' + mm + '/' + yyyy;
+    if (date == "0000-00-00") {
+        newdate = '00/00/0000';
+    }
+    return newdate;
+}
+
 
 function DateThai(date) {
     var strDate = new Date(date);
@@ -185,10 +206,14 @@ function DateThai(date) {
     var yyyy = strDate.getFullYear() + 543;
     var strMonthCut = Array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษภาคม", "ธันวาคม");
     var strMonthThai = strMonthCut[mm];
-    return dd + " " + strMonthThai + " พ.ศ. " + yyyy;
+    var newdate = dd + " " + strMonthThai + " พ.ศ. " + yyyy;
+    if (date == "0000-00-00") {
+        newdate = 'ไม่ได้ระบุวันที่';
+    }
+    return newdate;
 }
 
-function formatDate() {
+function formatDateToday() {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!

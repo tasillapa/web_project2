@@ -100,6 +100,7 @@
         <!-- Demo Js -->
         <script src="../../js/demo.js"></script>
         <script src="../../dist/js/select2.js"></script>
-    </head>
+        <script src="../../dist/js/jquery.datetimepicker.js"></script>
+        <script src="../../dist/js/jquery.datetimepicker.full.min.js"></script>
 </html>
 

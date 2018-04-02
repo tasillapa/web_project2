@@ -161,7 +161,6 @@ $.AdminBSB.leftSideBar = {
 $.AdminBSB.rightSideBar = {
     activate: function () {
         var _this = this;
-        console.log(this);
         var $sidebar = $('#rightsidebar');
         var $overlay = $('.overlay');
 

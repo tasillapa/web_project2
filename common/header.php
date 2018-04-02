@@ -72,6 +72,7 @@
         <link href="../../css/newcss.css" rel="stylesheet" />
 
         <link href="../../dist/css/select2.css" rel="stylesheet" />
+        <link href="../../dist/css/jquery.datetimepicker.css" rel="stylesheet" />
 
 
     </head>

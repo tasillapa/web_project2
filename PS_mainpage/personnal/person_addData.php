@@ -27,6 +27,7 @@
                             </div>
                             <div class="body">
                                 <div class="row clearfix">
+                                    
                                     <div class="col-xs-6">
                                         <button type="button" data-toggle="modal" data-target="#addPerson" class="btn btn-success waves-effect">
                                             <i class="material-icons">person_add</i>
@@ -186,7 +187,7 @@
                                                                     <i class="material-icons">date_range</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_birthday" class="form-control date" placeholder="Ex: 30/07/2561">
+                                                                    <input type="text" id="pro_birthday" class="form-control" placeholder="Ex: 30/07/2561">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -325,7 +326,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="date" id="pro_dateIn" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                    <input type="text" id="pro_dateIn" class="form-control" placeholder="__/__/____">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -335,7 +336,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="date" id="pro_dateOut" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                    <input type="text" id="pro_dateOut" class="form-control" placeholder="__/__/____">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -494,7 +495,7 @@
                                                                     <i class="material-icons">date_range</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_birthdayE" class="form-control date" placeholder="Ex: 30/07/2561">
+                                                                    <input type="text" id="pro_birthdayE" class="form-control" placeholder="Ex: 30/07/2561">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -567,7 +568,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="date" id="pro_dateInE" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                    <input type="text" id="pro_dateInE" class="form-control">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -577,7 +578,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="date" id="pro_dateOutE" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                    <input type="text" id="pro_dateOutE" class="form-control">
                                                                 </div>
                                                             </div>
                                                         </div>

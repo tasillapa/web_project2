@@ -458,7 +458,7 @@ function sl_data_depart() {
         if ($id == '') {
             $sql = "SELECT * from ps_department";
         } else {
-            $sql = "SELECT * from ps_department WHERE dep_code ='$id'";
+            $sql = "SELECT * from ps_department WHERE dep_id ='$id'";
         }
 
         $rs = $cn->select($sql);
