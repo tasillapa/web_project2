@@ -69,7 +69,7 @@ function check_pass() {
         $nq = $cn->mysqli_num_rows($sql);
         echo $nq;
     }
-    exit();
+    exit();  
 }
 ?>
 
