@@ -140,7 +140,7 @@
 
     function addPerson(APS) {
         var array = [];
-        array.push($('#card_id').val(), $('#pro_idpos').val(), $('input[name=group1]:checked', '#pro_sax').val(), $('#pro_prefix').val(), $('#pro_fname').val(), $('#pro_lname').val()
+        array.push($('#card_id').val(), $('#pro_idpos').val(), $('input[name=group1]:checked', '#pro_sex').val(), $('#pro_prefix').val(), $('#pro_fname').val(), $('#pro_lname').val(), $('#pro_nickname').val()
                 , formatDateDB($('#pro_birthday').val()), $('input[name=group2]:checked', '#pro_status').val(), $('#pos_id').val(), $('#type_id').val(), $('#lvb_id').val(), $('#lv_id').val()
                 , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), formatDateDB($('#pro_dateIn').val()), formatDateDB($('#pro_dateOut').val()), $('#pro_picture').val(), name, name, formatDateToday(), '0');
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", APS, array, true, function (data) {
@@ -169,10 +169,10 @@
     function slEdit(data) {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [$(data).attr("id")], true, function (data) {
             $('#pro_id').val(data[0].pro_id);
+            $('#card_idE').val(data[0].card_id);
             $('#pro_idposE').val(data[0].pro_idpos);
             $('#pro_fnameE').val(data[0].pro_fname);
             $('#pro_lnameE').val(data[0].pro_lname);
-            $('#card_idE').val(data[0].card_id);
             $('#pro_nicknameE').val(data[0].pro_nickname);
             $("#pro_sexE input[name=group1E][value=" + data[0].pro_sex + "]").prop("checked", true);
             $("#pro_statusE input[name=group2E][value=" + data[0].pro_status + "]").prop("checked", true);
@@ -261,8 +261,8 @@
     }
     function editPerson(EPS) {
         var array = [];
-        array.push($('#card_idE').val(), $('#pro_idposE').val(), $('input[name=group1]:checked', '#pro_saxE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val()
-                , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
+        array.push($('#card_idE').val(), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
+                , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
                 , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), $('#pro_pictureE').val(), name, formatDateToday(), $('#pro_id').val());
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPS, array, true, function (data) {
             show_profile()

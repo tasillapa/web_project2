@@ -91,7 +91,7 @@ include '../../common/header.php';
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <div class="info-container">
-                                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">พรพิมล บุญทองคำ</div>
+                                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['name']?></div>
                                 <div class="email">Online</div>
                             </div><br><br>
                             <label class="custom-file-upload">

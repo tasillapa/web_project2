@@ -57,9 +57,9 @@ function add_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_picture, pro_person_create, pro_person_update, pro_date_update, status_admin)"
+        $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_nickname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_picture, pro_person_create, pro_person_update, pro_date_update, status_admin)"
                 . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '$get_data[10]', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]', '$get_data[15]', '$get_data[16]', '$get_data[17]'"
-                . ", '$get_data[18]', '$get_data[19]', '$get_data[20]', '$get_data[21]')";
+                . ", '$get_data[18]', '$get_data[19]', '$get_data[20]', '$get_data[21]', '$get_data[22]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -84,9 +84,9 @@ function edit_profile() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $sql = "UPDATE ps_profile
-        SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_birthday = '$get_data[6]', pro_status = '$get_data[7]', pos_id = '$get_data[8]', type_id = '$get_data[9]', lvb_id = '$get_data[10]'
-            , lv_id = '$get_data[11]', class_id = '$get_data[12]', dep_id = '$get_data[13]', pro_salary = '$get_data[14]', pro_dateIn = '$get_data[15]', pro_dateOut = '$get_data[16]', pro_picture = '$get_data[17]', pro_person_update = '$get_data[18]', pro_date_update = '$get_data[19]'
-        WHERE pro_id = '$get_data[20]'";
+        SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'
+            , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_picture = '$get_data[18]', pro_person_update = '$get_data[19]', pro_date_update = '$get_data[20]'
+        WHERE pro_id = '$get_data[21]'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

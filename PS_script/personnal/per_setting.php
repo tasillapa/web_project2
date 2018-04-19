@@ -24,12 +24,12 @@
             columns: [
                 {title: "ลำดับ"},
                 {title: "รหัสบัตรประชาชน"},
-                {title: "ชื่อ-สกุล"},
+                {title: "ชื่อ-สกุล", width: "20%"},
                 {title: "ตำแหน่ง"},
-                {title: "กลุ่ม"},
+                {title: "กลุ่ม", width: "20%"},
                 {title: "เบอร์โทรศัพท์"},
                 {title: "E-mail"},
-                {title: "..."},
+                {title: "...", width: "20%"},
             ],
             "fnRowCallback": function (nRow) {
 //                console.log($(nRow).find('img').attr('id'));
