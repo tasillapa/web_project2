@@ -28,7 +28,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].off_number, data[i].off_name, '<img class="btn-delete" id="' + data[i].id_off + '" onclick="javascript: delBnOut(this)"/>']);
+            dataSet.push([a, data[i].off_number, data[i].off_name, '<center><img class="btn-edit" id="' + data[i].id_off + '" data-toggle="modal" data-target="#editBnOut" onclick="javascript: slEditBnOut(this)"/><img class="btn-delete" id="' + data[i].id_off + '" onclick="javascript: delBnOut(this)"/></center>']);
         });
         $('#table_outside_show').html('<table class="table table-bordered table-striped table-hover table_outside dataTable" width="100%"></table>');
         $('.table_outside').DataTable({
@@ -52,6 +52,15 @@
             show_outside();
             swal("บันทึกสำเร็จ!", "ตำแหน่งใหม่พร้อมใช้งาน", "success");
             $('#addBnOut').modal('hide');
+        });
+    }
+    function slEditBnOut(data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_BnOut", [$(data).attr("id")], true, function (data) {
+            $.each(data, function (i, k) {
+                $("#off_numberE").val(data[i].off_number);
+                $("#off_nameE").val(data[i].off_name);
+                $("#id_offE").val(data[i].id_off);
+            });
         });
     }
     function editBnOut(EBNOUT) {

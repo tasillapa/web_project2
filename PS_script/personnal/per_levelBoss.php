@@ -26,7 +26,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].lvb_name, '<img class="btn-delete" id="' + data[i].lvb_id + '" onclick="javascript: delLVB(this)"/>']);
+            dataSet.push([a, data[i].lvb_name, '<center><img class="btn-edit" id="' + data[i].lvb_id + '" data-toggle="modal" data-target="#editLVB" onclick="javascript: slEditLVB(this)"/><img class="btn-delete" id="' + data[i].lvb_id + '" onclick="javascript: delLVB(this)"/></center>']);
         });
         $('#table_lvboss_show').html('<table class="table table-bordered table-striped table-hover table_lvboss dataTable" width="100%"></table>');
         $('.table_lvboss').DataTable({
@@ -45,10 +45,18 @@
         });
     }
     function addLVB(ALVB) {
-        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ALVB,[$('#lvb_name').val()], true, function (data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ALVB, [$('#lvb_name').val()], true, function (data) {
             show_levelBoss();
             swal("บันทึกสำเร็จ!", "ตำแหน่งใหม่พร้อมใช้งาน", "success");
             $('#addLVB').modal('hide');
+        });
+    }
+    function slEditLVB(data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_lvboss", [$(data).attr("id")], true, function (data) {
+            $.each(data, function (i, k) {
+                $("#lvb_nameE").val(data[i].lvb_name);
+                $("#lvb_idE").val(data[i].lvb_id)
+            });
         });
     }
     function editLVB(ELVB) {

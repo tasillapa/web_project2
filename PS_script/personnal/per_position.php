@@ -27,7 +27,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].pos_code, data[i].pos_name, '<img class="btn-delete" id="' + data[i].pos_id + '" onclick="javascript: delPosi(this)"/>']);
+            dataSet.push([a, data[i].pos_code, data[i].pos_name, '<center><img class="btn-edit" id="' + data[i].pos_id + '" data-toggle="modal" data-target="#editPosi" onclick="javascript: slEditPosi(this)"/><img class="btn-delete" id="' + data[i].pos_id + '" onclick="javascript: delPosi(this)"/></center>']);
         });
         $('#table_position_show').html('<table class="table table-bordered table-striped table-hover table_position dataTable" width="100%"></table>');
         $('.table_position').DataTable({
@@ -51,6 +51,15 @@
             show_position();
             swal("บันทึกสำเร็จ!", "ตำแหน่งใหม่พร้อมใช้งาน", "success");
             $('#addPosi').modal('hide');
+        });
+    }
+    function slEditPosi(data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_Posi", [$(data).attr("id")], true, function (data) {
+            $.each(data, function (i, k) {
+                $("#pos_codeE").val(data[i].pos_code);
+                $("#pos_nameE").val(data[i].pos_name);
+                $("#pos_idE").val(data[i].pos_id);
+            });
         });
     }
     function editPosi(EPOSI) {

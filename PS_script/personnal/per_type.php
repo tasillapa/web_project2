@@ -26,7 +26,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].type_name, '<img class="btn-delete" id="' + data[i].type_id + '" onclick="javascript: delType(this)"/>']);
+            dataSet.push([a, data[i].type_name, '<center><img class="btn-edit" id="' + data[i].type_id + '" data-toggle="modal" data-target="#editType" onclick="javascript: slEditType(this)"/><img class="btn-delete" id="' + data[i].type_id + '" onclick="javascript: delType(this)"/></center>']);
         });
         $('#table_type_show').html('<table class="table table-bordered table-striped table-hover table_type dataTable" width="100%"></table>');
         $('.table_type').DataTable({
@@ -45,10 +45,18 @@
         });
     }
     function addType(ALV) {
-        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ALV,[$('#type_name').val()], true, function (data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ALV, [$('#type_name').val()], true, function (data) {
             show_type();
             swal("บันทึกสำเร็จ!", "ประเภทใหม่พร้อมใช้งาน", "success");
             $('#addType').modal('hide');
+        });
+    }
+    function slEditType(data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_type", [$(data).attr("id")], true, function (data) {
+            $.each(data, function (i, k) {
+                $("#type_nameE").val(data[i].type_name);
+                $("#type_idE").val(data[i].type_id)
+            });
         });
     }
     function editType(ETYPE) {
@@ -58,7 +66,7 @@
             $('#editType').modal('hide');
         });
     }
-    function delType(data) { 
+    function delType(data) {
         swal({
             title: "คุณต้องการลบหรือไม่?",
             text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",

@@ -28,11 +28,13 @@ function chklogin() {
                 $_SESSION['card_id'] = $rs['card_id'];
                 $_SESSION['username'] = $rs['username'];
                 $_SESSION['password'] = $rs['password'];
-                $_SESSION['password'] = $rs['name_class'];
-                $_SESSION['password'] = $rs['pos_name'];
-                $_SESSION['password'] = $rs['dep_name'];
-                $_SESSION['password'] = $rs['lv_name'];
-                $_SESSION['password'] = $rs['lvb_name'];
+                $_SESSION['name_class'] = $rs['name_class'];
+                $_SESSION['pos_name'] = $rs['pos_name'];
+                $_SESSION['dep_name'] = $rs['dep_name'];
+                $_SESSION['lv_name'] = $rs['lv_name'];
+                $_SESSION['lvb_name'] = $rs['lvb_name'];
+                $_SESSION['pro_id'] = $rs['pro_id'];
+                $_SESSION['tel'] = $rs['tel'];
                 $_SESSION['name'] = $rs['nameuser'] . ' ' . $rs['lastname'];
             }
             echo "ok";
@@ -69,7 +71,7 @@ function check_pass() {
         $nq = $cn->mysqli_num_rows($sql);
         echo $nq;
     }
-    exit();  
+    exit();
 }
 ?>
 

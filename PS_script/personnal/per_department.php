@@ -7,7 +7,7 @@
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_table_depart", "", true, table_depart);
         $(document).on("click", ".table_depart tbody tr td:not(:last-child)", function () {
             var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
-                console.log(clickedBtnID);
+            console.log(clickedBtnID);
             cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_depart", [clickedBtnID], true, function (data) {
                 $.each(data, function (i, k) {
                     $("#dep_nameE").val(data[i].dep_name);
@@ -28,7 +28,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a,data[i].dep_code ,data[i].dep_name, '<img class="btn-delete" id="' + data[i].dep_id + '" onclick="javascript: delDPM(this)"/>']);
+            dataSet.push([a, data[i].dep_code, data[i].dep_name, '<center><img class="btn-edit" id="' + data[i].dep_id + '" data-toggle="modal" data-target="#editDPM" onclick="javascript: slEditDPM(this)"/><img class="btn-delete" id="' + data[i].dep_id + '" onclick="javascript: delDPM(this)"/></center>']);
         });
         $('#table_depart_show').html('<table class="table table-bordered table-striped table-hover table_depart dataTable" width="100%"></table>');
         $('.table_depart').DataTable({
@@ -48,10 +48,19 @@
         });
     }
     function addDPM(ADPM) {
-        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ADPM,[$('#dep_code').val(), $('#dep_name').val()], true, function (data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ADPM, [$('#dep_code').val(), $('#dep_name').val()], true, function (data) {
             show_department();
             swal("บันทึกสำเร็จ!", "ประเภทใหม่พร้อมใช้งาน", "success");
             $('#addDPM').modal('hide');
+        });
+    }
+    function slEditDPM(data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_depart", [$(data).attr("id")], true, function (data) {
+            $.each(data, function (i, k) {
+                $("#dep_nameE").val(data[i].dep_name);
+                $("#dep_codeE").val(data[i].dep_code)
+                $("#dep_idE").val(data[i].dep_id)
+            });
         });
     }
     function editDPM(EDPM) {

@@ -91,7 +91,7 @@ include '../../common/header.php';
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <div class="info-container">
-                                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['name']?></div>
+                                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['name'] ?></div>
                                 <div class="email">Online</div>
                             </div><br><br>
                             <label class="custom-file-upload">
@@ -132,20 +132,35 @@ include '../../common/header.php';
                                         <span>จัดการข้อมูลบุคคลากร</span>
                                     </a>
                                 </li>
-<!--                                <li>
-                                    <a href="javascript:void(0);"><img class="logo-promotion"/> 
-                                        <span>ขั้นตำแหน่งงาน</span>
-                                    </a>
-                                </li>
+                                <!--                                <li>
+                                                                    <a href="javascript:void(0);"><img class="logo-promotion"/> 
+                                                                        <span>ขั้นตำแหน่งงาน</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:void(0);"><img class="logo-salary"/> 
+                                                                        <span>ขั้นเงินเดือน</span>
+                                                                    </a>
+                                                                </li>-->
                                 <li>
-                                    <a href="javascript:void(0);"><img class="logo-salary"/> 
-                                        <span>ขั้นเงินเดือน</span>
+                                    <a href="javascript:void(0);" class="menu-toggle">
+                                        <img class="logo-setting-person"/> 
+                                        <span>ตั้งค่าการใช้งานระบบ</span>
                                     </a>
-                                </li>-->
-                                <li>
-                                    <a href="person_setting.php"><img class="logo-setting-person"/> 
-                                        <span>ตั้งค่าสิทธ์เข้าใช้งาน</span>
-                                    </a>
+                                    <ul class="ml-menu">
+                                        <li>
+                                            <a href="person_setting.php">
+                                                <img class="logo-setting1-person"/> 
+                                                <span>ตั้งค่าผู้ใช้งานระบบ</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img class="logo-setting2-person"/> 
+                                                <span>ตั้งค่าสิทธิ์เข้าใช้งาน</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
 
@@ -302,7 +317,7 @@ include '../../common/header.php';
                 <!-- #Footer -->
             </aside>
             <!-- #END# Left Sidebar -->
-            
+
         </section>
         <!--Change Pass-->
         <div class="modal fade" id="change_pass" tabindex="-1" role="dialog">

@@ -148,3 +148,13 @@ input[type="file"] {
     width: 30px;
     height: 30px;   
 }
+.logo-setting1-person {
+    content:url("../images/btn-menu/settings1.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-setting2-person {
+    content:url("../images/btn-menu/settings2.png");
+    width: 25px;
+    height: 25px;   
+}

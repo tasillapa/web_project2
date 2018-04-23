@@ -26,7 +26,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].lv_name, '<img class="btn-delete" id="' + data[i].lv_id + '" onclick="javascript: delLv(this)"/>']);
+            dataSet.push([a, data[i].lv_name, '<center><img class="btn-edit" id="' + data[i].lv_id + '" data-toggle="modal" data-target="#editLevel" onclick="javascript: slEditLevel(this)"/><img class="btn-delete" id="' + data[i].lv_id + '" onclick="javascript: delLv(this)"/></center>']);
         });
         $('#table_level_show').html('<table class="table table-bordered table-striped table-hover table_level dataTable" width="100%"></table>');
         $('.table_level').DataTable({
@@ -45,10 +45,18 @@
         });
     }
     function addLevel(ALV) {
-        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ALV,[$('#lv_name').val()], true, function (data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ALV, [$('#lv_name').val()], true, function (data) {
             show_level();
             swal("บันทึกสำเร็จ!", "ระดับใหม่พร้อมใช้งาน", "success");
             $('#addLevel').modal('hide');
+        });
+    }
+    function slEditLevel(data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_Level", [$(data).attr("id")], true, function (data) {
+            $.each(data, function (i, k) {
+                $("#lv_nameE").val(data[i].lv_name);
+                $("#lv_idE").val(data[i].lv_id)
+            });
         });
     }
     function editLevel(ELV) {
