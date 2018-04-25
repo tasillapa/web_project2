@@ -4241,7 +4241,7 @@ section.content {
     font-weight: bold;
     font-size: 16px; }
 
-.modal .modal-content {
+.modal .modal-dialog-content {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;

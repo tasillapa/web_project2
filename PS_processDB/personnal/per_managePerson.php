@@ -57,9 +57,9 @@ function add_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_nickname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_picture, pro_person_create, pro_person_update, pro_date_update, status_admin)"
+        $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_nickname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_picture, pro_person_create, pro_date_create, pro_person_update, pro_date_update, status_admin)"
                 . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '$get_data[10]', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]', '$get_data[15]', '$get_data[16]', '$get_data[17]'"
-                . ", '$get_data[18]', '$get_data[19]', '$get_data[20]', '$get_data[21]', '$get_data[22]')";
+                . ", '$get_data[18]', '$get_data[19]', '$get_data[20]', '$get_data[21]', '$get_data[22]', '$get_data[23]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }

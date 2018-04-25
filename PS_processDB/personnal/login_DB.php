@@ -20,7 +20,7 @@ function chklogin() {
     if (!empty($_POST["username"]) && !empty($_POST["password"])) {
         $cn = new management;
         $cn->con_db();
-        $sql = "select * from ps_personnel as ps left join ps_profile as pp on ps.card_id = pp.card_id left join ps_class as pc on pc.class_id = pp.class_id"
+        $sql = "select * from ps_personnal as ps left join ps_profile as pp on ps.card_id = pp.card_id left join ps_class as pc on pc.class_id = pp.class_id"
                 . " left join ps_position as ppo on pp.pos_id = ppo.pos_id left join ps_department as pd on pp.dep_id = pd.dep_id left join ps_level as pl on pp.lv_id = pl.lv_id left join ps_leveboss as lvb on pp.lvb_id = lvb.lvb_id where ps.username='" . $_POST["username"] . "' and ps.password='" . $_POST["password"] . "' and ps.status = '1'";
         $query = $cn->Connect->query($sql);
         if (mysqli_num_rows($query) >= 1) {
@@ -53,7 +53,7 @@ function check_user() {
     if ($cn->Connect) {
         $get_data = explode(",", $_POST["PARM"]);
         $user = $get_data[0];
-        $sql = "select * from ps_personnel where username='" . $user . "' and status = '1'";
+        $sql = "select * from ps_personnal where username='" . $user . "' and status = '1'";
         $nq = $cn->mysqli_num_rows($sql);
         echo $nq;
     }
@@ -67,7 +67,7 @@ function check_pass() {
         $get_data = explode("|", $_POST["PARM"]);
         $user = $get_data[0];
         $pass = $get_data[1];
-        $sql = "select * from ps_personnel where username='" . $user . "' and password='" . $pass . "' and status = '1'";
+        $sql = "select * from ps_personnal where username='" . $user . "' and password='" . $pass . "' and status = '1'";
         $nq = $cn->mysqli_num_rows($sql);
         echo $nq;
     }

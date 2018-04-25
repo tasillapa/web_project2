@@ -142,7 +142,7 @@
         var array = [];
         array.push($('#card_id').val(), $('#pro_idpos').val(), $('input[name=group1]:checked', '#pro_sex').val(), $('#pro_prefix').val(), $('#pro_fname').val(), $('#pro_lname').val(), $('#pro_nickname').val()
                 , formatDateDB($('#pro_birthday').val()), $('input[name=group2]:checked', '#pro_status').val(), $('#pos_id').val(), $('#type_id').val(), $('#lvb_id').val(), $('#lv_id').val()
-                , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), formatDateDB($('#pro_dateIn').val()), formatDateDB($('#pro_dateOut').val()), $('#pro_picture').val(), name, name, formatDateToday(), '0');
+                , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), formatDateDB($('#pro_dateIn').val()), formatDateDB($('#pro_dateOut').val()), $('#pro_picture').val(), name, formatDateToday(), name, formatDateToday(), '0');
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", APS, array, true, function (data) {
             show_profile()
             swal("บันทึกสำเร็จ!", "บันทึกข้อมูลบุคลากรลงในระบบเเล้ว", "success");
