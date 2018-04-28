@@ -33,6 +33,12 @@
                                             <span>เพิ่มผู้ใช้งานระบบ</span>
                                         </button>
                                     </div>
+                                    <div class="col-xs-6 align-right">
+                                        <button type="button" data-toggle="modal" data-target="#importUser" class="btn btn-primary waves-effect">
+                                            <i class="material-icons">group_add</i>
+                                            <span>นำเข้าแบบ Excel</span>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -64,7 +70,7 @@
                                     <div class="card">
                                         <div class="body">
                                             <div class="demo-masked-input">
-                                                <form class="form-horizontal">
+                                                <form class="form-horizontal" id="fm_addUser">
                                                     <div class="row clearfix">
                                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
                                                             <label >เลขบัตรประชาชน</label>
@@ -166,7 +172,7 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="username" class="form-control" placeholder="กรอกชื่อผู้ใช้งาน">
+                                                                    <input type="text" id="username" class="form-control" placeholder="กรอกชื่อผู้ใช้งาน" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -179,6 +185,7 @@
                                                             <div class="form-group">
                                                                 <div class="form-line">
                                                                     <input type="password" id="password" class="form-control" placeholder="กรอกรหัสผ่าน">
+                                                                    <div id="password-error"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -191,6 +198,7 @@
                                                             <div class="form-group">
                                                                 <div class="form-line">
                                                                     <input type="password" id="ch_password" class="form-control" placeholder="กรอกรหัสยืนยัน">
+                                                                    <div id="ch-password-error"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -219,6 +227,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addUser('AUSER')">บันทึก</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -235,168 +244,342 @@
             </div>
         </div>
         <!-- #END# Modal Add User -->
-        
+
         <!-- Modal edit User -->
-            <div class="modal fade" id="editUser" role="dialog">
-                <div class="modal-dialog" role="document" >
-                    <div class="modal-content modal-md">
-                        <div class="modal-header bg-green">
-                            <h4 class="modal-title" id="editUserLabel">เพิ่มผู้ใช้งานระบบ</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row clearfix">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="card">
-                                        <div class="body">
-                                            <div class="demo-masked-input">
-                                                <form class="form-horizontal">
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label >เลขบัตรประชาชน</label>
-                                                        </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="card_idE" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
-                                                                </div>
+        <div class="modal fade" id="editUser" role="dialog">
+            <div class="modal-dialog" role="document" >
+                <div class="modal-content modal-md">
+                    <div class="modal-header bg-green">
+                        <h4 class="modal-title" id="editUserLabel">แก้ไขผู้ใช้งานระบบ</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div class="body">
+                                        <div class="demo-masked-input">
+                                            <form class="form-horizontal">
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label >เลขบัตรประชาชน</label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="card_idE" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label >ชื่อ</label>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="nameuserE" class="form-control" placeholder="กรอกชื่อ">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label >สกุล</label>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="lastnameE" class="form-control" placeholder="กรอกสกุล">
-                                                                </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label >ชื่อ</label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="nameuserE" class="form-control" placeholder="กรอกชื่อ">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label >เบอร์โทร</label>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="telE" class="form-control" placeholder="กรอกเบอร์โทร">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label >E-mail</label>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="emailE" class="form-control email" placeholder="Ex: example@example.com">
-                                                                </div>
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label >สกุล</label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="lastnameE" class="form-control" placeholder="กรอกสกุล">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label >ตำแหน่ง</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
-                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pos_idE"></select>
-                                                        </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label >เบอร์โทร</label>
                                                     </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label>กลุ่มงาน</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
-                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="class_idE"></select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label> ชื่อผู้ใช้งาน</label>
-                                                        </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="usernameE" class="form-control" placeholder="กรอกชื่อผู้ใช้งาน">
-                                                                    <input type="hidden" id="member_id">
-                                                                </div>
+                                                    <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="telE" class="form-control" placeholder="กรอกเบอร์โทร">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label> รหัสผ่าน</label>
-                                                        </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <input type="text" id="passwordE" class="form-control" placeholder="กรอกรหัสผ่าน">
-                                                                </div>
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label >E-mail</label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="emailE" class="form-control email" placeholder="Ex: example@example.com">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label> ยืนยันรหัสผ่าน</label>
-                                                        </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <input type="password" id="ch_passwordE" class="form-control" placeholder="กรอกรหัสยืนยัน">
-                                                                </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label >ตำแหน่ง</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
+                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pos_idE"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label>กลุ่มงาน</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
+                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="class_idE"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label> ชื่อผู้ใช้งาน</label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="usernameE" class="form-control" placeholder="กรอกชื่อผู้ใช้งาน">
+                                                                <input type="hidden" id="member_id">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label> ระดับผู้ใช้</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
-                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="levelE"></select>
-                                                        </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label> รหัสผ่าน</label>
                                                     </div>
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
-                                                            <label> การเปิดใช้</label>
-                                                        </div>
-                                                        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
-                                                            <div class="demo-switch p-t-5">
-                                                                <div class="switch">
-                                                                    <label><input type="checkbox" id="statusE" checked><span class="lever switch-col-green"></span></label>
-                                                                </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="passwordE" class="form-control" placeholder="กรอกรหัสผ่าน">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label> ยืนยันรหัสผ่าน</label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="password" id="ch_passwordE" class="form-control" placeholder="กรอกรหัสยืนยัน">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label> ระดับผู้ใช้</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
+                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="levelE"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label> การเปิดใช้</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
+                                                        <div class="demo-switch p-t-5">
+                                                            <div class="switch">
+                                                                <label><input type="checkbox" id="statusE" checked><span class="lever switch-col-green"></span></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editUser('EUSER')">บันทึก</button>
-                            <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editUser('EUSER')">บันทึก</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Modal Edit User -->
+
+    <!-- Modal Detail User -->
+    <div class="modal fade" id="detailUser" role="dialog">
+        <div class="modal-dialog" role="document" >
+            <div class="modal-content modal-md">
+                <div class="modal-header bg-green">
+                    <h4 class="modal-title" id="detailUserLabel">ดูรายละเอียดผู้ใช้งานระบบ</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="body">
+                                    <div class="demo-masked-input">
+                                        <form class="form-horizontal">
+                                            <div class="row clearfix">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                    <label >เลขบัตรประชาชน</label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 p-d-8">
+                                                    <span class="sp-pad" id="card_idD"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label >ชื่อ</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="nameuserD"></span>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label >สกุล</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="lastnameD"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label >เบอร์โทร</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="telD"></span>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label >E-mail</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="emailD"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label >ตำแหน่ง</label>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-d-8">
+                                                    <span id="pos_idD"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label>กลุ่มงาน</label>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-d-8">
+                                                    <span id="class_idD"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label> ชื่อผู้ใช้งาน</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="usernameD"></span>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label> รหัสผ่าน</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="passwordD"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row clearfix">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label> ระดับผู้ใช้</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="levelD"></span>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l ">
+                                                    <label> การเปิดใช้</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <div class="demo-switch p-t-5">
+                                                        <div class="switch">
+                                                            <!--<span id="nameuserD"></span>-->
+                                                            <label><input type="checkbox" id="statusD" disabled><span class="lever switch-col-green"></span></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <label></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label >ผู้สร้าง</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="person_create"></span>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label >วันที่สร้าง</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-d-8">
+                                                    <span id="date_create"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                    <label >ผู้แก้ไขล่าสุด</label>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 p-d-8 m-l--20">
+                                                    <span id="person_update"></span>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                    <label >วันที่แก้ไขล่าสุด</label>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 p-d-8 m-l--20">
+                                                    <span id="date_update"></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- #END# Modal Edit User -->
-    </section>
-    <!-- Script -->
-    <?php include ("../../PS_script/personnal/per_setting.php"); ?>
+    </div>
+</div>
+<!-- #END# Modal Detail User -->
+
+<!-- Modal Import User -->
+<div class="modal fade" id="importUser" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-green">
+                <h4 class="modal-title" id="importUserLabel">นำเข้าข้อมูลผู้ใช้แบบ Excel</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row clearfix">
+                    <label class="btn-file-upload-ex align-center">
+                        <i class="material-icons">touch_app</i>
+                        <input type='file' id="fileUser" />เลือกไฟล์ <b>.xlsx</b>
+                    </label>
+                    <span style="margin-left: 5px;" id="show_fileUser"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: importUser('IMUSER')">นำเข้าข้อมูล</button>
+                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Modal Import User -->
+
+</section>
+<!-- Script -->
+<?php include ("../../PS_script/personnal/per_setting.php"); ?>
 </body>
 </html>

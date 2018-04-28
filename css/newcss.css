@@ -9,11 +9,17 @@
     margin-top: -50px;   
 }
 
+/* Padding Css*/
+.p-d-8{
+    padding-top: 8px;
+}
+
 /* Taps*/
 .nav-tabs{
     margin-top: -15px;
 }
 
+/* Btn Upload File*/
 input[type="file"] {
     display: none;
 }
@@ -34,6 +40,21 @@ input[type="file"] {
     margin-top: 5px;
     width: 150px;
     font-size: 12px;
+}
+
+.btn-file-upload-ex {
+   position: relative;
+   font-family: calibri;
+   width: 200px;
+   padding: 15px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border: 1px dashed #BBB; 
+   text-align: center;
+   margin-left: 15px;
+   margin-top: 10px;
+   background-color: #ebebe0;
+   cursor:pointer;
 }
 
 /*Logo Tap*/
