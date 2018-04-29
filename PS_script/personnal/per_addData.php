@@ -4,7 +4,7 @@
     var name = '<?= $_SESSION["name"]; ?>';
     $(function () {
         $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
-        $('#fileUser').change(function () {
+        $('#filePerson').change(function () {
             var myFile = $('#filePerson').prop('files')[0];
             $('#show_filePerson').html(myFile.name).css("color", "#777");
         });
@@ -281,7 +281,7 @@
         var form_data = new FormData();
         form_data.append('filePerson', myFile);
         $.ajax({
-            url: '../../PS_processDB/personnal/per_manageSetting.php', // point to server-side PHP script 
+            url: '../../PS_processDB/personnal/per_managePerson.php', // point to server-side PHP script 
             dataType: 'text', // what to expect back from the PHP script, if anything
             cache: false,
             contentType: false,
@@ -290,7 +290,7 @@
             type: 'post',
             success: function (data) {
                 if (data == '1') {
-                    show_setting();
+                    show_profile();
                     swal("บันทึกสำเร็จ!", "ข้อมูลบุคลากร บันทึกในระบบเเล้ว", "success");
                     $('#importPerson').modal('hide');
                     $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');

@@ -42,38 +42,51 @@ if (!empty($_FILES['filePerson'])) {
         $person_update = $_SESSION['name'];
         $date = date('Y-m-d H:i:s');
         include("../../PHPExcel/Classes/PHPExcel/IOFactory.php");
-        $object = PHPExcel_IOFactory::load($tmpFolder . $_FILES["fileUser"]["name"]);
+        $object = PHPExcel_IOFactory::load($tmpFolder . $_FILES["filePerson"]["name"]);
         $cn = new management;
         $cn->con_db();
         $pos_id = '';
         $class_id = '';
+        $dep_id = '';
         foreach ($object->getWorksheetIterator() as $worksheet) {
             $highestRow = $worksheet->getHighestRow();
             for ($row = 2; $row <= $highestRow; $row++) {
                 $card_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(0, $row)->getValue());
-                $nameuser = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
-                $lastname = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
-                $pos_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                $pro_idpos = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
+                $pro_sex = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                $pro_prefix = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
+                $pro_fname = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                $pro_lname = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
+                $pro_status = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
+                $pos_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
                 $sql_pos_id = "SELECT pos_id FROM ps_position WHERE pos_code = '$pos_code'";
                 $query_pos_id = $cn->Connect->query($sql_pos_id);
                 while ($rs_pos_id = mysqli_fetch_array($query_pos_id)) {
                     $pos_id = $rs_pos_id['pos_id'];
                 }
-                $class_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
-                $sql_class_id = "SELECT class_id FROM ps_class WHERE class_code = '111'";
+                $type_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                $lvb_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                $lv_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
+                $class_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
+                $sql_class_id = "SELECT class_id FROM ps_class WHERE class_code = '$class_code'";
                 $query_class_id = $cn->Connect->query($sql_class_id);
                 while ($rs_class_id = mysqli_fetch_array($query_class_id)) {
                     $class_id = $rs_class_id['class_id'];
                 }
-                $tel = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
-                $email = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
-                $username = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
-                $password = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
-                $level = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
-                $status = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
-                $person_create = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
-                $sql = "INSERT INTO ps_personnal (card_id, nameuser, lastname, pos_id, class_id, tel, email, username, password, level, status, person_create, date_create, person_update, date_update)"
-                        . "VALUES('$card_id', '$nameuser', '$lastname', '$pos_id', '$class_id', '$tel', '$email', '$username', '$password', '$level', '$status', '$person_create', '$date', '$person_update', '$date')";
+                $dep_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(12, $row)->getValue());
+                $sql_dep_id = "SELECT dep_id FROM ps_department WHERE dep_code = '$dep_code'";
+                $query_dep_id = $cn->Connect->query($sql_dep_id);
+                while ($rs_dep_id = mysqli_fetch_array($query_dep_id)) {
+                    $dep_id = $rs_dep_id['dep_id'];
+                }
+                $pro_salary = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
+                $salary_array = explode(",", $pro_salary);
+                $pro_salary = $salary_array[0].$salary_array[1];
+                $pro_dateIn = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
+                $pro_picture = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
+
+                $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_picture, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
+                        . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '$pro_dateIn', '$pro_picture', '$person_update', '', '$person_update', '')";
                 $stmt = $cn->Connect->prepare($sql);
                 $ret = $stmt->execute();
             }
@@ -111,7 +124,7 @@ function add_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_nickname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_picture, pro_person_create, pro_date_create, pro_person_update, pro_date_update, status_admin)"
+        $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_nickname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_picture, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
                 . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '$get_data[10]', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]', '$get_data[15]', '$get_data[16]', '$get_data[17]'"
                 . ", '$get_data[18]', '$get_data[19]', '$get_data[20]', '$get_data[21]', '$get_data[22]', '$get_data[23]')";
         $rs = $cn->execute($sql);

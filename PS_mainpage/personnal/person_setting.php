@@ -575,7 +575,7 @@
 
             </div>
             <div class="modal-footer">
-                <a href="../../doc/example/ตัวอย่างเพิ่มข้อมูลผู้ใช้.xlsx" download>
+                <a href="../../doc/example/Tamplat_เพิ่มข้อมูลผู้ใช้.xlsx" download>
                     <button type="button" class="btn btn-default waves-effect m-t--5 m-r-5" style="padding: 2px 12px;">
                         <i class="material-icons">file_download</i>
                         <span>ดาวน์โหลดไฟล์ตัวอย่าง</span>
