@@ -206,7 +206,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="code_class" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="class_code" maxlength="4" class="form-control" placeholder="กรอกรหัส">
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +218,7 @@
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="name_class" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            <input type="text" id="class_name" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +252,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="code_classE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="class_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
                                         </div>
                                     </div>
                                 </div>
@@ -264,7 +264,7 @@
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="name_classE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            <input type="text" id="class_nameE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
                                             <input type="hidden" id="class_idE" class="form-control" placeholder="กรอกชื่อหน่วยงาน">
                                         </div>
                                     </div>

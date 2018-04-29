@@ -5,16 +5,16 @@
     var password = '<?= $_SESSION["password"]; ?>';
     $(function () {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_table_level", "", true, table_level);
-        $(document).on("click", ".table_level tbody tr td:not(:last-child)", function () {
-            var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
-            cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_Level", [clickedBtnID], true, function (data) {
-                $.each(data, function (i, k) {
-                    $("#lv_nameE").val(data[i].lv_name);
-                    $("#lv_idE").val(data[i].lv_id)
-                });
-                $("#editLevel").modal("show");
-            });
-        });
+//        $(document).on("click", ".table_level tbody tr td:not(:last-child)", function () {
+//            var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
+//            cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_Level", [clickedBtnID], true, function (data) {
+//                $.each(data, function (i, k) {
+//                    $("#lv_nameE").val(data[i].lv_name);
+//                    $("#lv_idE").val(data[i].lv_id)
+//                });
+//                $("#editLevel").modal("show");
+//            });
+//        });
     });
     function show_level() {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_table_level", "", true, table_level);
@@ -39,8 +39,8 @@
             ],
             "fnRowCallback": function (nRow) {
 //                console.log($(nRow).find('img').attr('id'));
-                $(nRow).attr('id', $(nRow).find('img').attr('id'));
-                $(nRow).css('cursor', 'pointer');
+//                $(nRow).attr('id', $(nRow).find('img').attr('id'));
+//                $(nRow).css('cursor', 'pointer');
             }
         });
     }

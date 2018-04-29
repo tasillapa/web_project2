@@ -96,7 +96,8 @@
         <script src="../../js/pages/medias/image-gallery.js"></script>
         <script src="../../js/newScript.js"></script>
         <script src="../../js/pages/ui/modals.js"></script>
-        <!--<script src="../../js/pages/forms/advanced-form-elements.js"></script>-->
+        <script src="../../js/pages/ui/tooltips-popovers.js"></script>
+       <!--<script src="../../js/pages/forms/advanced-form-elements.js"></script>-->
 
         <!-- Demo Js -->
         <script src="../../js/demo.js"></script>

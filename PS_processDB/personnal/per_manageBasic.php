@@ -100,7 +100,7 @@ function add_BnIn() {
         $cod = $get_data[0];
         $cod = (int) $cod;
         $name = $get_data[1];
-        $sql = "INSERT INTO ps_class (code_class, name_class)"
+        $sql = "INSERT INTO ps_class (class_code, class_name)"
                 . "VALUES('$cod','$name')";
         $rs = $cn->execute($sql);
         echo $rs;
@@ -141,7 +141,7 @@ function edit_BnIn() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "UPDATE ps_class SET code_class = '$get_data[1]', name_class = '$get_data[2]' WHERE class_id = '$id'";
+        $sql = "UPDATE ps_class SET class_code = '$get_data[1]', class_name = '$get_data[2]' WHERE class_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

@@ -13,6 +13,9 @@
 .p-d-8{
     padding-top: 8px;
 }
+.m-t--4 {
+    margin-top: 4px;
+}
 
 /* Taps*/
 .nav-tabs{
@@ -100,11 +103,6 @@ input[type="file"] {
 }
 .logo-btn-address {
     content:url("../images/btn-tap/shop.png");
-    width: 25px;
-    height: 25px;   
-}
-.logo-btn-education {
-    content:url("../images/btn-tap/office.png");
     width: 25px;
     height: 25px;   
 }

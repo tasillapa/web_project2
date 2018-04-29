@@ -159,7 +159,7 @@
                                                                 $sql = "select * from ps_class ";
                                                                 $query = $cn->Connect->query($sql);
                                                                 while ($rs = mysqli_fetch_array($query)) {
-                                                                    echo '<option  value="' . $rs['class_id'] . '">' . $rs['name_class'] . '</opition>';
+                                                                    echo '<option  value="' . $rs['class_id'] . '">' . $rs['class_name'] . '</opition>';
                                                                 }
                                                                 ?>
                                                             </select>
@@ -562,16 +562,27 @@
             </div>
             <div class="modal-body">
                 <div class="row clearfix">
-                    <label class="btn-file-upload-ex align-center">
-                        <i class="material-icons">touch_app</i>
-                        <input type='file' id="fileUser" />เลือกไฟล์ <b>.xlsx</b>
-                    </label>
-                    <span style="margin-left: 5px;" id="show_fileUser"></span>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 form-control-label-l">
+                        <label class="btn-file-upload-ex align-center">
+                            <i class="material-icons">touch_app</i>
+                            <input type='file' id="fileUser" />เลือกไฟล์ <b>.xlsx</b>
+                        </label>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 p-t-30">
+                        <span id="show_fileUser"></span>
+                    </div>
                 </div>
+
             </div>
             <div class="modal-footer">
+                <a href="../../doc/example/ตัวอย่างเพิ่มข้อมูลผู้ใช้.xlsx" download>
+                    <button type="button" class="btn btn-default waves-effect m-t--5 m-r-5" style="padding: 2px 12px;">
+                        <i class="material-icons">file_download</i>
+                        <span>ดาวน์โหลดไฟล์ตัวอย่าง</span>
+                    </button>
+                </a>
                 <button type="button" class="btn btn-primary waves-effect" onclick="javascript: importUser('IMUSER')">นำเข้าข้อมูล</button>
-                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button
+                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
     </div>

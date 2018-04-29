@@ -1,40 +1,40 @@
 <?php include 'main_personnal.php'; ?>
 <head>
-    </head>
-    <body>
+</head>
+<body>
     <section class="content">
-		<div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                                                                            รายงาน
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="javascript:void(0);" data-toggle="dropdown">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a class=" waves-effect waves-block" href="javascript:void(0);">Action</a></li>
-                                        <li><a class=" waves-effect waves-block" href="javascript:void(0);">Another action</a></li>
-                                        <li><a class=" waves-effect waves-block" href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-			
-                        <div class="body">
-                            <div class="table-responsive">
-                                <div class="dataTables_wrapper form-inline dt-bootstrap" id="DataTables_Table_1_wrapper">
-									<div class="dt-buttons"><a tabindex="0" class="dt-button buttons-copy buttons-html5" aria-controls="DataTables_Table_1" href="#">
-									   <span>Copy</span></a><a tabindex="0" class="dt-button buttons-csv buttons-html5" aria-controls="DataTables_Table_1" href="#">
-									   <span>CSV</span></a><a tabindex="0" class="dt-button buttons-excel buttons-html5" aria-controls="DataTables_Table_1" href="#">
-									   <span>Excel</span></a><a tabindex="0" class="dt-button buttons-pdf buttons-html5" aria-controls="DataTables_Table_1" href="#">
-									   <span>PDF</span></a><a tabindex="0" class="dt-button buttons-print" aria-controls="DataTables_Table_1" href="#">
-									   <span>Print</span></a></div><div class="dataTables_filter" id="DataTables_Table_1_filter">
-									   <label>Search:<input class="form-control input-sm" aria-controls="DataTables_Table_1" type="search" placeholder=""></label></div>
-									   <table class="table table-bordered table-striped table-hover dataTable js-exportable" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            รายงาน
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="javascript:void(0);" data-toggle="dropdown">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a class=" waves-effect waves-block" href="javascript:void(0);">Action</a></li>
+                                    <li><a class=" waves-effect waves-block" href="javascript:void(0);">Another action</a></li>
+                                    <li><a class=" waves-effect waves-block" href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="body">
+                        <div class="table-responsive">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap" id="DataTables_Table_1_wrapper">
+                                <div class="dt-buttons"><a tabindex="0" class="dt-button buttons-copy buttons-html5" aria-controls="DataTables_Table_1" href="#">
+                                        <span>Copy</span></a><a tabindex="0" class="dt-button buttons-csv buttons-html5" aria-controls="DataTables_Table_1" href="#">
+                                        <span>CSV</span></a><a tabindex="0" class="dt-button buttons-excel buttons-html5" aria-controls="DataTables_Table_1" href="#">
+                                        <span>Excel</span></a><a tabindex="0" class="dt-button buttons-pdf buttons-html5" aria-controls="DataTables_Table_1" href="#">
+                                        <span>PDF</span></a><a tabindex="0" class="dt-button buttons-print" aria-controls="DataTables_Table_1" href="#">
+                                        <span>Print</span></a></div><div class="dataTables_filter" id="DataTables_Table_1_filter">
+                                    <label>Search:<input class="form-control input-sm" aria-controls="DataTables_Table_1" type="search" placeholder=""></label></div>
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
                                     <thead>
                                         <tr role="row"><th tabindex="0" class="sorting_asc" aria-controls="DataTables_Table_1" style="width: 137px;" aria-label="Name: activate to sort column descending" aria-sort="ascending" rowspan="1" colspan="1">ลำดับ</th><th tabindex="0" class="sorting" aria-controls="DataTables_Table_1" style="width: 225px;" aria-label="Position: activate to sort column ascending" rowspan="1" colspan="1">รหัสตำเเเหน่ง</th><th tabindex="0" class="sorting" aria-controls="DataTables_Table_1" style="width: 98px;" aria-label="Office: activate to sort column ascending" rowspan="1" colspan="1">ชื่อ - สกุล</th><th tabindex="0" class="sorting" aria-controls="DataTables_Table_1" style="width: 43px;" aria-label="Age: activate to sort column ascending" rowspan="1" colspan="1">กลุ่มงาน</th><th tabindex="0" class="sorting" aria-controls="DataTables_Table_1" style="width: 90px;" aria-label="Start date: activate to sort column ascending" rowspan="1" colspan="1">หน่วยงาน</th><th tabindex="0" class="sorting" aria-controls="DataTables_Table_1" style="width: 72px;" aria-label="Salary: activate to sort column ascending" rowspan="1" colspan="1">Salary</th></tr>
                                     </thead>
@@ -42,8 +42,8 @@
                                         <tr><th rowspan="1" colspan="1">ลำดับ</th><th rowspan="1" colspan="1">รหัสตำเเเหน่ง</th><th rowspan="1" colspan="1">ชื่อ - นามสกุล</th><th rowspan="1" colspan="1">หน่วยงาน</th><th rowspan="1" colspan="1">Start date</th><th rowspan="1" colspan="1">Salary</th></tr>
                                     </tfoot>
                                     <tbody>
-                          
-                                    <tr class="odd" role="row">
+
+                                        <tr class="odd" role="row">
                                             <td class="sorting_1">Airi Satou</td>
                                             <td>Accountant</td>
                                             <td>Tokyo</td>
@@ -115,14 +115,13 @@
                                             <td>$433,060</td>
                                         </tr></tbody>
                                 </table><div class="dataTables_info" id="DataTables_Table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_1_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_1_previous"><a tabindex="0" aria-controls="DataTables_Table_1" href="#" data-dt-idx="0">Previous</a></li><li class="paginate_button active"><a tabindex="0" aria-controls="DataTables_Table_1" href="#" data-dt-idx="1">1</a></li><li class="paginate_button "><a tabindex="0" aria-controls="DataTables_Table_1" href="#" data-dt-idx="2">2</a></li><li class="paginate_button "><a tabindex="0" aria-controls="DataTables_Table_1" href="#" data-dt-idx="3">3</a></li><li class="paginate_button "><a tabindex="0" aria-controls="DataTables_Table_1" href="#" data-dt-idx="4">4</a></li><li class="paginate_button "><a tabindex="0" aria-controls="DataTables_Table_1" href="#" data-dt-idx="5">5</a></li><li class="paginate_button "><a tabindex="0" aria-controls="DataTables_Table_1" href="#" data-dt-idx="6">6</a></li><li class="paginate_button next" id="DataTables_Table_1_next"><a tabindex="0" aria-controls="DataTables_Table_1" href="#" data-dt-idx="7">Next</a></li></ul></div></div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-	
-    </section>
-    </body>
+
+</section>
+</body>
 </html>
-       

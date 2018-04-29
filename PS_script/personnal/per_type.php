@@ -5,16 +5,16 @@
     var password = '<?= $_SESSION["password"]; ?>';
     $(function () {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_table_type", "", true, table_type);
-        $(document).on("click", ".table_type tbody tr td:not(:last-child)", function () {
-            var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
-            cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_type", [clickedBtnID], true, function (data) {
-                $.each(data, function (i, k) {
-                    $("#type_nameE").val(data[i].type_name);
-                    $("#type_idE").val(data[i].type_id)
-                });
-                $("#editType").modal("show");
-            });
-        });
+//        $(document).on("click", ".table_type tbody tr td:not(:last-child)", function () {
+//            var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
+//            cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_type", [clickedBtnID], true, function (data) {
+//                $.each(data, function (i, k) {
+//                    $("#type_nameE").val(data[i].type_name);
+//                    $("#type_idE").val(data[i].type_id)
+//                });
+//                $("#editType").modal("show");
+//            });
+//        });
     });
     function show_type() {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_table_type", "", true, table_type);
@@ -39,8 +39,8 @@
             ],
             "fnRowCallback": function (nRow) {
 //                console.log($(nRow).find('img').attr('id'));
-                $(nRow).attr('id', $(nRow).find('img').attr('id'));
-                $(nRow).css('cursor', 'pointer');
+//                $(nRow).attr('id', $(nRow).find('img').attr('id'));
+//                $(nRow).css('cursor', 'pointer');
             }
         });
     }

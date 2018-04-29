@@ -78,9 +78,9 @@
                 $('#class_idE').html('<option  value="">เลือก</opition>');
                 $.each(data2, function (i) {
                     if (data[0].class_id == data2[i].class_id) {
-                        $("#class_idE").append('<option selected="selected" value="' + data2[i].class_id + '">' + data2[i].name_class + '</opition>');
+                        $("#class_idE").append('<option selected="selected" value="' + data2[i].class_id + '">' + data2[i].class_name + '</opition>');
                     } else {
-                        $("#class_idE").append('<option value="' + data2[i].class_id + '">' + data2[i].name_class + '</opition>');
+                        $("#class_idE").append('<option value="' + data2[i].class_id + '">' + data2[i].class_name + '</opition>');
                     }
                 });
                 $('#class_idE').select2();

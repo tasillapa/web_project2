@@ -279,7 +279,7 @@
                                                             $sql = "select * from ps_class ";
                                                             $query = $cn->Connect->query($sql);
                                                             while ($rs = mysqli_fetch_array($query)) {
-                                                                echo '<option  value="' . $rs['class_id'] . '">' . $rs['name_class'] . '</opition>';
+                                                                echo '<option  value="' . $rs['class_id'] . '">' . $rs['class_name'] . '</opition>';
                                                             }
                                                             ?>
                                                         </select>

@@ -5,18 +5,18 @@
     var password = '<?= $_SESSION["password"]; ?>';
     $(function () {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_table_outside", "", true, table_outside);
-        $(document).on("click", ".table_outside tbody tr td:not(:last-child)", function () {
-            var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
-//                $('#addBnOut').parent().find('#off_number').addClass('off_number');
-            cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_BnOut", [clickedBtnID], true, function (data) {
-                $.each(data, function (i, k) {
-                    $("#off_numberE").val(data[i].off_number);
-                    $("#off_nameE").val(data[i].off_name);
-                    $("#id_offE").val(data[i].id_off);
-                });
-                $("#editBnOut").modal("show");
-            });
-        });
+//        $(document).on("click", ".table_outside tbody tr td:not(:last-child)", function () {
+//            var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
+////                $('#addBnOut').parent().find('#off_number').addClass('off_number');
+//            cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_BnOut", [clickedBtnID], true, function (data) {
+//                $.each(data, function (i, k) {
+//                    $("#off_numberE").val(data[i].off_number);
+//                    $("#off_nameE").val(data[i].off_name);
+//                    $("#id_offE").val(data[i].id_off);
+//                });
+//                $("#editBnOut").modal("show");
+//            });
+//        });
     });
     function show_outside() {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_table_outside", "", true, table_outside);
@@ -42,8 +42,8 @@
             ],
             "fnRowCallback": function (nRow) {
 //                console.log($(nRow).find('img').attr('id'));
-                $(nRow).attr('id', $(nRow).find('img').attr('id'));
-                $(nRow).css('cursor', 'pointer');
+//                $(nRow).attr('id', $(nRow).find('img').attr('id'));
+//                $(nRow).css('cursor', 'pointer');
             }
         });
     }

@@ -28,7 +28,7 @@ function chklogin() {
                 $_SESSION['card_id'] = $rs['card_id'];
                 $_SESSION['username'] = $rs['username'];
                 $_SESSION['password'] = $rs['password'];
-                $_SESSION['name_class'] = $rs['name_class'];
+                $_SESSION['class_name'] = $rs['class_name'];
                 $_SESSION['pos_name'] = $rs['pos_name'];
                 $_SESSION['dep_name'] = $rs['dep_name'];
                 $_SESSION['lv_name'] = $rs['lv_name'];

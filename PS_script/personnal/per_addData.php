@@ -3,6 +3,12 @@
     var card_id = '<?= $_SESSION["card_id"]; ?>';
     var name = '<?= $_SESSION["name"]; ?>';
     $(function () {
+        $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
+        $('#fileUser').change(function () {
+            var myFile = $('#filePerson').prop('files')[0];
+            $('#show_filePerson').html(myFile.name).css("color", "#777");
+        });
+        
         $.datetimepicker.setLocale('th');
         $("#pro_birthday").datetimepicker({
             timepicker: false,
@@ -239,9 +245,9 @@
                 $('#class_idE').html('<option  value="">เลือก</opition>');
                 $.each(data2, function (i) {
                     if (data[0].class_id == data2[i].class_id) {
-                        $("#class_idE").append('<option selected="selected" value="' + data2[i].class_id + '">' + data2[i].name_class + '</opition>');
+                        $("#class_idE").append('<option selected="selected" value="' + data2[i].class_id + '">' + data2[i].class_name + '</opition>');
                     } else {
-                        $("#class_idE").append('<option value="' + data2[i].class_id + '">' + data2[i].name_class + '</opition>');
+                        $("#class_idE").append('<option value="' + data2[i].class_id + '">' + data2[i].class_name + '</opition>');
                     }
                 });
                 $('#class_idE').select2();
@@ -268,6 +274,34 @@
             show_profile()
             swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
             $('#editPerson').modal('hide');
+        });
+    }
+     function importPerson(IMUSER) {
+        var myFile = $('#filePerson').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('filePerson', myFile);
+        $.ajax({
+            url: '../../PS_processDB/personnal/per_manageSetting.php', // point to server-side PHP script 
+            dataType: 'text', // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (data) {
+                if (data == '1') {
+                    show_setting();
+                    swal("บันทึกสำเร็จ!", "ข้อมูลบุคลากร บันทึกในระบบเเล้ว", "success");
+                    $('#importPerson').modal('hide');
+                    $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
+                }
+                if (data == '2') {
+                    $('#show_filePerson').html('รูปแบบไฟล์ผิดพลาด *').css("color", "red");
+                }
+                if (data == '0') {
+                    $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์ *').css("color", "red");
+                }
+            }
         });
     }
 </script>

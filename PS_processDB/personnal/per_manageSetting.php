@@ -33,6 +33,8 @@ if (!empty($_FILES['fileUser'])) {
         $object = PHPExcel_IOFactory::load($tmpFolder . $_FILES["fileUser"]["name"]);
         $cn = new management;
         $cn->con_db();
+        $pos_id = '';
+        $class_id = '';
         foreach ($object->getWorksheetIterator() as $worksheet) {
             $highestRow = $worksheet->getHighestRow();
             for ($row = 2; $row <= $highestRow; $row++) {
@@ -40,8 +42,17 @@ if (!empty($_FILES['fileUser'])) {
                 $nameuser = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
                 $lastname = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
                 $pos_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
-                $sql_pod_id ="SELECT pod_id FROM ps_position WHERE pos_code = '$pos_code'";
-                $class_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                $sql_pos_id = "SELECT pos_id FROM ps_position WHERE pos_code = '$pos_code'";
+                $query_pos_id = $cn->Connect->query($sql_pos_id);
+                while ($rs_pos_id = mysqli_fetch_array($query_pos_id)) {
+                    $pos_id = $rs_pos_id['pos_id'];
+                }
+                $class_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
+                $sql_class_id = "SELECT class_id FROM ps_class WHERE class_code = '111'";
+                $query_class_id = $cn->Connect->query($sql_class_id);
+                while ($rs_class_id = mysqli_fetch_array($query_class_id)) {
+                    $class_id = $rs_class_id['class_id'];
+                }
                 $tel = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
                 $email = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
                 $username = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
@@ -49,7 +60,7 @@ if (!empty($_FILES['fileUser'])) {
                 $level = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
                 $status = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
                 $person_create = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
-                $sql = "INSERT INTO ps_personnal (card_id, nameuser, lastname, tel, email, pos_id, class_id, username, password, level, status, person_create, date_create, person_update, date_update)"
+                $sql = "INSERT INTO ps_personnal (card_id, nameuser, lastname, pos_id, class_id, tel, email, username, password, level, status, person_create, date_create, person_update, date_update)"
                         . "VALUES('$card_id', '$nameuser', '$lastname', '$pos_id', '$class_id', '$tel', '$email', '$username', '$password', '$level', '$status', '$person_create', '$date', '$person_update', '$date')";
                 $stmt = $cn->Connect->prepare($sql);
                 $ret = $stmt->execute();
@@ -72,9 +83,9 @@ function sl_data_setting() {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
         if ($id == '') {
-            $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.code_class LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_code ORDER BY ps.status DESC";
+            $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_id ORDER BY ps.status DESC";
         } else {
-            $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.code_class LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_code WHERE ps.member_id ='$id' ORDER BY ps.status DESC";
+            $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_id WHERE ps.member_id ='$id' ORDER BY ps.status DESC";
         }
         $rs = $cn->select($sql);
         $json = json_encode($rs);
