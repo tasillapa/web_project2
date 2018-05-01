@@ -8,7 +8,7 @@
             var myFile = $('#filePerson').prop('files')[0];
             $('#show_filePerson').html(myFile.name).css("color", "#777");
         });
-        
+
         $.datetimepicker.setLocale('th');
         $("#pro_birthday").datetimepicker({
             timepicker: false,
@@ -137,22 +137,47 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#imgS').attr('src', e.target.result);
-                $('#zoom-img').attr('href', e.target.result);
+                $('#person_img').attr('href', e.target.result);
             }
-
             reader.readAsDataURL(input.files[0]);
         }
     }
-
+    $('#editPerson').find("#pro_pictureE").change(function () {
+        readURLProfileE(this);
+    });
+    function readURLProfileE(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgSE').attr('src', e.target.result);
+                $('#person_imgE').attr('href', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
     function addPerson(APS) {
-        var array = [];
-        array.push($('#card_id').val(), $('#pro_idpos').val(), $('input[name=group1]:checked', '#pro_sex').val(), $('#pro_prefix').val(), $('#pro_fname').val(), $('#pro_lname').val(), $('#pro_nickname').val()
-                , formatDateDB($('#pro_birthday').val()), $('input[name=group2]:checked', '#pro_status').val(), $('#pos_id').val(), $('#type_id').val(), $('#lvb_id').val(), $('#lv_id').val()
-                , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), formatDateDB($('#pro_dateIn').val()), formatDateDB($('#pro_dateOut').val()), $('#pro_picture').val(), name, formatDateToday(), name, formatDateToday(), '0');
-        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", APS, array, true, function (data) {
-            show_profile()
-            swal("บันทึกสำเร็จ!", "บันทึกข้อมูลบุคลากรลงในระบบเเล้ว", "success");
-            $('#addPerson').modal('hide');
+        var Improfile = $('#pro_picture').prop('files')[0];
+        var form_data_img = new FormData();
+        form_data_img.append('Improfile', Improfile);
+        $.ajax({
+            url: '../../PS_processDB/personnal/per_managePerson.php', // point to server-side PHP script 
+            dataType: 'text', // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data_img,
+            type: 'post',
+            success: function (data) {
+                var array = [];
+                array.push($('#card_id').val(), $('#pro_idpos').val(), $('input[name=group1]:checked', '#pro_sex').val(), $('#pro_prefix').val(), $('#pro_fname').val(), $('#pro_lname').val(), $('#pro_nickname').val()
+                        , formatDateDB($('#pro_birthday').val()), $('input[name=group2]:checked', '#pro_status').val(), $('#pos_id').val(), $('#type_id').val(), $('#lvb_id').val(), $('#lv_id').val()
+                        , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), formatDateDB($('#pro_dateIn').val()), formatDateDB($('#pro_dateOut').val()), data, name, formatDateToday(), name, formatDateToday());
+                cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", APS, array, true, function (data) {
+                    show_profile()
+                    swal("บันทึกสำเร็จ!", "บันทึกข้อมูลบุคลากรลงในระบบเเล้ว", "success");
+                    $('#addPerson').modal('hide');
+                });
+            }
         });
     }
     function delProfile(data) {
@@ -174,6 +199,9 @@
     }
     function slEdit(data) {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [$(data).attr("id")], true, function (data) {
+            $('#imgSE').attr('src', data[0].pro_picture);
+            $('#person_imgE').attr('href', data[0].pro_picture);
+            
             $('#pro_id').val(data[0].pro_id);
             $('#card_idE').val(data[0].card_id);
             $('#pro_idposE').val(data[0].pro_idpos);
@@ -266,17 +294,18 @@
         });
     }
     function editPerson(EPS) {
-        var array = [];
-        array.push($('#card_idE').val(), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
-                , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
-                , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), $('#pro_pictureE').val(), name, formatDateToday(), $('#pro_id').val());
-        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPS, array, true, function (data) {
-            show_profile()
-            swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
-            $('#editPerson').modal('hide');
-        });
+//        alert($('#imgSE').attr('src'));
+//        var array = [];
+//        array.push($('#card_idE').val(), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
+//                , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
+//                , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), $('#pro_pictureE').val(), name, formatDateToday(), $('#pro_id').val());
+//        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPS, array, true, function (data) {
+//            show_profile()
+//            swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
+//            $('#editPerson').modal('hide');
+//        });
     }
-     function importPerson(IMUSER) {
+    function importPerson(IMUSER) {
         var myFile = $('#filePerson').prop('files')[0];
         var form_data = new FormData();
         form_data.append('filePerson', myFile);

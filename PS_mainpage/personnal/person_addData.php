@@ -75,7 +75,7 @@
                                                         <div class="image">
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
                                                                 <div id="aniimated-thumbnials" class="list-unstyled">
-                                                                    <a href="../../images/moon.jpg" id="zoom-img" data-sub-html="รูปประจำตัว">
+                                                                    <a href="../../images/moon.jpg" id="person_img" data-sub-html="รูปประจำตัว">
                                                                         <center><img class="img-responsive" id="imgS" src="../../images/moon.jpg" style="max-height: 150px; max-width: 150px;"alt="User"></center>
                                                                     </a>
                                                                 </div>
@@ -393,12 +393,12 @@
                                                         <div class="image">
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
                                                                 <div id="aniimated-thumbnials" class="list-unstyled">
-                                                                    <a href="../../images/moon.jpg" id="zoom-imgE" data-sub-html="รูปประจำตัว">
+                                                                    <a href="../../images/moon.jpg" id="person_imgE" data-sub-html="รูปประจำตัว">
                                                                         <center><img class="img-responsive" id="imgSE" src="../../images/moon.jpg" style="max-height: 150px; max-width: 150px;"alt="User"></center>
                                                                     </a>
                                                                 </div>
                                                                 <label class="btn-file-upload ">
-                                                                    <input type='file' id="pro_pictureE" />
+                                                                    <input type='file' id="pro_pictureE"/>
                                                                     อัพโหลดรูปภาพ
                                                                 </label>
                                                             </div>

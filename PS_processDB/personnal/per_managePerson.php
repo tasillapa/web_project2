@@ -81,7 +81,7 @@ if (!empty($_FILES['filePerson'])) {
                 }
                 $pro_salary = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
                 $salary_array = explode(",", $pro_salary);
-                $pro_salary = $salary_array[0].$salary_array[1];
+                $pro_salary = $salary_array[0] . $salary_array[1];
                 $pro_dateIn = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
                 $pro_picture = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
 
@@ -96,6 +96,16 @@ if (!empty($_FILES['filePerson'])) {
         echo '2'; // Filename Error
     }
     exit();
+} else if (!empty($_FILES['Improfile'])) {
+    $file_array = explode(".", $_FILES["Improfile"]["name"]);
+    if ($file_array[1] == ('png' || "jpg")) {
+        $cn = new management;
+        $cn->con_db();
+        $tmpFolder = "../../images/img-profile/" . $_FILES['Improfile']['name'];
+        move_uploaded_file($_FILES['Improfile']['tmp_name'], $tmpFolder);
+        echo $tmpFolder;
+        exit();
+    }
 } else {
     echo '0'; // No Input File
     exit();
@@ -124,9 +134,14 @@ function add_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
+        if ($get_data[18] == '0') {
+            $path = '../../noImg.png';
+        } else {
+            $path = $get_data[18];
+        }
         $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_nickname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_picture, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
                 . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '$get_data[10]', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]', '$get_data[15]', '$get_data[16]', '$get_data[17]'"
-                . ", '$get_data[18]', '$get_data[19]', '$get_data[20]', '$get_data[21]', '$get_data[22]', '$get_data[23]')";
+                . ", '$path', '$get_data[19]', '$get_data[20]', '$get_data[21]', '$get_data[22]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }
