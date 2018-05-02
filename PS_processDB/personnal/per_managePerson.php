@@ -101,7 +101,9 @@ if (!empty($_FILES['filePerson'])) {
     if ($file_array[1] == ('png' || "jpg")) {
         $cn = new management;
         $cn->con_db();
-        $tmpFolder = "../../images/img-profile/" . $_FILES['Improfile']['name'];
+        $rand = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'), 0, 15);
+        $new_images = $rand . '-' . $_FILES["Improfile"]["name"];
+        $tmpFolder = "../../images/img-profile/" . $new_images;
         move_uploaded_file($_FILES['Improfile']['tmp_name'], $tmpFolder);
         echo $tmpFolder;
         exit();
@@ -153,6 +155,19 @@ function del_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
+        $path = '';
+        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[0]'";
+        $Query = $cn->Connect->query($sql_img);
+        while ($Row = mysqli_fetch_array($Query)) {
+            $path = $Row['pro_picture'];
+        }
+        if ($path != '') {
+            $files = glob($path);
+            foreach ($files as $file) { // iterate files
+                if (is_file($file))
+                    unlink($file); // delete file
+            }
+        }
         $sql = "DELETE FROM ps_profile WHERE pro_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
@@ -165,6 +180,26 @@ function edit_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
+        $path = '';
+        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[21]'";
+        $Query = $cn->Connect->query($sql_img);
+        while ($Row = mysqli_fetch_array($Query)) {
+            $path = $Row['pro_picture'];
+        }
+        if ($path != $get_data[22]) {
+            $files = glob($path);
+            foreach ($files as $file) { // iterate files
+                if (is_file($file))
+                    unlink($file); // delete file
+            }
+        }else if ($path != $get_data[18]) {
+            $files = glob($get_data[18]);
+            foreach ($files as $file) { // iterate files
+                if (is_file($file))
+                    unlink($file); // delete file
+            }
+            $get_data[18] = $path;
+        }
         $sql = "UPDATE ps_profile
         SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'
             , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_picture = '$get_data[18]', pro_person_update = '$get_data[19]', pro_date_update = '$get_data[20]'
