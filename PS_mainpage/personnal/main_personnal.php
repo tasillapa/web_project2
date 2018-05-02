@@ -85,7 +85,7 @@ include '../../common/header.php';
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <div id="aniimated-thumbnials" class="list-unstyled">
                                 <a href="../../images/moon.jpg" id="zoom" data-sub-html="รูปประจำตัว">
-                                    <img class="img-responsive thumbnail" id="blah" src="../../images/moon.jpg" width="100%" height="100%" alt="User">
+                                    <img class="img-responsive thumbnail" id="blah" src="../../images/moon.jpg" style="height: 100px; width: 100px;"alt="User">
                                 </a>
                             </div>
                         </div>
