@@ -180,6 +180,7 @@ function edit_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
+//        print_r($get_data); exit();
         $path = '';
         $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[21]'";
         $Query = $cn->Connect->query($sql_img);
@@ -200,6 +201,18 @@ function edit_profile() {
             }
             $get_data[18] = $path;
         }
+        $sql_sl_geninfo = "SELECT * FROM ps_geninformation WHERE pro_id = '$get_data[43]'";
+        $Query_geninfo = $cn->Connect->query($sql_sl_geninfo);
+        if (mysqli_num_rows($Query_geninfo) == '0') {
+            $sql_add_geninfo = "INSERT INTO ps_geninformation (gen_card_id, gen_prefix, gen_old, gen_province, gen_nationality, gen_race, gen_religion, gen_blood, gen_soldier, gen_tax, gen_passport, gen_bank, gen_account_number, gen_email, gen_facebook, gen_twitter"
+                    . ", gen_line, gen_talent, gen_interest, expert_name, expert_ex, pro_id)"
+                    . " VALUES ('$get_data[0]', '$get_data[23]', '$get_data[24]', '$get_data[25]', '$get_data[26]', '$get_data[27]', '$get_data[28]', '$get_data[29]', '$get_data[30]', '$get_data[31]', '$get_data[31]', '$get_data[32]', '$get_data[33]', '$get_data[34]'"
+                    . ", '$get_data[35]', '$get_data[36]', '$get_data[37]', '$get_data[38]', '$get_data[39]', '$get_data[40]', '$get_data[41]', '$get_data[42]', '$get_data[43]')";
+        } else {
+            
+        }
+
+
         $sql = "UPDATE ps_profile
         SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'
             , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_picture = '$get_data[18]', pro_person_update = '$get_data[19]', pro_date_update = '$get_data[20]'

@@ -76,7 +76,7 @@
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
                                                                 <div id="aniimated-thumbnials" class="list-unstyled">
                                                                     <a href="../../images/moon.jpg" id="person_img" data-sub-html="รูปประจำตัว">
-                                                                        <center><img class="img-responsive" id="imgS" src="../../images/moon.jpg" style="height: 150px; width: 150px;"></center>
+                                                                        <center><img class="img-responsive img-css" id="imgS" src="../../images/moon.jpg"></center>
                                                                     </a>
                                                                 </div>
                                                                 <label class="btn-file-upload ">
@@ -394,7 +394,7 @@
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
                                                                 <div id="aniimated-thumbnials" class="list-unstyled">
                                                                     <a href="../../images/moon.jpg" id="person_imgE" data-sub-html="รูปประจำตัว">
-                                                                        <center><img class="img-responsive" id="imgSE" src="../../images/moon.jpg" style="height: 150px; width: 150px;"></center>
+                                                                        <center><img class="img-responsive img-css" id="imgSE" src="../../images/moon.jpg"></center>
                                                                     </a>
                                                                 </div>
                                                                 <label class="btn-file-upload ">

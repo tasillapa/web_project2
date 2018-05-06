@@ -3,6 +3,16 @@
 @session_start();
 include_once("../../connect/connect_DB_personal.php");
 include '../../common/header.php';
+
+if (!isset($_POST['ch_new'])) {
+    $_POST['ch_new'] = '';
+} else {
+    if ($_POST['img'] != '0') {
+        $_SESSION["pro_picture"] = $_POST['img'];
+    }
+    $_SESSION["name"] = $_POST['name'];
+    $_SESSION["card_id"] = $_POST['card_id'];
+}
 ?>
 ﻿<!DOCTYPE html>
 <html>
@@ -84,8 +94,24 @@ include '../../common/header.php';
                     <div class="image">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <div id="aniimated-thumbnials" class="list-unstyled">
-                                <a href="../../images/moon.jpg" id="zoom" data-sub-html="รูปประจำตัว">
-                                    <img class="img-responsive thumbnail" id="blah" src="../../images/moon.jpg" style="height: 100px; width: 100px;"alt="User">
+                                <a href="<?php
+                                if (($_SESSION['pro_picture'] != '') || ($_POST['ch_new'] != '')) {
+                                    if ($_POST['ch_new'] != '') {
+                                        echo $_POST['ch_new'];
+                                    } else {
+                                        echo $_SESSION['pro_picture'];
+                                    }
+                                } else {
+                                    echo '../../images/moon.jpg';
+                                }
+                                ?>" id="zoom" data-sub-html="รูปประจำตัว">
+                                    <img class="img-responsive thumbnail" id="blah" src="<?php
+                                    if ($_SESSION['pro_picture'] != '') {
+                                        echo $_SESSION['pro_picture'];
+                                    } else {
+                                        echo '../../images/moon.jpg';
+                                    }
+                                    ?>" style="height: 100px; width: 100px;"alt="User">
                                 </a>
                             </div>
                         </div>

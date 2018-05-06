@@ -11,6 +11,7 @@ session_unset($_SESSION['lv_name']);
 session_unset($_SESSION['lvb_name']);
 session_unset($_SESSION['pro_id']);
 session_unset($_SESSION['name']);
+session_unset($_SESSION['pro_picture']);
 session_unset($_SESSION['tel']);
 
 unset($_SESSION['card_id']);
@@ -22,6 +23,7 @@ unset($_SESSION['dep_name']);
 unset($_SESSION['lv_name']);
 unset($_SESSION['lvb_name']);
 unset($_SESSION['pro_id']);
+unset($_SESSION['pro_picture']);
 unset($_SESSION['tel']);
 unset($_SESSION['name']);
 

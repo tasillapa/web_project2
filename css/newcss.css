@@ -12,6 +12,14 @@
 .sidebar .user-info .image {
     margin-right: 0px;
 }
+
+/*Image Picture*/
+.img-css{
+    height: 150px;
+    width: 150px; 
+    border: 1px solid #c2c2a3;
+}
+
 /* Padding Css*/
 .p-d-8{
     padding-top: 8px;
@@ -38,7 +46,9 @@ input[type="file"] {
     font-size: 12px;
 }
 .btn-file-upload {
-    background-color: #E91E63;
+    background-color: #8a8a5c;
+    border: 1px solid #7a7a52;
+    border-radius: 4px;
     display: inline-block;
     padding: 2px 18px;
     cursor: pointer;
@@ -47,6 +57,7 @@ input[type="file"] {
     width: 150px;
     font-size: 12px;
 }
+.btn-file-upload:hover {background-color: #7a7a52}
 
 .btn-file-upload-ex {
     position: relative;
@@ -116,6 +127,16 @@ input[type="file"] {
 }
 .logo-btn-hiswork {
     content:url("../images/btn-tap/management.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-btn-general {
+    content:url("../images/btn-tap/general.png");
+    width: 25px;
+    height: 25px;   
+}
+.logo-btn-trophy {
+    content:url("../images/btn-tap/trophy.png");
     width: 25px;
     height: 25px;   
 }

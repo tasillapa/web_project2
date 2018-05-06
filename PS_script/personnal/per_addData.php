@@ -9,6 +9,11 @@
             $('#show_filePerson').html(myFile.name).css("color", "#777");
         });
 
+        $(document).on("click", ".table_profile tbody tr td:not(:last-child)", function () {
+            var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
+//            alert(clickedBtnID);
+            window.location.href = '../../PS_mainpage/personnal/person_DataProfile.php?id=' + clickedBtnID + '';
+        });
         $.datetimepicker.setLocale('th');
         $("#pro_birthday").datetimepicker({
             timepicker: false,
@@ -309,10 +314,13 @@
                 array.push($('#card_idE').val(), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
                         , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
                         , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), data, name, formatDateToday(), $('#pro_id').val(), $('#imgSE').attr('src'));
-                cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPS, array, true, function (data) {
+                cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPS, array, true, function (result) {
                     show_profile()
                     swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
                     $('#editPerson').modal('hide');
+//                    $.post("../../PS_mainpage/personnal/main_personnal.php", {ch_new: data}, function (result) {
+////                         alert(result);
+//                    });
                 });
             }
         });

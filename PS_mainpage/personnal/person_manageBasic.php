@@ -25,13 +25,13 @@
                                     <li role="presentation" class="active">
                                         <a href="#branch-in" data-toggle="tab">
                                             <img class="logo-bn-in"/> 
-                                            <span>หน่วยงานภายใน</span>
+                                            <span>กลุ่มงานภายใน</span>
                                         </a>
                                     </li>
                                     <li role="presentation">
                                         <a href="#branch-out" data-toggle="tab">
                                             <img class="logo-bn-out"/>
-                                            <span>หน่วยงานภายนอก</span>
+                                            <span>กลุ่มงานภายนอก</span>
                                         </a>
                                     </li>
                                     <li role="presentation">
@@ -69,7 +69,7 @@
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="branch-in">
-                                        <!-- หน่วยงานภายใน -->
+                                        <!-- กลุ่มงานภายใน -->
                                         <button type="button" data-toggle="modal" data-target="#addBnIn" class="btn bg-green waves-effect">เพิ่มกลุ่มงาน</button><br><br>
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -82,10 +82,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- #END# หน่วยงานภายใน -->
+                                        <!-- #END# กลุ่มงานภายใน -->
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="branch-out">
-                                        <!-- หน่วยงานภายนอก -->
+                                        <!-- กลุ่มงานภายนอก -->
                                         <button type="button" data-toggle="modal" data-target="#addBnOut" class="btn bg-green waves-effect">เพิ่มกลุ่มงาน</button><br><br>
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -98,7 +98,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- #END# หน่วยงานภายนอก -->
+                                        <!-- #END# กลุ่มงานภายนอก -->
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab-position">
                                         <!-- ตำแหน่ง -->
@@ -194,7 +194,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >หน่วยงานภายใน</h4>
+                        <h4 class="modal-title " >กลุ่มงานภายใน</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -213,12 +213,12 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
-                                    <label>ชื่อหน่วยงาน</label>
+                                    <label>ชื่อกลุ่มงาน</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="class_name" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            <input type="text" id="class_name" class="form-control" placeholder="กรอกชื่อกลุ่มงาน">
                                         </div>
                                     </div>
                                 </div>
@@ -240,7 +240,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >หน่วยงานภายใน</h4>
+                        <h4 class="modal-title " >กลุ่มงานภายใน</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -259,13 +259,13 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
-                                    <label>ชื่อหน่วยงาน</label>
+                                    <label>ชื่อกลุ่มงาน</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="class_nameE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
-                                            <input type="hidden" id="class_idE" class="form-control" placeholder="กรอกชื่อหน่วยงาน">
+                                            <input type="text" id="class_nameE" class="form-control" placeholder="กรอกชื่อกลุ่มงาน">
+                                            <input type="hidden" id="class_idE" class="form-control" placeholder="กรอกชื่อกลุ่มงาน">
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +287,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">หน่วยงานภายนอก</h4>
+                        <h4 class="modal-title ">กลุ่มงานภายนอก</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -306,12 +306,12 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
-                                    <label>ชื่อหน่วยงาน</label>
+                                    <label>ชื่อกลุ่มงาน</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="off_name" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            <input type="text" id="off_name" class="form-control" placeholder="กรอกชื่อกลุ่มงาน">
                                         </div>
                                     </div>
                                 </div>
@@ -333,7 +333,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >หน่วยงานภายนอก</h4>
+                        <h4 class="modal-title " >กลุ่มงานภายนอก</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -352,13 +352,13 @@
                             </div>
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
-                                    <label>ชื่อหน่วยงาน</label>
+                                    <label>ชื่อกลุ่มงาน</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="off_nameE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
-                                            <input type="hidden" id="id_offE" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            <input type="text" id="off_nameE" class="form-control" placeholder="กรอกชื่อกลุ่มงาน">
+                                            <input type="hidden" id="id_offE" class="form-control" placeholder="กรอกชื่อกลุ่มงาน">
                                         </div>
                                     </div>
                                 </div>
@@ -404,7 +404,7 @@
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="pos_name" class="form-control" placeholder="กรอกชื่อหน่อวยงาน">
+                                            <input type="text" id="pos_name" class="form-control" placeholder="กรอกชื่อตำแหน่ง">
                                         </div>
                                     </div>
                                 </div>
