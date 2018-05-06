@@ -206,10 +206,15 @@ function edit_profile() {
         if (mysqli_num_rows($Query_geninfo) == '0') {
             $sql_add_geninfo = "INSERT INTO ps_geninformation (gen_card_id, gen_prefix, gen_old, gen_province, gen_nationality, gen_race, gen_religion, gen_blood, gen_soldier, gen_tax, gen_passport, gen_bank, gen_account_number, gen_email, gen_facebook, gen_twitter"
                     . ", gen_line, gen_talent, gen_interest, expert_name, expert_ex, pro_id)"
-                    . " VALUES ('$get_data[0]', '$get_data[23]', '$get_data[24]', '$get_data[25]', '$get_data[26]', '$get_data[27]', '$get_data[28]', '$get_data[29]', '$get_data[30]', '$get_data[31]', '$get_data[31]', '$get_data[32]', '$get_data[33]', '$get_data[34]'"
-                    . ", '$get_data[35]', '$get_data[36]', '$get_data[37]', '$get_data[38]', '$get_data[39]', '$get_data[40]', '$get_data[41]', '$get_data[42]', '$get_data[43]')";
+                    . " VALUES ('$get_data[0]', '$get_data[23]', '$get_data[24]', '$get_data[25]', '$get_data[26]', '$get_data[27]', '$get_data[28]', '$get_data[29]', '$get_data[30]', '$get_data[31]', '$get_data[32]', '$get_data[33]', '$get_data[34]', '$get_data[35]'"
+                    . ", '$get_data[36]', '$get_data[37]', '$get_data[38]', '$get_data[39]', '$get_data[40]', '$get_data[41]', '$get_data[42]', '$get_data[43]')";
+            $cn->exec($sql_add_geninfo);
         } else {
-            
+            $sql_add_geninfo = "UPDATE ps_geninformation SET gen_card_id = '$get_data[0]', gen_prefix = '$get_data[23]', gen_old = '$get_data[24]', gen_province = '$get_data[25]', gen_nationality = '$get_data[26]', gen_race = '$get_data[27]', gen_religion = '$get_data[28]'"
+                    . ", gen_blood = '$get_data[29]', gen_soldier = '$get_data[30]', gen_tax = '$get_data[31]', gen_passport = '$get_data[32]', gen_bank = '$get_data[33]', gen_account_number = '$get_data[34]', gen_email = '$get_data[35]', gen_facebook = '$get_data[36]', gen_twitter = '$get_data[37]'"
+                    . ", gen_line = '$get_data[38]', gen_talent = '$get_data[39]', gen_interest = '$get_data[40]', expert_name = '$get_data[41]', expert_ex = '$get_data[42]'"
+                    . " WHERE pro_id = '$get_data[43]'";
+            $cn->exec($sql_add_geninfo);
         }
 
 

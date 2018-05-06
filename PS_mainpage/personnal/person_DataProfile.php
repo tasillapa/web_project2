@@ -118,7 +118,7 @@ if (!isset($_GET['id'])) {
                                                                             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                                                 <div class="form-group">
                                                                                     <div class="form-line">
-                                                                                        <input type="text" id="pro_fnameE" class="form-control" placeholder="กรอกชื่อ" onkeydown="javascript: keydownFname();">
+                                                                                        <input type="text" id="pro_fnameE" class="form-control" placeholder="กรอกชื่อ" onkeyup="javascript: keyupFname();">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -130,7 +130,7 @@ if (!isset($_GET['id'])) {
                                                                             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 form-control-label-l">
                                                                                 <div class="form-group">
                                                                                     <div class="form-line">
-                                                                                        <input type="text" id="pro_lnameE" class="form-control" placeholder="กรอกนามสกุล" onkeydown="javascript: keydownLname();">
+                                                                                        <input type="text" id="pro_lnameE" class="form-control" placeholder="กรอกนามสกุล" onkeyup="javascript: keyupLname();">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -144,7 +144,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="card_idE" class="form-control" placeholder="กรอกเลขบัตรประชาชน" onkeydown="javascript: keydownCardId();">
+                                                                                <input type="text" id="card_idE" class="form-control" placeholder="กรอกเลขบัตรประชาชน" onkeyup="javascript: keyupCardId();">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -156,7 +156,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="pro_nicknameE" class="form-control" placeholder="กรอกชื่อเล่น" onkeydown="javascript: keydownNickname();">
+                                                                                <input type="text" id="pro_nicknameE" class="form-control" placeholder="กรอกชื่อเล่น" onkeyup="javascript: keyupNickname();">
                                                                             </div>
                                                                         </div>
                                                                     </div>

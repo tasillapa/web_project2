@@ -83,8 +83,40 @@
         show_heir();
         show_blame();
 
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_geninfo", [dataID], true, function (data) {
+            if (data != 0) {
+                $('#gen_prefix option[value=' + data[0].gen_prefix + ']').prop('selected', true);
+                $('#gen_old').val(data[0].gen_old);
+                $('#gen_province option[value=' + data[0].gen_province + ']').prop('selected', true);
+                $('#gen_nationality option[value=' + data[0].gen_nationality + ']').prop('selected', true);
+                $('#gen_race option[value=' + data[0].gen_race + ']').prop('selected', true);
+                $('#gen_religion option[value=' + data[0].gen_religion + ']').prop('selected', true);
+                $('#gen_blood option[value=' + data[0].gen_blood + ']').prop('selected', true);
+                $('#gen_soldier option[value=' + data[0].gen_soldier + ']').prop('selected', true);
+                $('#gen_tax').val(data[0].gen_tax);
+                $('#gen_passport').val(data[0].gen_passport);
+                $('#gen_bank option[value=' + data[0].gen_bank + ']').prop('selected', true);
+                $('#gen_account_number').val(data[0].gen_account_number);
+                $('#gen_email').val(data[0].gen_email);
+                $('#gen_facebook').val(data[0].gen_facebook);
+                $('#gen_twitter').val(data[0].gen_twitter);
+                $('#gen_line').val(data[0].gen_line);
+                $('#gen_talent').val(data[0].gen_talent);
+                $('#gen_interest').val(data[0].gen_interest);
+                $('#expert_name').val(data[0].expert_name);
+                $('#expert_ex').val(data[0].expert_ex);
+            }
+            $('#gen_prefix').select2();
+            $('#gen_province').select2();
+            $('#gen_nationality').select2();
+            $('#gen_race').select2();
+            $('#gen_religion').select2();
+            $('#gen_blood').select2();
+            $('#gen_soldier').select2();
+            $('#gen_bank').select2();
+        });
+
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [dataID], true, function (data) {
-//            console.log(data);
             $('#imgSE').attr('src', data[0].pro_picture);
             $('#person_imgE').attr('href', data[0].pro_picture);
             $('#pro_id').val(data[0].pro_id);
@@ -186,14 +218,6 @@
                 $('#dep_idE').select2();
             });
         });
-        $('#gen_prefix').select2();
-        $('#gen_province').select2();
-        $('#gen_nationality').select2();
-        $('#gen_bank').select2();
-        $('#gen_race').select2();
-        $('#gen_religion').select2();
-        $('#gen_blood').select2();
-        $('#gen_soldier').select2();
     });
     $(document).find("#pro_pictureE").change(function () {
         readURLProfileE(this);
@@ -213,16 +237,16 @@
 //        window.history.back();
     }
 
-    function keydownCardId() {
-        $('#gen_cardId').val($('#card_idE').val());
+    function keyupCardId() {
+        $('#gen_card_id').val($('#card_idE').val());
     }
-    function keydownFname() {
+    function keyupFname() {
         $('#gen_fname').val($('#pro_fnameE').val());
     }
-    function keydownLname() {
+    function keyupLname() {
         $('#gen_lname').val($('#pro_lnameE').val());
     }
-    function keydownNickname() {
+    function keyupNickname() {
         $('#gen_nickname').val($('#pro_nicknameE').val());
     }
     function changeSex() {

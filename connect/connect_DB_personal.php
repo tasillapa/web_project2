@@ -63,6 +63,11 @@ class management {
         return $num;
     }
 
+    function exec($sql) {
+        $stmt = $this->Connect->prepare($sql);
+        $ret = $stmt->execute();
+    }
+
 }
 
 ?>
