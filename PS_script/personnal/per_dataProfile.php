@@ -82,20 +82,25 @@
         show_marry();
         show_heir();
         show_blame();
-
+        $('#address_province').select2();
+        $('#address_amphur').select2();
+        $('#address_district').select2();
+        $('#pread_province').select2();
+        $('#pread_amphur').select2();
+        $('#pread_district').select2();
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_geninfo", [dataID], true, function (data) {
             if (data != 0) {
-                $('#gen_prefix option[value=' + data[0].gen_prefix + ']').prop('selected', true);
+                $('#gen_prefix option[value="' + data[0].gen_prefix + '"]').prop('selected', true);
                 $('#gen_old').val(data[0].gen_old);
-                $('#gen_province option[value=' + data[0].gen_province + ']').prop('selected', true);
-                $('#gen_nationality option[value=' + data[0].gen_nationality + ']').prop('selected', true);
-                $('#gen_race option[value=' + data[0].gen_race + ']').prop('selected', true);
-                $('#gen_religion option[value=' + data[0].gen_religion + ']').prop('selected', true);
-                $('#gen_blood option[value=' + data[0].gen_blood + ']').prop('selected', true);
-                $('#gen_soldier option[value=' + data[0].gen_soldier + ']').prop('selected', true);
+                $('#gen_province option[value="' + data[0].gen_province + '"]').prop('selected', true);
+                $('#gen_nationality option[value="' + data[0].gen_nationality + '"]').prop('selected', true);
+                $('#gen_race option[value="' + data[0].gen_race + '"]').prop('selected', true);
+                $('#gen_religion option[value="' + data[0].gen_religion + '"]').prop('selected', true);
+                $('#gen_blood option[value="' + data[0].gen_blood + '"]').prop('selected', true);
+                $('#gen_soldier option[value="' + data[0].gen_soldier + '"]').prop('selected', true);
                 $('#gen_tax').val(data[0].gen_tax);
                 $('#gen_passport').val(data[0].gen_passport);
-                $('#gen_bank option[value=' + data[0].gen_bank + ']').prop('selected', true);
+                $('#gen_bank option[value="' + data[0].gen_bank + '"]').prop('selected', true);
                 $('#gen_account_number').val(data[0].gen_account_number);
                 $('#gen_email').val(data[0].gen_email);
                 $('#gen_facebook').val(data[0].gen_facebook);
@@ -129,11 +134,11 @@
             $('#gen_lname').val(data[0].pro_lname);
             $('#pro_nicknameE').val(data[0].pro_nickname);
             $('#gen_nickname').val(data[0].pro_nickname);
-            $("#pro_sexE input[name=group1E][value=" + data[0].pro_sex + "]").prop("checked", true);
-            $('#gen_sex option[value=' + data[0].pro_sex + ']').prop('selected', true);
+            $("#pro_sexE input[name=group1E][value='" + data[0].pro_sex + "']").prop("checked", true);
+            $('#gen_sex option[value="' + data[0].pro_sex + '"]').prop('selected', true);
             $('#gen_sex').select2();
-            $("#pro_statusE input[name=group2E][value=" + data[0].pro_status + "]").prop("checked", true);
-            $('#gen_status option[value=' + data[0].pro_status + ']').prop('selected', true);
+            $("#pro_statusE input[name=group2E][value='" + data[0].pro_status + "']").prop("checked", true);
+            $('#gen_status option[value="' + data[0].pro_status + '"]').prop('selected', true);
             $('#gen_status').select2();
             $('#pro_salaryE').val(parseInt(data[0].pro_salary));
             $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));

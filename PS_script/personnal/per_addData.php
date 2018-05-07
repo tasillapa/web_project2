@@ -212,8 +212,8 @@
             $('#pro_fnameE').val(data[0].pro_fname);
             $('#pro_lnameE').val(data[0].pro_lname);
             $('#pro_nicknameE').val(data[0].pro_nickname);
-            $("#pro_sexE input[name=group1E][value=" + data[0].pro_sex + "]").prop("checked", true);
-            $("#pro_statusE input[name=group2E][value=" + data[0].pro_status + "]").prop("checked", true);
+            $("#pro_sexE input[name=group1E][value='" + data[0].pro_sex + "']").prop("checked", true);
+            $("#pro_statusE input[name=group2E][value='" + data[0].pro_status + "']").prop("checked", true);
             $('#pro_salaryE').val(parseInt(data[0].pro_salary));
             $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));
             $('#pro_dateInE').val(formatDateShow(data[0].pro_dateIn));

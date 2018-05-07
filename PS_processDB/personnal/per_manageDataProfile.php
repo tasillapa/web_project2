@@ -33,6 +33,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "DB": del_blame();
             break;
+        case "select_data_district": select_data_district();
+            break;
     }
 }
 
@@ -220,6 +222,13 @@ function del_blame() {
         echo $rs;
     }
     exit();
+}
+
+function select_data_district() {
+    $cn = new management;
+    $cn->con_db();
+    echo '<option  value="">เลือก</opition>';
+    $sql = "select * from ps_district ORDER BY DISTRICT_NAME ASC";
 }
 ?>
 

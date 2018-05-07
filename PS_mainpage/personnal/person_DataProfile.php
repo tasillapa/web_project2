@@ -32,13 +32,13 @@ if (!isset($_GET['id'])) {
                                             <span>ข้อมูลส่วนตัว</span>
                                         </a>
                                     </li>
-                                    <li role="presentation" class="active">
+                                    <li role="presentation">
                                         <a href="#general-information" data-toggle="tab">
                                             <img class="logo-btn-general"/> 
                                             <span>ข้อมูลทั่วไป</span>
                                         </a>
                                     </li>
-                                    <li role="presentation">
+                                    <li role="presentation" class="active">
                                         <a href="#career-history" data-toggle="tab">
                                             <img class="logo-btn-address"/>
                                             <span>ข้อมูลที่อยู่</span>
@@ -310,8 +310,8 @@ if (!isset($_GET['id'])) {
                                         </div>
                                         <!-- #END# ข้อมูลส่วนตัว -->
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade in active" id="general-information">
-                                        <!-- ข้อมูลสทั่วไป -->
+                                    <div role="tabpanel" class="tab-pane fade" id="general-information">
+                                        <!-- ข้อมูลทั่วไป -->
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <!--                                                <div class="card">
@@ -319,8 +319,13 @@ if (!isset($_GET['id'])) {
                                                 <div class="demo-masked-input">
                                                     <form class="form-horizontal">
                                                         <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ข้อมูลเฉพาะ
+                                                                </h2>
+                                                            </div>
                                                             <div class="body">
-                                                                <h2 class="card-inside-title">ข้อมูลเฉพาะ</h2>
+                                                                <!--<h2 class="card-inside-title">ข้อมูลเฉพาะ</h2>-->
                                                                 <div class="row clearfix">
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >เลขบัตรประชาชน</label>
@@ -334,10 +339,10 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                         <label >คำนำหน้าเพศ</label>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-2 col-sm-7 col-xs-12">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_prefix">
                                                                             <option  value="">เลือก</opition>
                                                                             <option  value="นาย">นาย</opition>
@@ -367,30 +372,30 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                         <label >เพศ</label>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-2 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_sex" disabled>
                                                                             <option  value="">เลือก</opition>
                                                                             <option  value="1">ชาย</opition>
                                                                             <option  value="2">หญิง</opition>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-1 col-md-1 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >ชื่อเล่น</label>
                                                                     </div>
-                                                                    <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="gen_nickname" class="form-control" placeholder="กรอกชื่อเล่น" disabled>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-1 col-md-1 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >วันเกิด</label>
                                                                     </div>
-                                                                    <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="gen_birthday" class="form-control" placeholder="กรอกวัน/เดือน/ปีเกิด" disabled>
@@ -399,20 +404,20 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                         <label >อายุ</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="gen_old" class="form-control" placeholder="กรอกอายุ (ปี)">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >จังหวัดที่เกิด</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_province">
                                                                             <?php
                                                                             $cn = new management;
@@ -428,10 +433,10 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >สัญชาติ</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_nationality">
                                                                             <?php
                                                                             $cn = new management;
@@ -445,10 +450,10 @@ if (!isset($_GET['id'])) {
                                                                             ?>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >เชื้อชาติ</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_race">
                                                                             <?php
                                                                             $cn = new management;
@@ -464,10 +469,10 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >ศาสนา</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_religion">
                                                                             <?php
                                                                             $cn = new management;
@@ -481,10 +486,10 @@ if (!isset($_GET['id'])) {
                                                                             ?>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >กรุ๊ปเลือด</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_blood">
                                                                             <option  value="">เลือก</opition>
                                                                             <option  value="A">A</opition>
@@ -495,10 +500,10 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >สถานะภาพสมรส</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_status" disabled>
                                                                             <option  value="">เลือก</opition>
                                                                             <option  value="โสด">โสด</opition>
@@ -507,10 +512,10 @@ if (!isset($_GET['id'])) {
                                                                             <option  value="หม้าย">หม้าย</opition>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >สถานะภาพทหาร</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_soldier">
                                                                             <option  value="">เลือก</opition>
                                                                             <option  value="ได้รับการยกเว้น">ได้รับการยกเว้น</opition>
@@ -544,10 +549,10 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >บัญชีธนาคาร</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_bank">
                                                                             <?php
                                                                             $cn = new management;
@@ -561,10 +566,10 @@ if (!isset($_GET['id'])) {
                                                                             ?>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >เลขที่บัญชี</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="gen_account_number" class="form-control" placeholder="กรอกเลขที่หนังสือเดินทาง">
@@ -620,8 +625,13 @@ if (!isset($_GET['id'])) {
                                                         </div>
 
                                                         <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ความสามารถพิเศษ
+                                                                </h2>
+                                                            </div>
                                                             <div class="body">
-                                                                <h2 class="card-inside-title">ความสามารถพิเศษ</h2>
+                                                                <!--<h2 class="card-inside-title">ความสามารถพิเศษ</h2>-->
                                                                 <div class="row clearfix">
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >ความสามารถพิเศษ</label>
@@ -650,8 +660,13 @@ if (!isset($_GET['id'])) {
                                                         </div>
 
                                                         <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ความชำนาญพิเศษ
+                                                                </h2>
+                                                            </div>
                                                             <div class="body">
-                                                                <h2 class="card-inside-title">ความชำนาญพิเศษ</h2>
+                                                                <!--<h2 class="card-inside-title">ความชำนาญพิเศษ</h2>-->
                                                                 <div class="row clearfix">
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >ด้านความชำนาญ</label>
@@ -680,8 +695,13 @@ if (!isset($_GET['id'])) {
                                                         </div>
 
                                                         <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ประวัติการเปลี่ยนชื่อ-สกุล
+                                                                </h2>
+                                                            </div>
                                                             <div class="body">
-                                                                <h2 class="card-inside-title">ประวัติการเปลี่ยนชื่อ-สกุล</h2>
+                                                                <!--<h2 class="card-inside-title">ประวัติการเปลี่ยนชื่อ-สกุล</h2>-->
                                                                 <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_chName" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
@@ -738,8 +758,13 @@ if (!isset($_GET['id'])) {
                                                         </div>
 
                                                         <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ประวัติการสมรส
+                                                                </h2>
+                                                            </div>
                                                             <div class="body">
-                                                                <h2 class="card-inside-title">ประวัติการสมรส</h2>
+                                                                <!--<h2 class="card-inside-title">ประวัติการสมรส</h2>-->
                                                                 <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_marry" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
@@ -784,8 +809,13 @@ if (!isset($_GET['id'])) {
                                                         </div>
 
                                                         <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ข้อมูลทายาท
+                                                                </h2>
+                                                            </div>
                                                             <div class="body">
-                                                                <h2 class="card-inside-title">ข้อมูลทายาท</h2>
+                                                                <!--<h2 class="card-inside-title">ข้อมูลทายาท</h2>-->
                                                                 <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_heir" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
@@ -830,8 +860,13 @@ if (!isset($_GET['id'])) {
                                                         </div>
 
                                                         <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ประวัติทางวินัย
+                                                                </h2>
+                                                            </div>
                                                             <div class="body">
-                                                                <h2 class="card-inside-title">ประวัติทางวินัย</h2>
+                                                                <!--<h2 class="card-inside-title">ประวัติทางวินัย</h2>-->
                                                                 <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_blame" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
@@ -911,6 +946,346 @@ if (!isset($_GET['id'])) {
                                             </div>
                                         </div>
                                         <!-- #END# ข้อมูลทั่วไป -->
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade in active" id="career-history">
+                                        <!-- ข้อมูลที่อยู่ -->
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="demo-masked-input">
+                                                    <form class="form-horizontal">
+                                                        <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ที่อยู่ตามทะเบียนบ้าน
+                                                                </h2>
+                                                            </div>
+                                                            <div class="body">
+                                                                <!--<h2 class="card-inside-title">ที่อยู่ตามทะเบียนบ้าน</h2>-->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >เลขที่</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_number" class="form-control" placeholder="กรอกเลขที่อยู่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >หมู่</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_swine" class="form-control" placeholder="กรอกหมู่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ซอย</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_soi" class="form-control" placeholder="กรอกซอย">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ถนน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_road" class="form-control" placeholder="กรอกถนน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >หมู่บ้าน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-5 col-md-3 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_village" class="form-control" placeholder="กรอกหมู่บ้าน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >จังหวัด</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_province">
+                                                                            <?php
+                                                                            $cn = new management;
+                                                                            $cn->con_db();
+                                                                            echo '<option  value="">เลือก</opition>';
+                                                                            $sql = "select * from ps_province ORDER BY PROVINCE_NAME ASC";
+                                                                            $query = $cn->Connect->query($sql);
+                                                                            while ($rs = mysqli_fetch_array($query)) {
+                                                                                echo '<option  value="' . $rs['PROVINCE_ID'] . '">' . $rs['PROVINCE_NAME'] . '</opition>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >อำเภอ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_amphur">
+                                                                            <?php
+                                                                            $cn = new management;
+                                                                            $cn->con_db();
+                                                                            echo '<option  value="">เลือก</opition>';
+                                                                            $sql = "select * from ps_amphur ORDER BY AMPHUR_NAME ASC";
+                                                                            $query = $cn->Connect->query($sql);
+                                                                            while ($rs = mysqli_fetch_array($query)) {
+                                                                                echo '<option  value="' . $rs['AMPHUR_ID'] . '">' . $rs['AMPHUR_NAME'] . '</opition>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ตำบล</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_district">
+                                                                            <?php
+                                                                            $cn = new management;
+                                                                            $cn->con_db();
+                                                                            echo '<option  value="">เลือก</opition>';
+                                                                            $sql = "select * from ps_district ORDER BY DISTRICT_NAME ASC";
+                                                                            $query = $cn->Connect->query($sql);
+                                                                            while ($rs = mysqli_fetch_array($query)) {
+                                                                                echo '<option  value="' . $rs['DISTRICT_ID'] . '">' . $rs['DISTRICT_NAME'] . '</opition>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >รหัสไปรษณีย์</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_zip_code" class="form-control" placeholder="กรอกรหัสไปรษณีย์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >โทร.</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_call" class="form-control" placeholder="กรอกหมายเลขโทรศัพท์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >มือถือ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_fhone" class="form-control" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="card">
+                                                            <div class="header bg-blue-grey demo-checkbox" style="padding: 8px;">
+                                                                <h2>
+                                                                    ที่อยู่ปัจจุบันที่ติดต่อได้
+
+                                                                </h2>
+                                                                <span class="header-dropdown m-t--15">
+                                                                    <input type="checkbox" id="basic_checkbox_2" class="filled-in  "checked />
+                                                                    <label for="basic_checkbox_2">ที่อยู่เหมือนทะเบียนบ้าน</label>
+                                                                </span>
+                                                            </div>
+                                                            <div class="body">
+                                                                <!--<h2 class="card-inside-title">ที่อยู่ตามทะเบียนบ้าน</h2>-->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >เลขที่</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_number" class="form-control" placeholder="กรอกเลขที่อยู่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >หมู่</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_swine" class="form-control" placeholder="กรอกหมู่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ซอย</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_soi" class="form-control" placeholder="กรอกซอย">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ถนน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_road" class="form-control" placeholder="กรอกถนน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >หมู่บ้าน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-5 col-md-3 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_village" class="form-control" placeholder="กรอกหมู่บ้าน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >จังหวัด</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pread_province">
+                                                                            <?php
+                                                                            $cn = new management;
+                                                                            $cn->con_db();
+                                                                            echo '<option  value="">เลือก</opition>';
+                                                                            $sql = "select * from ps_province ORDER BY PROVINCE_NAME ASC";
+                                                                            $query = $cn->Connect->query($sql);
+                                                                            while ($rs = mysqli_fetch_array($query)) {
+                                                                                echo '<option  value="' . $rs['PROVINCE_ID'] . '">' . $rs['PROVINCE_NAME'] . '</opition>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >อำเภอ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pread_amphur">
+                                                                            <?php
+                                                                            $cn = new management;
+                                                                            $cn->con_db();
+                                                                            echo '<option  value="">เลือก</opition>';
+                                                                            $sql = "select * from ps_province ORDER BY PROVINCE_NAME ASC";
+                                                                            $query = $cn->Connect->query($sql);
+                                                                            while ($rs = mysqli_fetch_array($query)) {
+                                                                                echo '<option  value="' . $rs['PROVINCE_ID'] . '">' . $rs['PROVINCE_NAME'] . '</opition>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ตำบล</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pread_district">
+                                                                            <?php
+                                                                            $cn = new management;
+                                                                            $cn->con_db();
+                                                                            echo '<option  value="">เลือก</opition>';
+                                                                            $sql = "select * from ps_province ORDER BY PROVINCE_NAME ASC";
+                                                                            $query = $cn->Connect->query($sql);
+                                                                            while ($rs = mysqli_fetch_array($query)) {
+                                                                                echo '<option  value="' . $rs['PROVINCE_ID'] . '">' . $rs['PROVINCE_NAME'] . '</opition>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >รหัสไปรษณีย์</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_zip_code" class="form-control" placeholder="กรอกรหัสไปรษณีย์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >โทร.</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_call" class="form-control" placeholder="กรอกหมายเลขโทรศัพท์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >มือถือ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_fhone" class="form-control" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="footer">
+                                                    <div class="row clearfix">
+                                                        <?php if ($_GET['id'] != '') { ?>
+                                                            <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
+                                                            </div>
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                                            </div>
+                                                        <?php } else { ?>
+                                                            <div class="align-right col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- #END# ข้อมูลที่อยู่ -->
                                     </div>
                                 </div>
                             </div>

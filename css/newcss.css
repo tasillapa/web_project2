@@ -13,6 +13,12 @@
     margin-right: 0px;
 }
 
+/* Background Color*/
+.bg-blue2{
+    background-color: #4d88ff !important;
+    color: #fff;
+}
+
 /*Image Picture*/
 .img-css{
     height: 150px;
@@ -20,12 +26,15 @@
     border: 1px solid #c2c2a3;
 }
 
-/* Padding Css*/
+/* Padding Margin Css*/
 .p-d-8{
     padding-top: 8px;
 }
 .m-t--4 {
     margin-top: -4px;
+}
+.m-t--12{
+    margin-top: -12px;
 }
 
 /* Taps*/
