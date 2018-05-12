@@ -81,7 +81,7 @@
                                                                 </div>
                                                                 <label class="btn-file-upload ">
                                                                     <input type='file' id="pro_picture" />
-                                                                    อัพโหลดรูปภาพ
+                                                                    เลือกรูปภาพ
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -93,7 +93,7 @@
                                                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
-                                                                            <input type="text" id="pro_idpos" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                            <input type="text" id="pro_idpos" class="form-control" placeholder="กรอกรหัสตำแหน่ง" maxlength="4" onkeypress="return isNumberKey(event)">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -151,7 +151,7 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="card_id" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
+                                                                    <input type="text" id="card_id" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -187,7 +187,7 @@
                                                                     <i class="material-icons">date_range</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_birthday" class="form-control" placeholder="Ex: 30/07/2561">
+                                                                    <input type="text" id="pro_birthday" class="form-control date" placeholder="Ex: 30/07/2561">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -326,7 +326,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_dateIn" class="form-control" placeholder="__/__/____">
+                                                                    <input type="text" id="pro_dateIn" class="form-control date" placeholder="__/__/____">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -336,7 +336,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_dateOut" class="form-control" placeholder="__/__/____">
+                                                                    <input type="text" id="pro_dateOut" class="form-control date" placeholder="__/__/____">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -348,10 +348,10 @@
                                                         <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon">
-                                                                    <i class="material-icons">monetization_on</i>
+                                                                    <i class="material-icons">credit_card</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="number" id="pro_salary" class="form-control" placeholder="กรุณาระบุจำนวนเงิน">
+                                                                    <input type="number" id="pro_salary" class="form-control" placeholder="กรอกจำนวนเงินเริ่มต้น">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -399,7 +399,7 @@
                                                                 </div>
                                                                 <label class="btn-file-upload ">
                                                                     <input type='file' id="pro_pictureE"/>
-                                                                    อัพโหลดรูปภาพ
+                                                                    เลือกรูปภาพ
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -411,7 +411,7 @@
                                                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
-                                                                            <input type="text" id="pro_idposE" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                            <input type="text" id="pro_idposE" class="form-control" placeholder="กรอกรหัสตำแหน่ง" maxlength="4" onkeypress="return isNumberKey(event)">
                                                                             <input type="hidden" id="pro_id" class="form-control">
                                                                         </div>
                                                                     </div>
@@ -459,7 +459,7 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="card_idE" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
+                                                                    <input type="text" id="card_idE" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -495,7 +495,7 @@
                                                                     <i class="material-icons">date_range</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_birthdayE" class="form-control" placeholder="Ex: 30/07/2561">
+                                                                    <input type="text" id="pro_birthdayE" class="form-control date" placeholder="Ex: 30/07/2561">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -568,7 +568,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_dateInE" class="form-control">
+                                                                    <input type="text" id="pro_dateInE" class="form-control date" placeholder="__/__/___">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -578,7 +578,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_dateOutE" class="form-control">
+                                                                    <input type="text" id="pro_dateOutE" class="form-control date" placeholder="__/__/___">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -590,10 +590,10 @@
                                                         <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon">
-                                                                    <i class="material-icons">monetization_on</i>
+                                                                    <i class="material-icons">credit_card</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="number" id="pro_salaryE" class="form-control" placeholder="กรุณาระบุจำนวนเงิน">
+                                                                    <input type="number" id="pro_salaryE" class="form-control" placeholder="กรอกจำนวนเงิน">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -608,7 +608,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPSM')">บันทึก</button>
                                 <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                             </div>
                         </div>

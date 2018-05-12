@@ -22,7 +22,7 @@
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    ตั้งค่าสิทธิ์เข้าใช้งาน
+                                    ตั้งค่าผู้เข้าใช้งาน
                                 </h2>
                             </div>
                             <div class="body">
@@ -78,7 +78,7 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="card_id" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
+                                                                    <input type="text" id="card_id" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -112,7 +112,7 @@
                                                         <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="tel" class="form-control" placeholder="กรอกเบอร์โทร">
+                                                                    <input type="text" id="tel" class="form-control mobile-number" placeholder="กรอกเบอร์โทร">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -227,7 +227,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addUser('AUSER')">บันทึก</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -266,7 +265,7 @@
                                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="text" id="card_idE" class="form-control" placeholder="กรอกเลขบัตรประชาชน">
+                                                                <input type="text" id="card_idE" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -300,7 +299,7 @@
                                                     <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="text" id="telE" class="form-control" placeholder="กรอกเบอร์โทร">
+                                                                <input type="text" id="telE" class="form-control mobile-number" placeholder="กรอกเบอร์โทร">
                                                             </div>
                                                         </div>
                                                     </div>

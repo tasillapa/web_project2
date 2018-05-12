@@ -70,4 +70,13 @@ class management {
 
 }
 
+function FnID($var) {
+    $srt[0] = substr($var, 0, 1);
+    $srt[1] = substr($var, 1, 4);
+    $srt[2] = substr($var, 5, 5);
+    $srt[3] = substr($var, 10, 2);
+    $srt[4] = substr($var, 12, 1);
+    return $srt[0] . "-" . $srt[1] . "-" . $srt[2] . "-" . $srt[3] . "-" . $srt[4];
+}
+
 ?>

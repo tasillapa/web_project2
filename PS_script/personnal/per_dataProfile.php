@@ -11,6 +11,7 @@
         } else {
             dataID = get_id;
         }
+        $.datetimepicker.setLocale('th');
         $("#blame_date").datetimepicker({
             timepicker: false,
             format: 'd/m/Y',
@@ -82,25 +83,232 @@
         show_marry();
         show_heir();
         show_blame();
-        $('#address_province').select2();
-        $('#address_amphur').select2();
-        $('#address_district').select2();
-        $('#pread_province').select2();
-        $('#pread_amphur').select2();
-        $('#pread_district').select2();
+        table_education();
+        $('#edu_level').select2();
+        $('#edu_year').select2();
+
+        $('#address_province').change(function () {
+            if ($('#address_province').val() != '') {
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [$('#address_province').val()], true, function (data) {
+                    $('#address_amphur').html('');
+                    $('#address_amphur').html('<option value="">เลือก</opition>');
+                    $.each(data, function (i) {
+                        $("#address_amphur").append('<option value="' + data[i].AMPHUR_ID + '">' + data[i].AMPHUR_NAME + '</opition>');
+                    });
+                    $('#address_amphur').select2();
+                });
+            } else {
+                $('#address_amphur').html('');
+                $('#address_amphur').html('<option  value="">กรุณาเลือกจังหวัด</opition>');
+                $('#address_district').html('');
+                $('#address_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
+                $('#address_zip_code').val('');
+            }
+        });
+        $('#address_amphur').change(function () {
+            if ($('#address_amphur').val() != '') {
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_district", [$('#address_amphur').val()], true, function (data) {
+                    $('#address_district').html('');
+                    $('#address_district').html('<option value="">เลือก</opition>');
+                    $.each(data, function (i) {
+                        $("#address_district").append('<option value="' + data[i].DISTRICT_ID + '">' + data[i].DISTRICT_NAME + '</opition>');
+                    });
+                    $('#address_district').select2();
+                });
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", ['get_code', $('#address_amphur').val()], true, function (data) {
+                    if (data.length != '0') {
+                        $('#address_zip_code').val(data[0].POSTCODE);
+                    } else {
+                        $('#address_zip_code').val('');
+                    }
+                });
+            } else {
+                $('#address_district').html('');
+                $('#address_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
+                $('#address_zip_code').val('');
+            }
+        });
+
+        $('#pread_province').change(function () {
+            if ($('#pread_province').val() != '') {
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [$('#pread_province').val()], true, function (data) {
+                    $('#pread_amphur').html('');
+                    $('#pread_amphur').html('<option value="">เลือก</opition>');
+                    $.each(data, function (i) {
+                        $("#pread_amphur").append('<option value="' + data[i].AMPHUR_ID + '">' + data[i].AMPHUR_NAME + '</opition>');
+                    });
+                    $('#pread_amphur').select2();
+                });
+            } else {
+                $('#pread_amphur').html('');
+                $('#pread_amphur').html('<option  value="">กรุณาเลือกจังหวัด</opition>');
+                $('#pread_district').html('');
+                $('#pread_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
+                $('#pread_zip_code').val('');
+            }
+        });
+        $('#pread_amphur').change(function () {
+            if ($('#pread_amphur').val() != '') {
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_district", [$('#pread_amphur').val()], true, function (data) {
+                    $('#pread_district').html('');
+                    $('#pread_district').html('<option value="">เลือก</opition>');
+                    $.each(data, function (i) {
+                        $("#pread_district").append('<option value="' + data[i].DISTRICT_ID + '">' + data[i].DISTRICT_NAME + '</opition>');
+                    });
+                    $('#pread_district').select2();
+                });
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", ['get_code', $('#pread_amphur').val()], true, function (data) {
+                    if (data.length != '0') {
+                        $('#pread_zip_code').val(data[0].POSTCODE);
+                    } else {
+                        $('#pread_zip_code').val('');
+                    }
+                });
+            } else {
+                $('#pread_district').html('');
+                $('#pread_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
+                $('#pread_zip_code').val('');
+            }
+        });
+
+        $('#check_addr').click(function () {
+            if (document.getElementById('check_addr').checked) {
+                if ($('#address_number').val() != '') {
+                    $('#pread_number').val($('#address_number').val());
+                    $('#pread_swine').val($('#address_swine').val());
+                    $('#pread_soi').val($('#address_soi').val());
+                    $('#pread_road').val($('#address_road').val());
+                    $('#pread_village').val($('#address_village').val());
+                    $('#pread_province option[value="' + $('#address_province').val() + '"]').prop('selected', true);
+                    $('#pread_province').select2();
+                    $('#pread_zip_code').val($('#address_zip_code').val());
+                    cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [$('#address_province').val()], true, function (data) {
+                        $('#pread_amphur').html('');
+                        $('#pread_amphur').html('<option value="">เลือก</opition>');
+                        $.each(data, function (i) {
+                            $("#pread_amphur").append('<option value="' + data[i].AMPHUR_ID + '">' + data[i].AMPHUR_NAME + '</opition>');
+                        });
+                        $('#pread_amphur option[value="' + $('#address_amphur').val() + '"]').prop('selected', true);
+                        $('#pread_amphur').select2();
+                    });
+                    if ($('#address_amphur').val() != '') {
+                        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_district", [$('#address_amphur').val()], true, function (data) {
+                            $('#pread_district').html('');
+                            $('#pread_district').html('<option value="">เลือก</opition>');
+                            $.each(data, function (i) {
+                                $("#pread_district").append('<option value="' + data[i].DISTRICT_ID + '">' + data[i].DISTRICT_NAME + '</opition>');
+                            });
+                            $('#pread_district option[value="' + $('#address_district').val() + '"]').prop('selected', true);
+                            $('#pread_district').select2();
+                        });
+                    } else {
+                        $('#pread_district').html('');
+                        $('#pread_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
+                    }
+                    $('#pread_call').val($('#address_call').val());
+                    $('#pread_fhone').val($('#address_fhone').val());
+                } else {
+                    $('#pread_amphur').html('');
+                    $('#pread_amphur').html('<option  value="">กรุณาเลือกจังหวัด</opition>');
+                    $('#pread_district').html('');
+                    $('#pread_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
+                }
+            } else {
+                $('#pread_number').val('');
+                $('#pread_swine').val('');
+                $('#pread_soi').val('');
+                $('#pread_road').val('');
+                $('#pread_village').val('');
+                $('#pread_province option[value=""]').prop('selected', true);
+                $('#pread_province').select2();
+                $('#pread_amphur').html('');
+                $('#pread_amphur').html('<option  value="">กรุณาเลือกจังหวัด</opition>');
+                $('#pread_district').html('');
+                $('#pread_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
+                $('#pread_zip_code').val('');
+                $('#pread_call').val('');
+                $('#pread_fhone').val('');
+            }
+        });
+
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_address", [dataID], true, function (data) {
+//            console.log(data);
+            if (data != 0) {
+                $('#address_number').val(data[0].address_number);
+                $('#address_swine').val(data[0].address_swine);
+                $('#address_soi').val(data[0].address_soi);
+                $('#address_road').val(data[0].address_road);
+                $('#address_village').val(data[0].address_village);
+                $('#address_province option[value="' + data[0].address_province + '"]').prop('selected', true);
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [data[0].address_province], true, function (data2) {
+                    $('#address_amphur').html('');
+                    $('#address_amphur').html('<option value="">เลือก</opition>');
+                    $.each(data2, function (i) {
+                        $("#address_amphur").append('<option value="' + data2[i].AMPHUR_ID + '">' + data2[i].AMPHUR_NAME + '</opition>');
+                    });
+                    $('#address_amphur option[value="' + data[0].address_amphur + '"]').prop('selected', true);
+                    $('#address_amphur').select2();
+                });
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_district", [data[0].address_amphur], true, function (data2) {
+                    $('#address_district').html('');
+                    $('#address_district').html('<option value="">เลือก</opition>');
+                    $.each(data2, function (i) {
+                        $("#address_district").append('<option value="' + data2[i].DISTRICT_ID + '">' + data2[i].DISTRICT_NAME + '</opition>');
+                    });
+                    $('#address_district option[value="' + data[0].address_district + '"]').prop('selected', true);
+                    $('#address_district').select2();
+                });
+                $('#address_zip_code').val(data[0].address_zip_code);
+                $('#address_call').val(data[0].address_call);
+                $('#address_fhone').val(data[0].address_fhone);
+
+                $('#pread_number').val(data[0].pread_number);
+                $('#pread_swine').val(data[0].pread_swine);
+                $('#pread_soi').val(data[0].pread_soi);
+                $('#pread_road').val(data[0].pread_road);
+                $('#pread_village').val(data[0].pread_village);
+                $('#pread_province option[value="' + data[0].pread_province + '"]').prop('selected', true);
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [data[0].pread_province], true, function (data2) {
+                    $('#pread_amphur').html('');
+                    $('#pread_amphur').html('<option value="">เลือก</opition>');
+                    $.each(data2, function (i) {
+                        $("#pread_amphur").append('<option value="' + data2[i].AMPHUR_ID + '">' + data2[i].AMPHUR_NAME + '</opition>');
+                    });
+                    $('#pread_amphur option[value="' + data[0].pread_amphur + '"]').prop('selected', true);
+                    $('#pread_amphur').select2();
+                });
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_district", [data[0].pread_amphur], true, function (data2) {
+                    $('#pread_district').html('');
+                    $('#pread_district').html('<option value="">เลือก</opition>');
+                    $.each(data2, function (i) {
+                        $("#pread_district").append('<option value="' + data2[i].DISTRICT_ID + '">' + data2[i].DISTRICT_NAME + '</opition>');
+                    });
+                    $('#pread_district option[value="' + data[0].pread_district + '"]').prop('selected', true);
+                    $('#pread_district').select2();
+                });
+                $('#pread_zip_code').val(data[0].pread_zip_code);
+                $('#pread_call').val(data[0].pread_call);
+                $('#pread_fhone').val(data[0].pread_fhone);
+            }
+            $('#address_province').select2();
+            $('#address_amphur').select2();
+            $('#address_district').select2();
+            $('#pread_province').select2();
+        });
+
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_geninfo", [dataID], true, function (data) {
             if (data != 0) {
                 $('#gen_prefix option[value="' + data[0].gen_prefix + '"]').prop('selected', true);
                 $('#gen_old').val(data[0].gen_old);
-                $('#gen_province option[value="' + data[0].gen_province + '"]').prop('selected', true);
-                $('#gen_nationality option[value="' + data[0].gen_nationality + '"]').prop('selected', true);
-                $('#gen_race option[value="' + data[0].gen_race + '"]').prop('selected', true);
-                $('#gen_religion option[value="' + data[0].gen_religion + '"]').prop('selected', true);
+                $('#PROVINCE_ID option[value="' + data[0].PROVINCE_ID + '"]').prop('selected', true);
+                $('#nationality_id option[value="' + data[0].nationality_id + '"]').prop('selected', true);
+                $('#nationality_id_race option[value="' + data[0].nationality_id_race + '"]').prop('selected', true);
+                $('#religion_id option[value="' + data[0].religion_id + '"]').prop('selected', true);
                 $('#gen_blood option[value="' + data[0].gen_blood + '"]').prop('selected', true);
                 $('#gen_soldier option[value="' + data[0].gen_soldier + '"]').prop('selected', true);
                 $('#gen_tax').val(data[0].gen_tax);
                 $('#gen_passport').val(data[0].gen_passport);
-                $('#gen_bank option[value="' + data[0].gen_bank + '"]').prop('selected', true);
+                $('#bank_id option[value="' + data[0].bank_id + '"]').prop('selected', true);
                 $('#gen_account_number').val(data[0].gen_account_number);
                 $('#gen_email').val(data[0].gen_email);
                 $('#gen_facebook').val(data[0].gen_facebook);
@@ -112,13 +320,13 @@
                 $('#expert_ex').val(data[0].expert_ex);
             }
             $('#gen_prefix').select2();
-            $('#gen_province').select2();
-            $('#gen_nationality').select2();
-            $('#gen_race').select2();
-            $('#gen_religion').select2();
+            $('#PROVINCE_ID').select2();
+            $('#nationality_id').select2();
+            $('#nationality_id_race').select2();
+            $('#religion_id').select2();
             $('#gen_blood').select2();
             $('#gen_soldier').select2();
-            $('#gen_bank').select2();
+            $('#bank_id').select2();
         });
 
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [dataID], true, function (data) {
@@ -223,7 +431,8 @@
                 $('#dep_idE').select2();
             });
         });
-    });
+    }
+    );
     $(document).find("#pro_pictureE").change(function () {
         readURLProfileE(this);
     });
@@ -493,9 +702,7 @@
     }
     function editPerson(EPS) {
 //        var array = [];
-//        array.push($('#gen_prefix').val(), $('#gen_old').val(), $('#gen_province').val(), $('#gen_nationality').val(), $('#gen_race').val(), $('#gen_religion').val(), $('#gen_blood').val()
-//                , $('#gen_soldier').val(), $('#gen_tax').val(), $('#gen_passport').val(), $('#gen_bank').val(), $('#gen_account_number').val(), $('#gen_email').val()
-//                , $('#gen_facebook').val(), $('#gen_twitter').val(), $('#gen_line').val(), $('#gen_talent').val(), $('#gen_interest').val(), $('#expert_name').val(), $('#expert_ex').val(), dataID);
+//        array.push();
 //        console.log(array);
         var Improfile = $('#pro_pictureE').prop('files')[0];
         var form_data_img = new FormData();
@@ -513,9 +720,12 @@
                 array.push($('#card_idE').val(), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
                         , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
                         , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), data, name, formatDateToday(), $('#pro_id').val(), $('#imgSE').attr('src')
-                        , $('#gen_prefix').val(), $('#gen_old').val(), $('#gen_province').val(), $('#gen_nationality').val(), $('#gen_race').val(), $('#gen_religion').val(), $('#gen_blood').val()
-                        , $('#gen_soldier').val(), $('#gen_tax').val(), $('#gen_passport').val(), $('#gen_bank').val(), $('#gen_account_number').val(), $('#gen_email').val()
-                        , $('#gen_facebook').val(), $('#gen_twitter').val(), $('#gen_line').val(), $('#gen_talent').val(), $('#gen_interest').val(), $('#expert_name').val(), $('#expert_ex').val(), dataID);
+                        , $('#gen_prefix').val(), $('#gen_old').val(), $('#PROVINCE_ID').val(), $('#nationality_id').val(), $('#nationality_id_race').val(), $('#religion_id').val(), $('#gen_blood').val()
+                        , $('#gen_soldier').val(), $('#gen_tax').val(), $('#gen_passport').val(), $('#bank_id').val(), $('#gen_account_number').val(), $('#gen_email').val()
+                        , $('#gen_facebook').val(), $('#gen_twitter').val(), $('#gen_line').val(), $('#gen_talent').val(), $('#gen_interest').val(), $('#expert_name').val(), $('#expert_ex').val(), dataID
+                        , $('#address_number').val(), $('#address_swine').val(), $('#address_soi').val(), $('#address_road').val(), $('#address_village').val(), $('#address_province').val(), $('#address_amphur').val()
+                        , $('#address_district').val(), $('#address_zip_code').val(), $('#address_call').val(), $('#address_fhone').val(), $('#pread_number').val(), $('#pread_swine').val(), $('#pread_soi').val(), $('#pread_road').val(), $('#pread_village').val(), $('#pread_province').val(), $('#pread_amphur').val()
+                        , $('#pread_district').val(), $('#pread_zip_code').val(), $('#pread_call').val(), $('#pread_fhone').val());
                 cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPS, array, true, function (result) {
                     swal({
                         title: "บันทึกข้อมูลสำเร็จ!",
@@ -536,6 +746,31 @@
                     });
                 });
             }
+        });
+    }
+
+    function table_education(data) {
+        $(".table_education").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['', a, data[i].marry_name, data[i].marry_status, '<img class="btn-delete" id="' + data[i].marry_id + '" onclick="javascript: delMarry(this)"/>']);
+        });
+        $('#table_education_show').html('<table class="table table-bordered table-striped table-hover table_education dataTable" width="100%"></table>');
+        $('.table_education').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "#"},
+                {title: "ลำดับ"},
+                {title: "ระดับการศึกษา"},
+                {title: "วุฒิการศึกษา"},
+                {title: "วิชาเอก"},
+                {title: "สถานศึกษา"},
+                {title: "ประเทศ"},
+                {title: "..."},
+            ]
         });
     }
 </script>

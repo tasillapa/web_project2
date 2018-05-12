@@ -1578,7 +1578,7 @@
             separator: "/",
             yearrange: {
                 minyear: 1900,
-                maxyear: 2099
+                maxyear: 2999   //พึ่งแก้ไข
             },
             isInYearRange: function(chrs, minyear, maxyear) {
                 if (isNaN(chrs)) return !1;

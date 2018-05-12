@@ -9,6 +9,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
     switch ($_POST["FN"]) {
         case "sl_data_geninfo":sl_data_geninfo();
             break;
+        case "sl_data_address":sl_data_address();
+            break;
         case "sl_table_chName":sl_data_chName();
             break;
         case "ACN":add_chName();
@@ -33,7 +35,9 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "DB": del_blame();
             break;
-        case "select_data_district": select_data_district();
+        case "sl_data_amphur": sl_data_amphur();
+            break;
+        case "sl_data_district": sl_data_district();
             break;
     }
 }
@@ -224,11 +228,56 @@ function del_blame() {
     exit();
 }
 
-function select_data_district() {
+function sl_data_amphur() {
     $cn = new management;
     $cn->con_db();
-    echo '<option  value="">เลือก</opition>';
-    $sql = "select * from ps_district ORDER BY DISTRICT_NAME ASC";
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "select * from ps_amphur ORDER BY AMPHUR_NAME ASC";
+        } else if ($id == 'get_code') {
+            $sql = "select POSTCODE from ps_amphur WHERE AMPHUR_ID = '$get_data[1]'";
+        } else {
+            $sql = "select * from ps_amphur WHERE PROVINCE_ID = '$id' ORDER BY AMPHUR_NAME ASC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function sl_data_district() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "select * from ps_district ORDER BY DISTRICT_NAME ASC";
+        } else {
+            $sql = "select * from ps_district WHERE AMPHUR_ID = '$id' ORDER BY DISTRICT_NAME ASC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function sl_data_address() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "SELECT * FROM `ps_address` AS ad JOIN ps_preaddress AS pad ON ad.pro_id = pad.pro_id WHERE ad.pro_id = '$id'";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
 }
 ?>
 

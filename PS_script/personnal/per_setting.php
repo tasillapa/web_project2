@@ -64,14 +64,14 @@
             }
             a++;
 //            , data[i].tel, data[i].email, data[i].username, data[i].password
-            dataSet.push([a, data[i].card_id, data[i].nameuser + ' ' + data[i].lastname, data[i].pos_name, data[i].class_name, tag, '<img class="btn-detail" id="' + data[i].member_id + '" data-toggle="modal" data-target="#detailUser" onclick="javascript: slUserDetail(this)"/><img class="btn-edit" id="' + data[i].member_id + '" data-toggle="modal" data-target="#editUser" onclick="javascript: slUserEdit(this)"/><img class="btn-delete" id="' + data[i].member_id + '" onclick="javascript: delUser(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', cardID(data[i].card_id), data[i].nameuser + ' ' + data[i].lastname, data[i].pos_name, data[i].class_name, tag, '<img class="btn-detail" id="' + data[i].member_id + '" data-toggle="modal" data-target="#detailUser" onclick="javascript: slUserDetail(this)"/><img class="btn-edit" id="' + data[i].member_id + '" data-toggle="modal" data-target="#editUser" onclick="javascript: slUserEdit(this)"/><img class="btn-delete" id="' + data[i].member_id + '" onclick="javascript: delUser(this)"/>']);
         });
         $('#table_setting_show').html('<table class="table table-bordered table-striped table-hover table_setting dataTable" width="100%"></table>');
         $('.table_setting').DataTable({
             responsive: true,
             data: dataSet,
             columns: [
-                {title: "ลำดับ"},
+                {title: "ลำดับ", "width": "1%"},
                 {title: "รหัสบัตรประชาชน"},
                 {title: "ชื่อ-สกุล"},
                 {title: "ตำแหน่ง"},
@@ -97,7 +97,7 @@
             if ($('#status').is(':checked')) {
                 status = 1;
             }
-            array.push($('#card_id').val(), $('#nameuser').val(), $('#lastname').val(), $('#tel').val(), $('#email').val()
+            array.push(split($('#card_id').val()), $('#nameuser').val(), $('#lastname').val(), split($('#tel').val()), $('#email').val()
                     , $('#pos_id').val(), $('#class_id').val(), $('#username').val(), $('#password').val()
                     , $('#level').val(), status, name, formatDateToday(), name, formatDateToday());
             cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", AUSER, array, true, function (data) {
@@ -161,10 +161,10 @@
 
     function slUserDetail(data) {
         cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", 'SLUSER', [$(data).attr("id")], true, function (data) {
-            $('#card_idD').html(data[0].card_id);
+            $('#card_idD').html(cardID(data[0].card_id));
             $('#nameuserD').html(data[0].nameuser);
             $('#lastnameD').html(data[0].lastname);
-            $('#telD').html(data[0].tel);
+            $('#telD').html(mobileNum(data[0].tel));
             $('#emailD').html(data[0].email);
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_position", "", true, function (data2) {
                 $.each(data2, function (i) {

@@ -193,11 +193,22 @@ function formatDateShow(date) {
     var yyyy = strDate.getFullYear() + 543;
     var newdate = dd + '/' + mm + '/' + yyyy;
     if (date == "0000-00-00") {
-        newdate = '00/00/0000';
+        newdate = ' ';
     }
     return newdate;
 }
 
+function formatDatePK(date) {
+    var srt = [];
+    srt[0] = date.substr(0, 2);
+    srt[1] = date.substr(3, 2);
+    var year = date.substr(6, 4) - 543;
+    if (date == '') {
+        return '';
+    } else {
+        return srt[0] + "/" + srt[1] + "/" + year;
+    }
+}
 
 function DateThai(date) {
     var strDate = new Date(date);
@@ -206,7 +217,7 @@ function DateThai(date) {
     var yyyy = strDate.getFullYear() + 543;
     var strMonthCut = Array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษภาคม", "ธันวาคม");
     var strMonthThai = strMonthCut[mm];
-    var newdate = dd + " " + strMonthThai + " พ.ศ. " + yyyy;
+    var newdate = dd + " " + strMonthThai + " " + yyyy;
     if (date == "0000-00-00") {
         newdate = 'ไม่ได้ระบุวันที่';
     }
@@ -231,4 +242,23 @@ function formatDateToday() {
 
     today = yyyy + '-' + mm + '-' + dd;
     return today + ' ' + strTime;
+}
+function split(val) {
+    return val.split("-").join("");
+}
+function cardID(val) {
+    var srt = [];
+    srt[0] = val.substr(0, 1);
+    srt[1] = val.substr(1, 4);
+    srt[2] = val.substr(5, 5);
+    srt[3] = val.substr(10, 2);
+    srt[4] = val.substr(12, 1);
+    return srt[0] + "-" + srt[1] + "-" + srt[2] + "-" + srt[3] + "-" + srt[4];
+}
+function mobileNum(val) {
+    var srt = [];
+    srt[0] = val.substr(0, 2);
+    srt[1] = val.substr(2, 4);
+    srt[2] = val.substr(6, 4);
+    return srt[0] + "-" + srt[1] + "-" + srt[2];
 }

@@ -26,26 +26,26 @@ if (!isset($_GET['id'])) {
                             <div class="body">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation">
-                                        <a href="#personal-information" data-toggle="tab">
+                                    <li role="presentation" class="active">
+                                        <a href="#personal_information" data-toggle="tab">
                                             <img class="logo-btn-personIn"/> 
                                             <span>ข้อมูลส่วนตัว</span>
                                         </a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#general-information" data-toggle="tab">
+                                        <a href="#general_information" data-toggle="tab">
                                             <img class="logo-btn-general"/> 
                                             <span>ข้อมูลทั่วไป</span>
                                         </a>
                                     </li>
-                                    <li role="presentation" class="active">
-                                        <a href="#career-history" data-toggle="tab">
+                                    <li role="presentation">
+                                        <a href="#address_information" data-toggle="tab">
                                             <img class="logo-btn-address"/>
                                             <span>ข้อมูลที่อยู่</span>
                                         </a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#career-history" data-toggle="tab">
+                                        <a href="#history_education" data-toggle="tab">
                                             <img class="logo-btn-education"/>
                                             <span>ประวัติการศึกษา</span>
                                         </a>
@@ -66,7 +66,7 @@ if (!isset($_GET['id'])) {
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade" id="personal-information">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="personal_information">
                                         <!-- ข้อมูลส่วนตัว -->
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -96,7 +96,7 @@ if (!isset($_GET['id'])) {
                                                                             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                                                 <div class="form-group">
                                                                                     <div class="form-line">
-                                                                                        <input type="text" id="pro_idposE" class="form-control" placeholder="กรอกรหัสตำแหน่ง">
+                                                                                        <input type="text" id="pro_idposE" class="form-control" placeholder="กรอกรหัสตำแหน่ง" maxlength="4" onkeypress="return isNumberKey(event)">
                                                                                         <input type="hidden" id="pro_id" class="form-control">
                                                                                     </div>
                                                                                 </div>
@@ -144,7 +144,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="card_idE" class="form-control" placeholder="กรอกเลขบัตรประชาชน" onkeyup="javascript: keyupCardId();">
+                                                                                <input type="text" id="card_idE" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน" onkeyup="javascript: keyupCardId();">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -180,7 +180,7 @@ if (!isset($_GET['id'])) {
                                                                                 <i class="material-icons">date_range</i>
                                                                             </span>
                                                                             <div class="form-line">
-                                                                                <input type="text" id="pro_birthdayE" class="form-control" placeholder="Ex: 30/07/2561" onchange="javascript: changeBirthday()">
+                                                                                <input type="text" id="pro_birthdayE" class="form-control date" placeholder="Ex: 30/07/2561" onchange="javascript: changeBirthday()">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -253,7 +253,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="pro_dateInE" class="form-control">
+                                                                                <input type="text" id="pro_dateInE" class="form-control date" placeholder="__/__/____">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -263,7 +263,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="pro_dateOutE" class="form-control">
+                                                                                <input type="text" id="pro_dateOutE" class="form-control date" placeholder="__/__/____">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -310,7 +310,7 @@ if (!isset($_GET['id'])) {
                                         </div>
                                         <!-- #END# ข้อมูลส่วนตัว -->
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="general-information">
+                                    <div role="tabpanel" class="tab-pane fade" id="general_information">
                                         <!-- ข้อมูลทั่วไป -->
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -333,7 +333,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="gen_card_id" class="form-control" placeholder="กรอกเลขบัตรประชาชน" disabled>
+                                                                                <input type="text" id="gen_card_id" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน" disabled>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -392,13 +392,13 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
-                                                                        <label >วันเกิด</label>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >วันเดือนปีเกิด</label>
                                                                     </div>
-                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="gen_birthday" class="form-control" placeholder="กรอกวัน/เดือน/ปีเกิด" disabled>
+                                                                                <input type="text" id="gen_birthday" class="form-control date" placeholder="กรอกวัน/เดือน/ปีเกิด" disabled>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -410,7 +410,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="gen_old" class="form-control" placeholder="กรอกอายุ (ปี)">
+                                                                                <input type="text" id="gen_old" class="form-control" placeholder="กรอกอายุ (ปี)" onkeypress="return isNumberKey(event)">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -418,7 +418,7 @@ if (!isset($_GET['id'])) {
                                                                         <label >จังหวัดที่เกิด</label>
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_province">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="PROVINCE_ID">
                                                                             <?php
                                                                             $cn = new management;
                                                                             $cn->con_db();
@@ -437,7 +437,7 @@ if (!isset($_GET['id'])) {
                                                                         <label >สัญชาติ</label>
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_nationality">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="nationality_id">
                                                                             <?php
                                                                             $cn = new management;
                                                                             $cn->con_db();
@@ -454,7 +454,7 @@ if (!isset($_GET['id'])) {
                                                                         <label >เชื้อชาติ</label>
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_race">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="nationality_id_race">
                                                                             <?php
                                                                             $cn = new management;
                                                                             $cn->con_db();
@@ -473,7 +473,7 @@ if (!isset($_GET['id'])) {
                                                                         <label >ศาสนา</label>
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_religion">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="religion_id">
                                                                             <?php
                                                                             $cn = new management;
                                                                             $cn->con_db();
@@ -553,7 +553,7 @@ if (!isset($_GET['id'])) {
                                                                         <label >บัญชีธนาคาร</label>
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_bank">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="bank_id">
                                                                             <?php
                                                                             $cn = new management;
                                                                             $cn->con_db();
@@ -714,7 +714,7 @@ if (!isset($_GET['id'])) {
                                                                             <div class="col-lg-4 col-md-5 col-sm-8 col-xs-12">
                                                                                 <div class="form-group">
                                                                                     <div class="form-line">
-                                                                                        <input type="text" id="chName_date" class="form-control" placeholder="--/--/----">
+                                                                                        <input type="text" id="chName_date" class="form-control date" placeholder="--/--/----">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -879,7 +879,7 @@ if (!isset($_GET['id'])) {
                                                                             <div class="col-lg-4 col-md-5 col-sm-8 col-xs-12">
                                                                                 <div class="form-group">
                                                                                     <div class="form-line">
-                                                                                        <input type="text" id="blame_date" class="form-control" placeholder="--/--/----">
+                                                                                        <input type="text" id="blame_date" class="form-control date" placeholder="--/--/----">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -947,7 +947,7 @@ if (!isset($_GET['id'])) {
                                         </div>
                                         <!-- #END# ข้อมูลทั่วไป -->
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade in active" id="career-history">
+                                    <div role="tabpanel" class="tab-pane fade" id="address_information">
                                         <!-- ข้อมูลที่อยู่ -->
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -965,7 +965,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >เลขที่</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="address_number" class="form-control" placeholder="กรอกเลขที่อยู่">
@@ -975,7 +975,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >หมู่</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="address_swine" class="form-control" placeholder="กรอกหมู่">
@@ -984,20 +984,20 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >ซอย</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="address_soi" class="form-control" placeholder="กรอกซอย">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >ถนน</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="address_road" class="form-control" placeholder="กรอกถนน">
@@ -1006,10 +1006,10 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >หมู่บ้าน</label>
                                                                     </div>
-                                                                    <div class="col-lg-5 col-md-3 col-sm-4 col-xs-12">
+                                                                    <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="address_village" class="form-control" placeholder="กรอกหมู่บ้าน">
@@ -1022,7 +1022,7 @@ if (!isset($_GET['id'])) {
                                                                         <label >จังหวัด</label>
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_province">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_province">
                                                                             <?php
                                                                             $cn = new management;
                                                                             $cn->con_db();
@@ -1040,16 +1040,17 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_amphur">
-                                                                            <?php
-                                                                            $cn = new management;
-                                                                            $cn->con_db();
-                                                                            echo '<option  value="">เลือก</opition>';
-                                                                            $sql = "select * from ps_amphur ORDER BY AMPHUR_NAME ASC";
-                                                                            $query = $cn->Connect->query($sql);
-                                                                            while ($rs = mysqli_fetch_array($query)) {
-                                                                                echo '<option  value="' . $rs['AMPHUR_ID'] . '">' . $rs['AMPHUR_NAME'] . '</opition>';
-                                                                            }
-                                                                            ?>
+                                                                            <option  value="">กรุณาเลือกจังหวัด</opition>
+                                                                                <?php
+//                                                                                $cn = new management;
+//                                                                                $cn->con_db();
+//                                                                                echo '<option  value="">กรุณาเลือกจังหวัด</opition>';
+//                                                                                $sql = "select * from ps_amphur ORDER BY AMPHUR_NAME ASC";
+//                                                                                $query = $cn->Connect->query($sql);
+//                                                                                while ($rs = mysqli_fetch_array($query)) {
+//                                                                                    echo '<option  value="' . $rs['AMPHUR_ID'] . '">' . $rs['AMPHUR_NAME'] . '</opition>';
+//                                                                                }
+                                                                                ?>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -1059,16 +1060,17 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_district">
-                                                                            <?php
-                                                                            $cn = new management;
-                                                                            $cn->con_db();
-                                                                            echo '<option  value="">เลือก</opition>';
-                                                                            $sql = "select * from ps_district ORDER BY DISTRICT_NAME ASC";
-                                                                            $query = $cn->Connect->query($sql);
-                                                                            while ($rs = mysqli_fetch_array($query)) {
-                                                                                echo '<option  value="' . $rs['DISTRICT_ID'] . '">' . $rs['DISTRICT_NAME'] . '</opition>';
-                                                                            }
-                                                                            ?>
+                                                                            <option  value="">กรุณาเลือกอำเภอ</opition>
+                                                                                <?php
+//                                                                                $cn = new management;
+//                                                                                $cn->con_db();
+//                                                                                echo '<option  value="">เลือก</opition>';
+//                                                                                $sql = "select * from ps_district ORDER BY DISTRICT_NAME ASC";
+//                                                                                $query = $cn->Connect->query($sql);
+//                                                                                while ($rs = mysqli_fetch_array($query)) {
+//                                                                                    echo '<option  value="' . $rs['DISTRICT_ID'] . '">' . $rs['DISTRICT_NAME'] . '</opition>';
+//                                                                                }
+                                                                                ?>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
@@ -1077,29 +1079,29 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="address_zip_code" class="form-control" placeholder="กรอกรหัสไปรษณีย์">
+                                                                                <input type="text" id="address_zip_code" class="form-control" maxlength="5" placeholder="กรอกรหัสไปรษณีย์" onkeypress="return isNumberKey(event)">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
-                                                                        <label >โทร.</label>
+                                                                        <label >โทรศัพท์</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="address_call" class="form-control" placeholder="กรอกหมายเลขโทรศัพท์">
+                                                                                <input type="text" id="address_call" class="form-control phone-number" placeholder="กรอกหมายเลขโทรศัพท์">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >มือถือ</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="address_fhone" class="form-control" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
+                                                                                <input type="text" id="address_fhone" class="form-control mobile-number" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1114,8 +1116,8 @@ if (!isset($_GET['id'])) {
 
                                                                 </h2>
                                                                 <span class="header-dropdown m-t--15">
-                                                                    <input type="checkbox" id="basic_checkbox_2" class="filled-in  "checked />
-                                                                    <label for="basic_checkbox_2">ที่อยู่เหมือนทะเบียนบ้าน</label>
+                                                                    <input type="checkbox" id="check_addr" class="filled-in"/>
+                                                                    <label for="check_addr">ที่อยู่เหมือนทะเบียนบ้าน</label>
                                                                 </span>
                                                             </div>
                                                             <div class="body">
@@ -1124,7 +1126,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >เลขที่</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="pread_number" class="form-control" placeholder="กรอกเลขที่อยู่">
@@ -1134,7 +1136,7 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >หมู่</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="pread_swine" class="form-control" placeholder="กรอกหมู่">
@@ -1143,20 +1145,20 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >ซอย</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="pread_soi" class="form-control" placeholder="กรอกซอย">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >ถนน</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="pread_road" class="form-control" placeholder="กรอกถนน">
@@ -1165,10 +1167,10 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
-                                                                    <div class="col-lg-2 col-md-1 col-sm-2 col-xs-12 form-control-label-l">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                         <label >หมู่บ้าน</label>
                                                                     </div>
-                                                                    <div class="col-lg-5 col-md-3 col-sm-4 col-xs-12">
+                                                                    <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
                                                                                 <input type="text" id="pread_village" class="form-control" placeholder="กรอกหมู่บ้าน">
@@ -1199,16 +1201,7 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pread_amphur">
-                                                                            <?php
-                                                                            $cn = new management;
-                                                                            $cn->con_db();
-                                                                            echo '<option  value="">เลือก</opition>';
-                                                                            $sql = "select * from ps_province ORDER BY PROVINCE_NAME ASC";
-                                                                            $query = $cn->Connect->query($sql);
-                                                                            while ($rs = mysqli_fetch_array($query)) {
-                                                                                echo '<option  value="' . $rs['PROVINCE_ID'] . '">' . $rs['PROVINCE_NAME'] . '</opition>';
-                                                                            }
-                                                                            ?>
+                                                                            <option  value="">กรุณาเลือกจังหวัด</opition>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -1218,16 +1211,7 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pread_district">
-                                                                            <?php
-                                                                            $cn = new management;
-                                                                            $cn->con_db();
-                                                                            echo '<option  value="">เลือก</opition>';
-                                                                            $sql = "select * from ps_province ORDER BY PROVINCE_NAME ASC";
-                                                                            $query = $cn->Connect->query($sql);
-                                                                            while ($rs = mysqli_fetch_array($query)) {
-                                                                                echo '<option  value="' . $rs['PROVINCE_ID'] . '">' . $rs['PROVINCE_NAME'] . '</opition>';
-                                                                            }
-                                                                            ?>
+                                                                            <option  value="">กรุณาเลือกอำเภอ</opition>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
@@ -1236,29 +1220,29 @@ if (!isset($_GET['id'])) {
                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="pread_zip_code" class="form-control" placeholder="กรอกรหัสไปรษณีย์">
+                                                                                <input type="text" id="pread_zip_code" class="form-control" placeholder="กรอกรหัสไปรษณีย์" maxlength="5" onkeypress="return isNumberKey(event)">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row clearfix">
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
-                                                                        <label >โทร.</label>
+                                                                        <label >โทรศัพท์</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="pread_call" class="form-control" placeholder="กรอกหมายเลขโทรศัพท์">
+                                                                                <input type="text" id="pread_call" class="form-control phone-number" placeholder="กรอกหมายเลขโทรศัพท์">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                         <label >มือถือ</label>
                                                                     </div>
-                                                                    <div class="col-lg-4 col-md-10 col-sm-8 col-xs-12">
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                         <div class="form-group">
                                                                             <div class="form-line">
-                                                                                <input type="text" id="pread_fhone" class="form-control" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
+                                                                                <input type="text" id="pread_fhone" class="form-control mobile-number" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1286,6 +1270,134 @@ if (!isset($_GET['id'])) {
                                             </div>
                                         </div>
                                         <!-- #END# ข้อมูลที่อยู่ -->
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade" id="history_education">
+                                        <!-- ประวัติการศึกษา -->
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="demo-masked-input">
+                                                    <form class="form-horizontal">
+                                                        <div class="card">
+<!--                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ระดับการศึกษาสูงสุด
+                                                                </h2>
+                                                            </div>-->
+                                                            <div class="body">
+                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_education" aria-expanded="false" aria-controls="collapseExample">
+                                                                    <div class=""> <i class="material-icons">add</i></div>
+                                                                </button>
+                                                                <div class="collapse" id="add_education">
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >ระดับการศึกษา</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="edu_level">
+                                                                                <?php
+                                                                                $cn = new management;
+                                                                                $cn->con_db();
+                                                                                echo '<option  value="">เลือก</opition>';
+                                                                                $sql = "select * from ps_leveleducation ORDER BY edu_id ASC";
+                                                                                $query = $cn->Connect->query($sql);
+                                                                                while ($rs = mysqli_fetch_array($query)) {
+                                                                                    echo '<option  value="' . $rs['edu_id'] . '">' . $rs['edu_name'] . '</opition>';
+                                                                                }
+                                                                                ?>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >ปีที่จบ</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="edu_year">
+                                                                                <?php
+                                                                                echo '<option  value="">เลือก</opition>';
+                                                                                $i = 2450;
+                                                                                while ($i < 2600) {
+                                                                                    echo '<option  value="' . $i . '">' . $i . '</opition>';
+                                                                                    $i++;
+                                                                                }
+                                                                                ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                            <label >วุฒิการศึกษา</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="edu_background" class="form-control" placeholder="กรอกวุฒิการศึกษา">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                            <label >วิชาเอก</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="edu_major" class="form-control" placeholder="กรอกวิชาเอก">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                            <label >สถานศึกษา</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="edu_place" class="form-control" placeholder="กรอกสถานศึกษา">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                            <label >ประเทศ</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="edu_country" class="form-control" placeholder="กรอกประเทศ">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix align-right m-r-15">
+                                                                        <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                        <button type="button" class="btn btn-success waves-effect" onclick="javascript: addEdu('AED')">บันทึก</button>
+                                                                    </div>
+                                                                </div><br>
+                                                                <div class="table-responsive">
+                                                                    <div id="table_education_show"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="footer">
+                                                    <div class="row clearfix">
+                                                        <?php if ($_GET['id'] != '') { ?>
+                                                            <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
+                                                            </div>
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                                            </div>
+                                                        <?php } else { ?>
+                                                            <div class="align-right col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- #END# ประวัติการศึกษา -->
                                     </div>
                                 </div>
                             </div>

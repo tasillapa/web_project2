@@ -155,7 +155,7 @@ if (!isset($_POST['ch_new'])) {
                                 </li>
                                 <li>
                                     <a href="person_addData.php"><img class="logo-add-person"/> 
-                                        <span>จัดการข้อมูลบุคคลากร</span>
+                                        <span>จัดการข้อมูลบุคลากร</span>
                                     </a>
                                 </li>
                                 <!--                                <li>
@@ -181,7 +181,7 @@ if (!isset($_POST['ch_new'])) {
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="person_authority.php">
                                                 <img class="logo-setting2-person"/> 
                                                 <span>ตั้งค่าสิทธิ์เข้าใช้งาน</span>
                                             </a>

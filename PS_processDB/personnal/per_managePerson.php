@@ -15,6 +15,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "EPS":edit_profile();
             break;
+        case "EPSM":edit_profile_main();
+            break;
         case "SLEPS":sl_data_profile();
             break;
         case "SLPF":sl_prefix();
@@ -120,9 +122,9 @@ function sl_data_profile() {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
         if ($id == '') {
-            $sql = "SELECT * from ps_profile";
+            $sql = "SELECT * from ps_profile LEFT JOIN ps_class ON ps_profile.class_id = ps_class.class_id";
         } else {
-            $sql = "SELECT * from ps_profile WHERE pro_id ='$id'";
+            $sql = "SELECT * from ps_profile LEFT JOIN ps_class ON ps_profile.class_id = ps_class.class_id WHERE ps_profile.pro_id ='$id'";
         }
         $rs = $cn->select($sql);
         $json = json_encode($rs);
@@ -180,7 +182,8 @@ function edit_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-//        print_r($get_data); exit();
+//        print_r($get_data);
+//        exit();
         $path = '';
         $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[21]'";
         $Query = $cn->Connect->query($sql_img);
@@ -201,22 +204,86 @@ function edit_profile() {
             }
             $get_data[18] = $path;
         }
+
         $sql_sl_geninfo = "SELECT * FROM ps_geninformation WHERE pro_id = '$get_data[43]'";
         $Query_geninfo = $cn->Connect->query($sql_sl_geninfo);
         if (mysqli_num_rows($Query_geninfo) == '0') {
-            $sql_add_geninfo = "INSERT INTO ps_geninformation (gen_card_id, gen_prefix, gen_old, gen_province, gen_nationality, gen_race, gen_religion, gen_blood, gen_soldier, gen_tax, gen_passport, gen_bank, gen_account_number, gen_email, gen_facebook, gen_twitter"
+            $sql_add_geninfo = "INSERT INTO ps_geninformation (gen_card_id, gen_prefix, gen_old, PROVINCE_ID, nationality_id, nationality_id_race, religion_id, gen_blood, gen_soldier, gen_tax, gen_passport, bank_id, gen_account_number, gen_email, gen_facebook, gen_twitter"
                     . ", gen_line, gen_talent, gen_interest, expert_name, expert_ex, pro_id)"
                     . " VALUES ('$get_data[0]', '$get_data[23]', '$get_data[24]', '$get_data[25]', '$get_data[26]', '$get_data[27]', '$get_data[28]', '$get_data[29]', '$get_data[30]', '$get_data[31]', '$get_data[32]', '$get_data[33]', '$get_data[34]', '$get_data[35]'"
                     . ", '$get_data[36]', '$get_data[37]', '$get_data[38]', '$get_data[39]', '$get_data[40]', '$get_data[41]', '$get_data[42]', '$get_data[43]')";
             $cn->exec($sql_add_geninfo);
         } else {
-            $sql_add_geninfo = "UPDATE ps_geninformation SET gen_card_id = '$get_data[0]', gen_prefix = '$get_data[23]', gen_old = '$get_data[24]', gen_province = '$get_data[25]', gen_nationality = '$get_data[26]', gen_race = '$get_data[27]', gen_religion = '$get_data[28]'"
-                    . ", gen_blood = '$get_data[29]', gen_soldier = '$get_data[30]', gen_tax = '$get_data[31]', gen_passport = '$get_data[32]', gen_bank = '$get_data[33]', gen_account_number = '$get_data[34]', gen_email = '$get_data[35]', gen_facebook = '$get_data[36]', gen_twitter = '$get_data[37]'"
+            $sql_edit_geninfo = "UPDATE ps_geninformation SET gen_card_id = '$get_data[0]', gen_prefix = '$get_data[23]', gen_old = '$get_data[24]', PROVINCE_ID = '$get_data[25]', nationality_id = '$get_data[26]', nationality_id_race = '$get_data[27]', religion_id = '$get_data[28]'"
+                    . ", gen_blood = '$get_data[29]', gen_soldier = '$get_data[30]', gen_tax = '$get_data[31]', gen_passport = '$get_data[32]', bank_id = '$get_data[33]', gen_account_number = '$get_data[34]', gen_email = '$get_data[35]', gen_facebook = '$get_data[36]', gen_twitter = '$get_data[37]'"
                     . ", gen_line = '$get_data[38]', gen_talent = '$get_data[39]', gen_interest = '$get_data[40]', expert_name = '$get_data[41]', expert_ex = '$get_data[42]'"
                     . " WHERE pro_id = '$get_data[43]'";
-            $cn->exec($sql_add_geninfo);
+            $cn->exec($sql_edit_geninfo);
         }
 
+        $sql_address = "SELECT * FROM ps_address WHERE pro_id = '$get_data[43]'";
+        $Query_address = $cn->Connect->query($sql_address);
+        if (mysqli_num_rows($Query_address) == '0') {
+            $sql_add_address = "INSERT INTO ps_address(address_number, address_swine, address_soi, address_road, address_village, address_province, address_amphur, address_district, address_zip_code, address_call, address_fhone, pro_id)"
+                    . " VALUES ('$get_data[44]', '$get_data[45]', '$get_data[46]', '$get_data[47]', '$get_data[48]', '$get_data[49]', '$get_data[50]', '$get_data[51]', '$get_data[52]', '$get_data[53]', '$get_data[54]', '$get_data[43]')";
+            $cn->exec($sql_add_address);
+        } else {
+            $sql_edit_address = " UPDATE ps_address SET address_number = '$get_data[44]', address_swine = '$get_data[45]', address_soi = '$get_data[46]', address_road= '$get_data[47]', address_village= '$get_data[48]', address_province= '$get_data[49]'"
+                    . ", address_amphur = '$get_data[50]', address_district = '$get_data[51]', address_zip_code = '$get_data[52]', address_call = '$get_data[53]', address_fhone = '$get_data[54]'"
+                    . " WHERE pro_id = '$get_data[43]'";
+            $cn->exec($sql_edit_address);
+        }
+
+        $sql_pread = "SELECT * FROM ps_preaddress WHERE pro_id = '$get_data[43]'";
+        $Query_pread = $cn->Connect->query($sql_pread);
+        if (mysqli_num_rows($Query_pread) == '0') {
+            $sql_add_pread = "INSERT INTO ps_preaddress(pread_number, pread_swine, pread_soi, pread_road, pread_village, pread_province, pread_amphur, pread_district, pread_zip_code, pread_call, pread_fhone, pro_id)"
+                    . " VALUES ('$get_data[44]', '$get_data[45]', '$get_data[46]', '$get_data[47]', '$get_data[48]', '$get_data[49]', '$get_data[50]', '$get_data[51]', '$get_data[52]', '$get_data[53]', '$get_data[54]', '$get_data[43]')";
+            $cn->exec($sql_add_pread);
+        } else {
+            $sql_edit_pread = " UPDATE ps_preaddress SET pread_number = '$get_data[55]', pread_swine = '$get_data[56]', pread_soi = '$get_data[57]', pread_road= '$get_data[58]', pread_village= '$get_data[59]', pread_province= '$get_data[60]'"
+                    . ", pread_amphur = '$get_data[61]', pread_district = '$get_data[62]', pread_zip_code = '$get_data[63]', pread_call = '$get_data[64]', pread_fhone = '$get_data[65]'"
+                    . " WHERE pro_id = '$get_data[43]'";
+            $cn->exec($sql_edit_pread);
+        }
+
+        $sql = "UPDATE ps_profile
+        SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'
+            , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_picture = '$get_data[18]', pro_person_update = '$get_data[19]', pro_date_update = '$get_data[20]'
+        WHERE pro_id = '$get_data[21]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function edit_profile_main() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+//        print_r($get_data);
+//        exit();
+        $path = '';
+        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[21]'";
+        $Query = $cn->Connect->query($sql_img);
+        while ($Row = mysqli_fetch_array($Query)) {
+            $path = $Row['pro_picture'];
+        }
+        if ($path != $get_data[22]) {
+            $files = glob($path);
+            foreach ($files as $file) { // iterate files
+                if (is_file($file))
+                    unlink($file); // delete file
+            }
+        }else if ($path != $get_data[18]) {
+            $files = glob($get_data[18]);
+            foreach ($files as $file) { // iterate files
+                if (is_file($file))
+                    unlink($file); // delete file
+            }
+            $get_data[18] = $path;
+        }
 
         $sql = "UPDATE ps_profile
         SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'

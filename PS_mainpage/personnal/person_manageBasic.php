@@ -194,7 +194,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >กลุ่มงานภายใน</h4>
+                        <h4 class="modal-title " >เพิ่มกลุ่มงานภายใน</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -227,7 +227,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addBnIn('ADDBNIN')">เพิ่ม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addBnIn('ADDBNIN')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -240,7 +240,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >กลุ่มงานภายใน</h4>
+                        <h4 class="modal-title " >แก้ไขกลุ่มงานภายใน</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -274,7 +274,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editBnIn('EBNIN')">อัพเดท</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editBnIn('EBNIN')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">กลุ่มงานภายนอก</h4>
+                        <h4 class="modal-title ">เพิ่มกลุ่มงานภายนอก</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -320,7 +320,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addBnOut('ADDBNOUT')">เพิ่ม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addBnOut('ADDBNOUT')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -333,7 +333,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title " >กลุ่มงานภายนอก</h4>
+                        <h4 class="modal-title " >แก้ไขกลุ่มงานภายนอก</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -367,7 +367,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editBnOut('EBNOUT')">อัพเดท</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editBnOut('EBNOUT')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -380,7 +380,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">ตำแหน่ง</h4>
+                        <h4 class="modal-title ">เพิ่มตำแหน่ง</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -413,7 +413,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addPosi('APOSI')">เพิ่ม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addPosi('APOSI')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -426,7 +426,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">ตำแหน่ง</h4>
+                        <h4 class="modal-title ">แก้ไขตำแหน่ง</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -460,7 +460,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPosi('EPOSI')">อัพเดท</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPosi('EPOSI')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -473,7 +473,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">ระดับ</h4>
+                        <h4 class="modal-title ">เพิ่มระดับ</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -494,7 +494,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addLevel('ALV')">เพิ่ม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addLevel('ALV')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -507,7 +507,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">ระดับ</h4>
+                        <h4 class="modal-title ">แก้ไขระดับ</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -529,7 +529,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editLevel('ELV')">อัพเดท</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editLevel('ELV')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -542,7 +542,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">ประเภท</h4>
+                        <h4 class="modal-title ">เพิ่มประเภท</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -563,7 +563,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addType('ATYPE')">เพิ่ม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addType('ATYPE')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -576,7 +576,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">ประเภท</h4>
+                        <h4 class="modal-title ">แก้ไขประเภท</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -598,7 +598,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editType('ETYPE')">อัพเดท</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editType('ETYPE')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -611,7 +611,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">ตำแหน่งบริหาร</h4>
+                        <h4 class="modal-title ">เพิ่มตำแหน่งบริหาร</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -632,7 +632,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addLVB('ALVB')">เพิ่ม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addLVB('ALVB')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -645,7 +645,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">ตำแหน่งบริหาร</h4>
+                        <h4 class="modal-title ">แก้ไขตำแหน่งบริหาร</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -667,7 +667,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editLVB('ELVB')">อัพเดท</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editLVB('ELVB')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -680,7 +680,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">สังกัด</h4>
+                        <h4 class="modal-title ">เพิ่มสังกัด</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -713,7 +713,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addDPM('ADPM')">เพิ่ม</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addDPM('ADPM')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>
@@ -726,7 +726,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-green">
-                        <h4 class="modal-title ">สังกัด</h4>
+                        <h4 class="modal-title ">แก้ไขสังกัด</h4>
                     </div>
                     <div class="modal-body">
                         <!--<div class="card">-->
@@ -760,7 +760,7 @@
                         <!--</div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editDPM('EDPM')">อัพเดท</button>
+                        <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editDPM('EDPM')">บันทึก</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
                     </div>
                 </div>

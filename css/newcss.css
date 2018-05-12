@@ -1,3 +1,6 @@
+/* DataTable */
+thead, th {text-align: center;}
+
 /*Navigater*/
 .logo-head {
     content:url("../images/logo.png");
