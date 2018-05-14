@@ -206,7 +206,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="class_code" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="class_code" maxlength="4" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +252,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="class_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="class_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>
@@ -299,7 +299,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="off_number" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="off_number" maxlength="4" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>
@@ -345,7 +345,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="off_numberE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="off_numberE" maxlength="4" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>
@@ -392,7 +392,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="pos_code" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="pos_code" maxlength="4" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>
@@ -438,7 +438,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="pos_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="pos_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>
@@ -480,6 +480,18 @@
                         <form id="fm_addLevel" method="POST">
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="lv_code" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
                                     <label>ชื่อระดับ</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
@@ -512,6 +524,18 @@
                     <div class="modal-body">
                         <!--<div class="card">-->
                         <form id="fm_editLevel" method="POST">
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="lv_codeE" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
                                     <label>ชื่อระดับ</label>
@@ -549,6 +573,18 @@
                         <form id="fm_addType" method="POST">
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="type_code" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
                                     <label>ชื่อประเภท</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
@@ -581,6 +617,18 @@
                     <div class="modal-body">
                         <!--<div class="card">-->
                         <form id="fm_editType" method="POST">
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="type_codeE" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
                                     <label>ชื่อประเภท</label>
@@ -618,6 +666,18 @@
                         <form id="fm_addLVB" method="POST">
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="lvb_code" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
                                     <label>ชื่อตำแหน่งบริหาร</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
@@ -650,6 +710,18 @@
                     <div class="modal-body">
                         <!--<div class="card">-->
                         <form id="fm_editLVB" method="POST">
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
+                                    <label>รหัส</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="lvb_codeE" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 form-control-label">
                                     <label>ชื่อตำแหน่งบริหาร</label>
@@ -692,7 +764,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="dep_code" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="dep_code" maxlength="4" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>
@@ -738,7 +810,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="dep_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส">
+                                            <input type="text" id="dep_codeE" maxlength="4" class="form-control" placeholder="กรอกรหัส" maxlength="4" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>

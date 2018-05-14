@@ -27,7 +27,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].pos_code, data[i].pos_name, '<center><img class="btn-edit" id="' + data[i].pos_id + '" data-toggle="modal" data-target="#editPosi" onclick="javascript: slEditPosi(this)"/><img class="btn-delete" id="' + data[i].pos_id + '" onclick="javascript: delPosi(this)"/></center>']);
+            dataSet.push(['<center>' + a + '</center>', '<center>' + data[i].pos_code + '</center>', data[i].pos_name, '<center><img class="btn-edit" id="' + data[i].pos_id + '" data-toggle="modal" data-target="#editPosi" onclick="javascript: slEditPosi(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].pos_id + '" onclick="javascript: delPosi(this)"/></center>']);
         });
         $('#table_position_show').html('<table class="table table-bordered table-striped table-hover table_position dataTable" width="100%"></table>');
         $('.table_position').DataTable({

@@ -54,37 +54,36 @@
         }
         $("#pro_dateIn,#pro_dateOut").datetimepicker($.extend(optsDate, {
             yearOffset: 543,
+            lang: 'th',
             onShow: setDateFunc,
             onSelectDate: setDateFunc,
         }));
 
+        var setDateFuncE = function (ct, obj) {
+            var minDateSet = formatDatePK($("#pro_dateInE").val());
+            var maxDateSet = formatDatePK($("#pro_dateOutE").val());
+
+            if ($(obj).attr("id") == "pro_dateInE") {
+                this.setOptions({
+                    minDate: false,
+                    maxDate: maxDateSet ? maxDateSet : false
+                })
+            }
+            if ($(obj).attr("id") == "pro_dateOutE") {
+                this.setOptions({
+                    maxDate: false,
+                    minDate: minDateSet ? minDateSet : false
+                })
+            }
+        }
+        $("#pro_dateInE,#pro_dateOutE").datetimepicker($.extend(optsDate, {
+            yearOffset: 543,
+            lang: 'th',
+            onShow: setDateFuncE,
+            onSelectDate: setDateFuncE,
+        }));
+
         $("#pro_birthdayE").datetimepicker({
-            timepicker: false,
-            format: 'd/m/Y',
-            lang: 'th',
-            yearOffset: 543,
-            onSelectDate: function (dp, $input) {
-                var yearT = new Date(dp).getFullYear() - 0;
-                var yearTH = yearT + 543;
-                var fulldate = $input.val();
-                var fulldateTH = fulldate.replace(yearT, yearTH);
-                $input.val(fulldateTH);
-            },
-        });
-        $("#pro_dateInE").datetimepicker({
-            timepicker: false,
-            format: 'd/m/Y',
-            lang: 'th',
-            yearOffset: 543,
-            onSelectDate: function (dp, $input) {
-                var yearT = new Date(dp).getFullYear() - 0;
-                var yearTH = yearT + 543;
-                var fulldate = $input.val();
-                var fulldateTH = fulldate.replace(yearT, yearTH);
-                $input.val(fulldateTH);
-            },
-        });
-        $("#pro_dateOutE").datetimepicker({
             timepicker: false,
             format: 'd/m/Y',
             lang: 'th',

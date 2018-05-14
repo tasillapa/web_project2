@@ -5,6 +5,7 @@
     var pro_id = '<?= $_SESSION["pro_id"]; ?>';
     var get_id = '<?= $_GET['id']; ?>';
     var dataID = '';
+    var i = 1;
     $(function () {
         if (get_id == '') {
             dataID = pro_id;
@@ -52,32 +53,36 @@
                 $input.val(fulldateTH);
             },
         });
-        $("#pro_dateInE").datetimepicker({
-            timepicker: false,
-            format: 'd/m/Y',
-            lang: 'th',
+
+        var optsDate = {  
+                    format: 'd/m/Y', // รูปแบบวันที่ 
+                    formatDate: 'd/m/Y',
+                    timepicker: false,   
+                    closeOnDateSelect: true,
+            }
+        var setDateFuncE = function (ct, obj) {
+            var minDateSet = formatDatePK($("#pro_dateInE").val());
+            var maxDateSet = formatDatePK($("#pro_dateOutE").val());
+
+            if ($(obj).attr("id") == "pro_dateInE") {
+                this.setOptions({
+                    minDate: false,
+                    maxDate: maxDateSet ? maxDateSet : false
+                })
+            }
+            if ($(obj).attr("id") == "pro_dateOutE") {
+                this.setOptions({
+                    maxDate: false,
+                    minDate: minDateSet ? minDateSet : false
+                })
+            }
+        }
+        $("#pro_dateInE,#pro_dateOutE").datetimepicker($.extend(optsDate, {
             yearOffset: 543,
-            onSelectDate: function (dp, $input) {
-                var yearT = new Date(dp).getFullYear() - 0;
-                var yearTH = yearT + 543;
-                var fulldate = $input.val();
-                var fulldateTH = fulldate.replace(yearT, yearTH);
-                $input.val(fulldateTH);
-            },
-        });
-        $("#pro_dateOutE").datetimepicker({
-            timepicker: false,
-            format: 'd/m/Y',
             lang: 'th',
-            yearOffset: 543,
-            onSelectDate: function (dp, $input) {
-                var yearT = new Date(dp).getFullYear() - 0;
-                var yearTH = yearT + 543;
-                var fulldate = $input.val();
-                var fulldateTH = fulldate.replace(yearT, yearTH);
-                $input.val(fulldateTH);
-            },
-        });
+            onShow: setDateFuncE,
+            onSelectDate: setDateFuncE,
+        }));
 
         show_chName();
         show_marry();
@@ -717,7 +722,7 @@
             type: 'post',
             success: function (data) {
                 var array = [];
-                array.push($('#card_idE').val(), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
+                array.push(split($('#card_idE').val()), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
                         , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
                         , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), data, name, formatDateToday(), $('#pro_id').val(), $('#imgSE').attr('src')
                         , $('#gen_prefix').val(), $('#gen_old').val(), $('#PROVINCE_ID').val(), $('#nationality_id').val(), $('#nationality_id_race').val(), $('#religion_id').val(), $('#gen_blood').val()
@@ -772,5 +777,29 @@
                 {title: "..."},
             ]
         });
+    }
+    $(".btn-aedu").click(function () {
+        var section = $("#clone_edu").clone();
+        section.attr('id', 'clone_edu' + i);
+        if (i == 1) {
+            section.insertAfter($('#clone_edu'));
+        } else {
+            var j = i - 1;
+            section.insertAfter($('#clone_edu' + j + ''));
+            console.log(i - 1);
+        }
+        i++;
+    });
+    $(".btn-dedu").click(function () {
+        if (i > 1) {
+            i--;
+        }
+        $("#clone_edu" + i + "").remove();
+        console.log(i);
+
+    });
+    function addEdu(AED){
+        $('#edu_level').val(), $('#edu_year').val(), $('#edu_level').val(), $('#edu_year').val()
+        
     }
 </script>

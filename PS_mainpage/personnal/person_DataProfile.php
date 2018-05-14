@@ -705,7 +705,7 @@ if (!isset($_GET['id'])) {
                                                                 <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_chName" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
-                                                                <div class="collapse" id="add_chName">
+                                                                <div class="collapse" id="add_chName"><br>
                                                                     <from>
                                                                         <div class="row clearfix">
                                                                             <div class="col-lg-2 col-md-1 col-sm-4 col-xs-12 form-control-label-l">
@@ -714,7 +714,7 @@ if (!isset($_GET['id'])) {
                                                                             <div class="col-lg-4 col-md-5 col-sm-8 col-xs-12">
                                                                                 <div class="form-group">
                                                                                     <div class="form-line">
-                                                                                        <input type="text" id="chName_date" class="form-control date" placeholder="--/--/----">
+                                                                                        <input type="text" id="chName_date" class="form-control date" placeholder="__/__/____">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -741,16 +741,12 @@ if (!isset($_GET['id'])) {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row clearfix">
-                                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                                <button type="reset" class="btn btn-danger waves-effect">ยกเลิก</button>
-                                                                            </div>
-                                                                            <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                                <button type="button" class="btn btn-success waves-effect" onclick="javascript: addChName('ACN')">บันทึก</button>
-                                                                            </div>
+                                                                        <div class="row clearfix align-right m-r-15">
+                                                                            <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                            <button type="button" class="btn btn-success waves-effect" onclick="javascript: addChName('ACN')">บันทึก</button>
                                                                         </div>
                                                                     </from>
-                                                                </div>
+                                                                </div><br>
                                                                 <div class="table-responsive">
                                                                     <div id="table_chName_show"></div>
                                                                 </div>
@@ -768,7 +764,7 @@ if (!isset($_GET['id'])) {
                                                                 <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_marry" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
-                                                                <div class="collapse" id="add_marry">
+                                                                <div class="collapse" id="add_marry"><br>
                                                                     <from>
                                                                         <div class="row clearfix">
                                                                             <div class="col-lg-2 col-md-1 col-sm-4 col-xs-12 form-control-label-l">
@@ -792,16 +788,12 @@ if (!isset($_GET['id'])) {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row clearfix">
-                                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                                <button type="reset" class="btn btn-danger waves-effect">ยกเลิก</button>
-                                                                            </div>
-                                                                            <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                                <button type="button" class="btn btn-success waves-effect" onclick="javascript: addMarry('AMR')">บันทึก</button>
-                                                                            </div>
+                                                                        <div class="row clearfix align-right m-r-15">
+                                                                            <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                            <button type="button" class="btn btn-success waves-effect" onclick="javascript: addMarry('AMR')">บันทึก</button>
                                                                         </div>
                                                                     </from>
-                                                                </div>
+                                                                </div><br>
                                                                 <div class="table-responsive">
                                                                     <div id="table_marry_show"></div>
                                                                 </div>
@@ -819,7 +811,7 @@ if (!isset($_GET['id'])) {
                                                                 <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_heir" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
-                                                                <div class="collapse" id="add_heir">
+                                                                <div class="collapse" id="add_heir"><br>
                                                                     <from>
                                                                         <div class="row clearfix">
                                                                             <div class="col-lg-2 col-md-1 col-sm-4 col-xs-12 form-control-label-l">
@@ -843,16 +835,12 @@ if (!isset($_GET['id'])) {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row clearfix">
-                                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                                <button type="reset" class="btn btn-danger waves-effect">ยกเลิก</button>
-                                                                            </div>
-                                                                            <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                                <button type="button" class="btn btn-success waves-effect" onclick="javascript: addHeir('AH')">บันทึก</button>
-                                                                            </div>
+                                                                        <div class="row clearfix align-right m-r-15">
+                                                                            <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                            <button type="button" class="btn btn-success waves-effect" onclick="javascript: addHeir('AH')">บันทึก</button>
                                                                         </div>
                                                                     </from>
-                                                                </div>
+                                                                </div><br>
                                                                 <div class="table-responsive">
                                                                     <div id="table_heir_show"></div>
                                                                 </div>
@@ -870,7 +858,7 @@ if (!isset($_GET['id'])) {
                                                                 <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_blame" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
-                                                                <div class="collapse" id="add_blame">
+                                                                <div class="collapse" id="add_blame"><br>
                                                                     <from>
                                                                         <div class="row clearfix">
                                                                             <div class="col-lg-2 col-md-1 col-sm-4 col-xs-12 form-control-label-l">
@@ -879,7 +867,7 @@ if (!isset($_GET['id'])) {
                                                                             <div class="col-lg-4 col-md-5 col-sm-8 col-xs-12">
                                                                                 <div class="form-group">
                                                                                     <div class="form-line">
-                                                                                        <input type="text" id="blame_date" class="form-control date" placeholder="--/--/----">
+                                                                                        <input type="text" id="blame_date" class="form-control date" placeholder="__/__/____">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -908,16 +896,12 @@ if (!isset($_GET['id'])) {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row clearfix">
-                                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                                <button type="reset" class="btn btn-danger waves-effect">ยกเลิก</button>
-                                                                            </div>
-                                                                            <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                                                <button type="button" class="btn btn-success waves-effect" onclick="javascript: addBlame('AB')">บันทึก</button>
-                                                                            </div>
+                                                                        <div class="row clearfix align-right m-r-15">
+                                                                            <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                            <button type="button" class="btn btn-success waves-effect" onclick="javascript: addBlame('AB')">บันทึก</button>
                                                                         </div>
                                                                     </from>
-                                                                </div>
+                                                                </div><br>
                                                                 <div class="table-responsive">
                                                                     <div id="table_blame_show"></div>
                                                                 </div>
@@ -1116,7 +1100,7 @@ if (!isset($_GET['id'])) {
 
                                                                 </h2>
                                                                 <span class="header-dropdown m-t--15">
-                                                                    <input type="checkbox" id="check_addr" class="filled-in"/>
+                                                                    <input type="checkbox" id="check_addr" class="filled-in newclass"/>
                                                                     <label for="check_addr">ที่อยู่เหมือนทะเบียนบ้าน</label>
                                                                 </span>
                                                             </div>
@@ -1279,16 +1263,19 @@ if (!isset($_GET['id'])) {
                                                 <div class="demo-masked-input">
                                                     <form class="form-horizontal">
                                                         <div class="card">
-<!--                                                            <div class="header bg-blue-grey" style="padding: 8px;">
-                                                                <h2>
-                                                                    ระดับการศึกษาสูงสุด
-                                                                </h2>
-                                                            </div>-->
+                                                            <!--                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                                                                            <h2>
+                                                                                                                                ระดับการศึกษาสูงสุด
+                                                                                                                            </h2>
+                                                                                                                        </div>-->
                                                             <div class="body">
-                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_education" aria-expanded="false" aria-controls="collapseExample">
-                                                                    <div class=""> <i class="material-icons">add</i></div>
+                                                                <button type="button" class="btn bg-indigo waves-effect btn-aedu" style="padding: 2px 10px;">
+                                                                    <i class="material-icons">add</i>
                                                                 </button>
-                                                                <div class="collapse" id="add_education">
+                                                                <button type="button" class="btn bg-red waves-effect btn-dedu" style="padding: 2px 10px;">
+                                                                    <i class="material-icons">remove</i>
+                                                                </button><br><br>
+                                                                <div id="clone_edu">
                                                                     <div class="row clearfix">
                                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                             <label >ระดับการศึกษา</label>
@@ -1367,11 +1354,12 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row clearfix align-right m-r-15">
-                                                                        <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
-                                                                        <button type="button" class="btn btn-success waves-effect" onclick="javascript: addEdu('AED')">บันทึก</button>
-                                                                    </div>
-                                                                </div><br>
+                                                                </div>
+                                                                <div class="row clearfix align-right m-r-15">
+                                                                    <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                    <button type="button" class="btn btn-success waves-effect" onclick="javascript: addEdu('AED')">บันทึก</button>
+                                                                </div>
+                                                                <br>
                                                                 <div class="table-responsive">
                                                                     <div id="table_education_show"></div>
                                                                 </div>

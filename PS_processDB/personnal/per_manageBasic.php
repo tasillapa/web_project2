@@ -301,8 +301,8 @@ function add_level() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "INSERT INTO ps_level (lv_name)"
-                . "VALUES('$get_data[0]')";
+        $sql = "INSERT INTO ps_level (lv_code, lv_name)"
+                . "VALUES('$get_data[0]', '$get_data[1]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -328,7 +328,7 @@ function edit_level() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "UPDATE ps_level SET lv_name = '$get_data[1]' WHERE lv_id = '$id'";
+        $sql = "UPDATE ps_level SET lv_code = '$get_data[1]', lv_name = '$get_data[2]' WHERE lv_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -359,8 +359,8 @@ function add_type() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "INSERT INTO ps_type (type_name)"
-                . "VALUES('$get_data[0]')";
+        $sql = "INSERT INTO ps_type (type_code, type_name)"
+                . "VALUES('$get_data[0]', '$get_data[1]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -386,7 +386,7 @@ function edit_type() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "UPDATE ps_type SET type_name = '$get_data[1]' WHERE type_id = '$id'";
+        $sql = "UPDATE ps_type SET type_code = '$get_data[1]', type_name = '$get_data[2]' WHERE type_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -416,8 +416,8 @@ function add_lvboss() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "INSERT INTO ps_leveboss (lvb_name)"
-                . "VALUES('$get_data[0]')";
+        $sql = "INSERT INTO ps_leveboss (lvb_code, lvb_name)"
+                . "VALUES('$get_data[0]', '$get_data[1]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -443,7 +443,7 @@ function edit_lvboss() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "UPDATE ps_leveboss SET lvb_name = '$get_data[1]' WHERE lvb_id = '$id'";
+        $sql = "UPDATE ps_leveboss SET lvb_code = '$get_data[1]', lvb_name = '$get_data[2]' WHERE lvb_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

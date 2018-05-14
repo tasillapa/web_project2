@@ -1,6 +1,15 @@
 /* DataTable */
 thead, th {text-align: center;}
 
+/*New Border Lebal*/
+[type="checkbox"].filled-in:not(:checked) + label:after {
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #eee;
+    top: 0px;
+    z-index: 0;
+}
 /*Navigater*/
 .logo-head {
     content:url("../images/logo.png");

@@ -26,7 +26,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push([a, data[i].type_name, '<center><img class="btn-edit" id="' + data[i].type_id + '" data-toggle="modal" data-target="#editType" onclick="javascript: slEditType(this)"/><img class="btn-delete" id="' + data[i].type_id + '" onclick="javascript: delType(this)"/></center>']);
+            dataSet.push(['<center>' + a + '</center>', '<center>' + data[i].type_code + '</center>', data[i].type_name, '<center><img class="btn-edit" id="' + data[i].type_id + '" data-toggle="modal" data-target="#editType" onclick="javascript: slEditType(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].type_id + '" onclick="javascript: delType(this)"/></center>']);
         });
         $('#table_type_show').html('<table class="table table-bordered table-striped table-hover table_type dataTable" width="100%"></table>');
         $('.table_type').DataTable({
@@ -34,6 +34,7 @@
             data: dataSet,
             columns: [
                 {title: "ลำดับ"},
+                {title: "รหัส"},
                 {title: "ประเภท"},
                 {title: "..."},
             ],
@@ -44,8 +45,8 @@
             }
         });
     }
-    function addType(ALV) {
-        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ALV, [$('#type_name').val()], true, function (data) {
+    function addType(ATYPE) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ATYPE, [$('#type_code').val(), $('#type_name').val()], true, function (data) {
             show_type();
             swal("บันทึกสำเร็จ!", "ประเภทใหม่พร้อมใช้งาน", "success");
             $('#addType').modal('hide');
@@ -54,13 +55,14 @@
     function slEditType(data) {
         cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", "sl_dataEdit_type", [$(data).attr("id")], true, function (data) {
             $.each(data, function (i, k) {
+                $("#type_codeE").val(data[i].type_code);
                 $("#type_nameE").val(data[i].type_name);
                 $("#type_idE").val(data[i].type_id)
             });
         });
     }
     function editType(ETYPE) {
-        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ETYPE, [$('#type_idE').val(), $('#type_nameE').val()], true, function (data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageBasic.php", ETYPE, [$('#type_idE').val(), $('#type_codeE').val(), $('#type_nameE').val()], true, function (data) {
             show_type();
             swal("แก้ไขสำเร็จ!", "ประเภทของคุณ อัพเดทเเล้ว", "success");
             $('#editType').modal('hide');
