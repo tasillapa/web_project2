@@ -77,7 +77,7 @@ if (!isset($_GET['id'])) {
                                                                 <div class="row clearfix">
                                                                     <div class="image">
                                                                         <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
-                                                                            <div id="aniimated-thumbnials" class="list-unstyled">
+                                                                            <div class="list-unstyled aniimated-thumbnials">
                                                                                 <a href="../../images/moon.jpg" id="person_imgE" data-sub-html="รูปประจำตัว">
                                                                                     <center><img class="img-responsive img-css" id="imgSE" src="../../images/moon.jpg"></center>
                                                                                 </a>
@@ -1097,10 +1097,9 @@ if (!isset($_GET['id'])) {
                                                             <div class="header bg-blue-grey demo-checkbox" style="padding: 8px;">
                                                                 <h2>
                                                                     ที่อยู่ปัจจุบันที่ติดต่อได้
-
                                                                 </h2>
                                                                 <span class="header-dropdown m-t--15">
-                                                                    <input type="checkbox" id="check_addr" class="filled-in newclass"/>
+                                                                    <input type="checkbox" id="check_addr" class="filled-in" style="color:#0048AB"/>
                                                                     <label for="check_addr">ที่อยู่เหมือนทะเบียนบ้าน</label>
                                                                 </span>
                                                             </div>
@@ -1281,7 +1280,7 @@ if (!isset($_GET['id'])) {
                                                                             <label >ระดับการศึกษา</label>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="edu_level">
+                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="hised_level">
                                                                                 <?php
                                                                                 $cn = new management;
                                                                                 $cn->con_db();
@@ -1298,7 +1297,7 @@ if (!isset($_GET['id'])) {
                                                                             <label >ปีที่จบ</label>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="edu_year">
+                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="hised_year">
                                                                                 <?php
                                                                                 echo '<option  value="">เลือก</opition>';
                                                                                 $i = 2450;
@@ -1317,7 +1316,7 @@ if (!isset($_GET['id'])) {
                                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
-                                                                                    <input type="text" id="edu_background" class="form-control" placeholder="กรอกวุฒิการศึกษา">
+                                                                                    <input type="text" id="hised_background" class="form-control" placeholder="กรอกวุฒิการศึกษา">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1327,7 +1326,7 @@ if (!isset($_GET['id'])) {
                                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
-                                                                                    <input type="text" id="edu_major" class="form-control" placeholder="กรอกวิชาเอก">
+                                                                                    <input type="text" id="hised_major" class="form-control" placeholder="กรอกวิชาเอก">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1339,7 +1338,7 @@ if (!isset($_GET['id'])) {
                                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
-                                                                                    <input type="text" id="edu_place" class="form-control" placeholder="กรอกสถานศึกษา">
+                                                                                    <input type="text" id="hised_address" class="form-control" placeholder="กรอกสถานศึกษา">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1349,7 +1348,7 @@ if (!isset($_GET['id'])) {
                                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
-                                                                                    <input type="text" id="edu_country" class="form-control" placeholder="กรอกประเทศ">
+                                                                                    <input type="text" id="hised_country" class="form-control" placeholder="กรอกประเทศ">
                                                                                 </div>
                                                                             </div>
                                                                         </div>

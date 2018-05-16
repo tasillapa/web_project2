@@ -27,7 +27,6 @@
                             </div>
                             <div class="body">
                                 <div class="row clearfix">
-
                                     <div class="col-xs-6">
                                         <button type="button" data-toggle="modal" data-target="#addPerson" class="btn btn-success waves-effect">
                                             <i class="material-icons">person_add</i>
@@ -74,10 +73,10 @@
                                                     <div class="row clearfix">
                                                         <div class="image">
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
-                                                                <div id="aniimated-thumbnials" class="list-unstyled">
-                                                                    <a href="../../images/moon.jpg" id="person_img" data-sub-html="รูปประจำตัว">
-                                                                        <center><img class="img-responsive img-css" id="imgS" src="../../images/moon.jpg"></center>
-                                                                    </a>
+                                                                <div class="list-unstyled aniimated-thumbnials">
+                                                                    <!--<a href="../../images/moon.jpg" id="person_img" data-sub-html="รูปประจำตัว">-->
+                                                                    <center><img class="img-responsive img-css" id="imgS" src="../../images/moon.jpg"></center>
+                                                                    <!--</a>-->
                                                                 </div>
                                                                 <label class="btn-file-upload ">
                                                                     <input type='file' id="pro_picture" />
@@ -346,7 +345,7 @@
                                                             <label >เงินเดือน</label>
                                                         </div>
                                                         <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8">
-                                                            <div class="input-group">
+                                                            <div class="input-group" style="margin-bottom: 0px;">
                                                                 <span class="input-group-addon">
                                                                     <i class="material-icons">credit_card</i>
                                                                 </span>
@@ -357,6 +356,15 @@
                                                         </div>
                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label-l">
                                                             <label class="font-bold col-red">*บาท</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label >การโอนย้าย</label>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8 demo-checkbox form-control-label-l asd">
+                                                            <input type="checkbox" id="md_checkbox_35" class="filled-in chk-col-orange">
+                                                            <label class="font-bold col-red" for="md_checkbox_35">ถ้ามี</label>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -392,10 +400,10 @@
                                                     <div class="row clearfix">
                                                         <div class="image">
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
-                                                                <div id="aniimated-thumbnials" class="list-unstyled">
-                                                                    <a href="../../images/moon.jpg" id="person_imgE" data-sub-html="รูปประจำตัว">
-                                                                        <center><img class="img-responsive img-css" id="imgSE" src="../../images/moon.jpg"></center>
-                                                                    </a>
+                                                                <div class="list-unstyled aniimated-thumbnials">
+                                                                    <!--<a href="../../images/moon.jpg" id="person_imgE" data-sub-html="รูปประจำตัว">-->
+                                                                    <center><img class="img-responsive img-css" id="imgSE" src="../../images/moon.jpg"></center>
+                                                                    <!--</a>-->
                                                                 </div>
                                                                 <label class="btn-file-upload ">
                                                                     <input type='file' id="pro_pictureE"/>
@@ -616,6 +624,235 @@
                 </div>
             </div>
             <!-- #END# Modal Edit DataPerson -->
+
+            <!-- Modal Detail DataPerson -->
+            <div class="modal fade" id="detailPerson" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-green">
+                            <h4 class="modal-title" id="detailPersonLabel">รายละเอียดข้อมูลบุคลากร</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="card">
+                                        <div class="body">
+                                            <div class="demo-masked-input">
+                                                <form class="form-horizontal">
+                                                    <div class="row clearfix">
+                                                        <div class="image">
+                                                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center p-t-15">
+                                                                <div class="list-unstyled aniimated-thumbnials">
+                                                                    <!--<a href="../../images/moon.jpg" id="person_imgD" data-sub-html="รูปประจำตัว">-->
+                                                                    <center><img class="img-responsive img-css" id="imgSD" src="../../images/moon.jpg"></center>
+                                                                    <!--</a>-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12" style="margin-bottom: 0px">
+                                                            <div class="row clearfix">
+                                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <label >เลขที่ตำแหน่ง</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 p-t-8">
+                                                                    <span class="sp-pad" id="pro_idposD"></span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row clearfix">
+                                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <label >คำนำหน้า</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 p-t-8">
+                                                                    <span class="sp-pad" id="pro_prefixD"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row clearfix">
+                                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <label >ชื่อ</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 p-t-8">
+                                                                    <span class="sp-pad" id="pro_fnameD"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row clearfix">
+                                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                                    <label >สกุล</label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 p-t-8">
+                                                                    <span class="sp-pad" id="pro_lnameD"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                            <label >เลขบัตรประชาชน</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="card_idD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 form-control-label-l">
+                                                            <label >ชื่อเล่น</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 p-t-8">
+                                                            <span class="sp-pad" id="pro_nicknameD"></span>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label-l">
+                                                            <label >เพศ</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 p-t-8">
+                                                            <span class="sp-pad" id="pro_sexD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-control-label-l">
+                                                            <label >วันเดือนปีเกิด</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-8 p-t-8" style="margin-bottom: 0px">
+                                                            <div class="input-group m-t--10">
+                                                                <span class="input-group-addon">
+                                                                    <i class="material-icons">date_range</i>
+                                                                </span>
+                                                                <span class="sp-pad" id="pro_birthdayD"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >สถานะ</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="pro_statusD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ประเภท</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="type_nameD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ตำแหน่ง</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="pos_nameD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ระดับ</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="lv_nameD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ตำแหน่งบริหาร</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="lvb_nameD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >กลุ่มงาน</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="class_nameD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >สังกัด</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10t col-sm-9 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="dep_nameD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                            <label >วันเข้ารับราชการ</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="pro_dateInD"></span>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                            <label >วันเกษียณอายุ</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="pro_dateOutD"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label >เงินเดือน</label>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8 p-t-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="material-icons">credit_card</i>
+                                                                </span>
+                                                                <span class="sp-pad" id="pro_salaryD"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label-l">
+                                                            <label class="font-bold col-red">*บาท</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <label></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label >ผู้สร้าง</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-t-8">
+                                                            <span id="pro_person_create"></span>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label >วันที่สร้าง</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-t-8">
+                                                            <span id="pro_date_create"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                            <label >ผู้แก้ไขล่าสุด</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 p-t-8">
+                                                            <span id="pro_person_update"></span>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                            <label >วันที่แก้ไขล่าสุด</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12 p-t-8">
+                                                            <span id="pro_date_update"></span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Modal Detail DataPerson -->
 
             <!-- Modal Import Person -->
             <div class="modal fade" id="importPerson" tabindex="-1" role="dialog">

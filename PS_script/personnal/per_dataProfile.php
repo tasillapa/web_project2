@@ -88,9 +88,9 @@
         show_marry();
         show_heir();
         show_blame();
-        table_education();
-        $('#edu_level').select2();
-        $('#edu_year').select2();
+        show_education();
+        $('#hised_level').select2();
+        $('#hised_year').select2();
 
         $('#address_province').change(function () {
             if ($('#address_province').val() != '') {
@@ -491,6 +491,9 @@
     function show_blame() {
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_blame", [dataID], true, table_blame);
     }
+    function show_education() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_edu", [dataID], true, table_education);
+    }
 
     function table_chName(data) {
         $(".table_chName").html('');
@@ -760,20 +763,20 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['', a, data[i].marry_name, data[i].marry_status, '<img class="btn-delete" id="' + data[i].marry_id + '" onclick="javascript: delMarry(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', data[i].edu_name, data[i].hised_background, data[i].hised_major, data[i].hised_address, data[i].hised_country, data[i].hised_year, '<img class="btn-delete" id="' + data[i].hised_id + '" onclick="javascript: delEdu(this)"/>']);
         });
         $('#table_education_show').html('<table class="table table-bordered table-striped table-hover table_education dataTable" width="100%"></table>');
         $('.table_education').DataTable({
             responsive: true,
             data: dataSet,
             columns: [
-                {title: "#"},
                 {title: "ลำดับ"},
                 {title: "ระดับการศึกษา"},
                 {title: "วุฒิการศึกษา"},
                 {title: "วิชาเอก"},
                 {title: "สถานศึกษา"},
                 {title: "ประเทศ"},
+                {title: "ปีจบ"},
                 {title: "..."},
             ]
         });
@@ -781,12 +784,12 @@
     $(".btn-aedu").click(function () {
         var section = $("#clone_edu").clone();
         section.attr('id', 'clone_edu' + i);
+        $("#clone_edu" + i + "").find();
         if (i == 1) {
             section.insertAfter($('#clone_edu'));
         } else {
             var j = i - 1;
             section.insertAfter($('#clone_edu' + j + ''));
-            console.log(i - 1);
         }
         i++;
     });
@@ -795,11 +798,38 @@
             i--;
         }
         $("#clone_edu" + i + "").remove();
-        console.log(i);
 
     });
-    function addEdu(AED){
-        $('#edu_level').val(), $('#edu_year').val(), $('#edu_level').val(), $('#edu_year').val()
-        
+    function addEdu(AED) {
+        var array = [];
+        array.push($('#hised_level').val(), $('#hised_year').val(), $('#hised_background').val(), $('#hised_major').val(), $('#hised_address').val(), $('#hised_country').val(), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AED, array, true, function (data) {
+            show_education();
+            swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
+        });
+
+    }
+    function delEdu(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DED", [$(data).attr("id")], true, function (data) {
+                show_education();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
     }
 </script>

@@ -48,6 +48,9 @@ if (!empty($_FILES['filePerson'])) {
         $cn = new management;
         $cn->con_db();
         $pos_id = '';
+        $type_id = '';
+        $lvb_id = '';
+        $lv_id = '';
         $class_id = '';
         $dep_id = '';
         foreach ($object->getWorksheetIterator() as $worksheet) {
@@ -56,39 +59,58 @@ if (!empty($_FILES['filePerson'])) {
                 $card_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(0, $row)->getValue());
                 $pro_idpos = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
                 $pro_sex = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
+                if ($pro_sex == 'ชาย') {
+                    $pro_sex = 1;
+                } else {
+                    $pro_sex = 2;
+                }
                 $pro_prefix = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(3, $row)->getValue());
                 $pro_fname = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(4, $row)->getValue());
                 $pro_lname = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(5, $row)->getValue());
                 $pro_status = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(6, $row)->getValue());
-                $pos_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
-                $sql_pos_id = "SELECT pos_id FROM ps_position WHERE pos_code = '$pos_code'";
+                $pos_name = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(7, $row)->getValue());
+                $sql_pos_id = "SELECT pos_id FROM ps_position WHERE pos_name = '$pos_name'";
                 $query_pos_id = $cn->Connect->query($sql_pos_id);
                 while ($rs_pos_id = mysqli_fetch_array($query_pos_id)) {
                     $pos_id = $rs_pos_id['pos_id'];
                 }
-                $type_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
-                $lvb_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
-                $lv_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
-                $class_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
-                $sql_class_id = "SELECT class_id FROM ps_class WHERE class_code = '$class_code'";
+                $type_name = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(8, $row)->getValue());
+                $sql_type_id = "SELECT type_id FROM ps_type WHERE type_name = '$type_name'";
+                $query_type_id = $cn->Connect->query($sql_type_id);
+                while ($rs_type_id = mysqli_fetch_array($query_type_id)) {
+                    $type_id = $rs_type_id['type_id'];
+                }
+                $lvb_name = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
+                $sql_lvb_id = "SELECT lvb_id FROM ps_leveboss WHERE lvb_name = '$lvb_name'";
+                $query_lvb_id = $cn->Connect->query($sql_lvb_id);
+                while ($rs_lvb_id = mysqli_fetch_array($query_lvb_id)) {
+                    $lvb_id = $rs_lvb_id['lvb_id'];
+                }
+                $lv_name = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
+                $sql_lv_id = "SELECT lv_id FROM ps_level WHERE lv_name = '$lv_name'";
+                $query_lv_id = $cn->Connect->query($sql_lv_id);
+                while ($rs_lv_id = mysqli_fetch_array($query_lv_id)) {
+                    $lv_id = $rs_lv_id['lv_id'];
+                }
+                $class_name = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(11, $row)->getValue());
+                $sql_class_id = "SELECT class_id FROM ps_class WHERE class_name = '$class_name'";
                 $query_class_id = $cn->Connect->query($sql_class_id);
                 while ($rs_class_id = mysqli_fetch_array($query_class_id)) {
                     $class_id = $rs_class_id['class_id'];
                 }
-                $dep_code = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(12, $row)->getValue());
-                $sql_dep_id = "SELECT dep_id FROM ps_department WHERE dep_code = '$dep_code'";
+                $dep_name = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(12, $row)->getValue());
+                $sql_dep_id = "SELECT dep_id FROM ps_department WHERE dep_name = '$dep_name'";
                 $query_dep_id = $cn->Connect->query($sql_dep_id);
                 while ($rs_dep_id = mysqli_fetch_array($query_dep_id)) {
                     $dep_id = $rs_dep_id['dep_id'];
                 }
                 $pro_salary = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
-                $salary_array = explode(",", $pro_salary);
-                $pro_salary = $salary_array[0] . $salary_array[1];
+                $pro_salary = str_replace(',', '', $pro_salary);
                 $pro_dateIn = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
-                $pro_picture = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
+                $pro_transfer = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
 
-                $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_picture, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
-                        . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '$pro_dateIn', '$pro_picture', '$person_update', '', '$person_update', '')";
+                $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_transfer, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
+                        . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '$pro_dateIn', '" . $pro_transfer . "', '$person_update', '', '$person_update', '')";
                 $stmt = $cn->Connect->prepare($sql);
                 $ret = $stmt->execute();
             }

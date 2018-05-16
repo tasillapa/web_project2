@@ -39,6 +39,12 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "sl_data_district": sl_data_district();
             break;
+        case "sl_table_edu": sl_table_edu();
+            break;
+        case "AED":add_education();
+            break;
+        case "DED": del_education();
+            break;
     }
 }
 
@@ -276,6 +282,49 @@ function sl_data_address() {
         $rs = $cn->select($sql);
         $json = json_encode($rs);
         echo $json;
+    }
+    exit();
+}
+
+function sl_table_edu() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "select * from ps_education AS ed LEFT JOIN ps_leveleducation AS lve ON ed.edu_id = lve.edu_id ORDER BY ed.hised_year DESC";
+        } else {
+            $sql = "select * from ps_education AS ed LEFT JOIN ps_leveleducation AS lve ON ed.edu_id = lve.edu_id  WHERE ed.pro_id = '$id' ORDER BY ed.hised_year DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_education() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_education (edu_id, hised_year, hised_background, hised_major, hised_address, hised_country, pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_education() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "DELETE FROM ps_education WHERE hised_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
     }
     exit();
 }

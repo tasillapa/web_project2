@@ -93,7 +93,7 @@ if (!isset($_POST['ch_new'])) {
                 <div class="user-info">
                     <div class="image">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div id="aniimated-thumbnials" class="list-unstyled">
+                            <div class="list-unstyled aniimated-thumbnials">
                                 <a href="<?php
                                 if (($_SESSION['pro_picture'] != '') || ($_POST['ch_new'] != '')) {
                                     if ($_POST['ch_new'] != '') {
@@ -120,10 +120,10 @@ if (!isset($_POST['ch_new'])) {
                                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['name'] ?></div>
                                 <div class="email">Online</div>
                             </div><br><br>
-                            <label class="custom-file-upload">
+<!--                            <label class="custom-file-upload">
                                 <input type='file' id="imgInp" />
                                 เปลี่ยนรูป
-                            </label>
+                            </label>-->
                         </div>
                     </div>
                 </div>

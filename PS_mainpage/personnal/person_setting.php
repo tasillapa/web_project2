@@ -543,6 +543,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                            </div>
                         </div>
                     </div>
                 </div>

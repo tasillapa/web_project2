@@ -8,7 +8,6 @@
             var myFile = $('#filePerson').prop('files')[0];
             $('#show_filePerson').html(myFile.name).css("color", "#777");
         });
-
         $(document).on("click", ".table_profile tbody tr td:not(:last-child)", function () {
             var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
 //            alert(clickedBtnID);
@@ -28,7 +27,6 @@
                 $input.val(fulldateTH);
             },
         });
-
          var optsDate = {  
                     format: 'd/m/Y', // รูปแบบวันที่ 
                     formatDate: 'd/m/Y',
@@ -38,7 +36,6 @@
         var setDateFunc = function (ct, obj) {
             var minDateSet = formatDatePK($("#pro_dateIn").val());
             var maxDateSet = formatDatePK($("#pro_dateOut").val());
-
             if ($(obj).attr("id") == "pro_dateIn") {
                 this.setOptions({
                     minDate: false,
@@ -58,11 +55,9 @@
             onShow: setDateFunc,
             onSelectDate: setDateFunc,
         }));
-
         var setDateFuncE = function (ct, obj) {
             var minDateSet = formatDatePK($("#pro_dateInE").val());
             var maxDateSet = formatDatePK($("#pro_dateOutE").val());
-
             if ($(obj).attr("id") == "pro_dateInE") {
                 this.setOptions({
                     minDate: false,
@@ -82,7 +77,6 @@
             onShow: setDateFuncE,
             onSelectDate: setDateFuncE,
         }));
-
         $("#pro_birthdayE").datetimepicker({
             timepicker: false,
             format: 'd/m/Y',
@@ -115,7 +109,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), '<img class="btn-detail" id="' + data[i].pro_id + '"/>' + ' ' + '<img class="btn-edit" id="' + data[i].pro_id + '" data-toggle="modal" data-target="#editPerson" onclick="javascript: slEdit(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), '<img class="btn-detail" data-toggle="modal" data-target="#detailPerson" onclick="javascript: slDetail(this)" id="' + data[i].pro_id + '"/>' + ' ' + '<img class="btn-edit" id="' + data[i].pro_id + '" data-toggle="modal" data-target="#editPerson" onclick="javascript: slEdit(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/>']);
         });
         $('#table_profile_show').html('<table class="table table-bordered table-striped table-hover table_profile dataTable" width="100%"></table>');
         $('.table_profile').DataTable({
@@ -219,8 +213,8 @@
             $("#pro_sexE input[name=group1E][value='" + data[0].pro_sex + "']").prop("checked", true);
             $("#pro_statusE input[name=group2E][value='" + data[0].pro_status + "']").prop("checked", true);
             $('#pro_salaryE').val(parseInt(data[0].pro_salary));
-//            $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));
-//            $('#pro_dateInE').val(formatDateShow(data[0].pro_dateIn));
+            $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));
+            $('#pro_dateInE').val(formatDateShow(data[0].pro_dateIn));
             $('#pro_dateOutE').val(formatDateShow(data[0].pro_dateOut));
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLPF", [$(data).pro_prefix], true, function (data2) {
                 $('#pro_prefixE').html('<option  value="">เลือก</opition>');
@@ -301,6 +295,76 @@
             });
         });
     }
+    function slDetail(data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [$(data).attr("id")], true, function (data) {
+            $('#imgSD').attr('src', data[0].pro_picture);
+            $('#person_imgD').attr('href', data[0].pro_picture);
+            $('#card_idD').html(data[0].card_id);
+            $('#pro_idposD').html(data[0].pro_idpos);
+            $('#pro_prefixD').html(data[0].pro_prefix);
+            $('#pro_fnameD').html(data[0].pro_fname);
+            $('#pro_lnameD').html(data[0].pro_lname);
+            $('#pro_nicknameD').html(data[0].pro_nickname);
+            if (data[0].pro_sex == 1) {
+                $('#pro_sexD').html('ชาย');
+            } else {
+                $('#pro_sexD').html('หญิง');
+            }
+            $('#pro_statusD').html(data[0].pro_status);
+            $('#pro_salaryD').html(parseInt(data[0].pro_salary));
+            $('#pro_birthdayD').html(formatDateShow(data[0].pro_birthday));
+            $('#pro_dateInD').html(formatDateShow(data[0].pro_dateIn));
+            $('#pro_dateOutD').html(formatDateShow(data[0].pro_dateOut));
+            $('#pro_person_create').html(data[0].pro_person_create);
+            $('#pro_date_create').html(data[0].pro_date_create);
+            $('#pro_person_update').html(data[0].pro_person_update);
+            $('#pro_date_update').html(data[0].pro_date_update);
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_type", "", true, function (data2) {
+                $.each(data2, function (i) {
+                    if (data[0].type_id == data2[i].type_id) {
+                        $('#type_nameD').html(data2[0].type_name);
+                    }
+                });
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_position", "", true, function (data2) {
+                $.each(data2, function (i) {
+                    if (data[0].pos_id == data2[i].pos_id) {
+                        $('#pos_nameD').html(data2[0].pos_name);
+                    }
+                });
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_level", "", true, function (data2) {
+                $.each(data2, function (i) {
+                    if (data[0].lv_id == data2[i].lv_id) {
+                        $('#lv_nameD').html(data2[0].lv_name);
+                    }
+                });
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_levelBoss", "", true, function (data2) {
+                $.each(data2, function (i) {
+                    if (data[0].lvb_id == data2[i].lvb_id) {
+                        $('#lvb_nameD').html(data2[0].lvb_name);
+                    }
+                });
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_class", "", true, function (data2) {
+                $.each(data2, function (i) {
+                    if (data[0].class_id == data2[i].class_id) {
+                        $('#class_nameD').html(data2[0].class_name);
+                    } else {
+                    }
+                });
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_department", "", true, function (data2) {
+                $.each(data2, function (i) {
+                    if (data[0].dep_id == data2[i].dep_id) {
+                        $('#dep_nameD').html(data2[0].dep_name);
+                    } else {
+                    }
+                });
+            });
+        });
+    }
     function editPerson(EPSM) {
         var Improfile = $('#pro_pictureE').prop('files')[0];
         var form_data_img = new FormData();
@@ -328,7 +392,6 @@
                 });
             }
         });
-
     }
     function importPerson(IMUSER) {
         var myFile = $('#filePerson').prop('files')[0];

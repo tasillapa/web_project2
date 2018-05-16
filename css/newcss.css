@@ -2,14 +2,9 @@
 thead, th {text-align: center;}
 
 /*New Border Lebal*/
-[type="checkbox"].filled-in:not(:checked) + label:after {
-    height: 20px;
-    width: 20px;
-    background-color: transparent;
-    border: 2px solid #eee;
-    top: 0px;
-    z-index: 0;
-}
+/*[type="checkbox"].filled-in:not(:checked) + label:after {
+    border: 2px solid #00bcd4;
+}*/
 /*Navigater*/
 .logo-head {
     content:url("../images/logo.png");
@@ -40,6 +35,9 @@ thead, th {text-align: center;}
 
 /* Padding Margin Css*/
 .p-d-8{
+    padding-top: 8px;
+}
+.p-t-8{
     padding-top: 8px;
 }
 .m-t--4 {
