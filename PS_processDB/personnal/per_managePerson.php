@@ -160,14 +160,15 @@ function add_profile() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        if ($get_data[18] == '0') {
-            $path = '../../noImg.png';
+//        print_r($get_data);exit();
+        if ($get_data[19] == '0') {
+            $path = '';
         } else {
-            $path = $get_data[18];
+            $path = $get_data[19];
         }
-        $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_nickname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_picture, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
+        $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_nickname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_transfer, pro_picture, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
                 . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '$get_data[10]', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]', '$get_data[15]', '$get_data[16]', '$get_data[17]'"
-                . ", '$path', '$get_data[19]', '$get_data[20]', '$get_data[21]', '$get_data[22]')";
+                . ", '$get_data[18]', '$path', '$get_data[20]', '$get_data[21]', '$get_data[22]', '$get_data[23]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -287,30 +288,30 @@ function edit_profile_main() {
 //        print_r($get_data);
 //        exit();
         $path = '';
-        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[21]'";
+        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[22]'";
         $Query = $cn->Connect->query($sql_img);
         while ($Row = mysqli_fetch_array($Query)) {
             $path = $Row['pro_picture'];
         }
-        if ($path != $get_data[22]) {
+        if ($path != $get_data[23]) {
             $files = glob($path);
             foreach ($files as $file) { // iterate files
                 if (is_file($file))
                     unlink($file); // delete file
             }
-        }else if ($path != $get_data[18]) {
-            $files = glob($get_data[18]);
+        }else if ($path != $get_data[19]) {
+            $files = glob($get_data[19]);
             foreach ($files as $file) { // iterate files
                 if (is_file($file))
                     unlink($file); // delete file
             }
-            $get_data[18] = $path;
+            $get_data[19] = $path;
         }
 
         $sql = "UPDATE ps_profile
         SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'
-            , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_picture = '$get_data[18]', pro_person_update = '$get_data[19]', pro_date_update = '$get_data[20]'
-        WHERE pro_id = '$get_data[21]'";
+            , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_transfer = '$get_data[18]', pro_picture = '$get_data[19]', pro_person_update = '$get_data[20]', pro_date_update = '$get_data[21]'
+        WHERE pro_id = '$get_data[22]'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

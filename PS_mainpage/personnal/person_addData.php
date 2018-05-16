@@ -1,5 +1,8 @@
 <?php include 'main_personnal.php'; ?>
-<?php require_once '../../connect/connect_DB_personal.php'; ?>
+<?php
+require_once '../../connect/connect_DB_personal.php';
+$NoImg = '../../images/no_img.png';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -74,8 +77,8 @@
                                                         <div class="image">
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
                                                                 <div class="list-unstyled aniimated-thumbnials">
-                                                                    <!--<a href="../../images/moon.jpg" id="person_img" data-sub-html="รูปประจำตัว">-->
-                                                                    <center><img class="img-responsive img-css" id="imgS" src="../../images/moon.jpg"></center>
+                                                                    <!--<a href="<?php echo $NoImg; ?>" id="person_img" data-sub-html="รูปประจำตัว">-->
+                                                                    <center><img class="img-responsive img-css" id="imgS" src="<?php echo $NoImg; ?>"></center>
                                                                     <!--</a>-->
                                                                 </div>
                                                                 <label class="btn-file-upload ">
@@ -362,9 +365,16 @@
                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                             <label >การโอนย้าย</label>
                                                         </div>
-                                                        <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8 demo-checkbox form-control-label-l asd">
-                                                            <input type="checkbox" id="md_checkbox_35" class="filled-in chk-col-orange">
-                                                            <label class="font-bold col-red" for="md_checkbox_35">ถ้ามี</label>
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 demo-checkbox form-control-label-l asd">
+                                                            <input type="checkbox" id="check_tran" class="filled-in chk-col-orange">
+                                                            <label class="font-bold col-red" for="check_tran">ถ้ามี</label>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="sw_input">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id="pro_transfer" class="form-control" placeholder="กรอกสถานที่ หรือสังกัดที่โอนย้าย">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -401,8 +411,8 @@
                                                         <div class="image">
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center">
                                                                 <div class="list-unstyled aniimated-thumbnials">
-                                                                    <!--<a href="../../images/moon.jpg" id="person_imgE" data-sub-html="รูปประจำตัว">-->
-                                                                    <center><img class="img-responsive img-css" id="imgSE" src="../../images/moon.jpg"></center>
+                                                                    <!--<a href="<?php echo $NoImg; ?>" id="person_imgE" data-sub-html="รูปประจำตัว">-->
+                                                                    <center><img class="img-responsive img-css" id="imgSE" src="<?php echo $NoImg; ?>"></center>
                                                                     <!--</a>-->
                                                                 </div>
                                                                 <label class="btn-file-upload ">
@@ -609,6 +619,22 @@
                                                             <label class="font-bold col-red">*บาท</label>
                                                         </div>
                                                     </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label >การโอนย้าย</label>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 demo-checkbox form-control-label-l asd">
+                                                            <input type="checkbox" id="check_tranE" class="filled-in chk-col-orange">
+                                                            <label class="font-bold col-red" for="check_tranE">ถ้ามี</label>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="sw_inputE">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id="pro_transferE" class="form-control" placeholder="กรอกสถานที่ หรือสังกัดที่โอนย้าย">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -643,8 +669,8 @@
                                                         <div class="image">
                                                             <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 align-center p-t-15">
                                                                 <div class="list-unstyled aniimated-thumbnials">
-                                                                    <!--<a href="../../images/moon.jpg" id="person_imgD" data-sub-html="รูปประจำตัว">-->
-                                                                    <center><img class="img-responsive img-css" id="imgSD" src="../../images/moon.jpg"></center>
+                                                                    <!--<a href="<?php echo $NoImg; ?>" id="person_imgD" data-sub-html="รูปประจำตัว">-->
+                                                                    <center><img class="img-responsive img-css" id="imgSD" src="<?php echo $NoImg; ?>"></center>
                                                                     <!--</a>-->
                                                                 </div>
                                                             </div>
@@ -793,7 +819,7 @@
                                                             <label >เงินเดือน</label>
                                                         </div>
                                                         <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8 p-t-8">
-                                                            <div class="input-group">
+                                                            <div class="input-group" style="margin-bottom: 0px;">
                                                                 <span class="input-group-addon">
                                                                     <i class="material-icons">credit_card</i>
                                                                 </span>
@@ -802,6 +828,14 @@
                                                         </div>
                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label-l">
                                                             <label class="font-bold col-red">*บาท</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix" id="sw_inputD">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label class="font-bold col-blue">โอนย้ายมา</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="pro_transferD"></span>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -876,7 +910,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <a href="../../doc/example/Tamplat_เพิ่มข้อมูลบุคลากร.xlsx" download>
+                            <a href="../../doc/example/Templat_เพิ่มข้อมูลบุคลากร.xlsx" download>
                                 <button type="button" class="btn btn-default waves-effect m-t--5 m-r-5" style="padding: 2px 12px;">
                                     <i class="material-icons">file_download</i>
                                     <span>ดาวน์โหลดไฟล์ตัวอย่าง</span>
@@ -891,6 +925,6 @@
             <!-- #END# Modal Import Person -->
         </section>
         <!-- Script -->
-        <?php include ("../../PS_script/personnal/per_addData.php"); ?>
+<?php include ("../../PS_script/personnal/per_addData.php"); ?>
     </body>
 </html>

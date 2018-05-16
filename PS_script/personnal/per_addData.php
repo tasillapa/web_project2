@@ -2,6 +2,7 @@
     var cls = new Call_Service();
     var card_id = '<?= $_SESSION["card_id"]; ?>';
     var name = '<?= $_SESSION["name"]; ?>';
+    var NoImg = '../../images/no_img.png';
     $(function () {
         $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
         $('#filePerson').change(function () {
@@ -98,7 +99,26 @@
         $('#lvb_id').select2();
         $('#class_id').select2();
         $('#dep_id').select2();
+        $('#sw_input').hide();
     });
+
+    $('#check_tran').click(function () {
+        if ($('#check_tran').is(":checked")) {
+            $('#sw_input').show();
+        } else {
+            $('#sw_input').hide();
+            $('#pro_transfer').val('');
+        }
+    });
+    $('#check_tranE').click(function () {
+        if ($('#check_tranE').is(":checked")) {
+            $('#sw_inputE').show();
+        } else {
+            $('#sw_inputE').hide();
+            $('#pro_transferE').val('');
+        }
+    });
+
     function show_profile() {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
     }
@@ -174,7 +194,7 @@
                 var array = [];
                 array.push(split($('#card_id').val()), $('#pro_idpos').val(), $('input[name=group1]:checked', '#pro_sex').val(), $('#pro_prefix').val(), $('#pro_fname').val(), $('#pro_lname').val(), $('#pro_nickname').val()
                         , formatDateDB($('#pro_birthday').val()), $('input[name=group2]:checked', '#pro_status').val(), $('#pos_id').val(), $('#type_id').val(), $('#lvb_id').val(), $('#lv_id').val()
-                        , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), formatDateDB($('#pro_dateIn').val()), formatDateDB($('#pro_dateOut').val()), data, name, formatDateToday(), name, formatDateToday());
+                        , $('#class_id').val(), $('#dep_id').val(), $('#pro_salary').val(), formatDateDB($('#pro_dateIn').val()), formatDateDB($('#pro_dateOut').val()), $('#pro_transfer').val(), data, name, formatDateToday(), name, formatDateToday());
                 cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", APS, array, true, function (data) {
                     show_profile()
                     swal("บันทึกสำเร็จ!", "บันทึกข้อมูลบุคลากรลงในระบบเเล้ว", "success");
@@ -202,8 +222,13 @@
     }
     function slEdit(data) {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [$(data).attr("id")], true, function (data) {
-            $('#imgSE').attr('src', data[0].pro_picture);
-            $('#person_imgE').attr('href', data[0].pro_picture);
+            if (data[0].pro_picture == '') {
+                $('#imgSE').attr('src', NoImg);
+                $('#person_imgE').attr('href', NoImg);
+            } else {
+                $('#imgSE').attr('src', data[0].pro_picture);
+                $('#person_imgE').attr('href', data[0].pro_picture);
+            }
             $('#pro_id').val(data[0].pro_id);
             $('#card_idE').val(data[0].card_id);
             $('#pro_idposE').val(data[0].pro_idpos);
@@ -216,6 +241,14 @@
             $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));
             $('#pro_dateInE').val(formatDateShow(data[0].pro_dateIn));
             $('#pro_dateOutE').val(formatDateShow(data[0].pro_dateOut));
+            if (data[0].pro_transfer != '') {
+                $('#check_tranE').prop("checked", true);
+                $('#sw_inputE').show();
+                $('#pro_transferE').val(data[0].pro_transfer);
+            } else {
+                $('#check_tranE').prop("checked", false);
+                $('#sw_inputE').hide();
+            }
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLPF", [$(data).pro_prefix], true, function (data2) {
                 $('#pro_prefixE').html('<option  value="">เลือก</opition>');
                 $.each(data2, function (i, k) {
@@ -297,8 +330,13 @@
     }
     function slDetail(data) {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [$(data).attr("id")], true, function (data) {
-            $('#imgSD').attr('src', data[0].pro_picture);
-            $('#person_imgD').attr('href', data[0].pro_picture);
+            if (data[0].pro_picture == '') {
+                $('#imgSD').attr('src', NoImg);
+                $('#person_imgD').attr('href', NoImg);
+            } else {
+                $('#imgSD').attr('src', data[0].pro_picture);
+                $('#person_imgD').attr('href', data[0].pro_picture);
+            }
             $('#card_idD').html(data[0].card_id);
             $('#pro_idposD').html(data[0].pro_idpos);
             $('#pro_prefixD').html(data[0].pro_prefix);
@@ -319,6 +357,12 @@
             $('#pro_date_create').html(data[0].pro_date_create);
             $('#pro_person_update').html(data[0].pro_person_update);
             $('#pro_date_update').html(data[0].pro_date_update);
+            if (data[0].pro_transfer != '') {
+                $('#sw_inputD').show();
+                $('#pro_transferD').html(data[0].pro_transfer);
+            } else {
+                $('#sw_inputD').hide();
+            }
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_type", "", true, function (data2) {
                 $.each(data2, function (i) {
                     if (data[0].type_id == data2[i].type_id) {
@@ -381,7 +425,7 @@
                 var array = [];
                 array.push(split($('#card_idE').val()), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
                         , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
-                        , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), data, name, formatDateToday(), $('#pro_id').val(), $('#imgSE').attr('src'));
+                        , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), $('#pro_transferE').val(), data, name, formatDateToday(), $('#pro_id').val(), $('#imgSE').attr('src'));
                 cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPSM, array, true, function (result) {
                     show_profile()
                     swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
