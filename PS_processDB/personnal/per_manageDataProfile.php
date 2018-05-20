@@ -45,6 +45,26 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "DED": del_education();
             break;
+        case "sl_lv_edu": sl_lv_edu();
+            break;
+        case "sl_table_hisService": sl_table_hisService();
+            break;
+        case "AHISV": add_hisService();
+            break;
+        case "DHISV": del_hisService();
+            break;
+        case "sl_table_hisSerSpecial": sl_table_hisSerSpecial();
+            break;
+        case "AHISVP": add_hisSerSpecial();
+            break;
+        case "DHISVP": del_hisSerSpecial();
+            break;
+        case "sl_table_assignment": sl_table_assignment();
+            break;
+        case "AHISAS": add_assignment();
+            break;
+        case "DHISAS": del_assignment();
+            break;
     }
 }
 
@@ -323,6 +343,147 @@ function del_education() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $sql = "DELETE FROM ps_education WHERE hised_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_lv_edu() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $sql = "SELECT * FROM ps_leveleducation ORDER BY edu_id ASC";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function sl_table_hisService() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_hisservice ORDER BY hissv_date DESC";
+        } else {
+            $sql = "SELECT * FROM ps_hisservice WHERE pro_id = '$id' ORDER BY hissv_date DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_hisService() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_hisservice (hissv_office, hissv_department, hissv_position, his_idpos, hissv_date, hissv_salary, hissv_type, pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_hisService() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "DELETE FROM ps_hisservice WHERE hissv_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_table_hisSerSpecial() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_hisservicespecial ORDER BY hissvp_date DESC";
+        } else {
+            $sql = "SELECT * FROM ps_hisservicespecial WHERE pro_id = '$id' ORDER BY hissvp_date DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_hisSerSpecial() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_hisservicespecial (hissvp_special, hissvp_topic, hissvp_code , hissvp_date, hissvp_place, hissvp_note , pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_hisSerSpecial() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "DELETE FROM ps_hisservicespecial WHERE hissvp_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_table_assignment() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_histreat_assignment ORDER BY hisas_date_start DESC";
+        } else {
+            $sql = "SELECT * FROM ps_histreat_assignment WHERE pro_id = '$id' ORDER BY hisas_date_start DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_assignment() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_histreat_assignment (hisas_code, hisas_poscode, hisas_date_start , hisas_date_end, hisas_position, hisas_office, hisas_pile, hisas_type, pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_assignment() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "DELETE FROM ps_histreat_assignment WHERE hisas_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

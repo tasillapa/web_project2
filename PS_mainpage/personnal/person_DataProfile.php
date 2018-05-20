@@ -26,7 +26,7 @@ if (!isset($_GET['id'])) {
                             <div class="body">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active">
+                                    <li role="presentation">
                                         <a href="#personal_information" data-toggle="tab">
                                             <img class="logo-btn-personIn"/> 
                                             <span>ข้อมูลส่วนตัว</span>
@@ -51,22 +51,28 @@ if (!isset($_GET['id'])) {
                                         </a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#career-history" data-toggle="tab">
+                                        <a href="#career_history" data-toggle="tab">
                                             <img class="logo-btn-hiswork"/>
                                             <span>ประวัติการทำงาน</span>
                                         </a>
                                     </li>
-                                    <li role="presentation">
+                                    <li role="presentation" class="active">
                                         <a href="#portfolio" data-toggle="tab">
                                             <img class="logo-btn-trophy"/>
                                             <span>ผลงาน</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#more_information" data-toggle="tab">
+                                            <img class="logo-btn-more"/>
+                                            <span>ข้อมูลเพิ่มเติม</span>
                                         </a>
                                     </li>
                                 </ul>
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active" id="personal_information">
+                                    <div role="tabpanel" class="tab-pane fade" id="personal_information">
                                         <!-- ข้อมูลส่วนตัว -->
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -274,11 +280,11 @@ if (!isset($_GET['id'])) {
                                                                     </div>
                                                                     <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8">
                                                                         <div class="input-group">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="material-icons">monetization_on</i>
+                                                                            <span class="input-group-addon m-l--10">
+                                                                                <i class="material-icons">credit_card</i>
                                                                             </span>
                                                                             <div class="form-line">
-                                                                                <input type="number" id="pro_salaryE" class="form-control" placeholder="กรุณาระบุจำนวนเงิน">
+                                                                                <input type="number" id="pro_salaryE" class="form-control" placeholder="กรอกจำนวนเงิน">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -442,10 +448,17 @@ if (!isset($_GET['id'])) {
                                                                             $cn = new management;
                                                                             $cn->con_db();
                                                                             echo '<option  value="">เลือก</opition>';
+                                                                            $sql_thai = "SELECT * FROM ps_nationality WHERE nationality_name = 'ไทย'";
+                                                                            $query_thai = $cn->Connect->query($sql_thai);
+                                                                            while ($rs_thai = mysqli_fetch_array($query_thai)) {
+                                                                                echo '<option  value="' . $rs_thai['nationality_id'] . '">' . $rs_thai['nationality_name'] . '</opition>';
+                                                                            }
                                                                             $sql = "SELECT * FROM ps_nationality ORDER BY nationality_name ASC";
                                                                             $query = $cn->Connect->query($sql);
                                                                             while ($rs = mysqli_fetch_array($query)) {
-                                                                                echo '<option  value="' . $rs['nationality_id'] . '">' . $rs['nationality_name'] . '</opition>';
+                                                                                if ($rs['nationality_name'] != 'ไทย') {
+                                                                                    echo '<option  value="' . $rs['nationality_id'] . '">' . $rs['nationality_name'] . '</opition>';
+                                                                                }
                                                                             }
                                                                             ?>
                                                                         </select>
@@ -459,10 +472,17 @@ if (!isset($_GET['id'])) {
                                                                             $cn = new management;
                                                                             $cn->con_db();
                                                                             echo '<option  value="">เลือก</opition>';
+                                                                            $sql_thai = "SELECT * FROM ps_nationality WHERE nationality_name = 'ไทย'";
+                                                                            $query_thai = $cn->Connect->query($sql_thai);
+                                                                            while ($rs_thai = mysqli_fetch_array($query_thai)) {
+                                                                                echo '<option  value="' . $rs_thai['nationality_id'] . '">' . $rs_thai['nationality_name'] . '</opition>';
+                                                                            }
                                                                             $sql = "SELECT * FROM ps_nationality ORDER BY nationality_name ASC";
                                                                             $query = $cn->Connect->query($sql);
                                                                             while ($rs = mysqli_fetch_array($query)) {
-                                                                                echo '<option  value="' . $rs['nationality_id'] . '">' . $rs['nationality_name'] . '</opition>';
+                                                                                if ($rs['nationality_name'] != 'ไทย') {
+                                                                                    echo '<option  value="' . $rs['nationality_id'] . '">' . $rs['nationality_name'] . '</opition>';
+                                                                                }
                                                                             }
                                                                             ?>
                                                                         </select>
@@ -931,6 +951,7 @@ if (!isset($_GET['id'])) {
                                         </div>
                                         <!-- #END# ข้อมูลทั่วไป -->
                                     </div>
+
                                     <div role="tabpanel" class="tab-pane fade" id="address_information">
                                         <!-- ข้อมูลที่อยู่ -->
                                         <div class="row clearfix">
@@ -1260,14 +1281,14 @@ if (!isset($_GET['id'])) {
                                         <div class="row clearfix">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="demo-masked-input">
-                                                    <form class="form-horizontal">
-                                                        <div class="card">
-                                                            <!--                                                            <div class="header bg-blue-grey" style="padding: 8px;">
-                                                                                                                            <h2>
-                                                                                                                                ระดับการศึกษาสูงสุด
-                                                                                                                            </h2>
-                                                                                                                        </div>-->
-                                                            <div class="body">
+                                                    <div class="card">
+                                                        <!--                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                                                                        <h2>
+                                                                                                                            ระดับการศึกษาสูงสุด
+                                                                                                                        </h2>
+                                                                                                                    </div>-->
+                                                        <div class="body">
+                                                            <form class="form-horizontal">
                                                                 <button type="button" class="btn bg-indigo waves-effect btn-aedu" style="padding: 2px 10px;">
                                                                     <i class="material-icons">add</i>
                                                                 </button>
@@ -1280,7 +1301,7 @@ if (!isset($_GET['id'])) {
                                                                             <label >ระดับการศึกษา</label>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="hised_level">
+                                                                            <select class="form-control show-tick hised_level" style="width: 100%" data-live-search="true" id="hised_level">
                                                                                 <?php
                                                                                 $cn = new management;
                                                                                 $cn->con_db();
@@ -1310,20 +1331,20 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >วุฒิการศึกษา</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hised_background" class="form-control" placeholder="กรอกวุฒิการศึกษา">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >วิชาเอก</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hised_major" class="form-control" placeholder="กรอกวิชาเอก">
@@ -1332,20 +1353,20 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >สถานศึกษา</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hised_address" class="form-control" placeholder="กรอกสถานศึกษา">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >ประเทศ</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hised_country" class="form-control" placeholder="กรอกประเทศ">
@@ -1354,6 +1375,7 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="insert-edu"></div>
                                                                 <div class="row clearfix align-right m-r-15">
                                                                     <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
                                                                     <button type="button" class="btn btn-success waves-effect" onclick="javascript: addEdu('AED')">บันทึก</button>
@@ -1361,6 +1383,672 @@ if (!isset($_GET['id'])) {
                                                                 <br>
                                                                 <div class="table-responsive">
                                                                     <div id="table_education_show"></div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="footer">
+                                                    <div class="row clearfix">
+                                                        <?php if ($_GET['id'] != '') { ?>
+                                                            <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
+                                                            </div>
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                                            </div>
+                                                        <?php } else { ?>
+                                                            <div class="align-right col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- #END# ประวัติการศึกษา -->
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade" id="career_history">
+                                        <!-- ประวัติการทำงาน -->
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="demo-masked-input">
+                                                    <div class="card">
+                                                        <div class="header bg-blue-grey" style="padding: 8px;">
+                                                            <h2>
+                                                                ประวัติการรับราชการ
+                                                            </h2>
+                                                        </div>
+                                                        <div class="body">
+                                                            <form class="form-horizontal">
+                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_hisser" aria-expanded="false" aria-controls="collapseExample">
+                                                                    <div class=""> <i class="material-icons">add</i></div>
+                                                                </button>
+                                                                <div class="collapse" id="add_hisser"><br>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >กรม</label>
+                                                                        </div>
+                                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissv_office" class="form-control" placeholder="กรอกกรมที่เคยรับราชการ">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >สังกัด</label>
+                                                                        </div>
+                                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissv_department" class="form-control" placeholder="กรอกสังกัด">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >ตำแหน่ง</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissv_position" class="form-control" placeholder="กรอกตำแหน่ง">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >เลขที่ตำแหน่ง</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissv_poscod" class="form-control" placeholder="กรอกเลขที่ตำแหน่ง" maxlength="10" onkeypress="return isNumberKey(event)">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >วันที่รับราชการ</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissv_date" class="form-control date" placeholder="กรอกวันที่รับราชการ">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >อัตราเงินเดือน</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="input-group m-l--10">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="material-icons">credit_card</i>
+                                                                                </span>
+                                                                                <div class="form-line">
+                                                                                    <input type="number" id="hissv_salary" class="form-control" placeholder="กรอกอัตราเงินเดือน">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >ประเภทการเคลื่อนไหว</label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <textarea type="text" id="hissv_type" class="form-control" placeholder="กรอกประเภทการเคลื่อนไหว"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix align-right m-r-15">
+                                                                        <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                        <button type="button" class="btn btn-success waves-effect" onclick="javascript: addHisv('AHISV')">บันทึก</button>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="table-responsive">
+                                                                    <div id="table_hisService_show"></div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="header bg-blue-grey" style="padding: 8px;">
+                                                            <h2>
+                                                                ประวัติราชการพิเศษ
+                                                            </h2>
+                                                        </div>
+                                                        <div class="body">
+                                                            <form class="form-horizontal">
+                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_serSpecial" aria-expanded="false" aria-controls="collapseExample">
+                                                                    <div class=""> <i class="material-icons">add</i></div>
+                                                                </button>
+                                                                <div class="collapse" id="add_serSpecial"><br>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >ราชการพิเศษ</label>
+                                                                        </div>
+                                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissvp_special" class="form-control" placeholder="กรอกราชการพิเศษ">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >หัวข้อโครงการ</label>
+                                                                        </div>
+                                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissvp_topic" class="form-control" placeholder="กรอกหัวข้อโครงการ">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >เลขที่คำสั่ง</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissvp_code" class="form-control" placeholder="กรอกเลขที่คำสั่ง" maxlength="10" onkeypress="return isNumberKey(event)">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >วันที่รับคำสั่ง</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hissvp_date" class="form-control date" placeholder="__/__/____">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >สถานที่</label>
+                                                                        </div>
+                                                                        <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <textarea type="text" id="hissvp_place" class="form-control" placeholder="กรอกสถานที่"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >หมายเหตุ</label>
+                                                                        </div>
+                                                                        <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <textarea type="text" id="hissvp_note" class="form-control" placeholder="กรอกหมายเหตุ"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix align-right m-r-15">
+                                                                        <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                        <button type="button" class="btn btn-success waves-effect" onclick="javascript: addHisvp('AHISVP')">บันทึก</button>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="table-responsive">
+                                                                    <div id="table_hisSerSpecial_show"></div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="header bg-blue-grey" style="padding: 8px;">
+                                                            <h2>
+                                                                ประวัติการรักษาราชการ มอบหมายงาน
+                                                            </h2>
+                                                        </div>
+                                                        <div class="body">
+                                                            <form class="form-horizontal">
+                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_assignment" aria-expanded="false" aria-controls="collapseExample">
+                                                                    <div class=""> <i class="material-icons">add</i></div>
+                                                                </button>
+                                                                <div class="collapse" id="add_assignment"><br>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >เลขที่คำสั่ง</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hisas_code" class="form-control" placeholder="กรอกเลขที่คำสั่ง" maxlength="10" onkeypress="return isNumberKey(event)">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >เลขที่ตำแหน่ง</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hisas_poscode" class="form-control" placeholder="กรอกเลขที่ตำแหน่ง" maxlength="10" onkeypress="return isNumberKey(event)">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >วันที่เริ่ม</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hisas_date_start" class="form-control date" placeholder="__/__/____">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                            <label >วันที่สิ้นสุด</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hisas_date_end" class="form-control date" placeholder="__/__/____">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >ตำแหน่งสายงาน</label>
+                                                                        </div>
+                                                                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hisas_position" class="form-control" placeholder="กรอกตำแหน่งสายงาน">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >กรม</label>
+                                                                        </div>
+                                                                        <div class="col-lg-5 col-md-4 col-sm-8 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hisas_office" class="form-control" placeholder="กรอกกรม">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >สำนัก/กอง</label>
+                                                                        </div>
+                                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <input type="text" id="hisas_pile" class="form-control" placeholder="กรอกสำนัก/กอง">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                            <label >ประเภทการเคลื่อนไหว</label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <textarea type="text" id="hisas_type" class="form-control" placeholder="กรอกประเภทการเคลื่อนไหว"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row clearfix align-right m-r-15">
+                                                                        <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
+                                                                        <button type="button" class="btn btn-success waves-effect" onclick="javascript: addHisas('AHISAS')">บันทึก</button>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="table-responsive">
+                                                                    <div id="table_assignment_show"></div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="footer">
+                                                    <div class="row clearfix">
+                                                        <?php if ($_GET['id'] != '') { ?>
+                                                            <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
+                                                            </div>
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                                            </div>
+                                                        <?php } else { ?>
+                                                            <div class="align-right col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- #END# ประวัติการทำงาน -->
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade in active" id="portfolio">
+                                        <!-- ผลงาน -->
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="demo-masked-input">
+                                                    <form class="form-horizontal">
+                                                        <div class="card">
+                                                            <div class="header bg-blue-grey" style="padding: 8px;">
+                                                                <h2>
+                                                                    ที่อยู่ตามทะเบียนบ้าน
+                                                                </h2>
+                                                            </div>
+                                                            <div class="body">
+                                                                <!--<h2 class="card-inside-title">ที่อยู่ตามทะเบียนบ้าน</h2>-->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >เลขที่</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_number" class="form-control" placeholder="กรอกเลขที่อยู่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >หมู่</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_swine" class="form-control" placeholder="กรอกหมู่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ซอย</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_soi" class="form-control" placeholder="กรอกซอย">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ถนน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_road" class="form-control" placeholder="กรอกถนน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >หมู่บ้าน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_village" class="form-control" placeholder="กรอกหมู่บ้าน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >จังหวัด</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_province">
+                                                                            <?php
+                                                                            $cn = new management;
+                                                                            $cn->con_db();
+                                                                            echo '<option  value="">เลือก</opition>';
+                                                                            $sql = "select * from ps_province ORDER BY PROVINCE_NAME ASC";
+                                                                            $query = $cn->Connect->query($sql);
+                                                                            while ($rs = mysqli_fetch_array($query)) {
+                                                                                echo '<option  value="' . $rs['PROVINCE_ID'] . '">' . $rs['PROVINCE_NAME'] . '</opition>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >อำเภอ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_amphur">
+                                                                            <option  value="">กรุณาเลือกจังหวัด</opition>
+                                                                                <?php
+//                                                                                $cn = new management;
+//                                                                                $cn->con_db();
+//                                                                                echo '<option  value="">กรุณาเลือกจังหวัด</opition>';
+//                                                                                $sql = "select * from ps_amphur ORDER BY AMPHUR_NAME ASC";
+//                                                                                $query = $cn->Connect->query($sql);
+//                                                                                while ($rs = mysqli_fetch_array($query)) {
+//                                                                                    echo '<option  value="' . $rs['AMPHUR_ID'] . '">' . $rs['AMPHUR_NAME'] . '</opition>';
+//                                                                                }
+                                                                                ?>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ตำบล</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="address_district">
+                                                                            <option  value="">กรุณาเลือกอำเภอ</opition>
+                                                                                <?php
+//                                                                                $cn = new management;
+//                                                                                $cn->con_db();
+//                                                                                echo '<option  value="">เลือก</opition>';
+//                                                                                $sql = "select * from ps_district ORDER BY DISTRICT_NAME ASC";
+//                                                                                $query = $cn->Connect->query($sql);
+//                                                                                while ($rs = mysqli_fetch_array($query)) {
+//                                                                                    echo '<option  value="' . $rs['DISTRICT_ID'] . '">' . $rs['DISTRICT_NAME'] . '</opition>';
+//                                                                                }
+                                                                                ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >รหัสไปรษณีย์</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_zip_code" class="form-control" maxlength="5" placeholder="กรอกรหัสไปรษณีย์" onkeypress="return isNumberKey(event)">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >โทรศัพท์</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_call" class="form-control phone-number" placeholder="กรอกหมายเลขโทรศัพท์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >มือถือ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="address_fhone" class="form-control mobile-number" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="card">
+                                                            <div class="header bg-blue-grey demo-checkbox" style="padding: 8px;">
+                                                                <h2>
+                                                                    ที่อยู่ปัจจุบันที่ติดต่อได้
+                                                                </h2>
+                                                                <span class="header-dropdown m-t--15">
+                                                                    <input type="checkbox" id="check_addr" class="filled-in" style="color:#0048AB"/>
+                                                                    <label for="check_addr">ที่อยู่เหมือนทะเบียนบ้าน</label>
+                                                                </span>
+                                                            </div>
+                                                            <div class="body">
+                                                                <!--<h2 class="card-inside-title">ที่อยู่ตามทะเบียนบ้าน</h2>-->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >เลขที่</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_number" class="form-control" placeholder="กรอกเลขที่อยู่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >หมู่</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_swine" class="form-control" placeholder="กรอกหมู่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ซอย</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_soi" class="form-control" placeholder="กรอกซอย">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ถนน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_road" class="form-control" placeholder="กรอกถนน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >หมู่บ้าน</label>
+                                                                    </div>
+                                                                    <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_village" class="form-control" placeholder="กรอกหมู่บ้าน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >จังหวัด</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pread_province">
+                                                                            <?php
+                                                                            $cn = new management;
+                                                                            $cn->con_db();
+                                                                            echo '<option  value="">เลือก</opition>';
+                                                                            $sql = "select * from ps_province ORDER BY PROVINCE_NAME ASC";
+                                                                            $query = $cn->Connect->query($sql);
+                                                                            while ($rs = mysqli_fetch_array($query)) {
+                                                                                echo '<option  value="' . $rs['PROVINCE_ID'] . '">' . $rs['PROVINCE_NAME'] . '</opition>';
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >อำเภอ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pread_amphur">
+                                                                            <option  value="">กรุณาเลือกจังหวัด</opition>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >ตำบล</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pread_district">
+                                                                            <option  value="">กรุณาเลือกอำเภอ</opition>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <label >รหัสไปรษณีย์</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_zip_code" class="form-control" placeholder="กรอกรหัสไปรษณีย์" maxlength="5" onkeypress="return isNumberKey(event)">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row clearfix">
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >โทรศัพท์</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_call" class="form-control phone-number" placeholder="กรอกหมายเลขโทรศัพท์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <label >มือถือ</label>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                        <div class="form-group">
+                                                                            <div class="form-line">
+                                                                                <input type="text" id="pread_fhone" class="form-control mobile-number" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1384,8 +2072,9 @@ if (!isset($_GET['id'])) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- #END# ประวัติการศึกษา -->
+                                        <!-- #END# ผลงาน -->
                                     </div>
+
                                 </div>
                             </div>
                         </div>

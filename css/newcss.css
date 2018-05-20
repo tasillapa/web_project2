@@ -159,6 +159,11 @@ input[type="file"] {
     width: 25px;
     height: 25px;   
 }
+.logo-btn-more {
+    content:url("../images/btn-tap/more.png");
+    width: 25px;
+    height: 25px;   
+}
 
 /*Button Management*/
 .btn-delete {

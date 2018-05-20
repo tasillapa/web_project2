@@ -79,4 +79,80 @@ function FnID($var) {
     return $srt[0] . "-" . $srt[1] . "-" . $srt[2] . "-" . $srt[3] . "-" . $srt[4];
 }
 
+function rev_date($date) {
+    $array = explode("/", $date);
+    $rev = array_reverse($array);
+    $date = implode("-", $rev);
+    return $date;
+}
+
+function thaiDate($datetime) {
+    list($date, $time) = split(' ', $datetime); // แยกวันที่ กับ เวลาออกจากกัน
+    list($H, $i, $s) = split(':', $time); // แยกเวลา ออกเป็น ชั่วโมง นาที วินาที
+    list($Y, $m, $d) = split('-', $date); // แยกวันเป็น ปี เดือน วัน
+    $Y = $Y + 543; // เปลี่ยน ค.ศ. เป็น พ.ศ.
+
+    switch ($m) {
+        case "01": $m = "ม.ค.";
+            break;
+        case "02": $m = "ก.พ.";
+            break;
+        case "03": $m = "มี.ค.";
+            break;
+        case "04": $m = "เม.ย.";
+            break;
+        case "05": $m = "พ.ค.";
+            break;
+        case "06": $m = "มิ.ย.";
+            break;
+        case "07": $m = "ก.ค.";
+            break;
+        case "08": $m = "ส.ค.";
+            break;
+        case "09": $m = "ก.ย.";
+            break;
+        case "10": $m = "ต.ค.";
+            break;
+        case "11": $m = "พ.ย.";
+            break;
+        case "12": $m = "ธ.ค.";
+            break;
+    }
+    return $d . " " . $m . " " . $Y;
+}
+
+function chistDate($date) {
+    $array = explode(" ", $date);
+    $d = $array[0];
+    $m = $array[1];
+    $Y = $array[2] - 543; // เปลี่ยน ค.ศ. เป็น พ.ศ.
+    switch ($m) {
+        case "ม.ค.": $m = "01";
+            break;
+        case "ก.พ.": $m = "02";
+            break;
+        case "มี.ค.": $m = "03";
+            break;
+        case "เม.ย.": $m = "04";
+            break;
+        case "พ.ค.": $m = "05";
+            break;
+        case "มิ.ย.": $m = "06";
+            break;
+        case "ก.ค.": $m = "07";
+            break;
+        case "ส.ค.": $m = "08";
+            break;
+        case "ก.ย.": $m = "09";
+            break;
+        case "ต.ค.": $m = "10";
+            break;
+        case "พ.ย.": $m = "11";
+            break;
+        case "ธ.ค.": $m = "12";
+            break;
+    }
+    return $Y . "-" . $m . "-" . $d;
+}
+
 ?>

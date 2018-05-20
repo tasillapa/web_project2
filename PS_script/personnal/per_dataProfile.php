@@ -40,7 +40,64 @@
                 $input.val(fulldateTH);
             },
         });
+
         $("#pro_birthdayE").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+
+        $("#hissv_date").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+
+        $("#hissvp_date").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+
+        $("#hisas_date_start").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+
+        $("#hisas_date_end").datetimepicker({
             timepicker: false,
             format: 'd/m/Y',
             lang: 'th',
@@ -89,6 +146,9 @@
         show_heir();
         show_blame();
         show_education();
+        show_hisService();
+        show_hisSerSpecial();
+        show_assignment();
         $('#hised_level').select2();
         $('#hised_year').select2();
 
@@ -178,46 +238,46 @@
 
         $('#check_addr').click(function () {
             if (document.getElementById('check_addr').checked) {
-                if ($('#address_number').val() != '') {
-                    $('#pread_number').val($('#address_number').val());
-                    $('#pread_swine').val($('#address_swine').val());
-                    $('#pread_soi').val($('#address_soi').val());
-                    $('#pread_road').val($('#address_road').val());
-                    $('#pread_village').val($('#address_village').val());
-                    $('#pread_province option[value="' + $('#address_province').val() + '"]').prop('selected', true);
-                    $('#pread_province').select2();
-                    $('#pread_zip_code').val($('#address_zip_code').val());
-                    cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [$('#address_province').val()], true, function (data) {
-                        $('#pread_amphur').html('');
-                        $('#pread_amphur').html('<option value="">เลือก</opition>');
-                        $.each(data, function (i) {
-                            $("#pread_amphur").append('<option value="' + data[i].AMPHUR_ID + '">' + data[i].AMPHUR_NAME + '</opition>');
-                        });
-                        $('#pread_amphur option[value="' + $('#address_amphur').val() + '"]').prop('selected', true);
-                        $('#pread_amphur').select2();
-                    });
-                    if ($('#address_amphur').val() != '') {
-                        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_district", [$('#address_amphur').val()], true, function (data) {
-                            $('#pread_district').html('');
-                            $('#pread_district').html('<option value="">เลือก</opition>');
-                            $.each(data, function (i) {
-                                $("#pread_district").append('<option value="' + data[i].DISTRICT_ID + '">' + data[i].DISTRICT_NAME + '</opition>');
-                            });
-                            $('#pread_district option[value="' + $('#address_district').val() + '"]').prop('selected', true);
-                            $('#pread_district').select2();
-                        });
-                    } else {
-                        $('#pread_district').html('');
-                        $('#pread_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
-                    }
-                    $('#pread_call').val($('#address_call').val());
-                    $('#pread_fhone').val($('#address_fhone').val());
-                } else {
+//                if ($('#address_number').val() != '') {
+                $('#pread_number').val($('#address_number').val());
+                $('#pread_swine').val($('#address_swine').val());
+                $('#pread_soi').val($('#address_soi').val());
+                $('#pread_road').val($('#address_road').val());
+                $('#pread_village').val($('#address_village').val());
+                $('#pread_province option[value="' + $('#address_province').val() + '"]').prop('selected', true);
+                $('#pread_province').select2();
+                $('#pread_zip_code').val($('#address_zip_code').val());
+                cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [$('#address_province').val()], true, function (data) {
                     $('#pread_amphur').html('');
-                    $('#pread_amphur').html('<option  value="">กรุณาเลือกจังหวัด</opition>');
+                    $('#pread_amphur').html('<option value="">เลือก</opition>');
+                    $.each(data, function (i) {
+                        $("#pread_amphur").append('<option value="' + data[i].AMPHUR_ID + '">' + data[i].AMPHUR_NAME + '</opition>');
+                    });
+                    $('#pread_amphur option[value="' + $('#address_amphur').val() + '"]').prop('selected', true);
+                    $('#pread_amphur').select2();
+                });
+                if ($('#address_amphur').val() != '') {
+                    cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_district", [$('#address_amphur').val()], true, function (data) {
+                        $('#pread_district').html('');
+                        $('#pread_district').html('<option value="">เลือก</opition>');
+                        $.each(data, function (i) {
+                            $("#pread_district").append('<option value="' + data[i].DISTRICT_ID + '">' + data[i].DISTRICT_NAME + '</opition>');
+                        });
+                        $('#pread_district option[value="' + $('#address_district').val() + '"]').prop('selected', true);
+                        $('#pread_district').select2();
+                    });
+                } else {
                     $('#pread_district').html('');
                     $('#pread_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
                 }
+                $('#pread_call').val($('#address_call').val());
+                $('#pread_fhone').val($('#address_fhone').val());
+//                } else {
+//                    $('#pread_amphur').html('');
+//                    $('#pread_amphur').html('<option  value="">กรุณาเลือกจังหวัด</opition>');
+//                    $('#pread_district').html('');
+//                    $('#pread_district').html('<option  value="">กรุณาเลือกอำเภอ</opition>');
+//                }
             } else {
                 $('#pread_number').val('');
                 $('#pread_swine').val('');
@@ -494,6 +554,15 @@
     function show_education() {
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_edu", [dataID], true, table_education);
     }
+    function show_hisService() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_hisService", [dataID], true, table_hisService);
+    }
+    function show_hisSerSpecial() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_hisSerSpecial", [dataID], true, table_hisSerSpecial);
+    }
+    function show_assignment() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_assignment", [dataID], true, table_assignment);
+    }
 
     function table_chName(data) {
         $(".table_chName").html('');
@@ -501,14 +570,13 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['', a, data[i].chang_nameold, data[i].chang_namenew, data[i].chang_date, '<img class="btn-delete" id="' + data[i].chang_id + '" onclick="javascript: delChName(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', data[i].chang_nameold, data[i].chang_namenew, DateThai(data[i].chang_date), '<center><img class="btn-delete" id="' + data[i].chang_id + '" onclick="javascript: delChName(this)"/></center>']);
         });
         $('#table_chName_show').html('<table class="table table-bordered table-striped table-hover table_chName dataTable" width="100%"></table>');
         $('.table_chName').DataTable({
             responsive: true,
             data: dataSet,
             columns: [
-                {title: "#"},
                 {title: "ลำดับ"},
                 {title: "ชื่อ-สกุลเดิม"},
                 {title: "ชื่อ-สกุลใหม่"},
@@ -521,6 +589,8 @@
         var array = [];
         array.push($('#chName_old').val(), $('#chName_new').val(), formatDateDB($('#chName_date').val()), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", ACN, array, true, function (data) {
+            $('#add_chName').removeClass('in');
+            $('#add_chName').find('.btn-danger').trigger('click');
             show_chName();
             swal("บันทึกสำเร็จ!", "บันทึกประวัติการเปลี่ยนแปลงชื่อเรียบร้อยเเล้ว", "success");
         });
@@ -555,14 +625,13 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['', a, data[i].marry_name, data[i].marry_status, '<img class="btn-delete" id="' + data[i].marry_id + '" onclick="javascript: delMarry(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', data[i].marry_name, data[i].marry_status, '<center><img class="btn-delete" id="' + data[i].marry_id + '" onclick="javascript: delMarry(this)"/></center>']);
         });
         $('#table_marry_show').html('<table class="table table-bordered table-striped table-hover table_marry dataTable" width="100%"></table>');
         $('.table_marry').DataTable({
             responsive: true,
             data: dataSet,
             columns: [
-                {title: "#"},
                 {title: "ลำดับ"},
                 {title: "ชื่อ-สกุล"},
                 {title: "ความสัมพันธ์"},
@@ -574,6 +643,8 @@
         var array = [];
         array.push($('#marry_name').val(), $('#marry_relationship').val(), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AMR, array, true, function (data) {
+            $('#add_marry').removeClass('in');
+            $('#add_marry').find('.btn-danger').trigger('click');
             show_marry();
             swal("บันทึกสำเร็จ!", "บันทึกประวัติการสมรสเรียบร้อยเเล้ว", "success");
         });
@@ -608,14 +679,13 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['', a, data[i].heir_name, data[i].heir_relationship, '<img class="btn-delete" id="' + data[i].id_heir + '" onclick="javascript: delHeir(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', data[i].heir_name, data[i].heir_relationship, '<center><img class="btn-delete" id="' + data[i].id_heir + '" onclick="javascript: delHeir(this)"/></center>']);
         });
         $('#table_heir_show').html('<table class="table table-bordered table-striped table-hover table_heir dataTable" width="100%"></table>');
         $('.table_heir').DataTable({
             responsive: true,
             data: dataSet,
             columns: [
-                {title: "#"},
                 {title: "ลำดับ"},
                 {title: "ชื่อ-สกุล"},
                 {title: "ความสัมพันธ์"},
@@ -627,6 +697,8 @@
         var array = [];
         array.push($('#heir_name').val(), $('#heir_relationship').val(), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AH, array, true, function (data) {
+            $('#add_heir').removeClass('in');
+            $('#add_heir').find('.btn-danger').trigger('click');
             show_heir();
             swal("บันทึกสำเร็จ!", "บันทึกข้อมูลทายาทเรียบร้อยเเล้ว", "success");
         });
@@ -661,14 +733,13 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['', a, data[i].blame_name, data[i].blame_somename, data[i].blame_date, '<img class="btn-delete" id="' + data[i].blame_id + '" onclick="javascript: delBlame(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', data[i].blame_name, data[i].blame_somename, DateThai(data[i].blame_date), '<center><img class="btn-delete" id="' + data[i].blame_id + '" onclick="javascript: delBlame(this)"/></center>']);
         });
         $('#table_blame_show').html('<table class="table table-bordered table-striped table-hover table_blame dataTable" width="100%"></table>');
         $('.table_blame').DataTable({
             responsive: true,
             data: dataSet,
             columns: [
-                {title: "#"},
                 {title: "ลำดับ"},
                 {title: "ความผิด"},
                 {title: "กรณีความผิด"},
@@ -681,6 +752,8 @@
         var array = [];
         array.push($('#blame_mistake').val(), $('#blame_mistakeCase').val(), formatDateDB($('#blame_date').val()), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AB, array, true, function (data) {
+            $('#add_blame').removeClass('in');
+            $('#add_blame').find('.btn-danger').trigger('click');
             show_blame();
             swal("บันทึกสำเร็จ!", "บันทึกประวัติทางวินัยเรียบร้อยเเล้ว", "success");
         });
@@ -763,7 +836,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['<center>' + a + '</center>', data[i].edu_name, data[i].hised_background, data[i].hised_major, data[i].hised_address, data[i].hised_country, data[i].hised_year, '<img class="btn-delete" id="' + data[i].hised_id + '" onclick="javascript: delEdu(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', data[i].edu_name, data[i].hised_background, data[i].hised_major, data[i].hised_address, data[i].hised_country, data[i].hised_year, '<center><img class="btn-delete" id="' + data[i].hised_id + '" onclick="javascript: delEdu(this)"/></center>']);
         });
         $('#table_education_show').html('<table class="table table-bordered table-striped table-hover table_education dataTable" width="100%"></table>');
         $('.table_education').DataTable({
@@ -782,16 +855,34 @@
         });
     }
     $(".btn-aedu").click(function () {
-        var section = $("#clone_edu").clone();
-        section.attr('id', 'clone_edu' + i);
-        $("#clone_edu" + i + "").find();
-        if (i == 1) {
-            section.insertAfter($('#clone_edu'));
-        } else {
-            var j = i - 1;
-            section.insertAfter($('#clone_edu' + j + ''));
+        if (i < 10) {
+            $('<div id="clone_edu' + i + '"><div class="row clearfix"><div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">\n\
+                   <label >ระดับการศึกษา</label></div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">\n\
+                        <select class="form-control show-tick hised_level" style="width: 100%" data-live-search="true" id="hised_level' + i + '"></select>\n\
+                </div>\n\
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">\n\
+                    <label >ปีที่จบ</label></div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">\n\
+                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="hised_year' + i + '"></select>\n\
+                </div></div>\n\
+                \n\<div class="row clearfix"><div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l"><label >วุฒิการศึกษา</label></div><div class="col-lg-4 col-md-4 col-sm-8 col-xs-12"><div class="form-group"><div class="form-line"><input type="text" id="hised_background' + i + '" class="form-control" placeholder="กรอกวุฒิการศึกษา"></div></div></div><div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l"><label >วิชาเอก</label></div><div class="col-lg-4 col-md-4 col-sm-8 col-xs-12"><div class="form-group"><div class="form-line"><input type="text" id="hised_major' + i + '" class="form-control" placeholder="กรอกวิชาเอก"></div></div></div></div>\n\
+                <div class="row clearfix"><div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l"><label >สถานศึกษา</label></div><div class="col-lg-4 col-md-4 col-sm-8 col-xs-12"><div class="form-group"><div class="form-line"><input type="text" id="hised_address' + i + '" class="form-control" placeholder="กรอกสถานศึกษา"></div></div></div><div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l"><label >ประเทศ</label></div><div class="col-lg-4 col-md-4 col-sm-8 col-xs-12"><div class="form-group"><div class="form-line"><input type="text" id="hised_country' + i + '" class="form-control" placeholder="กรอกประเทศ"></div></div></div></div>\n\
+            </div>').appendTo($('.insert-edu')).slideDown("slow");
+
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", 'sl_lv_edu', '', true, function (data) {
+                $('#hised_level' + i).html('<option selected="selected" value="">เลือก</opition>');
+                $.each(data, function (a) {
+                    $('#hised_level' + i).append('<option value="' + data[a].edu_id + '">' + data[a].edu_name + '</opition>');
+                });
+                $('#hised_year' + i).html('<option selected="selected" value="">เลือก</opition>');
+                for (var y = 2450; y <= 2600; y++) {
+                    $('#hised_year' + i).append('<option value="' + y + '">' + y + '</opition>');
+                }
+                $('#hised_level' + i).select2();
+                $('#hised_year' + i).select2();
+                i++;
+            });
         }
-        i++;
+
     });
     $(".btn-dedu").click(function () {
         if (i > 1) {
@@ -804,10 +895,24 @@
         var array = [];
         array.push($('#hised_level').val(), $('#hised_year').val(), $('#hised_background').val(), $('#hised_major').val(), $('#hised_address').val(), $('#hised_country').val(), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AED, array, true, function (data) {
-            show_education();
-            swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
+            if (i > 1) {
+                for (i; i > 1; i--) {
+                    var p = i - 1;
+                    var array2 = [];
+                    array2.push($('#hised_level' + p).val(), $('#hised_year' + p).val(), $('#hised_background' + p).val(), $('#hised_major' + p).val(), $('#hised_address' + p).val(), $('#hised_country' + p).val(), dataID);
+                    cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AED, array2, true, function (data) {
+                        if (p == 1) {
+                            show_education();
+                            swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
+                        }
+                    });
+                    $("#clone_edu" + p + "").remove();
+                }
+            } else {
+                show_education();
+                swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
+            }
         });
-
     }
     function delEdu(data) {
         swal({
@@ -822,6 +927,189 @@
         }, function () {
             cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DED", [$(data).attr("id")], true, function (data) {
                 show_education();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function table_hisService(data) {
+        $(".table_hisService").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', data[i].hissv_office, data[i].hissv_department, data[i].hissv_position, data[i].his_idpos, DateThai(data[i].hissv_date), data[i].hissv_salary, data[i].hissv_type, '<center><img class="btn-delete" id="' + data[i].hissv_id + '" onclick="javascript: delHisv(this)"/></center>']);
+        });
+        $('#table_hisService_show').html('<table class="table table-bordered table-striped table-hover table_hisService dataTable" width="100%"></table>');
+        $('.table_hisService').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "กรม"},
+                {title: "สังกัด"},
+                {title: "ตำแหน่ง"},
+                {title: "เลขที่ตำแหน่ง"},
+                {title: "วันที่รับราชการ"},
+                {title: "เงินเดือน"},
+                {title: "ประเภท"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function addHisv(AHISV) {
+        var array = [];
+        array.push($('#hissv_office').val(), $('#hissv_department').val(), $('#hissv_position').val(), $('#hissv_poscod').val(), formatDateDB($('#hissv_date').val()), $('#hissv_salary').val(), $('#hissv_type').val(), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AHISV, array, true, function (data) {
+            $('#add_hisser').removeClass('in');
+            $('#add_hisser').find('.btn-danger').trigger('click');
+            show_hisService();
+            swal("บันทึกสำเร็จ!", "บันทึกประวัติการรับราชการเรียบร้อยเเล้ว", "success");
+        });
+    }
+
+    function delHisv(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DHISV", [$(data).attr("id")], true, function (data) {
+                show_hisService();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function table_hisSerSpecial(data) {
+        $(".table_hisSerSpecial").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', data[i].hissvp_special, data[i].hissvp_topic, data[i].hissvp_code, DateThai(data[i].hissvp_date), data[i].hissvp_place, data[i].hissvp_note, '<center><img class="btn-delete" id="' + data[i].hissvp_id + '" onclick="javascript: delHisvp(this)"/></center>']);
+        });
+        $('#table_hisSerSpecial_show').html('<table class="table table-bordered table-striped table-hover table_hisSerSpecial dataTable" width="100%"></table>');
+        $('.table_hisSerSpecial').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "ราชการพิเศษ"},
+                {title: "หัวข้อโครงการ"},
+                {title: "เลขที่คำสั่ง"},
+                {title: "วันที่รับคำสั่ง"},
+                {title: "สถานที่"},
+                {title: "หมายเหตุ"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function addHisvp(AHISVP) {
+        var array = [];
+        array.push($('#hissvp_special').val(), $('#hissvp_topic').val(), $('#hissvp_code').val(), formatDateDB($('#hissvp_date').val()), $('#hissvp_place').val(), $('#hissvp_note').val(), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AHISVP, array, true, function (data) {
+            $('#add_serSpecial').removeClass('in');
+            $('#add_serSpecial').find('.btn-danger').trigger('click');
+            show_hisSerSpecial();
+            swal("บันทึกสำเร็จ!", "บันทึกประวัติการรับราชการพิเศษเรียบร้อยเเล้ว", "success");
+        });
+    }
+
+    function delHisvp(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DHISVP", [$(data).attr("id")], true, function (data) {
+                show_hisSerSpecial();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function table_assignment(data) {
+        $(".table_assignment").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', data[i].hisas_code, data[i].hisas_poscode, DateThai(data[i].hisas_date_start), DateThai(data[i].hisas_date_end), data[i].hisas_position, data[i].hisas_office, data[i].hisas_pile, data[i].hisas_type, '<center><img class="btn-delete" id="' + data[i].hisas_id + '" onclick="javascript: delHisas(this)"/></center>']);
+        });
+        $('#table_assignment_show').html('<table class="table table-bordered table-striped table-hover table_assignment dataTable" width="100%"></table>');
+        $('.table_assignment').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ", width: "1%"},
+                {title: "เลขที่คำสั่ง", width: "13%"},
+                {title: "เลขที่ตำแหน่ง", width: "13%"},
+                {title: "วันที่เริ่ม", width: "15%"},
+                {title: "วันที่สิ้นสุด", width: "18%"},
+                {title: "ตำแหน่งสายงาน"},
+                {title: "กรม"},
+                {title: "สำนัก/กอง"},
+                {title: "ประเภทการเคลื่อนไหว", width: "15%"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function addHisas(AHISAS) {
+        var array = [];
+        array.push($('#hisas_code').val(), $('#hisas_poscode').val(), formatDateDB($('#hisas_date_start').val()), formatDateDB($('#hisas_date_end').val()), $('#hisas_position').val(), $('#hisas_office').val(), $('#hisas_pile').val(), $('#hisas_type').val(), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AHISAS, array, true, function (data) {
+            $('#add_assignment').removeClass('in');
+            $('#add_assignment').find('.btn-danger').trigger('click');
+            show_assignment();
+            swal("บันทึกสำเร็จ!", "บันทึกประวัติการรักษาราชการ มอบหมายงานเรียบร้อยเเล้ว", "success");
+        });
+    }
+
+    function delHisas(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DHISAS", [$(data).attr("id")], true, function (data) {
+                show_assignment();
                 swal({
                     title: "ลบสำเร็จ!",
                     text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",

@@ -107,12 +107,17 @@ if (!empty($_FILES['filePerson'])) {
                 $pro_salary = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
                 $pro_salary = str_replace(',', '', $pro_salary);
                 $pro_dateIn = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
-                $pro_transfer = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
-
-                $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_transfer, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
-                        . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '$pro_dateIn', '" . $pro_transfer . "', '$person_update', '', '$person_update', '')";
-                $stmt = $cn->Connect->prepare($sql);
-                $ret = $stmt->execute();
+                $pro_dateOut = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
+                $pro_transfer = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(16, $row)->getValue());
+                $sql_check = "SELECT * FROM ps_profile WHERE card_id = '$card_id'";
+                $query_check = $cn->Connect->query($sql_check);
+                $num = mysqli_num_rows($query_check);
+                if (($num == 0) && ($card_id != '')) {
+                    $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_transfer, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
+                            . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '" . chistDate($pro_dateIn) . "', '" . chistDate($pro_dateOut) . "', '" . $pro_transfer . "', '$person_update', '', '$person_update', '')";
+                    $stmt = $cn->Connect->prepare($sql);
+                    $ret = $stmt->execute();
+                }
             }
         }
         echo '1'; // Success
