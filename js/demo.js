@@ -186,6 +186,21 @@ function formatDateDB(date) {
     return newdate;
 }
 
+function formatDateTimeDB(date) {
+    var splitDateTime = date.split(" - ");
+    var reverse = splitDateTime[0].split("/").reverse().join("-");
+    var strDate = new Date(reverse);
+    var dd = strDate.getDate();
+    var mm = strDate.getMonth() + 1; //January is 0!
+    var yyyy = strDate.getFullYear() - 543;
+    var newdate = yyyy + '-' + mm + '-' + dd + ' ' + splitDateTime[1] + ':00';
+    if (splitDateTime[0] == "00/00/0000") {
+        newdate = '0000-00-00 00:00:00';
+    }
+    alert(newdate);
+    return newdate;
+}
+
 function formatDateShow(date) {
     var strDate = new Date(date);
     var dd = strDate.getDate();
@@ -261,4 +276,19 @@ function mobileNum(val) {
     srt[1] = val.substr(2, 4);
     srt[2] = val.substr(6, 4);
     return srt[0] + "-" + srt[1] + "-" + srt[2];
+}
+
+function endDate(val) {
+    var today = new Date(val);
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    today = yyyy + '-' + mm + '-' + (dd + 1);
+    return today;
 }

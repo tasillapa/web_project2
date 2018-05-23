@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="fuelux" lang="en">
     <head>
+
         <script src="../../plugins/jquery/jquery.min.js"></script>
 
         <!-- Bootstrap Core Js -->
@@ -32,9 +33,9 @@
         <script src="../../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
         <!-- ChartJs -->
-        <script src="../../plugins/chartjs/Chart.bundle.js"></script>
+        <script src="../../plugins/chartjs/Chart.bundle.js"></script
 
-        <!-- Flot Charts Plugin Js -->
+   <!-- Flot Charts Plugin Js -->
         <script src="../../plugins/flot-charts/jquery.flot.js"></script>
         <script src="../../plugins/flot-charts/jquery.flot.resize.js"></script>
         <script src="../../plugins/flot-charts/jquery.flot.pie.js"></script>
@@ -60,6 +61,11 @@
         <script src="../../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
         <script src="../../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
         <script src="../../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+        <script src='../../fullcalendar/lib/moment.min.js'></script>
+        <!--<script src='../../fullcalendar/lib/jquery.min.js'></script>-->
+        <script src='../../fullcalendar/fullcalendar.min.js'></script>
+        <script src='../../fullcalendar/locale-all.js'></script>
 
         <!-- Bootstrap Notify Plugin Js -->
         <script src="../../plugins/bootstrap-notify/bootstrap-notify.js"></script>
@@ -104,5 +110,8 @@
         <script src="../../dist/js/select2.js"></script>
         <script src="../../dist/js/jquery.datetimepicker.js"></script>
         <script src="../../dist/js/jquery.datetimepicker.full.min.js"></script>
+
+
+
 </html>
 

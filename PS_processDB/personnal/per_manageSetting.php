@@ -25,7 +25,7 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
 if (!empty($_FILES['fileUser'])) {
     $file_array = explode(".", $_FILES["fileUser"]["name"]);
     if ($file_array[1] == "xlsx") {
-        $tmpFolder = "../../doc/import_user/";
+        $tmpFolder = "../../doc/import-user/";
         move_uploaded_file($_FILES['fileUser']['tmp_name'], $tmpFolder . $_FILES['fileUser']['name']);
         $person_update = $_SESSION['name'];
         $date = date('Y-m-d H:i:s');

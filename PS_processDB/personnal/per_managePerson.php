@@ -38,8 +38,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
 
 if (!empty($_FILES['filePerson'])) {
     $file_array = explode(".", $_FILES["filePerson"]["name"]);
-    if ($file_array[1] == "xlsx") {
-        $tmpFolder = "../../doc/import_person/";
+    if (($file_array[1] == "xlsx") || ($file_array[1] == "xls")) {
+        $tmpFolder = "../../doc/import-person/";
         move_uploaded_file($_FILES['filePerson']['tmp_name'], $tmpFolder . $_FILES['filePerson']['name']);
         $person_update = $_SESSION['name'];
         $date = date('Y-m-d H:i:s');
@@ -293,8 +293,8 @@ function edit_profile_main() {
 //        print_r($get_data);
 //        exit();
         $path = '';
-        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[22]'";
-        $Query = $cn->Connect->query($sql_img);
+//        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[22]'";
+//        $Query = $cn->Connect->query($sql_img);
         while ($Row = mysqli_fetch_array($Query)) {
             $path = $Row['pro_picture'];
         }

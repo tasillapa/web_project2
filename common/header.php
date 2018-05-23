@@ -71,9 +71,16 @@
         <!-- New Css -->
         <link href="../../css/newcss.css" rel="stylesheet" />
 
+        <!-- Select Option Boostrap -->
         <link href="../../dist/css/select2.css" rel="stylesheet" />
+
+        <!-- Data Picker -->
         <link href="../../dist/css/jquery.datetimepicker.css" rel="stylesheet" />
 
+        Fullcalendar 
+        <link href='../../fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+        <link href='../../fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+       
 
     </head>
 </html>

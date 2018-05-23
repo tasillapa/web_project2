@@ -35,7 +35,7 @@ class management {
         $array_result = array();
         $Query = $this->Connect->query($sql);
         if ($Query) {
-            while ($Row = mysqli_fetch_array($Query)) {
+                while ($Row = mysqli_fetch_array($Query)) {
 
                 array_push($array_result, $Row);
             }

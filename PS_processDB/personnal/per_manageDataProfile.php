@@ -65,7 +65,79 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "DHISAS": del_assignment();
             break;
+        case "sl_table_award": sl_table_award();
+            break;
+        case "AAWARD": add_award();
+            break;
+        case "DAWARD": del_award();
+            break;
+        case "sl_table_acade": sl_table_acade();
+            break;
+        case "AACADE": add_acade();
+            break;
+        case "DACADE": del_acade();
+            break;
+        case "sl_table_plan": sl_table_plan();
+            break;
+        case "sl_data_plan": sl_data_plan();
+            break;
+        case "APLAN": add_plan();
+            break;
+        case "DPLAN": del_plan();
+            break;
+        case "EPLAN": edit_plan();
+            break;
+        case "sl_table_royal": sl_table_royal();
+            break;
+        case "AROYAL": add_royal();
+            break;
+        case "DROYAL": del_royal();
+            break;
+        case "sl_table_hisslrup": sl_table_hissalaryup();
+            break;
+        case "AHISSLRUP": add_hissalaryup();
+            break;
+        case "DHISSLRUP": del_hissalaryup();
+            break;
+        case "sl_table_salarysp": sl_table_salarysp();
+            break;
+        case "ASALARYSP": add_salarysp();
+            break;
+        case "DSALARYSP": del_salarysp();
+            break;
     }
+}
+if (!empty($_FILES['awardfile'])) {
+    $file_array = explode(".", $_FILES["awardfile"]["name"]);
+    if (($file_array[1] == 'txt') || ($file_array[1] == 'png') || ($file_array[1] == "jpg") || ($file_array[1] == "doc") || ($file_array[1] == "docx") || ($file_array[1] == "xlsx") || ($file_array[1] == "xls") || ($file_array[1] == "pdf")) {
+        $cn = new management;
+        $cn->con_db();
+        $file_award = $_FILES["awardfile"]["name"];
+        $tmpFolder = "../../doc/award/" . $file_award;
+        move_uploaded_file($_FILES['awardfile']['tmp_name'], $tmpFolder);
+        echo $tmpFolder;
+        exit();
+    } else {
+        echo '1';
+        exit();
+    }
+} else if (!empty($_FILES['acadefile'])) {
+    $file_array = explode(".", $_FILES["acadefile"]["name"]);
+    if (($file_array[1] == 'txt') || ($file_array[1] == 'png') || ($file_array[1] == "jpg") || ($file_array[1] == "doc") || ($file_array[1] == "docx") || ($file_array[1] == "xlsx") || ($file_array[1] == "xls") || ($file_array[1] == "pdf")) {
+        $cn = new management;
+        $cn->con_db();
+        $file_academic = $_FILES["acadefile"]["name"];
+        $tmpFolder = "../../doc/award-academic/" . $file_academic;
+        move_uploaded_file($_FILES['acadefile']['tmp_name'], $tmpFolder);
+        echo $tmpFolder;
+        exit();
+    } else {
+        echo '1';
+        exit();
+    }
+} else {
+    echo '0';
+    exit();
 }
 
 function sl_data_chName() {
@@ -484,6 +556,284 @@ function del_assignment() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $sql = "DELETE FROM ps_histreat_assignment WHERE hisas_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_table_award() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_hisaward ORDER BY award_date DESC";
+        } else {
+            $sql = "SELECT * FROM ps_hisaward WHERE pro_id = '$id' ORDER BY award_date DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_award() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_hisaward (award_date, award_topic, award_file, pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_award() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        if (($get_data[1] != '0') && ($get_data[1] != NULL)) {
+            unlink($get_data[1]);
+        }
+        $sql = "DELETE FROM ps_hisaward WHERE award_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_table_acade() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_academic ORDER BY academic_date  DESC";
+        } else {
+            $sql = "SELECT * FROM ps_academic WHERE pro_id = '$id' ORDER BY academic_date DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_acade() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_academic (academic_name , academic_type , academic_date , academic_file ,pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_acade() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        if (($get_data[1] != '0') && ($get_data[1] != NULL)) {
+            unlink($get_data[1]);
+        }
+        $sql = "DELETE FROM ps_academic WHERE academic_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_table_plan() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_plan ORDER BY plan_dateStart  DESC";
+        } else {
+            $sql = "SELECT * FROM ps_plan WHERE pro_id = '$id' ORDER BY plan_dateStart DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function sl_data_plan() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        $sql = "SELECT * FROM ps_plan WHERE plan_id = '$id' ";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_plan() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_plan (plan_name , plan_detail , plan_dateStart , plan_dateEnd ,pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_plan() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "DELETE FROM ps_plan WHERE plan_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_table_royal() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_hisroyal ORDER BY hisroyal_date  DESC";
+        } else {
+            $sql = "SELECT * FROM ps_hisroyal WHERE pro_id = '$id' ORDER BY hisroyal_date DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_royal() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_hisroyal (hisroyal_name , hisroyal_somename , hisroyal_date ,pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_royal() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "DELETE FROM ps_hisroyal WHERE hisroyal_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_table_hissalaryup() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_hissalaryup ORDER BY hisslrup_date  DESC";
+        } else {
+            $sql = "SELECT * FROM ps_hissalaryup WHERE pro_id = '$id' ORDER BY hisslrup_date DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_hissalaryup() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_hissalaryup (hisslrup_date , hisslrup_money , hisslrup_type ,pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_hissalaryup() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "DELETE FROM ps_hissalaryup WHERE hisslrup_id = '$get_data[0]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function sl_table_salarysp() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $id = $get_data[0];
+        if ($id == '') {
+            $sql = "SELECT * FROM ps_salaryspecial ORDER BY salarysp_startDate  DESC";
+        } else {
+            $sql = "SELECT * FROM ps_salaryspecial WHERE pro_id = '$id' ORDER BY salarysp_startDate DESC";
+        }
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function add_salarysp() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "INSERT INTO ps_salaryspecial (salarysp_startDate , salarysp_endDate , salarysp_money, salarysp_type, pro_id)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]')";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
+function del_salarysp() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "DELETE FROM ps_salaryspecial WHERE salarysp_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

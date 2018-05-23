@@ -83,7 +83,7 @@
             },
         });
 
-        $("#hisas_date_start").datetimepicker({
+        $("#award_date").datetimepicker({
             timepicker: false,
             format: 'd/m/Y',
             lang: 'th',
@@ -97,7 +97,7 @@
             },
         });
 
-        $("#hisas_date_end").datetimepicker({
+        $("#academic_date").datetimepicker({
             timepicker: false,
             format: 'd/m/Y',
             lang: 'th',
@@ -141,6 +141,130 @@
             onSelectDate: setDateFuncE,
         }));
 
+        var setDateFuncA = function (ct, obj) {
+            var minDateSet = formatDatePK($("#hisas_date_start").val());
+            var maxDateSet = formatDatePK($("#hisas_date_end").val());
+
+            if ($(obj).attr("id") == "hisas_date_start") {
+                this.setOptions({
+                    minDate: false,
+                    maxDate: maxDateSet ? maxDateSet : false
+                })
+            }
+            if ($(obj).attr("id") == "hisas_date_end") {
+                this.setOptions({
+                    maxDate: false,
+                    minDate: minDateSet ? minDateSet : false
+                })
+            }
+        }
+        $("#hisas_date_start,#hisas_date_end").datetimepicker($.extend(optsDate, {
+            yearOffset: 543,
+            lang: 'th',
+            onShow: setDateFuncA,
+            onSelectDate: setDateFuncA,
+        }));
+
+        var setDateFuncPlan = function (ct, obj) {
+            var minDateSet = formatDatePK($("#plan_dateStart").val());
+            var maxDateSet = formatDatePK($("#plan_dateEnd").val());
+
+            if ($(obj).attr("id") == "plan_dateStart") {
+                this.setOptions({
+                    minDate: true,
+                    maxDate: maxDateSet ? maxDateSet : false
+                })
+            }
+            if ($(obj).attr("id") == "plan_dateEnd") {
+                this.setOptions({
+                    maxDate: false,
+                    minDate: minDateSet ? minDateSet : true
+                })
+            }
+        }
+        $("#plan_dateStart,#plan_dateEnd").datetimepicker($.extend(optsDate, {
+            yearOffset: 543,
+            lang: 'th',
+            onShow: setDateFuncPlan,
+            onSelectDate: setDateFuncPlan,
+        }));
+
+        var setDateFuncPlanE = function (ct, obj) {
+            var minDateSet = formatDatePK($("#plan_dateStartE").val());
+            var maxDateSet = formatDatePK($("#plan_dateEndE").val());
+
+            if ($(obj).attr("id") == "plan_dateStartE") {
+                this.setOptions({
+                    minDate: false,
+                    maxDate: maxDateSet ? maxDateSet : false
+                })
+            }
+            if ($(obj).attr("id") == "plan_dateEndE") {
+                this.setOptions({
+                    maxDate: false,
+                    minDate: minDateSet ? minDateSet : true
+                })
+            }
+        }
+        $("#plan_dateStartE,#plan_dateEndE").datetimepicker($.extend(optsDate, {
+            yearOffset: 543,
+            lang: 'th',
+            onShow: setDateFuncPlanE,
+            onSelectDate: setDateFuncPlanE,
+        }));
+
+        $("#hisroyal_date").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+
+        $("#hisslrup_date").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            lang: 'th',
+            yearOffset: 543,
+            onSelectDate: function (dp, $input) {
+                var yearT = new Date(dp).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
+            },
+        });
+
+        var setDateFuncSalary = function (ct, obj) {
+            var minDateSet = formatDatePK($("#salarysp_startDate").val());
+            var maxDateSet = formatDatePK($("#salarysp_endDate").val());
+
+            if ($(obj).attr("id") == "salarysp_startDate") {
+                this.setOptions({
+                    minDate: false,
+                    maxDate: maxDateSet ? maxDateSet : false
+                })
+            }
+            if ($(obj).attr("id") == "salarysp_endDate") {
+                this.setOptions({
+                    maxDate: false,
+                    minDate: minDateSet ? minDateSet : false
+                })
+            }
+        }
+        $("#salarysp_startDate,#salarysp_endDate").datetimepicker($.extend(optsDate, {
+            yearOffset: 543,
+            lang: 'th',
+            onShow: setDateFuncSalary,
+            onSelectDate: setDateFuncSalary,
+        }));
+
         show_chName();
         show_marry();
         show_heir();
@@ -149,8 +273,25 @@
         show_hisService();
         show_hisSerSpecial();
         show_assignment();
+        show_award();
+        show_acade();
+        show_plan();
+        sl_data_plan();
+        show_royal();
+        show_hisslrup();
+        show_salarysp();
         $('#hised_level').select2();
         $('#hised_year').select2();
+        $('#show_fileAward').html('ยังไม่เลือกไฟล์');
+        $('#award_file').change(function () {
+            var myFile = $('#award_file').prop('files')[0];
+            $('#show_fileAward').html(myFile.name).css("color", "#777");
+        });
+        $('#show_fileacademic').html('ยังไม่เลือกไฟล์');
+        $('#academic_file').change(function () {
+            var myFile = $('#academic_file').prop('files')[0];
+            $('#show_fileacademic').html(myFile.name).css("color", "#777");
+        });
 
         $('#address_province').change(function () {
             if ($('#address_province').val() != '') {
@@ -563,6 +704,24 @@
     function show_assignment() {
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_assignment", [dataID], true, table_assignment);
     }
+    function show_award() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_award", [dataID], true, table_award);
+    }
+    function show_acade() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_acade", [dataID], true, table_acade_show);
+    }
+    function show_plan() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_plan", [dataID], true, table_plan_show);
+    }
+    function show_royal() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_royal", [dataID], true, table_royal_show);
+    }
+    function show_hisslrup() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_hisslrup", [dataID], true, table_hisslrup_show);
+    }
+    function show_salarysp() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_salarysp", [dataID], true, table_salarysp_show);
+    }
 
     function table_chName(data) {
         $(".table_chName").html('');
@@ -902,13 +1061,19 @@
                     array2.push($('#hised_level' + p).val(), $('#hised_year' + p).val(), $('#hised_background' + p).val(), $('#hised_major' + p).val(), $('#hised_address' + p).val(), $('#hised_country' + p).val(), dataID);
                     cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AED, array2, true, function (data) {
                         if (p == 1) {
+                            $('#hised_level option[value=""]').prop('selected', true);
+                            $('#hised_year option[value=""]').prop('selected', true);
+                            $('#reset_edu').find('.btn-danger').trigger('click');
                             show_education();
                             swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
                         }
                     });
-                    $("#clone_edu" + p + "").remove();
+                    $("#reset_edu" + p + "").remove();
                 }
             } else {
+                $('#hised_level option[value=""]').prop('selected', true);
+                $('#hised_year option[value=""]').prop('selected', true);
+                $('#reset_edu').find('.btn-danger').trigger('click');
                 show_education();
                 swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
             }
@@ -1110,6 +1275,483 @@
         }, function () {
             cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DHISAS", [$(data).attr("id")], true, function (data) {
                 show_assignment();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function table_award(data) {
+        $(".table_award").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            var file_down = data[i].award_file.split(".");
+            file_down = file_down[file_down.length - 1];
+            var file_tootip = data[i].award_file.split("/");
+            file_tootip = file_tootip[file_tootip.length - 1];
+//            alert(file_tootip);
+            if (file_down == 'pdf') {
+                file_down = '<center><a href="' + data[i].award_file + '" download><img class="icon-pdf"/></a></center>';
+            } else if ((file_down == "doc") || (file_down == "docx")) {
+                file_down = '<center><a href="' + data[i].award_file + '" download><img class="icon-word"/></a></center>';
+            } else if ((file_down == "png") || (file_down == "jpg")) {
+                file_down = '<center><a href="' + data[i].award_file + '" download><img class="icon-picture"/></a></center>';
+            } else if ((file_down == "txt")) {
+                file_down = '<center><a href="' + data[i].award_file + '" download><img class="icon-txt"/></a></center>';
+            } else if ((file_down == "xlsx") || ((file_down == "xls"))) {
+                file_down = '<center><a href="' + data[i].award_file + '" download><img class="icon-excel"/></a></center>';
+            } else {
+                file_down = 'ไม่มีไฟล์เเนบ';
+            }
+            dataSet.push(['<center>' + a + '</center>', DateThai(data[i].award_date), data[i].award_topic, file_down, '<center><img class="btn-delete" id="' + data[i].award_id + '" path="' + data[i].award_file + '"onclick="javascript: delAward(this)"/></center>']);
+        });
+        $('#table_award_show').html('<table class="table table-bordered table-striped table-hover table_award dataTable" width="100%"></table>');
+        $('.table_award').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "วันที่ได้รับประกาศ"},
+                {title: "เรื่องที่ได้รับ"},
+                {title: "ไฟล์ดาวน์โหลด"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function addAward(AAWARD) {
+        var awardfile = $('#award_file').prop('files')[0];
+        var form_data_img = new FormData();
+        form_data_img.append('awardfile', awardfile);
+        $.ajax({
+            url: '../../PS_processDB/personnal/per_manageDataProfile.php', // point to server-side PHP script 
+            dataType: 'text', // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data_img,
+            type: 'post',
+            success: function (data) {
+                if (data != '1') {
+                    var array = [];
+                    array.push(formatDateDB($('#award_date').val()), $('#award_topic').val(), data, dataID);
+                    cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AAWARD, array, true, function (data) {
+                        $('#add_award').removeClass('in');
+                        $('#add_award').find('.btn-danger').trigger('click');
+                        show_award();
+                        swal("บันทึกสำเร็จ!", "บันทึกประวัติการได้รับรางวัลเรียบร้อยเเล้ว", "success");
+                    });
+                } else if (data == '1') {
+                    $('#show_fileAward').html('รูปแบบไฟล์ผิดพลาด *').css("color", "red");
+                }
+            }
+        });
+    }
+
+    function delAward(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DAWARD", [$(data).attr("id"), $(data).attr("path")], true, function (data) {
+                show_award();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function table_acade_show(data) {
+        $(".table_acade").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            var file_down = data[i].academic_file.split(".");
+            file_down = file_down[file_down.length - 1];
+            var file_tootip = data[i].academic_file.split("/");
+            file_tootip = file_tootip[file_tootip.length - 1];
+//            alert(file_tootip);
+            if (file_down == 'pdf') {
+                file_down = '<center><a href="' + data[i].academic_file + '" download><img class="icon-pdf"/></a></center>';
+            } else if ((file_down == "doc") || (file_down == "docx")) {
+                file_down = '<center><a href="' + data[i].academic_file + '" download><img class="icon-word"/></a></center>';
+            } else if ((file_down == "png") || (file_down == "jpg")) {
+                file_down = '<center><a href="' + data[i].academic_file + '" download><img class="icon-picture"/></a></center>';
+            } else if ((file_down == "txt")) {
+                file_down = '<center><a href="' + data[i].academic_file + '" download><img class="icon-txt"/></a></center>';
+            } else if ((file_down == "xlsx") || ((file_down == "xls"))) {
+                file_down = '<center><a href="' + data[i].academic_file + '" download><img class="icon-excel"/></a></center>';
+            } else {
+                file_down = 'ไม่มีไฟล์เเนบ';
+            }
+            dataSet.push(['<center>' + a + '</center>', data[i].academic_name, data[i].academic_type, DateThai(data[i].academic_date), file_down, '<center><img class="btn-delete" id="' + data[i].academic_id + '" path="' + data[i].academic_file + '"onclick="javascript: delAcade(this)"/></center>']);
+        });
+        $('#table_acade_show').html('<table class="table table-bordered table-striped table-hover table_acade dataTable" width="100%"></table>');
+        $('.table_acade').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "ชื่อผลงานวิชาการ"},
+                {title: "ประเภทผลงานวิชาการ"},
+                {title: "วันที่ได้รับ"},
+                {title: "ไฟล์ดาวน์โหลด"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function addAcade(AACADE) {
+        var acadefile = $('#academic_file').prop('files')[0];
+        var form_data_img = new FormData();
+        form_data_img.append('acadefile', acadefile);
+        $.ajax({
+            url: '../../PS_processDB/personnal/per_manageDataProfile.php', // point to server-side PHP script 
+            dataType: 'text', // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data_img,
+            type: 'post',
+            success: function (data) {
+                if (data != '1') {
+                    var array = [];
+                    array.push($('#academic_name').val(), $('#academic_type').val(), formatDateDB($('#academic_date').val()), data, dataID);
+                    cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AACADE, array, true, function (data) {
+                        $('#add_academic').removeClass('in');
+                        $('#add_academic').find('.btn-danger').trigger('click');
+                        show_acade();
+                        swal("บันทึกสำเร็จ!", "บันทึกผลงานวิชาการเรียบร้อยเเล้ว", "success");
+                    });
+                } else if (data == '1') {
+                    $('#show_fileAward').html('รูปแบบไฟล์ผิดพลาด *').css("color", "red");
+                }
+            }
+        });
+    }
+
+    function delAcade(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DACADE", [$(data).attr("id"), $(data).attr("path")], true, function (data) {
+                show_acade();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function table_plan_show(data) {
+        $(".table_plan").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', data[i].plan_name, data[i].plan_detail, data[i].plan_dateStart, data[i].plan_dateEnd, '<center><img class="btn-edit" id="' + data[i].plan_id + '" data-toggle="modal" data-target="#editPlan" onclick="javascript: slEditPlan(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].plan_id + '" onclick="javascript: delPlan(this)"/></center>']);
+        });
+        $('#table_plan_show').html('<table class="table table-bordered table-striped table-hover table_plan dataTable" width="100%"></table>');
+        $('.table_plan').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "หัวข้อ / เป้าหมายแผนงาน"},
+                {title: "รายละเอียด"},
+                {title: "วันที่เริ่มต้น"},
+                {title: "วันที่สิ้นสุด"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function calandar_plan(initialLocaleCode, data) {
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay,listMonth'
+            },
+            selectable: false,
+            selectHelper: true,
+            select: function (start, end) {
+                var title = prompt('Event Title:');
+                var eventData;
+                if (title) {
+                    eventData = {
+                        title: title,
+                        start: start,
+                        end: end
+                    };
+                    $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                }
+                $('#calendar').fullCalendar('unselect');
+            },
+            defaultDate: formatDateToday(),
+            locale: initialLocaleCode,
+            buttonIcons: false, // show the prev/next text
+            weekNumbers: true,
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events: (function () {
+                return data;
+            })(),
+        });
+        $('#calendar').fullCalendar('removeEvents');
+        $('#calendar').fullCalendar('addEventSource', data);
+        $('#calendar').fullCalendar('rerenderEvents');
+    }
+
+    function addPlan(APLAN) {
+        var array = [];
+        array.push($('#plan_name').val(), $('#plan_detail').val(), formatDateDB($('#plan_dateStart').val()), formatDateDB($('#plan_dateEnd').val()), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", APLAN, array, true, function (data) {
+            $('#add_plan').removeClass('in');
+            $('#plan_reset').find('.btn-danger').trigger('click');
+            show_plan();
+            sl_data_plan();
+            swal("บันทึกสำเร็จ!", "บันทึกแผนงานของคุณเรียบร้อยเเล้ว", "success");
+        });
+    }
+
+    function delPlan(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DPLAN", [$(data).attr("id")], true, function (data) {
+                show_plan();
+                sl_data_plan();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function sl_data_plan() {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_plan", [dataID], true, function (data) {
+            var dateCalandar = [];
+            $.each(data, function (i, k) {
+                dateCalandar.push({'title': data[i].plan_name, 'start': data[i].plan_dateStart, 'end': endDate(data[i].plan_dateEnd), color: '#ff9900'});
+            });
+            calandar_plan('th', dateCalandar);
+        });
+    }
+
+    function slEditPlan(data) {
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_plan", [$(data).attr("id")], true, function (data) {
+            $('#plan_nameE').val(data[0].plan_name);
+            $('#plan_detailE').val(data[0].plan_detail);
+            $('#plan_dateStartE').val(data[0].plan_dateStart);
+            $('#plan_dateEndE').val(data[0].plan_dateEnd);
+            $('#plan_idE').val(data[0].plan_id);
+        });
+    }
+
+    function table_royal_show(data) {
+        $(".table_royal").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', data[i].hisroyal_name, data[i].hisroyal_somename, DateThai(data[i].hisroyal_date), '<center><img class="btn-delete" id="' + data[i].hisroyal_id + '" onclick="javascript: delRoyal(this)"/></center>']);
+        });
+        $('#table_royal_show').html('<table class="table table-bordered table-striped table-hover table_royal dataTable" width="100%"></table>');
+        $('.table_royal').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "ข้อเครื่องราชทานที่รับ"},
+                {title: "ราชกิจจานุเบกษา"},
+                {title: "วันที่เปลี่ยน"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function addRoyal(AROYAL) {
+        var array = [];
+        array.push($('#hisroyal_name').val(), $('#hisroyal_somename').val(), formatDateDB($('#hisroyal_date').val()), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AROYAL, array, true, function (data) {
+            $('#add_hisroyal').removeClass('in');
+            $('#add_hisroyal').find('.btn-danger').trigger('click');
+            show_royal();
+            swal("บันทึกสำเร็จ!", "บันทึกประวัติการรับเครื่องราชาของคุณเรียบร้อยเเล้ว", "success");
+        });
+    }
+
+    function delRoyal(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DROYAL", [$(data).attr("id")], true, function (data) {
+                show_royal();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function table_hisslrup_show(data) {
+        $(".table_hisslrup").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', DateThai(data[i].hisslrup_date), data[i].hisslrup_money, data[i].hisslrup_type, '<center><img class="btn-delete" id="' + data[i].hisslrup_id + '" onclick="javascript: delHisslrup(this)"/></center>']);
+        });
+        $('#table_hisslrup_show').html('<table class="table table-bordered table-striped table-hover table_hisslrup dataTable" width="100%"></table>');
+        $('.table_hisslrup').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "วันที่"},
+                {title: "เงินเดือน"},
+                {title: "ประเภทการเคลื่อนไหว"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function addHisslrup(AHISSLRUP) {
+        var array = [];
+        array.push(formatDateDB($('#hisslrup_date').val()), $('#hisslrup_money').val(), $('#hisslrup_type').val(), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AHISSLRUP, array, true, function (data) {
+            $('#add_salaryup').removeClass('in');
+            $('#add_salaryup').find('.btn-danger').trigger('click');
+            show_hisslrup();
+            swal("บันทึกสำเร็จ!", "บันทึกประวัติการรับเลื่อนขั้นเงินเดือนเรียบร้อยเเล้ว", "success");
+        });
+    }
+
+    function delHisslrup(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DHISSLRUP", [$(data).attr("id")], true, function (data) {
+                show_hisslrup();
+                swal({
+                    title: "ลบสำเร็จ!",
+                    text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",
+                    timer: 1000,
+                    imageUrl: "../../images/thumbs-up.png",
+                    showConfirmButton: false
+                });
+            });
+        });
+    }
+
+    function table_salarysp_show(data) {
+        $(".table_salarysp").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', DateThai(data[i].salarysp_startDate), DateThai(data[i].salarysp_endDate), data[i].salarysp_money, data[i].salarysp_type, '<center><img class="btn-delete" id="' + data[i].salarysp_id + '" onclick="javascript: delSalarysp(this)"/></center>']);
+        });
+        $('#table_salarysp_show').html('<table class="table table-bordered table-striped table-hover table_salarysp dataTable" width="100%"></table>');
+        $('.table_salarysp').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ"},
+                {title: "วันที่เริ่ม"},
+                {title: "วันที่สิ้นสุด"},
+                {title: "เงินพิเศษ"},
+                {title: "ประเภทเงินพิเศษ"},
+                {title: "..."},
+            ]
+        });
+    }
+
+    function addSalarysp(ASALARYSP) {
+        var array = [];
+        array.push(formatDateDB($('#salarysp_startDate').val()), formatDateDB($('#salarysp_endDate').val()), $('#salarysp_money').val(), $('#salarysp_type').val(), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", ASALARYSP, array, true, function (data) {
+            $('#add_salaryup').removeClass('in');
+            $('#add_salaryup').find('.btn-danger').trigger('click');
+            show_salarysp();
+            swal("บันทึกสำเร็จ!", "บันทึกประวัติการรับเงินเพิ่มพิเศษเรียบร้อยเเล้ว", "success");
+        });
+    }
+
+    function delSalarysp(data) {
+        swal({
+            title: "คุณต้องการลบหรือไม่?",
+            text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "ใช่, ต้องการลบ!",
+            cancelButtonText: "ยกเลิก",
+            closeOnConfirm: false
+        }, function () {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "DSALARYSP", [$(data).attr("id")], true, function (data) {
+                show_salarysp();
                 swal({
                     title: "ลบสำเร็จ!",
                     text: "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว",

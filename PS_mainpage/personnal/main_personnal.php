@@ -56,7 +56,7 @@ if (!isset($_POST['ch_new'])) {
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a href="javascript:void(0);" class="bars"></a>
 
-                    <a class="navbar-brand" href="../../index.php">
+                    <a class="navbar-brand" href="../../index.php" style="padding: 8px 15px;">
                         <span>
                             <img class="logo-head" />
                             สำนักงานกรมป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี

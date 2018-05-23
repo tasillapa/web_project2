@@ -9,7 +9,7 @@ thead, th {text-align: center;}
 .logo-head {
     content:url("../images/logo.png");
     width: 45px;
-    height: 35px;   
+    height: 40px;   
 }
 .breadcrumb {
     margin-bottom: -15px;
@@ -46,7 +46,9 @@ thead, th {text-align: center;}
 .m-t--12{
     margin-top: -12px;
 }
-
+.p-t-12{
+    padding-top: 12px;
+}
 /* Taps*/
 .nav-tabs{
     margin-top: -15px;
@@ -77,6 +79,20 @@ input[type="file"] {
     font-size: 12px;
 }
 .btn-file-upload:hover {background-color: #7a7a52}
+
+.btn-file-upload-f{
+    background-color: #009688;
+    border: 1px solid #008080;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 2px 18px;
+    cursor: pointer;
+    color: white;
+    margin-top: 5px;
+    width: 150px;
+    font-size: 12px;
+}
+.btn-file-upload-f:hover {background-color: #008080}
 
 .btn-file-upload-ex {
     position: relative;
@@ -183,6 +199,42 @@ input[type="file"] {
     cursor: pointer;
     width: 25px;
     height: 25px;   
+}
+
+.icon-pdf{
+    content:url("../images/icon-file/pdf.png");
+    cursor: pointer;
+    width: 20px;
+    height: 20px;   
+    margin-top: 3px;
+}
+.icon-excel{
+    content:url("../images/icon-file/excel.png");
+    cursor: pointer;
+    width: 20px;
+    height: 20px;   
+    margin-top: 3px;
+}
+.icon-picture{
+    content:url("../images/icon-file/picture.png");
+    cursor: pointer;
+    width: 20px;
+    height: 20px;   
+    margin-top: 3px;
+}
+.icon-word{
+    content:url("../images/icon-file/word.png");
+    cursor: pointer;
+    width: 20x;
+    height: 20px;  
+    margin-top: 3px;
+}
+.icon-txt{
+    content:url("../images/icon-file/txt.png");
+    cursor: pointer;
+    width: 20x;
+    height: 20px;  
+    margin-top: 3px;
 }
 /* Logo Menu Main Personnal */
 .logo-head-person {
