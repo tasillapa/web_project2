@@ -12,8 +12,7 @@
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
                         <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">home</i> Home</a></li>
-                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
-                        <li  class="active font-bold col-cyan font-14"><i class="material-icons">settings</i> ตั้งค่าสิทธิ์เข้าใช้งาน</li>
+                        <li  class="active font-bold col-cyan font-14"><i class="material-icons">settings</i>กรอบอัตรากำลัง</li>
                     </ol>
                 </div>
                 <!-- Input -->
@@ -57,7 +56,7 @@
                                                         $query = $cn->Connect->query($sql);
                                                         while ($row = mysqli_fetch_array($query)) {
                                                             echo "<tr>";
-                                                            echo "<th colspan='2'>" . $row['class_name'] . "</th>";
+                                                            echo "<th   colspan='2'>" . $row['class_name'] . "</th>";
                                                             $f = 0;
                                                             $m = 0;
                                                             $check_data = [12, 2, 6, 11, 10, 9];
@@ -104,7 +103,5 @@
                 </div>
             </div>
         </section>
-        <!-- Script -->
-        <?php include ("../../PS_script/personnal/report_Scpower.php"); ?>
     </body>
 </html>

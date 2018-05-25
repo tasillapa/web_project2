@@ -2,7 +2,7 @@
     var cls = new Call_Service();
     var card_id = '<?= $_SESSION["card_id"]; ?>';
     var name = '<?= $_SESSION["name"]; ?>';
-    var NoImg = '../../images/no_img.png';
+    var NoImg = '../../images/img-profile/no_img.png';
     $(function () {
         $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
         $('#filePerson').change(function () {
@@ -138,7 +138,7 @@
             columns: [
                 {title: "ลำดับ", "width": "1%"},
                 {title: "เลขตำแหน่ง", "width": "1%"},
-                {title: "รหัสบัตรประชาชน", "width": "16%"},
+                {title: "เลขบัตรประชาชน", "width": "16%"},
                 {title: "ชื่อ-สกุล"},
                 {title: "กลุ่มงาน"},
                 {title: "วันเข้ารับราชการ", "width": "15%"},

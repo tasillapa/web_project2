@@ -211,7 +211,7 @@
         if ($('#statusE').is(':checked')) {
             status = 1;
         }
-        array.push($('#card_idE').val(), $('#nameuserE').val(), $('#lastnameE').val(), $('#telE').val(), $('#emailE').val()
+        array.push(split($('#card_idE').val()), $('#nameuserE').val(), $('#lastnameE').val(), split($('#telE').val()), $('#emailE').val()
                 , $('#pos_idE').val(), $('#class_idE').val(), $('#usernameE').val(), $('#passwordE').val()
                 , $('#levelE').val(), status, name, formatDateToday(), $('#member_id').val());
         cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", EUSER, array, true, function (data) {

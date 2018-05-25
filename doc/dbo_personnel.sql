@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2018 at 11:33 AM
+-- Generation Time: May 25, 2018 at 07:46 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -25,27 +25,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `his_education`
+-- Table structure for table `ps_academic`
 --
 
-CREATE TABLE `his_education` (
-  `hised_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `his_level` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `hised_name` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `hised_class` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `hised_address` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `hised_location` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `his_education`
---
-
-INSERT INTO `his_education` (`hised_id`, `his_level`, `hised_name`, `hised_class`, `hised_address`, `hised_location`, `card_id`) VALUES
-(0004, 0004, 'มหาบัณฑิตสาธารณสุข', 'แผนงานและนโยบาย', 'มหาวิทยาลัยบุรพา', 'ไทย', '1232201023877'),
-(0005, 0003, 'มหาบัณฑิตสาธารณสุข', 'แผนงานและนโยบาย', 'มหาวิทยาลัยบุรพา', 'ไทย', '1310400087338'),
-(0006, 0003, 'มหาบัณฑิตสาธารณสุข', 'อนามัยและการควบคุมโรค', 'มหาวิทยาลัยบุรพา', 'ไทย', '7696796786574');
+CREATE TABLE `ps_academic` (
+  `academic_id` int(4) NOT NULL,
+  `academic_name` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'ชื่อผลงานวิชาการ',
+  `academic_type` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'ประเภทผลงานวิชาการ',
+  `academic_date` date NOT NULL COMMENT 'วันที่ได้รับ',
+  `academic_file` text CHARACTER SET utf32 NOT NULL COMMENT 'ไฟล์แนบ',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ผลงานวิชาการ';
 
 -- --------------------------------------------------------
 
@@ -74,12 +64,10 @@ CREATE TABLE `ps_address` (
 --
 
 INSERT INTO `ps_address` (`address_id`, `address_number`, `address_swine`, `address_soi`, `address_road`, `address_village`, `address_province`, `address_amphur`, `address_district`, `address_zip_code`, `address_call`, `address_fhone`, `pro_id`) VALUES
-(1, 'aaaa', 'ssss', 'dddd', 'ffff', 'gggg', 1, 19, 124, '10170', '4-4444- __', '55-555_-_', 1751),
-(2, '', '', '', '', '', 0, 0, 0, '', '0', '0', 1934),
-(3, '', '', '', '', '', 0, 0, 0, '', '0', '0', 0),
-(4, '', '', '', '', '', 0, 0, 0, '', '0', '0', 1938),
-(5, '', '', '', '', '', 0, 0, 0, '', '', '', 1986),
-(6, '', '', '', '', '', 0, 0, 0, '', '', '', 1980);
+(8, '', '', '', '', '', 0, 0, 0, '', '', '', 0),
+(9, '', '', '', '', '', 0, 0, 0, '', '', '', 1751),
+(10, '', '', '', '', '', 0, 0, 0, '', '', '', 1981),
+(11, '222/15', '2', '1', 'สุขประยูร', ' แฟมมิลี่แลนด์', 1, 31, 184, '10120', '0-3228-951', '09-8967-8', 1982);
 
 -- --------------------------------------------------------
 
@@ -1142,16 +1130,6 @@ CREATE TABLE `ps_blame` (
   `pro_id` varchar(5) COLLATE utf8_unicode_ci NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติทางวินัย';
 
---
--- Dumping data for table `ps_blame`
---
-
-INSERT INTO `ps_blame` (`blame_id`, `blame_name`, `blame_somename`, `blame_date`, `pro_id`) VALUES
-(0003, '', '', '0000-00-00', ''),
-(0006, 'dsfsdf', 'dsfsdfsd', '2018-05-17', '1937'),
-(0007, 'asdasd', 'asdasd', '2018-05-17', '1751'),
-(0008, 'dfgdfg', 'dfgdfgfd', '2018-05-09', '1938');
-
 -- --------------------------------------------------------
 
 --
@@ -1171,10 +1149,8 @@ CREATE TABLE `ps_changname` (
 --
 
 INSERT INTO `ps_changname` (`chang_id`, `chang_nameold`, `chang_namenew`, `chang_date`, `pro_id`) VALUES
-(0015, 'fsdfsdf', 'fsdfsdf', '2018-05-08', '1751'),
-(0016, 'กหฟก', 'ฟหกฟหก', '2018-05-15', '1938'),
-(0017, '', '', '0000-00-00', '1751'),
-(0018, '', '', '2017-09-09', '1751');
+(0026, 'ศิลปะ พรหมจินดา', 'ดนัย  พรหมจินดา', '2018-06-24', '1982'),
+(0027, 'ดนัย พรหมจินดา', 'สมยศ  จันทเลิศ', '2018-06-25', '1982');
 
 -- --------------------------------------------------------
 
@@ -1223,7 +1199,9 @@ INSERT INTO `ps_class` (`class_id`, `class_code`, `class_name`) VALUES
 (0076, 1102, 'กลุ่มงานสถาปัตยกรรมข้อมูล '),
 (0078, 1111, 'fdgdfgdfgfdgdf'),
 (0056, 0139, 'กลุ่มปฏิบัติการ'),
-(0077, 0691, 'พัฒนาภาคีเครือข่าย');
+(0077, 0691, 'พัฒนาภาคีเครือข่าย'),
+(0082, 1526, 'กลุ่มงานสนับสนุน'),
+(0081, 5321, 'กลุ่มงานบริการพื้นฐาน');
 
 -- --------------------------------------------------------
 
@@ -1242,19 +1220,18 @@ CREATE TABLE `ps_department` (
 --
 
 INSERT INTO `ps_department` (`dep_id`, `dep_code`, `dep_name`) VALUES
-(0001, 0101, 'สำนักงานป้องกันควบคุมโรคที่ 1'),
-(0002, 0102, 'สำนักงานป้องกันควบคุมโรคที่ 2'),
-(0003, 0103, 'สำนักงานป้องกันควบคุมโรคที่ 3'),
-(0004, 0104, 'สำนักงานป้องกันควบคุมโรคที่ 4'),
-(0005, 0105, 'สำนักงานป้องกันควบคุมโรคที่ 5'),
-(0006, 0106, 'สำนักงานป้องกันควบคุมโรคที่ 6'),
-(0007, 0107, 'สำนักงานป้องกันควบคุมโรคที่ 7'),
-(0008, 0108, 'สำนักงานป้องกันควบคุมโรคที่ 8'),
-(0009, 0109, 'สำนักงานป้องกันควบคุมโรคที่ 9'),
-(0010, 0110, 'สำนักงานป้องกันควบคุมโรคที่ 10'),
-(0011, 0111, 'สำนักงานป้องกันควบคุมโรคที่ 11'),
-(0012, 0112, 'สำนักงานป้องกันควบคุมโรคที่ 12'),
-(0014, 1111, '4444444');
+(0001, 0101, 'สำนักงานป้องกันควบคุมโรคที่ 1 จังหวัดเชียงใหม่'),
+(0002, 0102, 'สำนักงานป้องกันควบคุมโรคที่ 2 จังหวัดพิษณุโลก'),
+(0003, 0103, 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์'),
+(0004, 0104, 'สำนักงานป้องกันควบคุมโรคที่ 4 จังหวัดสระบุรี'),
+(0005, 0105, 'สำนักงานป้องกันควบคุมโรคที่ 5 จังหวัดราชบุรี'),
+(0006, 0106, 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี'),
+(0007, 0107, 'สำนักงานป้องกันควบคุมโรคที่ 7 จังหวัดขอนแก่น'),
+(0008, 0108, 'สำนักงานป้องกันควบคุมโรคที่ 8 จังหวัดอุดรธานี'),
+(0009, 0109, 'สำนักงานป้องกันควบคุมโรคที่ 9 จังหวัดนครราชสีมา'),
+(0010, 0110, 'สำนักงานป้องกันควบคุมโรคที่ 10 จังหวัดนครศรีธรรมราช'),
+(0011, 0111, 'สำนักงานป้องกันควบคุมโรคที่ 11 จังหวัดนครศรีธรรมราช'),
+(0012, 0112, 'สำนักงานป้องกันควบคุมโรคที่ 12 จังหวัดสงขลา');
 
 -- --------------------------------------------------------
 
@@ -10147,6 +10124,35 @@ INSERT INTO `ps_district` (`DISTRICT_ID`, `DISTRICT_CODE`, `DISTRICT_NAME`, `AMP
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ps_education`
+--
+
+CREATE TABLE `ps_education` (
+  `hised_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `edu_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'ไอดีระดับการศึกษา',
+  `hised_year` varchar(4) NOT NULL COMMENT 'ปีที่จบ',
+  `hised_background` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'วุฒิการศึกษา',
+  `hised_major` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'วิชาเอก',
+  `hised_address` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'สถานศึกษา',
+  `hised_country` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'ประเทศ',
+  `pro_id` int(4) NOT NULL COMMENT 'ไอดี ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='ประวัติการศึกษา';
+
+--
+-- Dumping data for table `ps_education`
+--
+
+INSERT INTO `ps_education` (`hised_id`, `edu_id`, `hised_year`, `hised_background`, `hised_major`, `hised_address`, `hised_country`, `pro_id`) VALUES
+(0076, 0002, '', '', '', '', '', 1986),
+(0077, 0003, '', '', '', '', '', 1986),
+(0078, 0004, '', '', '', '', '', 1986),
+(0011, 0000, '', '', '', '', '', 2308),
+(0111, 0006, '2513', 'บริหารธุรกิจ', 'บริหารธุรกิจ', 'มหาวิทยาลัยธรรมศาสตร์', 'ไทย', 1982),
+(0010, 0001, '2451', '', '', '', '', 2308);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ps_geninformation`
 --
 
@@ -10181,12 +10187,10 @@ CREATE TABLE `ps_geninformation` (
 --
 
 INSERT INTO `ps_geninformation` (`gen_id`, `gen_card_id`, `gen_prefix`, `gen_old`, `PROVINCE_ID`, `nationality_id`, `nationality_id_race`, `religion_id`, `gen_blood`, `gen_soldier`, `gen_tax`, `gen_passport`, `bank_id`, `gen_account_number`, `gen_email`, `gen_facebook`, `gen_twitter`, `gen_line`, `gen_talent`, `gen_interest`, `expert_name`, `expert_ex`, `pro_id`) VALUES
-(2, '1-3104-00087-', 'นาย', '60', 1, 241, 70, 9, 'B', 'รับการเกณฑ์ทหารเเล้ว', '45745', '78576867', 2, '2147483647', 'sdffsdasdasd@sadasdasd._', 'sdfsdfsd', 'sdfsdf', 'ฟฟฟฟฟฟฟฟฟฟฟ', 'dfsdf', 'jghhhhhhhhhhhhhh', 'jjjjjjjjjjjjjjjjjjjjj', 'hhhhhhhhhhhhhh', 1751),
-(4, '5555555555555', '', '70', 0, 0, 0, 4, 'O', '', '0', '', 2, '0', '', '', '', '', '', '', '', '', 1938),
-(5, '3220300606977', 'นาย', '0', 27, 236, 241, 8, 'A', 'ได้รับการยกเว้น', '123456789', '', 2, '0', '', 'เด้เด้', '', '', '-', '-', '-', '-', 1934),
-(6, '3230500074201', '', '0', 0, 0, 0, 0, '', '', '0', '', 0, '0', '', '', '', '', '', '', '', '', 0),
-(7, '3210300330271', '', '0', 0, 0, 0, 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 1986),
-(8, '3-4301-00797-', 'นางสาว', '60', 64, 70, 241, 8, 'A', 'ได้รับการยกเว้น', '1215654654', '5498789632', 4, '6566546798', 'sdfdsf@dfsdfsd.com', 'asdasdas', 'dfjhgjghj', 'rwerewrgdg', 'gdfgdfgdfg', 'adsfDfzdsf', 'zgfgzdfga', 'jkkkkkkkkkkkk', 1980);
+(10, '3210300330271', '', '', 0, 0, 0, 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0),
+(11, '1310400087338', '', '', 0, 0, 0, 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'sadasd', 1751),
+(12, '3120100492677', '', '', 0, 0, 0, 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 1981),
+(13, '1102002326598', '', '', 0, 0, 0, 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'rov', 1982);
 
 -- --------------------------------------------------------
 
@@ -10224,41 +10228,26 @@ CREATE TABLE `ps_heir` (
   `pro_id` varchar(5) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `ps_heir`
---
-
-INSERT INTO `ps_heir` (`id_heir`, `heir_name`, `heir_relationship`, `pro_id`) VALUES
-(0005, 'เด้ดเ้', 'ดเ้ดเ้ดเ้', '1934'),
-(0004, 'หกฟหก', 'ฟหกฟหก', '1938');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ps_hisfeat`
+-- Table structure for table `ps_hisaward`
 --
 
-CREATE TABLE `ps_hisfeat` (
-  `feat_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `feat_date` date NOT NULL,
-  `feat_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
+CREATE TABLE `ps_hisaward` (
+  `award_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `award_date` date NOT NULL COMMENT 'วันที่ได้รับประกาศ',
+  `award_topic` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'เรื่องที่ได้รับ',
+  `award_file` text CHARACTER SET utf8 NOT NULL COMMENT 'path file',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการได้รับรางวัล ประกาศ เชิดชูเกียรติ';
 
 --
--- Table structure for table `ps_hislate`
+-- Dumping data for table `ps_hisaward`
 --
 
-CREATE TABLE `ps_hislate` (
-  `id_late` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `late_datefrom` date NOT NULL,
-  `late_dateto` date NOT NULL,
-  `late_count` int(10) NOT NULL,
-  `late_type` varchar(14) COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `ps_hisaward` (`award_id`, `award_date`, `award_topic`, `award_file`, `pro_id`) VALUES
+(0012, '2018-05-11', 'พนักงานดีเด่น', '../../doc/award/57160371_PROJECT_บทที่1.pdf', 1982);
 
 -- --------------------------------------------------------
 
@@ -10272,13 +10261,6 @@ CREATE TABLE `ps_hismarry` (
   `marry_status` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `pro_id` varchar(5) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `ps_hismarry`
---
-
-INSERT INTO `ps_hismarry` (`marry_id`, `marry_name`, `marry_status`, `pro_id`) VALUES
-(0009, 'dsfsd', 'fsdfsd', '1751');
 
 -- --------------------------------------------------------
 
@@ -10342,12 +10324,12 @@ INSERT INTO `ps_hismeetting` (`id_meetting`, `meet_name`, `meet_datefrom`, `meet
 --
 
 CREATE TABLE `ps_hisroyal` (
-  `royal_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `royal_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `royal_somename` text COLLATE utf8_unicode_ci NOT NULL,
-  `royal_date` date NOT NULL,
-  `card_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `hisroyal_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `hisroyal_name` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'ข้อเครื่องราชทานที่รับ',
+  `hisroyal_somename` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'ราชกิจจานุเบกษา',
+  `hisroyal_date` date NOT NULL COMMENT 'วันที่เปลี่ยน',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการรับเครื่องราชา';
 
 -- --------------------------------------------------------
 
@@ -10356,13 +10338,12 @@ CREATE TABLE `ps_hisroyal` (
 --
 
 CREATE TABLE `ps_hissalaryup` (
-  `serup_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `serup_datefrom` date NOT NULL,
-  `serup_dateto` date NOT NULL,
-  `serup_type` text COLLATE utf8_unicode_ci NOT NULL,
-  `serup_monnyspecial` int(11) NOT NULL,
-  `card_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `hisslrup_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `hisslrup_date` date NOT NULL COMMENT 'วันที่',
+  `hisslrup_money` int(11) NOT NULL COMMENT 'เงินเดือน',
+  `hisslrup_type` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'ประเภทการเคลื่อนไหว',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการรับเลื่อนขั้นเงินเดือน';
 
 -- --------------------------------------------------------
 
@@ -10371,42 +10352,171 @@ CREATE TABLE `ps_hissalaryup` (
 --
 
 CREATE TABLE `ps_hisservice` (
-  `his_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `his_department` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `his_office` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `his_numservice` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `his_idpos` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `his_date` date NOT NULL,
-  `his_salary` int(11) NOT NULL,
-  `his_type` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `hissv_id` int(4) NOT NULL,
+  `hissv_office` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'กรม',
+  `hissv_department` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'สังกัด',
+  `hissv_position` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'ตำแหน่ง',
+  `his_idpos` int(10) NOT NULL COMMENT 'เลขที่ตำแหน่ง',
+  `hissv_date` date NOT NULL COMMENT 'วันที่รับราชการ',
+  `hissv_salary` int(11) NOT NULL COMMENT 'เงินเดือน',
+  `hissv_type` text CHARACTER SET utf8 NOT NULL COMMENT 'ประเภทการเคลื่อนไหว',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='ประวัติการรับราชการ';
 
 --
 -- Dumping data for table `ps_hisservice`
 --
 
-INSERT INTO `ps_hisservice` (`his_id`, `his_department`, `his_office`, `his_numservice`, `his_idpos`, `his_date`, `his_salary`, `his_type`, `card_id`) VALUES
-(0001, 'test1', 'office1', '111', 0112, '2014-06-01', 18000, 'โยกย้าย', '1310400087338'),
-(0002, 'test2', 'office2', '111', 0112, '2014-06-02', 18000, 'โยกย้าย', '1310400087338'),
-(0003, 'test3', 'office3', '111', 0112, '2014-06-03', 18000, 'โยกย้าย', '1310400087338'),
-(0004, 'test4', 'office4', '111', 0112, '2014-06-04', 18000, 'โยกย้าย', '1310400087338'),
-(0005, 'test5', 'office5', '111', 0112, '2014-06-05', 18000, 'โยกย้าย', '1310400087338'),
-(0006, 'test6', 'office6', '111', 0112, '2014-06-06', 18000, 'โยกย้าย', '1310400087338');
+INSERT INTO `ps_hisservice` (`hissv_id`, `hissv_office`, `hissv_department`, `hissv_position`, `his_idpos`, `hissv_date`, `hissv_salary`, `hissv_type`, `pro_id`) VALUES
+(16, ' ควบคุมโรค', 'สำนักงานป้องกันควบคุโรคที่ 6', '  สาธารณะสุช', 1445, '2018-05-09', 70000, ' การเคลื่อนไหวแบบไม่เคลื่อนที่', 1982);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ps_histimeup`
+-- Table structure for table `ps_hisservicespecial`
 --
 
-CREATE TABLE `ps_histimeup` (
-  `time_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `time_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `time_countdate` int(2) NOT NULL,
-  `time_notcount` int(2) NOT NULL,
-  `card_id` int(13) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `ps_hisservicespecial` (
+  `hissvp_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `hissvp_special` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'ราชการพิเศษ',
+  `hissvp_topic` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'หัวข้อโครงการ',
+  `hissvp_code` int(10) NOT NULL COMMENT 'เลขที่คำสั่ง',
+  `hissvp_date` date NOT NULL COMMENT 'วันที่รับคำสั่ง',
+  `hissvp_place` text CHARACTER SET utf8 NOT NULL COMMENT 'สถานที่',
+  `hissvp_note` text CHARACTER SET utf8 NOT NULL COMMENT 'หมายเหตุ',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติราชการพิเศษ';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ps_histreat_assignment`
+--
+
+CREATE TABLE `ps_histreat_assignment` (
+  `hisas_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `hisas_code` int(10) NOT NULL COMMENT 'เลขที่คำสั่ง',
+  `hisas_poscode` int(10) NOT NULL COMMENT 'เลขที่ตำแหน่ง',
+  `hisas_date_start` date NOT NULL COMMENT 'วันที่เริ่ม',
+  `hisas_date_end` date NOT NULL COMMENT 'วันที่สิ้นสุด',
+  `hisas_position` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'ตำแหน่งสายงาน',
+  `hisas_office` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'กรม',
+  `hisas_pile` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'สำนัก/กอง',
+  `hisas_type` text CHARACTER SET utf8 NOT NULL COMMENT 'ประเภทการเคลื่อนไหว',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการรักษาราชการ มอบหมายงาน';
+
+--
+-- Dumping data for table `ps_histreat_assignment`
+--
+
+INSERT INTO `ps_histreat_assignment` (`hisas_id`, `hisas_code`, `hisas_poscode`, `hisas_date_start`, `hisas_date_end`, `hisas_position`, `hisas_office`, `hisas_pile`, `hisas_type`, `pro_id`) VALUES
+(0013, 445, 546456, '0000-00-00', '0000-00-00', '', '', '', '', 1751);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ps_leaverelax`
+--
+
+CREATE TABLE `ps_leaverelax` (
+  `leavelax_id` int(4) NOT NULL,
+  `leave_write` varchar(50) NOT NULL COMMENT 'เขียนที่',
+  `leave_date` date NOT NULL,
+  `leave_rerng` varchar(50) NOT NULL,
+  `leave_topic` varchar(20) NOT NULL,
+  `leave_name` varchar(50) NOT NULL,
+  `leave_since` varchar(50) NOT NULL,
+  `leave_name2` varchar(50) NOT NULL,
+  `leave_dayreplace` int(11) NOT NULL,
+  `leave_daylax` int(20) NOT NULL,
+  `leave_totalday` int(20) NOT NULL,
+  `leave_Inday` date NOT NULL,
+  `leave_outday` date NOT NULL,
+  `leave_dates` date NOT NULL,
+  `leave_address` varchar(50) NOT NULL,
+  `pos_name` varchar(50) NOT NULL,
+  `position_name` varchar(50) NOT NULL,
+  `levels_la` varchar(50) NOT NULL,
+  `sangkad_la` varchar(50) NOT NULL,
+  `name_place` varchar(50) NOT NULL,
+  `status_leaves` int(1) NOT NULL,
+  `tel_leave` text NOT NULL,
+  `pic_lasick` varchar(100) NOT NULL COMMENT 'อัพโหลดรูปภาพ',
+  `pro_id` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_leaverelax`
+--
+
+INSERT INTO `ps_leaverelax` (`leavelax_id`, `leave_write`, `leave_date`, `leave_rerng`, `leave_topic`, `leave_name`, `leave_since`, `leave_name2`, `leave_dayreplace`, `leave_daylax`, `leave_totalday`, `leave_Inday`, `leave_outday`, `leave_dates`, `leave_address`, `pos_name`, `position_name`, `levels_la`, `sangkad_la`, `name_place`, `status_leaves`, `tel_leave`, `pic_lasick`, `pro_id`) VALUES
+(3, 'undefined', '0000-00-00', 'ลาพักผ่อน', '', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 94, 94, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '', 0, '0985121545', '', 1751),
+(4, 'undefined', '0000-00-00', 'ลาพักผ่อน', '', 'นายบุญล้อม พูนสวัสดิ์', '', '', 2, 4, 4, '2018-05-24', '2018-05-25', '0000-00-00', '', '', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '', 0, '0985121545', '', 1751),
+(5, 'undefined', '0000-00-00', 'ลาพักผ่อน', '', 'นายบุญล้อม พูนสวัสดิ์', '', '', 6, 6, 6, '2018-05-25', '2018-05-30', '0000-00-00', '', '', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '', 0, '0985121545', '', 1751),
+(6, 'undefined', '0000-00-00', 'ลาพักผ่อน', '', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 12, 12, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '', 0, '0985121545', '', 1751),
+(7, 'undefined', '0000-00-00', 'ลาพักผ่อน', '', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 12, 12, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '', 0, '0985121545', '', 1751),
+(8, 'undefined', '2018-05-24', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', 'ลาพักผ่อน', 'ชัชวาล', 3, 12, 12, '2561-08-24', '2018-05-26', '2018-05-24', '228/14 ม.4 ต.บ้านสวน', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', 'นายชัชวาล', 0, '0978900003', '', 1751),
+(9, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 1, 15, 15, '2018-05-25', '2018-05-25', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(10, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 16, 16, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(11, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 16, 16, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(12, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 1, 16, 16, '2018-05-25', '2018-05-25', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(13, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 17, 17, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(14, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 17, 17, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(15, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 17, 17, '2018-06-24', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(16, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 3, 17, 17, '2018-06-01', '2018-06-03', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(17, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 1, 20, 20, '2018-05-24', '2018-05-24', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(18, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 1, 21, 21, '2018-05-24', '2018-05-24', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(19, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 22, 22, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(20, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 22, 22, '2018-10-24', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(21, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 22, 22, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(22, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 1, 22, 22, '2018-05-25', '2018-05-25', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(24, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 2, 19, 19, '2018-05-24', '2018-05-25', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(25, 'undefined', '2018-05-24', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 3, 21, 21, '2018-05-24', '2018-05-26', '0000-00-00', '228/12 ม/2 ต.บ้านสวน อ.เมือง จ.ลบุรี 20000', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(26, 'undefined', '0000-00-00', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม ', '', '', 3, 24, 24, '2018-05-24', '2018-05-26', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 ', '', 2, '0978900003', '', 1751);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ps_leavesmp`
+--
+
+CREATE TABLE `ps_leavesmp` (
+  `leave_idsmp` int(4) NOT NULL,
+  `leave_writesmp` varchar(50) NOT NULL,
+  `leave_datesmp` date NOT NULL,
+  `leave_type` varchar(30) NOT NULL,
+  `leave_type2` text NOT NULL,
+  `leave_type3` text NOT NULL,
+  `leave_sincesmp` varchar(50) NOT NULL,
+  `leave_Indaysmp` date NOT NULL,
+  `leave_outdaysmp` date NOT NULL,
+  `leave_totalsmp` int(20) NOT NULL,
+  `leave_lastday` date NOT NULL,
+  `leave_lastday2` date NOT NULL,
+  `leave_totalsmp2` int(11) NOT NULL,
+  `leave_address2` varchar(20) NOT NULL,
+  `leader_name` varchar(50) NOT NULL,
+  `name_mesmp` varchar(50) NOT NULL COMMENT 'ข้าพเจ้า',
+  `posi_name` varchar(50) NOT NULL COMMENT 'ตำแหน่ง',
+  `degree_name` varchar(50) NOT NULL,
+  `sangkad_name` varchar(50) NOT NULL,
+  `Tel_me` text NOT NULL,
+  `status_leaves2` int(1) NOT NULL,
+  `pic_lasick` text NOT NULL COMMENT 'อัพโหลดรูปภาพ',
+  `pro_id` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_leavesmp`
+--
+
+INSERT INTO `ps_leavesmp` (`leave_idsmp`, `leave_writesmp`, `leave_datesmp`, `leave_type`, `leave_type2`, `leave_type3`, `leave_sincesmp`, `leave_Indaysmp`, `leave_outdaysmp`, `leave_totalsmp`, `leave_lastday`, `leave_lastday2`, `leave_totalsmp2`, `leave_address2`, `leader_name`, `name_mesmp`, `posi_name`, `degree_name`, `sangkad_name`, `Tel_me`, `status_leaves2`, `pic_lasick`, `pro_id`) VALUES
+(97, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '2018-05-25', '2018-05-30', 6, '0000-00-00', '0000-00-00', 0, '', '', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '0985121545', 0, '', 1751),
+(98, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '0000-00-00', '0000-00-00', 0, '0000-00-00', '0000-00-00', 0, '', '', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '0985121545', 0, '', 1751),
+(99, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '0000-00-00', '0000-00-00', 0, '0000-00-00', '0000-00-00', 0, '', '', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '0985121545', 0, '', 1751),
+(100, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '0000-00-00', '0000-00-00', 0, '0000-00-00', '0000-00-00', 0, '', 'นายเเพทย์จตุพร ทิพยทิฆัมพร', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '0978900003', 0, '', 1751),
+(101, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '2018-05-25', '2018-05-29', 5, '0000-00-00', '0000-00-00', 0, '', 'นายเเพทย์จตุพร ทิพยทิฆัมพร', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '0978900003', 0, '', 1751);
 
 -- --------------------------------------------------------
 
@@ -10416,6 +10526,7 @@ CREATE TABLE `ps_histimeup` (
 
 CREATE TABLE `ps_leveboss` (
   `lvb_id` int(2) NOT NULL,
+  `lvb_code` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'รหัสตำแหน่งบริหาร',
   `lvb_name` varchar(50) NOT NULL COMMENT 'ตำแหน่งบริหาร'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10423,21 +10534,20 @@ CREATE TABLE `ps_leveboss` (
 -- Dumping data for table `ps_leveboss`
 --
 
-INSERT INTO `ps_leveboss` (`lvb_id`, `lvb_name`) VALUES
-(1, 'ผู้อำนวยการ'),
-(2, 'รองผู้อำนวยการ'),
-(3, 'ผู้ช่วยผู้อำนวยการ'),
-(4, 'รักษาการหัวหน้ากลุ่ม'),
-(5, 'หัวหน้ากลุ่ม'),
-(6, 'หัวหน้าหน่วย'),
-(7, 'หัวหน้างาน'),
-(8, 'รักษาการหัวหน้ากลุ่ม'),
-(9, 'ข้าราชการ'),
-(10, 'ลูกจ้างประจำ'),
-(11, 'หัวหน้า'),
-(12, 'รก.หน.ศตม.6.2'),
-(13, 'หัวหน้านิคมฯ'),
-(14, 'ทั่วไป');
+INSERT INTO `ps_leveboss` (`lvb_id`, `lvb_code`, `lvb_name`) VALUES
+(1, 0001, 'ผู้อำนวยการ'),
+(2, 0002, 'รองผู้อำนวยการ'),
+(3, 0003, 'ผู้ช่วยผู้อำนวยการ'),
+(4, 0004, 'หัวหน้ากลุ่ม'),
+(5, 0005, 'รักษาการหัวหน้ากลุ่ม'),
+(6, 0006, 'หัวหน้าหน่วย'),
+(7, 0007, 'หัวหน้างาน'),
+(9, 0009, 'ข้าราชการ'),
+(10, 0010, 'ลูกจ้างประจำ'),
+(11, 0011, 'หัวหน้า'),
+(12, 0012, 'รก.หน.ศตม.6.2'),
+(13, 0013, 'หัวหน้านิคมฯ'),
+(14, 0013, 'ทั่วไป');
 
 -- --------------------------------------------------------
 
@@ -10447,6 +10557,7 @@ INSERT INTO `ps_leveboss` (`lvb_id`, `lvb_name`) VALUES
 
 CREATE TABLE `ps_level` (
   `lv_id` int(4) NOT NULL,
+  `lv_code` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'รหัสระดับ',
   `lv_name` varchar(50) NOT NULL COMMENT 'ระดับชำนาญการ'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10454,16 +10565,17 @@ CREATE TABLE `ps_level` (
 -- Dumping data for table `ps_level`
 --
 
-INSERT INTO `ps_level` (`lv_id`, `lv_name`) VALUES
-(1, 'เชี่ยวชาญ'),
-(2, 'ชำนาญการพิเศษ'),
-(3, 'ชำนาญการ'),
-(4, 'ปฏิบัติการ'),
-(5, 'ชำนาญงาน'),
-(6, 'อาวุโส'),
-(7, 'ส 2 หัวหน้า'),
-(8, 'ส 2'),
-(9, 'ส 3');
+INSERT INTO `ps_level` (`lv_id`, `lv_code`, `lv_name`) VALUES
+(1, 0001, 'เชี่ยวชาญ'),
+(2, 0002, 'ชำนาญการพิเศษ'),
+(3, 0003, 'ชำนาญการ'),
+(4, 0004, 'ปฏิบัติการ'),
+(5, 0005, 'ชำนาญงาน'),
+(6, 0006, 'อาวุโส'),
+(7, 0007, 'ส 2 หัวหน้า'),
+(8, 0008, 'ส 2'),
+(9, 0009, 'ส 3'),
+(12, 2115, 'บ 2');
 
 -- --------------------------------------------------------
 
@@ -10489,41 +10601,6 @@ INSERT INTO `ps_leveleducation` (`edu_id`, `edu_code`, `edu_name`) VALUES
 (0005, 0005, 'ปริญญาตรี'),
 (0006, 0006, 'ปริญญาโท'),
 (0007, 0007, 'ปริญญาเอก');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ps_metter`
---
-
-CREATE TABLE `ps_metter` (
-  `id_metter` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `metter_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `metter_type` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `ps_metter`
---
-
-INSERT INTO `ps_metter` (`id_metter`, `metter_name`, `metter_type`, `card_id`) VALUES
-(0001, 'rtfhgfhghf', 'fdgdfgfdgmmmm', '1310400087338');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ps_monnyspecial`
---
-
-CREATE TABLE `ps_monnyspecial` (
-  `monny_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `monny_datefrom` date NOT NULL,
-  `monny_dateto` date NOT NULL,
-  `monny_name` int(7) NOT NULL,
-  `monny_special` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -10829,6 +10906,7 @@ CREATE TABLE `ps_personnal` (
   `lastname` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `pos_id` int(4) UNSIGNED ZEROFILL NOT NULL,
   `class_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `dep_id` int(4) UNSIGNED ZEROFILL NOT NULL,
   `tel` varchar(10) CHARACTER SET utf8 NOT NULL,
   `email` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `username` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -10845,20 +10923,39 @@ CREATE TABLE `ps_personnal` (
 -- Dumping data for table `ps_personnal`
 --
 
-INSERT INTO `ps_personnal` (`member_id`, `card_id`, `nameuser`, `lastname`, `pos_id`, `class_id`, `tel`, `email`, `username`, `password`, `level`, `status`, `person_create`, `date_create`, `person_update`, `date_update`) VALUES
-(2, '1232201023877', 'กรกมล', 'ดวงใส', 0145, 0003, '0870799293', 'phoonsawat_jo@hotmail.com', 'num', 'num', 0, 0, '', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-04-26 03:56:00'),
-(3, '7696796786574', 'นิอร ', 'แสงเนตร', 0018, 0007, '0870799293', 'nion-sangnate@hotmail.com', 'nion', 'nion', 1, 0, '', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-03 19:07:39'),
-(4, '5435345565657', 'อาทิตย์', 'บุญสุทธฺ์', 0012, 0006, '0870799293', 'phoonsawat_jo@hotmail.com', 'aaaa', 'sodo', 0, 1, '', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-09 02:28:52'),
-(5, '2409900004755', 'วรันธร', 'คำพิลา', 0006, 0007, '0873833946', 'warunthorn.kum@gmail.com', 'warunthorn', 'parnple0312', 1, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(92, '1310400087338', 'บุญล้อม', 'พูนสวัสดิ์', 0122, 0076, '0000000000', '', 'jojo', '147', 1, 1, 'นิอร  แสงเนตร', '2018-04-29 22:42:26', 'นิอร  แสงเนตร', '2018-04-29 22:42:26'),
-(94, '1234567898762', 'tttt', 'cccc', 0130, 0001, '0978900003', 'phoonsawat_jo@hotmail.com', 'tttt', 'tttt', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'นิอร  แสงเนตร', '2018-04-29 17:49:42'),
-(93, '1234567898761', 'rrrr', 'vvvv', 0130, 0001, '0978900002', 'phoonsawat_jo@hotmail.com', 'rrrr', 'rrrr', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'นิอร  แสงเนตร', '2018-04-29 17:49:42'),
-(95, '1234567898763', 'yyyy', 'xxxx', 0130, 0001, '0978900004', 'phoonsawat_jo@hotmail.com', 'yyyy', 'yyyy', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'นิอร  แสงเนตร', '2018-04-29 17:49:42'),
-(96, '1234567898764', 'uuuu', 'zzzz', 0130, 0001, '0978900005', 'phoonsawat_jo@hotmail.com', 'uuuu', 'uuuu', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'นิอร  แสงเนตร', '2018-04-29 17:49:42'),
-(97, '1234567898768', 'iiii', 'mmmm', 0130, 0001, '0978900006', 'phoonsawat_jo@hotmail.com', 'iiii', 'iiii', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'นิอร  แสงเนตร', '2018-04-29 17:49:42'),
-(98, '1234567898767', 'oooo', 'nnnn', 0130, 0001, '0978900007', 'phoonsawat_jo@hotmail.com', 'oooo', 'oooo', 0, 0, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'บุญล้อม พูนสวัสดิ์', '2018-04-29 23:18:17'),
-(99, '1234567898760', 'qqqq', 'bbbb', 0130, 0001, '0978900008', 'phoonsawat_jo@hotmail.com', 'qqqq', 'qqqq', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'นิอร  แสงเนตร', '2018-04-29 17:49:42'),
-(102, '3535354', 'สุริยะ', 'เต่าทองคำ', 0003, 0055, '0000000000', 'fsdf@dfdsf.com', 'dindin', 'asdf', 1, 0, 'บุญล้อม พูนสวัสดิ์', '2018-05-09 17:36:39', 'บุญล้อม พูนสวัสดิ์', '2018-05-09 17:37:08');
+INSERT INTO `ps_personnal` (`member_id`, `card_id`, `nameuser`, `lastname`, `pos_id`, `class_id`, `dep_id`, `tel`, `email`, `username`, `password`, `level`, `status`, `person_create`, `date_create`, `person_update`, `date_update`) VALUES
+(1, '3210300330271', 'ฉวีวรรณ', 'ตรึกหากิจ', 0145, 0003, 0000, '0870799293', 'phoonsawat_jo@hotmail.com', 'num', 'num', 0, 1, '', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 18:00:00'),
+(2, '5435345565656', 'อาทิตย์', 'บุญสุทธฺ์', 0012, 0006, 0000, '0870799256', 'phoonsawat_jo@hotmail.com', 'user', '1234', 0, 0, '', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 17:57:31'),
+(3, '1310400087338', 'บุญล้อม', 'พูนสวัสดิ์', 0016, 0001, 0003, '0978900003', 'phoonsawat_jo@hotmail.com', 'jojo', '147', 1, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 17:58:03'),
+(4, '1120220056489', ' นัทชัย', 'หอมหวาน', 0004, 0006, 0000, '0989678598', 'supon@hotmail.com', 'supon', '123456', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-24 20:14:02', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 20:14:58'),
+(5, '3200900335451', 'วชิระ', 'มากเจริญ', 0132, 0081, 0000, '0982256615', 'phoonsawat_jo@hotmail.com', 'wachira', 'wachira', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:17:32', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:17:32'),
+(6, '3200101213355', 'สมชาย', 'เกิดปราง', 0132, 0081, 0000, '0982115064', 'storymc@gmail.com', 'somchai', 'somchai', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:17:32', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:17:32'),
+(7, '3200101043077', 'วิชาญ', 'วงษ์สุนทร', 0132, 0082, 0000, '0925668710', 'oppnachan@hotmail.com', 'wichan', 'wichan', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:17:32', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:17:32'),
+(8, '1420200008930', 'วมิลรัตน์', 'ปัสสาวัฒนะ', 0132, 0082, 0000, '0846548831', 'supream1122@hotmail.com', 'waminrat', 'waminrat', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:17:32', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:17:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ps_plan`
+--
+
+CREATE TABLE `ps_plan` (
+  `plan_id` int(5) NOT NULL,
+  `plan_name` varchar(100) NOT NULL COMMENT 'หัวข้อ / เป้าหมายแผนงาน',
+  `plan_detail` text NOT NULL COMMENT 'รายละเอียด',
+  `plan_dateStart` date NOT NULL COMMENT 'วันที่เริ่มต้น',
+  `plan_dateEnd` date NOT NULL COMMENT 'วันที่สิ้นสุด',
+  `plan_status` int(1) NOT NULL COMMENT 'สถานะ',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_plan`
+--
+
+INSERT INTO `ps_plan` (`plan_id`, `plan_name`, `plan_detail`, `plan_dateStart`, `plan_dateEnd`, `plan_status`, `pro_id`) VALUES
+(1, 'จัดทำข้อกำหนดคุมแบบคอมพิวเตอร์', 'ต่อจากเเจ้งซ่อม', '2018-05-09', '2018-05-10', 1, 1751),
+(2, 'พัฒนาความสามารถด้านโปรแกรม', 'พัฒนาความสามารถด้านการเขียนโปรแกรมในภาษา Ajax Json JAVA', '2018-05-24', '2018-05-30', 1, 1982);
 
 -- --------------------------------------------------------
 
@@ -10868,8 +10965,8 @@ INSERT INTO `ps_personnal` (`member_id`, `card_id`, `nameuser`, `lastname`, `pos
 
 CREATE TABLE `ps_position` (
   `pos_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `pos_code` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `pos_name` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `pos_code` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'รหัสตำแหน่ง',
+  `pos_name` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'ตำแหน่ง'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -10877,7 +10974,7 @@ CREATE TABLE `ps_position` (
 --
 
 INSERT INTO `ps_position` (`pos_id`, `pos_code`, `pos_name`) VALUES
-(0001, 0101, 'แพทย์'),
+(0001, 0101, 'แพทย์หญิง'),
 (0002, 0102, 'นักวิชาการสาธารณสุข'),
 (0003, 0103, 'พยาบาลวิชาชิพ'),
 (0004, 0104, 'เภสัชกร'),
@@ -10917,7 +11014,7 @@ INSERT INTO `ps_position` (`pos_id`, `pos_code`, `pos_name`) VALUES
 (0140, 0138, 'นักกีฏวิทยา'),
 (0142, 0139, 'นักวิทยาศาสตร์การแพทย์'),
 (0145, 0140, 'นักวิชาการสาธารณสุขเชี่ยวชาญ'),
-(0147, 0141, 'นายแพทย์ชำนาญการพิเศษ');
+(0147, 0141, 'นายแพทย์');
 
 -- --------------------------------------------------------
 
@@ -10926,7 +11023,7 @@ INSERT INTO `ps_position` (`pos_id`, `pos_code`, `pos_name`) VALUES
 --
 
 CREATE TABLE `ps_preaddress` (
-  `pread_id` int(11) NOT NULL,
+  `pread_id` int(5) NOT NULL,
   `pread_number` varchar(10) NOT NULL COMMENT 'เลขที่',
   `pread_swine` varchar(10) NOT NULL COMMENT 'หมู่',
   `pread_soi` varchar(30) NOT NULL COMMENT 'ซอย',
@@ -10946,12 +11043,15 @@ CREATE TABLE `ps_preaddress` (
 --
 
 INSERT INTO `ps_preaddress` (`pread_id`, `pread_number`, `pread_swine`, `pread_soi`, `pread_road`, `pread_village`, `pread_province`, `pread_amphur`, `pread_district`, `pread_zip_code`, `pread_call`, `pread_fhone`, `pro_id`) VALUES
-(0, 'aaaa', 'ssss', 'dddd', 'ffff', 'gggg', 1, 19, 124, '10170', '4-4444- ___', '55-555_-___', 1751),
+(0, '', '', '', '', '', 0, 0, 0, '', '', '', 0),
+(0, '', '', '', '', '', 0, 0, 0, '', '', '', 1751),
 (0, '', '', '', '', '', 0, 0, 0, '', '0', '0', 1934),
-(0, '', '', '', '', '', 0, 0, 0, '', '0', '0', 0),
 (0, '', '', '', '', '', 0, 0, 0, '', '0', '0', 1938),
-(0, '', '', '', '', '', 0, 0, 0, '', '', '', 1986),
-(0, '', '', '', '', '', 0, 0, 0, '', '', '', 1980);
+(0, '', '', '', '', '', 0, 0, 0, '', '', '', 1980),
+(0, '', '', '', '', '', 0, 0, 0, '', '', '', 1981),
+(0, '222/15', '2', '1', 'สุขประยูร', ' แฟมมิลี่แลนด์', 1, 31, 184, '10120', '0-3228-9512', '09-8967-859', 1982),
+(0, '', '', '', '', '', 0, 0, 0, '', '', '', 1985),
+(0, '', '', '', '', '', 0, 0, 0, '', '', '', 1986);
 
 -- --------------------------------------------------------
 
@@ -11011,9 +11111,10 @@ CREATE TABLE `ps_profile` (
   `pro_salary` text NOT NULL COMMENT 'เงินเดือน',
   `pro_dateIn` date NOT NULL COMMENT 'วันเข้ารับราชการ',
   `pro_dateOut` date NOT NULL COMMENT 'วันเกษียญอายุ',
+  `pro_transfer` varchar(50) NOT NULL COMMENT 'การโอนย้าย',
   `pro_picture` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'รูปภาพ',
   `pro_person_create` varchar(50) NOT NULL COMMENT 'คนสร้าง',
-  `pro_date_create` datetime NOT NULL,
+  `pro_date_create` datetime NOT NULL COMMENT 'วันที่สร้าง',
   `pro_person_update` varchar(50) NOT NULL COMMENT 'คนแก้ไขล่าสุด',
   `pro_date_update` datetime NOT NULL COMMENT 'วันที่แก้ไขล่าสุด'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='โปรไฟล์ข้อมูลบุคลากร' ROW_FORMAT=DYNAMIC;
@@ -11022,531 +11123,30 @@ CREATE TABLE `ps_profile` (
 -- Dumping data for table `ps_profile`
 --
 
-INSERT INTO `ps_profile` (`pro_id`, `card_id`, `pro_idpos`, `pro_sex`, `pro_prefix`, `pro_fname`, `pro_lname`, `pro_nickname`, `pro_birthday`, `pro_status`, `pos_id`, `type_id`, `lvb_id`, `lv_id`, `class_id`, `dep_id`, `pro_salary`, `pro_dateIn`, `pro_dateOut`, `pro_picture`, `pro_person_create`, `pro_date_create`, `pro_person_update`, `pro_date_update`) VALUES
-(1986, '3210300330271', 3733, 2, 'นางสาว', 'นางสาวฉวีวรรณ', 'ตรึกหากิจ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0002, 0003, '19030', '2018-05-02', '2018-05-10', '../../images/img-profile/DX21KYL7SWHNZGO-aor.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-12 01:03:10'),
-(1985, '3200100809556', 3732, 2, 'นาง', 'นางลดาวัณย์', 'อานนท์ศิริโชติ', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0002, 0003, '18690', '2018-07-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:00:49'),
-(1984, '1123266544899', 3730, 2, 'นาง', 'นางปิ่นกมล', 'สมพีร์วงศ์', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0002, 0003, '23300', '2018-07-11', '2018-09-10', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:00:54'),
-(1983, '1154588652447', 1423, 1, 'นาย', 'นายธนู', 'พรรคอนันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '30820', '2018-07-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:01:00'),
-(1982, '5457893248789', 1416, 1, 'นาย', 'นายสมยศ', 'จันทเลิศ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25170', '2018-07-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:01:06'),
-(1981, '3120100492677', 1295, 2, 'นาง', 'นางอุษา', 'แย้มศรี', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '24840', '2018-07-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:01:12'),
-(1980, '3430100797734', 1293, 1, 'นาย', 'นายทองปิว', 'วงศ์ภูมี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '21960', '2018-07-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:01:17'),
-(1978, '4458632875563', 1291, 1, 'นาย', 'นายอนุกูล', 'จรัลทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25030', '2018-07-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:01:22'),
-(1979, '2316241564567', 1292, 1, 'นาย', 'นายสิรภพ', 'อิ่มรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14760', '2018-07-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:01:27'),
-(1977, '5456465465498', 1290, 2, 'นาง', 'นางจงดี', 'นิยมสุข', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '28270', '2018-07-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:01:31'),
-(1974, '3800600005884', 1283, 1, 'นาย', 'นายจีรพจน์', 'มณเทียรทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14280', '2007-10-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1975, '3251200269554', 1284, 1, 'นาย', 'นายสุเนตร', 'ยะถาคาร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '13570', '2011-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1976, '3760100742406', 1289, 1, 'นาย', 'นายประเมศฐ์', 'ชัยจิระคุณานนท์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '28820', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1971, '3250100582411', 1275, 2, 'นางสาว', 'นางสาวอุไรวรรณ', 'ถาดทอง', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39630', '1979-09-20', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1972, '3521200024346', 1276, 2, 'นางสาว', 'นางสาวชบาไพร', 'เสาร์สุวรรณ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0006, 0003, '21990', '2002-08-29', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1973, '3150600141407', 1277, 1, 'นาย', 'นายเฉลิมชัย', 'เตชะรัตน์', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0006, 0003, '24450', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1970, '1301700134979', 1274, 2, 'นางสาว', 'นางสาวอรสา', 'แดนไธสง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13640', '2010-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1967, '3230300025877', 1271, 1, 'นาย', 'นายสมศักดิ์', 'เสนาะสันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '25540', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1968, '3230400196291', 1272, 2, 'นาง', 'นางราตรี', 'เชื้อฉลาด', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '23160', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1969, '3230100171799', 1273, 2, 'นางสาว', 'นางสาวศรีจันทร์', 'แก่นบุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '33200', '1981-12-21', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1966, '3230500184162', 1270, 1, 'นาย', 'นายไตรมิตร', 'ยิสารคุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '29070', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1965, '3251000090488', 1269, 1, 'นาย', 'นายชัยยงค์', 'กุหลาบ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15670', '2005-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1964, '3230100239768', 1268, 1, 'นาย', 'นายเสมา', 'รัชยาว', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24090', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1963, '3230500055966', 1262, 2, 'นาง', 'นางยุพิน', 'วรฉัตร', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '27680', '1987-01-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1962, '3650800702564', 1261, 2, 'นาง', 'นางนันทวัน', 'เฮงตระกูลเวนิช', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0001, 0003, '22360', '2002-08-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1961, '3230500122612', 1260, 1, 'นาย', 'นายษีวะรัง', 'สังข์ทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '30830', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1960, '3160100545517', 1259, 2, 'นาง', 'นางกองเพ็ชร์', 'ดอกไม้เพ็ง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26840', '1989-11-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1959, '3100500975977', 1258, 2, 'นาง', 'นางสายอมร', 'เจริญกุล', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '32270', '1980-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1958, '3250400759368', 1256, 1, 'นาย', 'นายธนากร', 'กำเหนิด', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13950', '2007-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1957, '3200500128581', 1248, 1, 'นาย', 'นายรุ่ง', 'วงษ์นาค', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13370', '2010-08-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1956, '3330900703336', 1245, 2, 'นาง', 'นางวรรณา', 'ผลอ้อ', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '39630', '1990-04-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1955, '3210300858674', 1244, 2, 'นางสาว', 'นางสาวปราณี', 'ถาวรศิริ', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '19470', '2004-05-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1954, '3220300520631', 1243, 1, 'นาย', 'นายไพบูรณ์', 'สมจินดา', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '34510', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1953, '3240400138282', 1241, 2, 'นาง', 'นางโสภิดา', 'ยอดแสง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26040', '1991-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1952, '3200100622324', 1240, 2, 'นางสาว', 'นางสาวบุญยืน', 'คุ้มทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '26480', '1992-05-06', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1951, '3251100404794', 1239, 1, 'นาย', 'นายอดุลย์', 'เจือจันทร์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '23850', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1950, '3260200009870', 1235, 2, 'นาง', 'นางอุทัยวรรญ', 'จีนสง่า', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31970', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1949, '3229900066726', 1229, 2, 'นาง', 'นางบังอร', 'ขรรค์ศร', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31190', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1942, '5250200054910', 1215, 1, 'นาย', 'นายธงชัย', 'ฟองกำแหง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1943, '3410100018221', 1218, 1, 'นาย', 'นายพัฒนศักดิ์', 'สิทธิโคตร', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '17750', '1997-06-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1944, '3230500074201', 1222, 1, 'นาย', 'นายลือชา', 'จามลิกุล', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '22220', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1945, '1100200349951', 1223, 1, 'นาย', 'นายศราวุธ', 'โพธิกุล', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '13200', '2010-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1946, '3200900385823', 1224, 2, 'นางสาว', 'นางสาวชันษา', 'เจริญศรี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24710', '1992-07-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1947, '3219900025086', 1225, 1, 'นาย', 'นายจิรศักดิ์', 'ดิเรกฤทธิกุลชัย', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39610', '1981-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1948, '3140800057078', 1226, 1, 'นาย', 'นายแสวง', 'ทองสีจัด', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '33620', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1941, '3102002496122', 1209, 1, 'นาย', 'นายไพฑูรย์', 'มุสิกรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1940, '3200200162635', 1208, 1, 'นาย', 'นายนิมิตต์', 'ถนอมญาติ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1937, '3210300330271', 3733, 2, 'นางสาว', 'นางสาวฉวีวรรณ', 'ตรึกหากิจ', 'แพท', '2018-06-05', 'โสด', 0016, 2, 3, 8, 0002, 0003, '19030', '2004-05-11', '0000-00-00', '../../images/img-profile/QINYER2TF51KO6W-user.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-06 16:08:20'),
-(1938, '5555555555555', 1122, 2, 'นางสาว', 'xczxc', 'scsdsdf', 'เเพท', '2018-08-10', 'หม้าย', 0003, 2, 4, 2, 0003, 0003, '26546', '2018-10-10', '2018-07-10', '../../images/img-profile/YMGFZLHSWNAV8JQ-pat.jpg', 'บุญล้อม พูนสวัสดิ์', '2018-05-03 19:11:31', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 01:21:20'),
-(1936, '3200100809556', 3732, 2, 'นาง', 'นางลดาวัณย์', 'อานนท์ศิริโชติ', 'dfgdfg', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0002, 0003, '18690', '2004-05-11', '0000-00-00', '../../images/img-profile/6MK1F27UGO5BAJZ-5.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-07 01:03:06'),
-(1933, '3220600160478', 1416, 1, 'นาย', 'นายสมยศ', 'จันทเลิศ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25170', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1934, '3220300606977', 1423, 1, 'นาย', 'นายธนู', 'พรรคอนันต์', '', '0000-00-00', 'หย่า', 0016, 2, 3, 8, 0006, 0003, '30820', '1987-01-05', '0000-00-00', '../../images/img-profile/KAB1QM3V5EIHXWC-user.png', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-09 15:15:38'),
-(1935, '3200100370864', 3730, 2, 'นาง', 'นางปิ่นกมล', 'สมพีร์วงศ์', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0002, 0003, '23300', '2009-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1932, '3120100492677', 1295, 2, 'นาง', 'นางอุษา', 'แย้มศรี', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '24840', '1990-11-09', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1931, '3430100797734', 1293, 1, 'นาย', 'นายทองปิว', 'วงศ์ภูมี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '21960', '1997-06-23', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1930, '3220300126835', 1292, 1, 'นาย', 'นายสิรภพ', 'อิ่มรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14760', '2007-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1929, '3220200281685', 1291, 1, 'นาย', 'นายอนุกูล', 'จรัลทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25030', '1995-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1928, '3220300607558', 1290, 2, 'นาง', 'นางจงดี', 'นิยมสุข', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '28270', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1927, '3760100742406', 1289, 1, 'นาย', 'นายประเมศฐ์', 'ชัยจิระคุณานนท์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '28820', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1926, '3251200269554', 1284, 1, 'นาย', 'นายสุเนตร', 'ยะถาคาร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '13570', '2011-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1925, '3800600005884', 1283, 1, 'นาย', 'นายจีรพจน์', 'มณเทียรทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14280', '2007-10-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1924, '3150600141407', 1277, 1, 'นาย', 'นายเฉลิมชัย', 'เตชะรัตน์', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0006, 0003, '24450', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1923, '3521200024346', 1276, 2, 'นางสาว', 'นางสาวชบาไพร', 'เสาร์สุวรรณ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0006, 0003, '21990', '2002-08-29', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1922, '3250100582411', 1275, 2, 'นางสาว', 'นางสาวอุไรวรรณ', 'ถาดทอง', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39630', '1979-09-20', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1921, '1301700134979', 1274, 2, 'นางสาว', 'นางสาวอรสา', 'แดนไธสง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13640', '2010-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1920, '3230100171799', 1273, 2, 'นางสาว', 'นางสาวศรีจันทร์', 'แก่นบุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '33200', '1981-12-21', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1919, '3230400196291', 1272, 2, 'นาง', 'นางราตรี', 'เชื้อฉลาด', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '23160', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1918, '3230300025877', 1271, 1, 'นาย', 'นายสมศักดิ์', 'เสนาะสันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '25540', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1917, '3230500184162', 1270, 1, 'นาย', 'นายไตรมิตร', 'ยิสารคุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '29070', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1916, '3251000090488', 1269, 1, 'นาย', 'นายชัยยงค์', 'กุหลาบ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15670', '2005-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1913, '3650800702564', 1261, 2, 'นาง', 'นางนันทวัน', 'เฮงตระกูลเวนิช', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0001, 0003, '22360', '2002-08-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1914, '3230500055966', 1262, 2, 'นาง', 'นางยุพิน', 'วรฉัตร', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '27680', '1987-01-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1915, '3230100239768', 1268, 1, 'นาย', 'นายเสมา', 'รัชยาว', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24090', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1912, '3230500122612', 1260, 1, 'นาย', 'นายษีวะรัง', 'สังข์ทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '30830', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1911, '3160100545517', 1259, 2, 'นาง', 'นางกองเพ็ชร์', 'ดอกไม้เพ็ง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26840', '1989-11-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1910, '3100500975977', 1258, 2, 'นาง', 'นางสายอมร', 'เจริญกุล', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '32270', '1980-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1909, '3250400759368', 1256, 1, 'นาย', 'นายธนากร', 'กำเหนิด', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13950', '2007-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1908, '3200500128581', 1248, 1, 'นาย', 'นายรุ่ง', 'วงษ์นาค', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13370', '2010-08-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1907, '3330900703336', 1245, 2, 'นาง', 'นางวรรณา', 'ผลอ้อ', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '39630', '1990-04-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1906, '3210300858674', 1244, 2, 'นางสาว', 'นางสาวปราณี', 'ถาวรศิริ', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '19470', '2004-05-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1905, '3220300520631', 1243, 1, 'นาย', 'นายไพบูรณ์', 'สมจินดา', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '34510', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1904, '3240400138282', 1241, 2, 'นาง', 'นางโสภิดา', 'ยอดแสง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26040', '1991-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1903, '3200100622324', 1240, 2, 'นางสาว', 'นางสาวบุญยืน', 'คุ้มทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '26480', '1992-05-06', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1902, '3251100404794', 1239, 1, 'นาย', 'นายอดุลย์', 'เจือจันทร์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '23850', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1901, '3260200009870', 1235, 2, 'นาง', 'นางอุทัยวรรญ', 'จีนสง่า', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31970', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1900, '3229900066726', 1229, 2, 'นาง', 'นางบังอร', 'ขรรค์ศร', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31190', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1899, '3140800057078', 1226, 1, 'นาย', 'นายแสวง', 'ทองสีจัด', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '33620', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1898, '3219900025086', 1225, 1, 'นาย', 'นายจิรศักดิ์', 'ดิเรกฤทธิกุลชัย', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39610', '1981-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1897, '3200900385823', 1224, 2, 'นางสาว', 'นางสาวชันษา', 'เจริญศรี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24710', '1992-07-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1896, '1100200349951', 1223, 1, 'นาย', 'นายศราวุธ', 'โพธิกุล', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '13200', '2010-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1895, '3230500074201', 1222, 1, 'นาย', 'นายลือชา', 'จามลิกุล', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '22220', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1894, '3410100018221', 1218, 1, 'นาย', 'นายพัฒนศักดิ์', 'สิทธิโคตร', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '17750', '1997-06-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1893, '5250200054910', 1215, 1, 'นาย', 'นายธงชัย', 'ฟองกำแหง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1892, '3102002496122', 1209, 1, 'นาย', 'นายไพฑูรย์', 'มุสิกรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1891, '3200200162635', 1208, 1, 'นาย', 'นายนิมิตต์', 'ถนอมญาติ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1890, '3210500207260', 1207, 1, 'นาย', 'นายนิคม', 'สุขประเสริฐ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1889, '3210300330271', 3733, 2, 'นางสาว', 'นางสาวฉวีวรรณ', 'ตรึกหากิจ', '', '2019-03-03', 'โสด', 0016, 2, 3, 8, 0002, 0003, '19030', '2018-07-03', '0000-00-00', '../../images/img-profile/Q41DIA5K6HO7MUC-003.JPG', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-03 18:54:10'),
-(1888, '3200100809556', 3732, 2, 'นาง', 'นางลดาวัณย์', 'อานนท์ศิริโชติ', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0002, 0003, '18690', '2004-05-11', '0000-00-00', '../../images/img-profile/8M7VOBKFQSTYCNU-myImage.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-03 16:33:02'),
-(1887, '3200100370864', 3730, 2, 'นาง', 'นางปิ่นกมล', 'สมพีร์วงศ์', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0002, 0003, '23300', '2009-03-02', '0000-00-00', '../../images/img-profile/8QD6TA7OJFE2UPZ-pat.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-03 19:01:44'),
-(1886, '3220300606977', 1423, 1, 'นาย', 'นายธนู', 'พรรคอนันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '30820', '1987-01-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1884, '3120100492677', 1295, 2, 'นาง', 'นางอุษา', 'แย้มศรี', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '24840', '1990-11-09', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1885, '3220600160478', 1416, 1, 'นาย', 'นายสมยศ', 'จันทเลิศ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25170', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1883, '3430100797734', 1293, 1, 'นาย', 'นายทองปิว', 'วงศ์ภูมี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '21960', '1997-06-23', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1882, '3220300126835', 1292, 1, 'นาย', 'นายสิรภพ', 'อิ่มรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14760', '2007-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1881, '3220200281685', 1291, 1, 'นาย', 'นายอนุกูล', 'จรัลทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25030', '1995-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1880, '3220300607558', 1290, 2, 'นาง', 'นางจงดี', 'นิยมสุข', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '28270', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1879, '3760100742406', 1289, 1, 'นาย', 'นายประเมศฐ์', 'ชัยจิระคุณานนท์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '28820', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1878, '3251200269554', 1284, 1, 'นาย', 'นายสุเนตร', 'ยะถาคาร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '13570', '2011-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1877, '3800600005884', 1283, 1, 'นาย', 'นายจีรพจน์', 'มณเทียรทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14280', '2007-10-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1876, '3150600141407', 1277, 1, 'นาย', 'นายเฉลิมชัย', 'เตชะรัตน์', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0006, 0003, '24450', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1875, '3521200024346', 1276, 2, 'นางสาว', 'นางสาวชบาไพร', 'เสาร์สุวรรณ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0006, 0003, '21990', '2002-08-29', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1874, '3250100582411', 1275, 2, 'นางสาว', 'นางสาวอุไรวรรณ', 'ถาดทอง', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39630', '1979-09-20', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1873, '1301700134979', 1274, 2, 'นางสาว', 'นางสาวอรสา', 'แดนไธสง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13640', '2010-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1872, '3230100171799', 1273, 2, 'นางสาว', 'นางสาวศรีจันทร์', 'แก่นบุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '33200', '1981-12-21', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1871, '3230400196291', 1272, 2, 'นาง', 'นางราตรี', 'เชื้อฉลาด', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '23160', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1870, '3230300025877', 1271, 1, 'นาย', 'นายสมศักดิ์', 'เสนาะสันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '25540', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1869, '3230500184162', 1270, 1, 'นาย', 'นายไตรมิตร', 'ยิสารคุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '29070', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1868, '3251000090488', 1269, 1, 'นาย', 'นายชัยยงค์', 'กุหลาบ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15670', '2005-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1867, '3230100239768', 1268, 1, 'นาย', 'นายเสมา', 'รัชยาว', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24090', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1866, '3230500055966', 1262, 2, 'นาง', 'นางยุพิน', 'วรฉัตร', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '27680', '1987-01-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1864, '3230500122612', 1260, 1, 'นาย', 'นายษีวะรัง', 'สังข์ทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '30830', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1865, '3650800702564', 1261, 2, 'นาง', 'นางนันทวัน', 'เฮงตระกูลเวนิช', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0001, 0003, '22360', '2002-08-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1863, '3160100545517', 1259, 2, 'นาง', 'นางกองเพ็ชร์', 'ดอกไม้เพ็ง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26840', '1989-11-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1862, '3100500975977', 1258, 2, 'นาง', 'นางสายอมร', 'เจริญกุล', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '32270', '1980-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1861, '3250400759368', 1256, 1, 'นาย', 'นายธนากร', 'กำเหนิด', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13950', '2007-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1860, '3200500128581', 1248, 1, 'นาย', 'นายรุ่ง', 'วงษ์นาค', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13370', '2010-08-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1859, '3330900703336', 1245, 2, 'นาง', 'นางวรรณา', 'ผลอ้อ', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '39630', '1990-04-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1858, '3210300858674', 1244, 2, 'นางสาว', 'นางสาวปราณี', 'ถาวรศิริ', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '19470', '2004-05-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1857, '3220300520631', 1243, 1, 'นาย', 'นายไพบูรณ์', 'สมจินดา', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '34510', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1856, '3240400138282', 1241, 2, 'นาง', 'นางโสภิดา', 'ยอดแสง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26040', '1991-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1855, '3200100622324', 1240, 2, 'นางสาว', 'นางสาวบุญยืน', 'คุ้มทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '26480', '1992-05-06', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1854, '3251100404794', 1239, 1, 'นาย', 'นายอดุลย์', 'เจือจันทร์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '23850', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1853, '3260200009870', 1235, 2, 'นาง', 'นางอุทัยวรรญ', 'จีนสง่า', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31970', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1851, '3140800057078', 1226, 1, 'นาย', 'นายแสวง', 'ทองสีจัด', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '33620', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1852, '3229900066726', 1229, 2, 'นาง', 'นางบังอร', 'ขรรค์ศร', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31190', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1850, '3219900025086', 1225, 1, 'นาย', 'นายจิรศักดิ์', 'ดิเรกฤทธิกุลชัย', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39610', '1981-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1849, '3200900385823', 1224, 2, 'นางสาว', 'นางสาวชันษา', 'เจริญศรี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24710', '1992-07-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1848, '1100200349951', 1223, 1, 'นาย', 'นายศราวุธ', 'โพธิกุล', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '13200', '2010-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1846, '3410100018221', 1218, 1, 'นาย', 'นายพัฒนศักดิ์', 'สิทธิโคตร', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '17750', '1997-06-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1847, '3230500074201', 1222, 1, 'นาย', 'นายลือชา', 'จามลิกุล', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '22220', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1845, '5250200054910', 1215, 1, 'นาย', 'นายธงชัย', 'ฟองกำแหง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1844, '3102002496122', 1209, 1, 'นาย', 'นายไพฑูรย์', 'มุสิกรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1841, '', 0000, 0, '', '', '', '', '0000-00-00', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '2018-09-02', '0000-00-00', '../../images/img-profile/D813BTRK92MVWIZ-teamwork.png', 'บุญล้อม พูนสวัสดิ์', '2018-05-02 23:08:12', 'บุญล้อม พูนสวัสดิ์', '2018-05-02 23:08:12'),
-(1842, '3210500207260', 1207, 1, 'นาย', 'นายนิคม', 'สุขประเสริฐ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1843, '3200200162635', 1208, 1, 'นาย', 'นายนิมิตต์', 'ถนอมญาติ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1828, '3210300330271', 3733, 2, 'นางสาว', 'นางสาวฉวีวรรณ', 'ตรึกหากิจ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0002, 0003, '19030', '2004-05-11', '0000-00-00', '../../images/img-profile/5DULI1E7TF48O36-growth.png', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-02 23:11:11'),
-(1827, '3200100809556', 3732, 2, 'นาง', 'นางลดาวัณย์', 'อานนท์ศิริโชติ', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0002, 0003, '18690', '2004-05-11', '0000-00-00', '../../images/img-profile/NO35AKSVH4J2ITL-7627786451150.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-02 23:05:59'),
-(1826, '3200100370864', 3730, 2, 'นาง', 'นางปิ่นกมล', 'สมพีร์วงศ์', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0002, 0003, '23300', '2009-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1825, '3220300606977', 1423, 1, 'นาย', 'นายธนู', 'พรรคอนันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '30820', '1987-01-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1823, '3120100492677', 1295, 2, 'นาง', 'นางอุษา', 'แย้มศรี', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '24840', '1990-11-09', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1824, '3220600160478', 1416, 1, 'นาย', 'นายสมยศ', 'จันทเลิศ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25170', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1822, '3430100797734', 1293, 1, 'นาย', 'นายทองปิว', 'วงศ์ภูมี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '21960', '1997-06-23', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1821, '3220300126835', 1292, 1, 'นาย', 'นายสิรภพ', 'อิ่มรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14760', '2007-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1820, '3220200281685', 1291, 1, 'นาย', 'นายอนุกูล', 'จรัลทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25030', '1995-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1819, '3220300607558', 1290, 2, 'นาง', 'นางจงดี', 'นิยมสุข', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '28270', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1818, '3760100742406', 1289, 1, 'นาย', 'นายประเมศฐ์', 'ชัยจิระคุณานนท์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '28820', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1817, '3251200269554', 1284, 1, 'นาย', 'นายสุเนตร', 'ยะถาคาร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '13570', '2011-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1816, '3800600005884', 1283, 1, 'นาย', 'นายจีรพจน์', 'มณเทียรทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14280', '2007-10-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1815, '3150600141407', 1277, 1, 'นาย', 'นายเฉลิมชัย', 'เตชะรัตน์', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0006, 0003, '24450', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1814, '3521200024346', 1276, 2, 'นางสาว', 'นางสาวชบาไพร', 'เสาร์สุวรรณ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0006, 0003, '21990', '2002-08-29', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1813, '3250100582411', 1275, 2, 'นางสาว', 'นางสาวอุไรวรรณ', 'ถาดทอง', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39630', '1979-09-20', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1812, '1301700134979', 1274, 2, 'นางสาว', 'นางสาวอรสา', 'แดนไธสง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13640', '2010-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1811, '3230100171799', 1273, 2, 'นางสาว', 'นางสาวศรีจันทร์', 'แก่นบุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '33200', '1981-12-21', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1810, '3230400196291', 1272, 2, 'นาง', 'นางราตรี', 'เชื้อฉลาด', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '23160', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1809, '3230300025877', 1271, 1, 'นาย', 'นายสมศักดิ์', 'เสนาะสันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '25540', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1808, '3230500184162', 1270, 1, 'นาย', 'นายไตรมิตร', 'ยิสารคุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '29070', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1807, '3251000090488', 1269, 1, 'นาย', 'นายชัยยงค์', 'กุหลาบ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15670', '2005-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1805, '3230500055966', 1262, 2, 'นาง', 'นางยุพิน', 'วรฉัตร', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '27680', '1987-01-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1806, '3230100239768', 1268, 1, 'นาย', 'นายเสมา', 'รัชยาว', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24090', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1804, '3650800702564', 1261, 2, 'นาง', 'นางนันทวัน', 'เฮงตระกูลเวนิช', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0001, 0003, '22360', '2002-08-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1803, '3230500122612', 1260, 1, 'นาย', 'นายษีวะรัง', 'สังข์ทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '30830', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1802, '3160100545517', 1259, 2, 'นาง', 'นางกองเพ็ชร์', 'ดอกไม้เพ็ง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26840', '1989-11-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1801, '3100500975977', 1258, 2, 'นาง', 'นางสายอมร', 'เจริญกุล', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '32270', '1980-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1800, '3250400759368', 1256, 1, 'นาย', 'นายธนากร', 'กำเหนิด', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13950', '2007-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1799, '3200500128581', 1248, 1, 'นาย', 'นายรุ่ง', 'วงษ์นาค', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13370', '2010-08-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1798, '3330900703336', 1245, 2, 'นาง', 'นางวรรณา', 'ผลอ้อ', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '39630', '1990-04-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1797, '3210300858674', 1244, 2, 'นางสาว', 'นางสาวปราณี', 'ถาวรศิริ', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '19470', '2004-05-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1796, '3220300520631', 1243, 1, 'นาย', 'นายไพบูรณ์', 'สมจินดา', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '34510', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1795, '3240400138282', 1241, 2, 'นาง', 'นางโสภิดา', 'ยอดแสง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26040', '1991-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1794, '3200100622324', 1240, 2, 'นางสาว', 'นางสาวบุญยืน', 'คุ้มทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '26480', '1992-05-06', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1793, '3251100404794', 1239, 1, 'นาย', 'นายอดุลย์', 'เจือจันทร์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '23850', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1792, '3260200009870', 1235, 2, 'นาง', 'นางอุทัยวรรญ', 'จีนสง่า', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31970', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1791, '3229900066726', 1229, 2, 'นาง', 'นางบังอร', 'ขรรค์ศร', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31190', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00');
-INSERT INTO `ps_profile` (`pro_id`, `card_id`, `pro_idpos`, `pro_sex`, `pro_prefix`, `pro_fname`, `pro_lname`, `pro_nickname`, `pro_birthday`, `pro_status`, `pos_id`, `type_id`, `lvb_id`, `lv_id`, `class_id`, `dep_id`, `pro_salary`, `pro_dateIn`, `pro_dateOut`, `pro_picture`, `pro_person_create`, `pro_date_create`, `pro_person_update`, `pro_date_update`) VALUES
-(1790, '3140800057078', 1226, 1, 'นาย', 'นายแสวง', 'ทองสีจัด', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '33620', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1789, '3219900025086', 1225, 1, 'นาย', 'นายจิรศักดิ์', 'ดิเรกฤทธิกุลชัย', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39610', '1981-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1788, '3200900385823', 1224, 2, 'นางสาว', 'นางสาวชันษา', 'เจริญศรี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24710', '1992-07-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1787, '1100200349951', 1223, 1, 'นาย', 'นายศราวุธ', 'โพธิกุล', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '13200', '2010-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1786, '3230500074201', 1222, 1, 'นาย', 'นายลือชา', 'จามลิกุล', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '22220', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1785, '3410100018221', 1218, 1, 'นาย', 'นายพัฒนศักดิ์', 'สิทธิโคตร', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '17750', '1997-06-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1784, '5250200054910', 1215, 1, 'นาย', 'นายธงชัย', 'ฟองกำแหง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1782, '3200200162635', 1208, 1, 'นาย', 'นายนิมิตต์', 'ถนอมญาติ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1783, '3102002496122', 1209, 1, 'นาย', 'นายไพฑูรย์', 'มุสิกรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1781, '3210500207260', 1207, 1, 'นาย', 'นายนิคม', 'สุขประเสริฐ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1779, '', 0000, 0, 'นาง', '', '', '', '0000-00-00', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-01 23:04:16', 'บุญล้อม พูนสวัสดิ์', '2018-05-02 00:04:51'),
-(1780, '', 0000, 0, 'เภสัชกรหญิง', '', '', '', '0000-00-00', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '../../images/img-profile/aor.jpg', 'บุญล้อม พูนสวัสดิ์', '2018-05-02 00:05:27', 'บุญล้อม พูนสวัสดิ์', '2018-05-02 00:05:27'),
-(1776, '', 0000, 0, '', '', '', '', '0000-00-00', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', 'บุญล้อม พูนสวัสดิ์', '2018-05-01 22:49:37', '0000-00-00 00:00:00', '2018-05-01 22:49:37', '0000-00-00 00:00:00'),
-(1777, '', 0000, 0, '', '', '', '', '0000-00-00', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '../../images/img-profile/pat.jpg', 'บุญล้อม พูนสวัสดิ์', '2018-05-01 22:58:41', 'บุญล้อม พูนสวัสดิ์', '2018-05-01 22:58:41'),
-(1778, '', 0000, 0, '', '', '', '', '0000-00-00', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '0', 'บุญล้อม พูนสวัสดิ์', '2018-05-01 23:01:39', 'บุญล้อม พูนสวัสดิ์', '2018-05-01 23:01:39'),
-(1775, '1219900228967', 0844, 2, 'นางสาว', 'นางสาวทิฏฐิตา', 'พูลสุทธิ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18000', '2014-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1773, '1530700081643', 0785, 1, 'นาย', 'นายชิงชัย', 'โคกสว่าง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18000', '2014-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1774, '1549900231507', 0786, 1, 'นาย', 'นายอภิลักษณ์', 'สลักหล่าย', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18000', '2014-07-07', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1772, '5551200006727', 0725, 2, 'นางสาว', 'นางสาวดวงจันทร์', 'อุดเต็น', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0007, 0003, '18390', '2012-09-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1771, '5729999002964', 0724, 1, 'นาย', 'นายสุพัฒน์', 'เล็กพันธ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18500', '2012-09-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1770, '1361000107782', 0588, 2, 'นางสาว', 'นางสาวปาริฉัตร', 'บุรัมย์สูงเนิน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18750', '2011-07-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1769, '3230100464371', 0587, 1, 'นาย', 'นายนันทภพ', 'เกณิกานนท์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18780', '2011-03-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1768, '1300600016132', 0586, 2, 'นางสาว', 'นางสาววรัญญา', 'สบาย', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18640', '2011-07-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1767, '1409900511675', 0585, 2, 'นางสาว', 'นางสาวพวงพยอม', 'มูลวงศ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18390', '2012-12-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1765, '1190500031913', 0580, 2, 'นางสาว', 'นางสาวกวินนาฏ', 'งามสมชน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18640', '2011-06-30', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1766, '1129900054064', 0581, 1, 'นาย', 'นายปิยภัทร', 'มาลาอี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18500', '2012-09-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1764, '3200700326777', 0579, 2, 'นางสาว', 'นางสาวนิอร', 'แสงเนตร์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18500', '2013-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1763, '1459900082901', 0455, 2, 'นางสาว', 'นางสาวกรกมล', 'ดวงใส', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18800', '2012-01-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1762, '3609900394568', 0454, 2, 'นางสาว', 'นางสาวศิวัช', 'ฐิตมงคล', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19370', '2007-09-26', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1761, '3300900070830', 0404, 2, 'นางสาว', 'นางสาววรางคณา', 'ยาแก้ว', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18500', '2012-07-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1760, '2419900006235', 0403, 1, 'นาย', 'นายสุทธิพร', 'บู่ทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19180', '2009-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1757, '1330300120309', 0225, 2, 'นางสาว', 'นางสาวมณีรัตน์', 'โนนสังข์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18000', '2014-02-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1758, '1509900475511', 0226, 2, 'นางสาว', 'นางสาวสุธาสินี', 'มาแดง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18640', '2011-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1759, '1460900055973', 0393, 2, 'นางสาว', 'นางสาวเพ็ญศิริ', 'นาถวิล', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18000', '2014-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1756, '3110200516276', 0224, 1, 'นาย', 'นายธีรยุทธ', 'ก่ำสีดา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19760', '2006-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1754, '2849900020994', 0222, 2, 'นางสาว', 'นางสาวปรียาพร', 'เทือกสุบรรณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19590', '2006-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1755, '1341100152119', 0223, 2, 'นางสาว', 'นางสาวศศิธร', 'แพนสมบัติ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18390', '2012-12-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1753, '1430800006121', 0221, 2, 'นาง', 'นางสุภาพร', 'ศรพรหม', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '18920', '2010-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1752, '1679900236699', 0220, 2, 'นางสาว', 'นางสาวอนัญญา', 'หาบุญมี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18000', '2014-07-15', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1750, '3510300041098', 0218, 1, 'นาย', 'นายอาทิตย์', 'บุญสุทธิ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20720', '2008-01-18', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1751, '1-3104-00087-', 0219, 1, 'นาย', 'บุญล้อม', 'พูนสวัสดิ์', 'โจ้โจ้', '2018-10-06', 'โสด', 0016, 2, 3, 9, 0001, 0003, '14100', '2017-11-06', '0000-00-00', '../../images/img-profile/E9KMV8Y231ZLRXD-thumb-19.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 21:50:06'),
-(1749, '3470100228373', 0105, 2, 'นาง', 'นางอัจฉรา', 'ปัญญาประชุม', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '12550', '2006-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1748, '3200101172985', 0043, 2, 'นางสาว', 'นางสาวปรานอม', 'สุขีฐาน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '12620', '2005-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1746, '3560300135122', 0037, 2, 'นางสาว', 'นางสาวสุพิชญา', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '12630', '2005-11-10', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1747, '3251100540230', 0042, 2, 'นางสาว', 'นางสาวอนัญญา', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '12670', '2005-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1745, '3200101166357', 0036, 2, 'นางสาว', 'นางสาวนพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '12620', '2005-11-10', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1743, '3920100821754', 1844, 1, 'นาย', 'นายวิชาญ', 'ทองพิทักษ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19660', '1990-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1744, '1420200008930', 0014, 2, 'นางสาว', 'นางสาววิมลรัตน์', 'ปัสสาวัฒนะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18920', '2010-04-19', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1742, '3321000592636', 1842, 1, 'นาย', 'นายรัตน์', 'มะวัน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18790', '1990-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1739, '3209700039148', 0961, 1, 'นาย', 'นายโด่ง', 'สุวรรณมงคล', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1976-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1740, '3200900773149', 0966, 1, 'นาย', 'นายณรงค์', 'แดงสุก', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1993-05-28', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1741, '3230400079537', 1147, 1, 'นาย', 'นายชาญเดช', 'ฤทธิ์เรืองเดช', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15440', '2000-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1736, '3219800033478', 0953, 1, 'นาย', 'นายเพชร์', 'พงศ์แพทย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1989-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1737, '3170500028650', 0958, 1, 'นาย', 'นายวิชาญ', 'ตุ้มชี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18790', '1994-05-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1738, '5100200069101', 0960, 1, 'นาย', 'นายวีระศักดิ์', 'วรรณไสย', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18190', '1991-05-20', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1734, '3250100122364', 0949, 1, 'นาย', 'นายลำยอง', 'มีอนันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1984-12-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1735, '3210100649389', 0952, 1, 'นาย', 'นายวิชัย', 'ตระกูลหิรัญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20040', '1980-11-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1733, '3260100154886', 0948, 1, 'นาย', 'นายประเสริฐ', 'เจริญนิตย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1976-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1732, '3220100416325', 0945, 1, 'นาย', 'นายอทิติ', 'นิลน้อย', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1989-04-21', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1731, '3120101926140', 0944, 1, 'นาย', 'นายสมชาย', 'แสนรักษ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1974-12-30', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1728, '3209900050684', 0940, 1, 'นาย', 'นายพยนต์', 'แสงสว่าง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17270', '1998-09-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1729, '3269900017512', 0942, 1, 'นาย', 'นายสุรเดช', 'ยอดแสง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1991-05-15', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1730, '3220100431707', 0943, 1, 'นาย', 'นายสิทธิเดช', 'มณีเหล่างาม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16340', '2001-04-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1726, '3230400156248', 0936, 1, 'นาย', 'นายรุ่งศักดิ์', 'ชูกำแพง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1990-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1727, '3230500201261', 0937, 1, 'นาย', 'นายสุทธิชัย', 'สรรพนุเคราะห์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1991-03-18', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1725, '3471201049246', 0935, 1, 'นาย', 'นายบุญพึ่ง', 'จิตรราช', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1994-05-26', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1724, '3220100424531', 0934, 1, 'นาย', 'นายอัศวิน', 'เสมี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15140', '2001-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1723, '3230100001770', 0932, 2, 'นาง', 'นางอำพร', 'ทานะสิงห์', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '19660', '1988-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1722, '3230400201359', 0931, 1, 'นาย', 'นายสมบูรณ์', 'ศรีดารากุล', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1981-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1720, '3220200302160', 0928, 1, 'นาย', 'นายสมชาย', 'ทรงธรรม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20040', '1989-04-07', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1721, '5230490004805', 0930, 1, 'นาย', 'นายวัฒนา', 'บัวคำ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1985-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1719, '3220500028527', 0927, 1, 'นาย', 'นายราเชนทร์', 'บัวผลิ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15140', '2001-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1718, '3220400334081', 0926, 1, 'นาย', 'นายจรูญ', 'ปิ่นแก้ว', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1980-02-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1717, '3230500048137', 0925, 1, 'นาย', 'นายบุญธรรม', 'อยู่บุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1716, '3230100242696', 0924, 1, 'นาย', 'นายชูศักดิ์', 'หนองแพ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1999-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1713, '3220200198974', 0921, 1, 'นาย', 'นายทวีป', 'บรรจง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1982-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1714, '3730100633275', 0922, 1, 'นาย', 'นายฉัชชัย', 'ทองคง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1987-05-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1715, '3250400713147', 0923, 1, 'นาย', 'นายนิธินันท์', 'จองจับ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18790', '1992-01-15', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1712, '3250700213689', 0920, 1, 'นาย', 'นายวิชัย', 'กำเนิดบุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18790', '1991-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1711, '3239900080290', 0919, 1, 'นาย', 'นายสิทธิพงษ์', 'หงษ์ร่อน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1992-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1709, '5220400013281', 0915, 1, 'นาย', 'นายเอกชัย', 'หารกลับ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1986-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1710, '3250400713163', 0917, 1, 'นาย', 'นายสมบัติ', 'จองจับ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18190', '1994-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1707, '3250700214952', 0913, 1, 'นาย', 'นายพิเชษฐ', 'สู่สุข', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19660', '1990-07-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1708, '3220400170313', 0914, 1, 'นาย', 'นายบุญจันทร์', 'บัวใหญ่', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17270', '1995-10-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1706, '3230100475917', 0909, 1, 'นาย', 'นายรักชาติ', 'รอดพิเศษ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17570', '1997-09-15', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1704, '3250500087221', 0907, 1, 'นาย', 'นายไกรทอง', 'กองเงิน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16650', '1998-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1705, '3319900247231', 0908, 2, 'นางสาว', 'นางสาวสุชีลา', 'ภุมรา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15440', '1999-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1703, '3239900083426', 0905, 2, 'นาง', 'นางพรวนา', 'นพวรรณ', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1987-05-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1701, '3219800052103', 0897, 1, 'นาย', 'นายบัวพา', 'เหมนาค', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1977-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1702, '3230500184197', 0904, 1, 'นาย', 'นายวัชระ', 'ยิสารคุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1994-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1696, '3209900347075', 0890, 1, 'นาย', 'นายสมเกียรติ', 'สาระพากร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1979-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1697, '3200200637447', 0891, 1, 'นาย', 'นายเชื้อ', 'มินา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1979-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1698, '3219900332027', 0892, 1, 'นาย', 'นายชัยนันท์', 'อินทรปาน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1995-04-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1699, '3210100224311', 0894, 1, 'นาย', 'นายบรรทม', 'ประสิทธิแพทย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1977-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1700, '3210100485572', 0896, 1, 'นาย', 'นายมงคล', 'กิจพิทักษ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1988-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1695, '3220500174230', 0889, 1, 'นาย', 'นายสิทธิชัย', 'รักษา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16960', '1998-09-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1693, '3920100332826', 0886, 1, 'นาย', 'นายวิชัย', 'ยินห้อง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17570', '1996-09-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1694, '3230200091487', 0887, 2, 'นาง', 'นางมุกดา', 'ท่าพริก', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1987-05-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1692, '3220100250095', 0884, 1, 'นาย', 'นายประจักษ์', 'ตังแก', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1982-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1691, '5220400018933', 0883, 2, 'นาง', 'นางสุภลักษณ์', 'มิสานุช', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1982-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1689, '3230300282951', 0879, 1, 'นาย', 'นายเสน่ห์', 'ทานะสิงห์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1982-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1690, '3251100211937', 0881, 1, 'นาย', 'นายเกียว', 'พรหมอังกูร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17270', '1998-09-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1688, '3210500430091', 0878, 1, 'นาย', 'นายสายชล', 'ม่วงสุขศรี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1977-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1687, '3230400156311', 0877, 1, 'นาย', 'นายภานุวัฒน์', 'สาระทะนงค์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17880', '1992-10-15', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1686, '3220200346337', 0876, 1, 'นาย', 'นายสมพงษ์', 'รัตนแสง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1982-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1685, '3239900087308', 0873, 2, 'นาง', 'นางยุพาภรณ์', 'สิทธิโสภณ', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20400', '1978-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1683, '3230100534140', 0871, 1, 'นาย', 'นายธงชัย', 'หงษ์ตะนุ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1988-01-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1684, '3220200119101', 0872, 1, 'นาย', 'นายมงคล', 'เขมะบาล', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1988-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1682, '3220400408069', 0868, 1, 'นาย', 'นายสมหวัง', 'โสรัมภา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18190', '1993-10-18', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1681, '3200200664746', 0867, 1, 'นาย', 'นายสมชาย', 'ขุนสกล', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18190', '1996-03-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1680, '3220300854709', 0864, 1, 'นาย', 'นายประมวญ', 'ประจงจัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1986-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1679, '3250700303505', 0863, 1, 'นาย', 'นายกิตติคุณ', 'ไพรบึง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19660', '1991-03-18', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1678, '3250400437867', 0861, 1, 'นาย', 'นายสมาน', 'เทียมครู', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1988-05-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1677, '3220200288493', 0860, 1, 'นาย', 'นายสุทธิพงษ์', 'ศรีวรรณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1990-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1675, '3220100206240', 0858, 1, 'นาย', 'นายกำธร', 'ศรีสาคร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1989-04-07', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1676, '3220400448095', 0859, 1, 'นาย', 'นายสมบัติ', 'แสงม่วงยาง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20040', '1988-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1674, '3230400241962', 0857, 1, 'นาย', 'นายบัญชา', 'ละลิ่ว', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17270', '1996-09-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1667, '3210500567223', 0844, 1, 'นาย', 'นายสมโภชน์', 'เกิดศิริ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1988-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1668, '3470400261619', 0846, 1, 'นาย', 'นายประยุทธ', 'ปัญญาประชุม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20040', '1989-11-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1669, '3200900202621', 0850, 1, 'นาย', 'นายมานัส', 'มีทรัพย์ปรุง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1981-06-15', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1670, '3120101198390', 0851, 1, 'นาย', 'นายขจรศักดิ์', 'พรหมมานะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1979-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1671, '3259900063263', 0853, 2, 'นาง', 'นางพรศรี', 'บุญยืน', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '21140', '1976-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1672, '3250700138636', 0854, 1, 'นาย', 'นายสุทิน', 'เทียบเศียร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1984-12-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1673, '3230300256593', 0855, 1, 'นาย', 'นายอภิสิทธิ์', 'แสงอรุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18190', '1991-06-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1666, '3220300065356', 0840, 1, 'นาย', 'นายปริญญา', 'บรรพต', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1665, '3220500069410', 0838, 1, 'นาย', 'นายวินัย', 'จันท์แดง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1982-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1662, '3230500143971', 0833, 1, 'นาย', 'นายอวยพร', 'ทิณวรรณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1986-07-18', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1663, '3230400194115', 0836, 1, 'นาย', 'นายเชาว์', 'คางงูเหลือม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18790', '1992-11-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1664, '3220300766184', 0837, 1, 'นาย', 'นายนพดล', 'ประสมสุข', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1985-03-20', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1661, '3260200021047', 0830, 1, 'นาย', 'นายอนันต์', 'เมธานิธิภักดี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1992-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1658, '3220500028608', 0823, 1, 'นาย', 'นายสุทิน', 'ทองเจียน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1986-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1659, '3251100022051', 0827, 1, 'นาย', 'นายพีระพันธ์', 'พุฒภูงา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15440', '2001-05-14', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1660, '3471200577362', 0829, 1, 'นาย', 'นายชุมชน', 'ทองโคตร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1989-04-07', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1656, '3230100198433', 0820, 1, 'นาย', 'นายอนุศาสตร์', 'ใจเที่ยง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19660', '1991-12-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1657, '3250700288417', 0821, 1, 'นาย', 'นายนิกร', 'ถนอมมิตร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1655, '3220400018724', 0818, 1, 'นาย', 'นายยุทธนา', 'ปั้นชู', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15720', '2000-08-21', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1654, '3341400232831', 0817, 1, 'นาย', 'นายมนตรี', 'บุปผาหอม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18190', '1992-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1652, '3239900090503', 0814, 1, 'นาย', 'นายวรสิทธิ์', 'หอมวิลัย', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18190', '1991-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1653, '3230300222214', 0816, 2, 'นางสาว', 'นางสาวจันทร์จิรา', 'มวญนรา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1999-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1651, '3220500028373', 0813, 1, 'นาย', 'นายภิรมย์', 'ทองเจียน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1987-08-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1650, '3101900380068', 0812, 1, 'นาย', 'นายบำรุง', 'ปิตยานนท์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1992-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1648, '3200500172202', 0806, 2, 'นาง', 'นางอรุณรัตน์', 'ตุลาพันธ์', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1979-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1649, '3220100491327', 0809, 1, 'นาย', 'นายสมศักดิ์', 'แสงผ่อง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21500', '1986-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1647, '3230500061575', 0804, 1, 'นาย', 'นายสุกรี', 'พูลธนพันธ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1988-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1646, '3220200286881', 0803, 1, 'นาย', 'นายบดี', 'กงไกรลาศ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1982-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1645, '3230500038263', 0802, 1, 'นาย', 'นายภูสิทธิ์', 'จินดาสมบัติ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1991-03-18', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1644, '3320200199201', 0801, 1, 'นาย', 'นายเลิศฤทธิ์', 'เกียรติกันยา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16960', '1997-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1643, '3220300520681', 0800, 1, 'นาย', 'นายสนทยา', 'สมจินดา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1995-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1642, '3220400135291', 0796, 1, 'นาย', 'นายเดช', 'ดวงตา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1986-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1641, '3350400294291', 0795, 1, 'นาย', 'นายสมศักดิ์', 'สังข์ศรี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1637, '3220200038721', 0790, 1, 'นาย', 'นายสวัสดิ์ชัย', 'ปุระณะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20040', '1989-04-07', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1638, '3230500047696', 0791, 1, 'นาย', 'นายชาญชัย', 'มหาโสม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1982-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1639, '3220300467179', 0792, 1, 'นาย', 'นายมนตรี', 'คณะรมย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1994-05-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1640, '3360300210657', 0793, 1, 'นาย', 'นายปราโมทย์', 'เมตตา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1988-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1636, '3230100537408', 0786, 1, 'นาย', 'นายประดิษฐ์', 'นองเนือง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20040', '1988-02-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1635, '3230400010651', 0785, 1, 'นาย', 'นายสมยศ', 'ต่างหู', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16960', '1998-03-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1634, '3709900065300', 0784, 1, 'นาย', 'นายธีระวุฒิ', 'ปิ่นแก้ว', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16960', '1995-03-20', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1633, '3230100247728', 0783, 1, 'นาย', 'นายธานี', 'วาสุกรี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1992-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1632, '3230500160069', 0780, 1, 'นาย', 'นายพงศธร', 'วรรณคุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18790', '1993-08-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1631, '3239900073552', 0777, 1, 'นาย', 'นายสุนิต', 'ภู่มณี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1985-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1630, '3230500095194', 0775, 1, 'นาย', 'นายสมศักดิ์', 'กัตตะเวที', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1990-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1629, '3251000289403', 0774, 1, 'นาย', 'นายสุวรรณ', 'บานเย็น', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1986-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1627, '3230100477847', 0772, 1, 'นาย', 'นายไพโรจน์', 'ตะติชรา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1992-01-14', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1628, '3220300019613', 0773, 1, 'นาย', 'นายสมชาย', 'ภิรมย์เปรม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1626, '3220400556726', 0771, 1, 'นาย', 'นายประพิศ', 'คนสอาด', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1987-08-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1625, '3100503400550', 0770, 1, 'นาย', 'นายณรงค์ศักดิ์', 'ฤทธิ์เรืองเดช', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17570', '1996-09-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1624, '3230500144624', 0768, 1, 'นาย', 'นายเกษตร', 'สินทราลักษณ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1989-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1623, '3640300009746', 0767, 1, 'นาย', 'นายวันชัย', 'ถึงทุ่ง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20040', '1989-04-07', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1622, '3220200007257', 0766, 1, 'นาย', 'นายนพดล', 'ผลาหารกิจ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1621, '3230500184171', 0759, 1, 'นาย', 'นายสมัคร', 'ยิสารคุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1990-05-10', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1618, '3160400486109', 0755, 2, 'นาง', 'นางณกัญญา', 'เนียมโสต', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '19100', '1989-07-12', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1619, '3240800364832', 0757, 1, 'นาย', 'นายอนุ', 'เข็มจรุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1980-03-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1620, '3259700054953', 0758, 1, 'นาย', 'นายบุญรวม', 'สนศิริ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1993-08-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1616, '5102400023514', 0753, 1, 'นาย', 'นายอังกูร', 'ชาวิลัย', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17880', '1991-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1617, '3250200187841', 0754, 1, 'นาย', 'นายพิเภก', 'แก้ววงษ์ศา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1998-09-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1615, '3240200242418', 0746, 2, 'นาง', 'นางจำนงค์', 'เวชสถล', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20040', '1980-03-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1614, '3220500028896', 0745, 2, 'นาง', 'นางดวงพร', 'พัฒนพานิช', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1982-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1613, '3230500048145', 0744, 1, 'นาย', 'นายชัยรัตน์', 'พุฒดี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21880', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1612, '3239900073561', 0743, 1, 'นาย', 'นายสมนึก', 'ภู่มณี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1611, '3210100604563', 0741, 1, 'นาย', 'นายธราธร', 'ซื่อประเสริฐ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1977-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1610, '3200300130590', 0740, 1, 'นาย', 'นายสมหมาย', 'คำสมาน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1977-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1609, '3640300009754', 0736, 1, 'นาย', 'นายชาญ', 'ถึงทุ่ง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20040', '1986-06-19', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1607, '3220400444332', 0734, 1, 'นาย', 'นายสุรพล', 'สิทธิเวช', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1982-08-17', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1608, '3229900031230', 0735, 1, 'นาย', 'นายจำลอง', 'เพียรชอบ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1984-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1606, '3440100065679', 0732, 1, 'นาย', 'นายโชคชัย', 'เทียมมาลา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19100', '1987-08-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00');
-INSERT INTO `ps_profile` (`pro_id`, `card_id`, `pro_idpos`, `pro_sex`, `pro_prefix`, `pro_fname`, `pro_lname`, `pro_nickname`, `pro_birthday`, `pro_status`, `pos_id`, `type_id`, `lvb_id`, `lv_id`, `class_id`, `dep_id`, `pro_salary`, `pro_dateIn`, `pro_dateOut`, `pro_picture`, `pro_person_create`, `pro_date_create`, `pro_person_update`, `pro_date_update`) VALUES
-(1605, '3210600098993', 0729, 1, 'นาย', 'นายศรีศักดิ์', 'เส็งเจริญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21880', '1981-06-08', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1604, '3250400447447', 0726, 1, 'นาย', 'นายนิพจน์', 'ขวัญพงษ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1977-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1602, '3141500075802', 0722, 1, 'นาย', 'นายประจวบ', 'จำนงธรรม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1974-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1603, '3251200293072', 0724, 1, 'นาย', 'นายแดง', 'โตเจริญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1601, '3361200214040', 0716, 1, 'นาย', 'นายนิยม', 'มั่นคง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1600, '3210300822301', 0710, 1, 'นาย', 'นายสมชาย', 'คงคางาม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21880', '1978-04-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1599, '3251000031848', 0704, 1, 'นาย', 'นายกล้าณรงค์', 'แก้วประสิทธิ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1977-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1598, '3150400232549', 0703, 1, 'นาย', 'นายมานะ', 'กุสลา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1977-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1597, '3229800001878', 0700, 1, 'นาย', 'นายร่มโพธิ์', 'มงคลสุข', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1984-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1595, '3220600080822', 0689, 1, 'นาย', 'นายสุขุม', 'ศรีสังข์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1596, '3440100068562', 0690, 1, 'นาย', 'นายวรศักดิ์', 'ลาจ้อย', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19660', '1987-08-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1594, '5220100002578', 0688, 1, 'นาย', 'นายจีระศักดิ์', 'ปิ่นแก้ว', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1986-06-19', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1590, '3220300240816', 0681, 1, 'นาย', 'นายแย้ม', 'ดีสิงห์บุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1976-12-06', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1591, '3210500027784', 0683, 2, 'นาง', 'นางรัตนา', 'สีดา', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1978-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1592, '3230100493478', 0684, 2, 'นาง', 'นางพิณทอง', 'สุกสด', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1977-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1593, '3250401098896', 0686, 1, 'นาย', 'นายทองพูน', 'ด่านประชุม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1986-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1589, '3209700088025', 0680, 2, 'นางสาว', 'นางสาวเยาวภา', 'แสงล้ำเลิศ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1980-03-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1588, '3200700143541', 0679, 2, 'นาง', 'นางพวงแข', 'เสรีปิยะกุล', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '21140', '1976-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1580, '3220100351932', 0656, 2, 'นาง', 'นางศิวิไล', 'สีหมอก', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '21500', '1989-04-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1581, '3219900313138', 0660, 2, 'นาง', 'นางพรทิพย์', 'คล้ายสุด', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1977-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1582, '3230100458052', 0663, 2, 'นาง', 'นางวิภา', 'ดุงแผ้ว', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1979-07-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1583, '3210300394660', 0668, 2, 'นาง', 'นางวรรณวิภา', 'มะลิวัลย์', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1985-06-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1584, '3209800051204', 0671, 1, 'นาย', 'นายประวิทย์', 'สีวัน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1977-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1585, '3230500047963', 0675, 1, 'นาย', 'นายสมภพ', 'พิมพา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1981-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1586, '3230100452682', 0676, 1, 'นาย', 'นายอนนท์', 'นพเก้า', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1587, '3210500724710', 0678, 2, 'นาง', 'นางวิมล', 'สุขวารี', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1978-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1579, '3230100298853', 0655, 2, 'นาง', 'นางสุทธิลักษณ์', 'รัตนเพียร', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '21500', '1985-03-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1578, '3100502303003', 0654, 2, 'นาง', 'นางประนอม', 'แสนรักษ์', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '21140', '1984-04-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1577, '3220100191218', 0653, 2, 'นาง', 'นางรุ่งทิวา', 'จงประเสริฐกิจ', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '18480', '1984-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1576, '5230590003070', 0651, 1, 'นาย', 'นายจรัญ', 'เหมินทสูตร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1981-02-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1575, '3200700054530', 0650, 1, 'นาย', 'นายวิริยะ', 'สุทธศิริ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1980-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1572, '3220300607540', 0638, 1, 'นาย', 'นายแฉล้ม', 'นิยมสุข', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21500', '1979-10-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1573, '3220200346329', 0642, 1, 'นาย', 'นายณรงค์', 'ศิลาปาน', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1980-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1574, '3140100337370', 0648, 1, 'นาย', 'นายประวัติ', 'ชูชีพ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1978-11-06', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1571, '3710600096643', 0635, 1, 'นาย', 'นายบุญรัตน์', 'บุญประเสริฐ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1988-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1570, '3230400201367', 0633, 1, 'นาย', 'นายเรวัฒ', 'เขมะชัยเวช', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1980-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1569, '3251000096737', 0630, 1, 'นาย', 'นายสมยงค์', 'กันหา', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1981-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1568, '3230300278791', 0629, 1, 'นาย', 'นายเฉลิม', 'ใจเที่ยง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1566, '3230500147275', 0627, 1, 'นาย', 'นายมนตรี', 'พยาเวช', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1980-06-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1567, '3230100127315', 0628, 1, 'นาย', 'นายธัญญา', 'ถนอมชาติ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1564, '3809900603947', 0616, 1, 'นาย', 'นายสุนันท์', 'วุฒิศักดิ์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18790', '1991-04-15', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1565, '3200900485259', 0619, 1, 'นาย', 'นายสุทธิ', 'งามเสงี่ยม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20400', '1987-02-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1563, '3220100356446', 0614, 1, 'นาย', 'นายคำนวณ', 'เฉียบแหลม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1983-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1562, '3360100772597', 0613, 1, 'นาย', 'นายชนะ', 'แม้นชัยภูมิ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1560, '3100202757939', 0610, 1, 'นาย', 'นายสมพงษ์', 'ศรีสก', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1979-06-08', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1561, '3230100435630', 0611, 1, 'นาย', 'นายบุญลือ', 'เพ็ชรมาก', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1985-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1559, '3250700107820', 0609, 1, 'นาย', 'นายทองทิพย์', 'ทุมมี', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '20770', '1989-08-10', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1557, '3451100518950', 0597, 1, 'นาย', 'นายไพฑูรย์', 'มิรัตนไพร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1988-12-12', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1558, '3250100582403', 0600, 2, 'นางสาว', 'นางสาวอรวรรณ', 'ถาดทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '30790', '1975-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1555, '3220100424557', 0594, 2, 'นาง', 'นางกนกวรรณ', 'สุวรรณา', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1977-08-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1556, '3200100365984', 0595, 1, 'นาย', 'นายอรรณพ', 'สารพัฒน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1993-07-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1551, '3200101180945', 0586, 2, 'นาง', 'นางวันเพ็ญ', 'เกิดปราง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20400', '1988-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1552, '3200701032033', 0589, 2, 'นางสาว', 'นางสาวอัญชลี', 'นาคแท้', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1996-06-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1553, '3220200053283', 0590, 1, 'นาย', 'นายศักดิ์ชัย', 'วงษ์สุวรรณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1992-12-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1554, '3100600924576', 0593, 2, 'นาง', 'นางอัญชนา', 'นัดพบสุข', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '20770', '1990-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1548, '3209900033071', 0582, 2, 'นางสาว', 'นางสาวธนพร', 'พิกุลทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18790', '1979-12-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1549, '3200100169689', 0584, 2, 'นาง', 'นางเสาวลักษณ์', 'พรงาม', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '16030', '1989-05-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1550, '3240500329438', 0585, 2, 'นาง', 'นางสุธามาศ', 'เที่ยงตรง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '16030', '1991-06-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1547, '3209900290545', 0581, 2, 'นาง', 'นางสุวรรณา', 'กนะกาศัย', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '18190', '1977-10-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1545, '3200900176132', 0575, 1, 'นาย', 'นายเสนาะ', 'มงคลวิวัฒน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '18480', '1996-12-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1546, '3200500284019', 0580, 2, 'นาง', 'นางสุพิน', 'กุณฑลบุตร', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '17880', '1983-04-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1544, '3200100100867', 0574, 1, 'นาย', 'นายวัฒนา', 'ยูถะสุนทร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1993-08-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1543, '3209600034322', 0571, 2, 'นาง', 'นางลออ', 'ทวีรัตน์', '', '0000-00-00', 'สมรส', 0016, 2, 3, 9, 0001, 0003, '16030', '1996-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1542, '3209900411491', 0570, 1, 'นาย', 'นายภิญโญ', 'กาญจนสิงห์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '21140', '1990-07-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1541, '3200100375513', 0569, 1, 'นาย', 'นายพิเชษ', 'ภูกาบพลอย', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1999-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1540, '3200101206685', 0568, 1, 'นาย', 'นายวิรัตน์', 'จุลนพ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '19660', '1995-04-10', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1539, '3200101043077', 0566, 1, 'นาย', 'นายวิชาญ', 'วงษ์สุนทร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '17270', '1999-09-14', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1534, '3200100809556', 3732, 2, 'นาง', 'นางลดาวัณย์', 'อานนท์ศิริโชติ', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0002, 0003, '18690', '2004-05-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1535, '3210300330271', 3733, 2, 'นางสาว', 'นางสาวฉวีวรรณ', 'ตรึกหากิจ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0002, 0003, '19030', '2004-05-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1536, '1339900030023', 3734, 1, 'นาย', 'นายภัทร', 'คันศร', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0007, 0003, '17290', '2011-05-18', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1537, '3200900335451', 0166, 1, 'นาย', 'นายวชิระ', 'มากเจริญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1984-11-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1538, '3200101213355', 0167, 1, 'นาย', 'นายสมชาย', 'เกิดปราง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '16030', '1990-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1533, '3200100370864', 3730, 2, 'นาง', 'นางปิ่นกมล', 'สมพีร์วงศ์', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0002, 0003, '23300', '2009-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1532, '3220300606977', 1423, 1, 'นาย', 'นายธนู', 'พรรคอนันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '30820', '1987-01-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1531, '3220600160478', 1416, 1, 'นาย', 'นายสมยศ', 'จันทเลิศ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25170', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1530, '3120100492677', 1295, 2, 'นาง', 'นางอุษา', 'แย้มศรี', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '24840', '1990-11-09', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1528, '3220300126835', 1292, 1, 'นาย', 'นายสิรภพ', 'อิ่มรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14760', '2007-05-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1529, '3430100797734', 1293, 1, 'นาย', 'นายทองปิว', 'วงศ์ภูมี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '21960', '1997-06-23', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1527, '3220200281685', 1291, 1, 'นาย', 'นายอนุกูล', 'จรัลทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25030', '1995-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1526, '3220300607558', 1290, 2, 'นาง', 'นางจงดี', 'นิยมสุข', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '28270', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1525, '3760100742406', 1289, 1, 'นาย', 'นายประเมศฐ์', 'ชัยจิระคุณานนท์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '28820', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1524, '3251200269554', 1284, 1, 'นาย', 'นายสุเนตร', 'ยะถาคาร', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '13570', '2011-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1522, '3150600141407', 1277, 1, 'นาย', 'นายเฉลิมชัย', 'เตชะรัตน์', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0006, 0003, '24450', '1994-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1523, '3800600005884', 1283, 1, 'นาย', 'นายจีรพจน์', 'มณเทียรทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0006, 0003, '14280', '2007-10-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1521, '3521200024346', 1276, 2, 'นางสาว', 'นางสาวชบาไพร', 'เสาร์สุวรรณ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0006, 0003, '21990', '2002-08-29', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1519, '1301700134979', 1274, 2, 'นางสาว', 'นางสาวอรสา', 'แดนไธสง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13640', '2010-11-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1520, '3250100582411', 1275, 2, 'นางสาว', 'นางสาวอุไรวรรณ', 'ถาดทอง', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39630', '1979-09-20', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1518, '3230100171799', 1273, 2, 'นางสาว', 'นางสาวศรีจันทร์', 'แก่นบุญ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '33200', '1981-12-21', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1517, '3230400196291', 1272, 2, 'นาง', 'นางราตรี', 'เชื้อฉลาด', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '23160', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1516, '3230300025877', 1271, 1, 'นาย', 'นายสมศักดิ์', 'เสนาะสันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '25540', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1512, '3230500055966', 1262, 2, 'นาง', 'นางยุพิน', 'วรฉัตร', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '27680', '1987-01-05', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1513, '3230100239768', 1268, 1, 'นาย', 'นายเสมา', 'รัชยาว', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24090', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1514, '3251000090488', 1269, 1, 'นาย', 'นายชัยยงค์', 'กุหลาบ', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '15670', '2005-06-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1515, '3230500184162', 1270, 1, 'นาย', 'นายไตรมิตร', 'ยิสารคุณ', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '29070', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1509, '3160100545517', 1259, 2, 'นาง', 'นางกองเพ็ชร์', 'ดอกไม้เพ็ง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26840', '1989-11-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1510, '3230500122612', 1260, 1, 'นาย', 'นายษีวะรัง', 'สังข์ทอง', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '30830', '1988-01-04', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1511, '3650800702564', 1261, 2, 'นาง', 'นางนันทวัน', 'เฮงตระกูลเวนิช', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0001, 0003, '22360', '2002-08-13', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1508, '3100500975977', 1258, 2, 'นาง', 'นางสายอมร', 'เจริญกุล', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '32270', '1980-10-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1506, '3200500128581', 1248, 1, 'นาย', 'นายรุ่ง', 'วงษ์นาค', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13370', '2010-08-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1507, '3250400759368', 1256, 1, 'นาย', 'นายธนากร', 'กำเหนิด', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0001, 0003, '13950', '2007-09-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1505, '3330900703336', 1245, 2, 'นาง', 'นางวรรณา', 'ผลอ้อ', '', '0000-00-00', 'สมรส', 0002, 2, 2, 5, 0001, 0003, '39630', '1990-04-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1504, '3210300858674', 1244, 2, 'นางสาว', 'นางสาวปราณี', 'ถาวรศิริ', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '19470', '2004-05-11', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1503, '3220300520631', 1243, 1, 'นาย', 'นายไพบูรณ์', 'สมจินดา', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0001, 0003, '34510', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1499, '3260200009870', 1235, 2, 'นาง', 'นางอุทัยวรรญ', 'จีนสง่า', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31970', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1500, '3251100404794', 1239, 1, 'นาย', 'นายอดุลย์', 'เจือจันทร์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '23850', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1501, '3200100622324', 1240, 2, 'นางสาว', 'นางสาวบุญยืน', 'คุ้มทรัพย์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '26480', '1992-05-06', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1502, '3240400138282', 1241, 2, 'นาง', 'นางโสภิดา', 'ยอดแสง', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '26040', '1991-02-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1498, '3229900066726', 1229, 2, 'นาง', 'นางบังอร', 'ขรรค์ศร', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0001, 0003, '31190', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1497, '3140800057078', 1226, 1, 'นาย', 'นายแสวง', 'ทองสีจัด', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '33620', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1496, '3219900025086', 1225, 1, 'นาย', 'นายจิรศักดิ์', 'ดิเรกฤทธิกุลชัย', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0001, 0003, '39610', '1981-12-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1495, '3200900385823', 1224, 2, 'นางสาว', 'นางสาวชันษา', 'เจริญศรี', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0001, 0003, '24710', '1992-07-16', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1494, '1100200349951', 1223, 1, 'นาย', 'นายศราวุธ', 'โพธิกุล', '', '0000-00-00', 'โสด', 0002, 2, 2, 6, 0001, 0003, '13200', '2010-07-01', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1493, '3230500074201', 1222, 1, 'นาย', 'นายลือชา', 'จามลิกุล', '', '2018-11-10', 'โสด', 0016, 2, 3, 8, 0004, 0003, '22220', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 01:02:07'),
-(1492, '3410100018221', 1218, 1, 'นาย', 'นายพัฒนศักดิ์', 'สิทธิโคตร', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0004, 0003, '17750', '1997-06-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1490, '3102002496122', 1209, 1, 'นาย', 'นายไพฑูรย์', 'มุสิกรัตน์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1491, '5250200054910', 1215, 1, 'นาย', 'นายธงชัย', 'ฟองกำแหง', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1489, '3200200162635', 1208, 1, 'นาย', 'นายนิมิตต์', 'ถนอมญาติ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 01:03:46'),
-(1939, '3210500207260', 1207, 1, 'นาย', 'นายนิคม', 'สุขประเสริฐ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1988, '1111111111111', 0000, 0, '', '', '', '', '2018-07-10', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '2018-07-10', '0000-00-00', '../../noImg.png', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 00:55:46', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 00:56:27'),
-(1989, '5465465465498', 0000, 1, '', '', '', '', '0000-00-00', 'โสด', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '../../noImg.png', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 21:37:50', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 21:56:51'),
-(2020, '1420200008930', 0014, 2, 'นางสาว', 'วิมลรัตน์ ', 'ปัสสาวัฒนะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1990, '1-5465-45647-', 0000, 0, '', '', '', '', '2018-08-10', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '../../noImg.png', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 22:07:31', 'บุญล้อม พูนสวัสดิ์', '2018-05-10 22:12:21'),
-(1991, '1420200008930', 0014, 2, 'นางสาว', 'วิมลรัตน์ ', 'ปัสสาวัฒนะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1992, '3200101166357', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1993, '3560300135122', 0037, 2, 'นางสาว', 'นสุพิชญา ', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1994, '3251100540230', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1995, '1420200008930', 0014, 2, 'นางสาว', 'วิมลรัตน์ ', 'ปัสสาวัฒนะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1996, '3200101166357', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1997, '3560300135122', 0037, 2, 'นางสาว', 'นสุพิชญา ', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1998, '3251100540230', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(1999, '1420200008930', 0014, 2, 'นางสาว', 'วิมลรัตน์ ', 'ปัสสาวัฒนะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2000, '3200101166357', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2001, '3560300135122', 0037, 2, 'นางสาว', 'นสุพิชญา ', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2002, '3251100540230', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2003, '1-4202-00008-', 0014, 2, 'นางสาว', 'วิมลรัตน์ ', 'ปัสสาวัฒนะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2004, '2154545645', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2005, '3560300135122', 0037, 2, 'นางสาว', 'นสุพิชญา ', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2006, '3251100540230', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2007, '1420200008930', 0014, 2, 'นางสาว', 'วิมลรัตน์ ', 'ปัสสาวัฒนะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2008, '3200101166357', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2009, '3560300135122', 0037, 2, 'นางสาว', 'นสุพิชญา ', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2010, '3251100540230', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2011, '1102002325674', 0000, 0, '', '', '', '', '0000-00-00', '', 0016, 0, 0, 0, 0000, 0003, '', '0000-00-00', '0000-00-00', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2012, '1-4202-00008-', 0014, 2, 'นางสาว', 'วิมลรัตน์ ', 'ปัสสาวัฒนะ', '', '0000-00-00', 'โสด', 0016, 2, 3, 7, 0000, 0003, '34720', '1987-08-03', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2013, '3-2001-01166-', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2014, '3-5603-00135-', 0037, 2, 'นางสาว', 'นสุพิชญา ', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2015, '3-2511-00540-', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2017, '3-2001-01166-', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2018, '3-5603-00135-', 0037, 2, 'นางสาว', 'นสุพิชญา ', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2019, '3-2511-00540-', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2021, '3200101166357', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', 'โสด', 0002, 2, 2, 5, 0000, 0003, '30310', '1987-01-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2022, '3560300135122', 0037, 2, 'นางสาว', 'นสุพิชญา ', 'บัวผัด', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0000, 0003, '21240', '1995-11-27', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2023, '3251100540230', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', 'โสด', 0016, 2, 3, 9, 0000, 0003, '13700', '2010-03-02', '0000-00-00', 'pic/140619145338.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00'),
-(2024, '9999999999999', 0000, 0, '', '', '', '', '2018-06-11', 'undefined', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '../../noImg.png', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:04:55', 'บุญล้อม พูนสวัสดิ์', '2018-05-11 17:04:55');
+INSERT INTO `ps_profile` (`pro_id`, `card_id`, `pro_idpos`, `pro_sex`, `pro_prefix`, `pro_fname`, `pro_lname`, `pro_nickname`, `pro_birthday`, `pro_status`, `pos_id`, `type_id`, `lvb_id`, `lv_id`, `class_id`, `dep_id`, `pro_salary`, `pro_dateIn`, `pro_dateOut`, `pro_transfer`, `pro_picture`, `pro_person_create`, `pro_date_create`, `pro_person_update`, `pro_date_update`) VALUES
+(1986, '3210300330271', 3733, 2, 'นางสาว', 'ฉวีวรรณ', 'ตรึกหากิจ', 'อ้อ', '2018-05-09', 'โสด', 0016, 2, 3, 8, 0002, 0003, '19030', '2018-05-01', '2018-05-10', 'dsdsad', '../../images/img-profile/GI9OY32ML5AEFTB-analytics.png', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'tttt cccc', '2018-05-24 14:04:39'),
+(1985, '3200100809556', 3732, 2, 'นาง', 'ลดาวัณย์', 'อานนท์ศิริโชติ', '', '2018-09-16', 'สมรส', 0016, 2, 3, 8, 0002, 0003, '18690', '2018-07-11', '0000-00-00', '', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-16 19:30:05'),
+(1984, '1123266544899', 3730, 2, 'นาง', 'ปิ่นกมล', 'สมพีร์วงศ์', '', '0000-00-00', 'สมรส', 0002, 2, 2, 6, 0002, 0003, '23300', '2018-09-01', '2018-09-14', '', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-16 19:29:57'),
+(1983, '1154588652447', 1423, 1, 'นาย', 'ธนู', 'พรรคอนันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, '30820', '2018-07-11', '0000-00-00', '', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-17 00:35:06'),
+(1982, '1102002326598', 1416, 2, 'นาย', 'สมยศ', 'จันทเลิศ', '', '2018-03-24', 'โสด', 0016, 2, 3, 8, 0006, 0003, '25170', '2018-05-09', '2018-05-19', '', '../../images/img-profile/THKG28ML46APF79-7627786451150.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 20:54:38'),
+(1981, '3120100492677', 1295, 2, 'นาง', 'อุษา', 'แย้มศรี', '', '0000-00-00', 'สมรส', 0016, 2, 3, 8, 0006, 0003, '24840', '2018-07-11', '0000-00-00', '', '0', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 20:35:18'),
+(1751, '1310400087338', 0219, 1, 'นาย', 'บุญล้อม', 'พูนสวัสดิ์', 'โจ้โจ้', '2018-05-24', 'โสด', 0122, 2, 0, 0, 0076, 0006, '', '2017-09-20', '2018-05-31', '', '../../images/img-profile/Z5D39SM7BJ68EOP-15.jpg', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-25 14:45:30'),
+(2542, '1125400454578', 2122, 1, 'นายเเพทย์', 'จตุพร', 'ทิพยทิฆัมพร', '', '0000-00-00', 'โสด', 0147, 0, 7, 3, 0076, 0006, '', '2012-07-18', '2018-06-24', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:27:24', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:27:24'),
+(2543, '3200900335451', 0000, 2, 'พนักงานทั่วไประดับ บ2', 'กลุ่มงานบริการพื้นฐาน', 'สำนักงานป้องกันควบคุมโรคที่ 6 ชลบุรี', '', '0000-00-00', '0982256615', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:19:24', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:19:24'),
+(2544, '3200101213355', 0000, 2, 'พนักงานทั่วไประดับ บ2', 'กลุ่มงานบริการพื้นฐาน', 'สำนักงานป้องกันควบคุมโรคที่ 6 ชลบุรี', '', '0000-00-00', '0982115064', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:19:24', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:19:24'),
+(2545, '3200101043077', 0000, 2, 'พนักงานขับรถยนต์ระดับ ส2', 'กลุ่มงานสนับสนุน', 'สำนักงานป้องกันควบคุมโรคที่ 6 ชลบุรี', '', '0000-00-00', '0925668710', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:19:24', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:19:24'),
+(2546, '1420200008930', 0000, 2, 'นักวิเคราะห์นโยบายและแผนกลุ่มงานบริหารทั่วไป', 'กลุ่มงานสนับสนุน', 'สำนักงานป้องกันควบคุมโรคที่ 6 ชลบุรี', '', '0000-00-00', '0846548831', 0000, 0, 0, 0, 0000, 0000, '', '0000-00-00', '0000-00-00', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:19:24', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:19:24'),
+(2547, '3659900370111', 1097, 2, 'นางสาว', 'หรรษา', 'รักษาคม', '', '0000-00-00', '', 0000, 0, 1, 0, 0055, 0000, '40270', '1999-04-01', '2035-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2548, '3809800164640', 1114, 2, 'นาง', 'สุภาพร', 'พุทธรัตน์', '', '0000-00-00', '', 0145, 0, 1, 1, 0055, 0000, '57290', '1986-04-01', '2024-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2549, '3240400341622', 1129, 2, 'นาง', 'รวิสรา', 'จิรโรจน์วัฒน', '', '0000-00-00', '', 0145, 0, 1, 2, 0055, 0000, '56020', '1982-04-01', '2020-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2550, '3100503700341', 1127, 2, 'นาง', 'ลานทิพย์', 'เหราบัตย์', '', '0000-00-00', '', 0145, 0, 1, 2, 0055, 0000, '33830', '1998-01-06', '2029-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2551, '3100902326167', 1175, 1, 'นาย', 'พูนศักดิ์', 'ศรีประพัฒน์', '', '0000-00-00', '', 0145, 0, 1, 2, 0055, 0000, '50340', '1977-04-13', '2020-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2552, '3140900219177', 1105, 2, 'นาง', 'จงจิตต์', 'สุขปราโมทย์', '', '0000-00-00', '', 0145, 0, 1, 3, 0001, 0000, '43300', '1977-11-21', '2018-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2553, '3200100374797', 3607, 1, 'นาย', 'ณรงค์ศักดิ์', 'ทองธรรมชาติ', '', '0000-00-00', '', 0145, 0, 1, 3, 0001, 0000, '35530', '1991-06-03', '2030-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2554, '3779900050639', 1185, 2, 'นาง', 'สิริลักษณ์', 'บัวเย็น', '', '0000-00-00', '', 0145, 0, 1, 4, 0001, 0000, '26340', '1997-06-02', '2034-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2555, '3100203271185', 1187, 2, 'นางสาว', 'นิดาพร', 'ศุขเขษม', '', '0000-00-00', '', 0145, 0, 1, 4, 0006, 0000, '22750', '2001-04-02', '2042-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2556, '3101403047522', 1191, 1, 'นาย', 'ลองเดช', 'รายณะสุข', '', '0000-00-00', '', 0145, 0, 1, 3, 0006, 0000, '43120', '1986-05-01', '2021-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
+(2557, '3200600875248', 1197, 1, 'นาง', 'สมปอง', 'โรจน์รุ่งศศิธร', 'ป้อม', '0000-00-00', 'สมรส', 0147, 2, 4, 2, 0006, 0006, '44720', '1989-04-05', '2026-10-22', 'กรมป้องกันควบคุมโรคที่1', '../../images/img-profile/KAHN8WF4LSGZUO9-growth.png', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 20:26:47');
 
 -- --------------------------------------------------------
 
@@ -11692,28 +11292,17 @@ INSERT INTO `ps_religion` (`religion_id`, `religion_code`, `religio_name`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ps_salary`
+-- Table structure for table `ps_salaryspecial`
 --
 
-CREATE TABLE `ps_salary` (
-  `sar_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `sar_date` date NOT NULL,
-  `sar_salary` int(11) NOT NULL,
-  `sar_type` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ps_salary`
---
-
-INSERT INTO `ps_salary` (`sar_id`, `sar_date`, `sar_salary`, `sar_type`, `card_id`) VALUES
-(0008, '2014-06-03', 18000, 'โครงการเอดส์', '1310400087338'),
-(0006, '2014-06-01', 18000, 'โครงการเอดส์', '1310400087338'),
-(0007, '2014-06-02', 18000, 'โครงการเอดส์', '1310400087338'),
-(0009, '2014-06-04', 18000, 'โครงการเอดส์', '1310400087338'),
-(0010, '2014-06-05', 18000, 'โครงการเอดส์', '1310400087338'),
-(0011, '2014-06-06', 18000, 'โครงการเอดส์', '1310400087338');
+CREATE TABLE `ps_salaryspecial` (
+  `salarysp_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `salarysp_startDate` date NOT NULL COMMENT 'วันที่เริ่ม',
+  `salarysp_endDate` date NOT NULL COMMENT 'วันที่สิ้นสุด',
+  `salarysp_money` int(11) NOT NULL COMMENT 'เงินพิเศษ',
+  `salarysp_type` text CHARACTER SET utf8 NOT NULL COMMENT 'ประเภทเงินพิเศษ',
+  `pro_id` int(4) NOT NULL COMMENT 'id ps_profile'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='ประวัติการรับเงินเพิ่มพิเศษ';
 
 -- --------------------------------------------------------
 
@@ -11731,43 +11320,12 @@ CREATE TABLE `ps_skillful` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ps_talent`
---
-
-CREATE TABLE `ps_talent` (
-  `id_talent` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `talent_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `talent_special` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ps_treatservice`
---
-
-CREATE TABLE `ps_treatservice` (
-  `treatservice_id` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `treatservice_datefrom` date NOT NULL,
-  `treatservice_dateto` date NOT NULL,
-  `treatservice_numpositon` int(7) NOT NULL,
-  `treatservice_lineposition` text COLLATE utf8_unicode_ci NOT NULL,
-  `treatservice_class` text COLLATE utf8_unicode_ci NOT NULL,
-  `treatservice_depart` text COLLATE utf8_unicode_ci NOT NULL,
-  `treatservice_numdirection` int(7) NOT NULL,
-  `treatservice_type` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ps_type`
 --
 
 CREATE TABLE `ps_type` (
   `type_id` int(4) NOT NULL,
+  `type_code` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'รหัสประเภท',
   `type_name` varchar(50) NOT NULL COMMENT 'ประเภทส่วนงาน'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -11775,24 +11333,19 @@ CREATE TABLE `ps_type` (
 -- Dumping data for table `ps_type`
 --
 
-INSERT INTO `ps_type` (`type_id`, `type_name`) VALUES
-(1, 'พนักงานหน่วยงาน'),
-(2, 'พนักงานราชการ'),
-(3, 'พนักงานกระทรวงสาธารณสุข'),
-(4, 'กลุ่มควบคุมโรคเขตเมือง'),
-(5, 'พนักงานกระทรวง'),
-(6, 'ลูกจ้างประจำ'),
-(7, 'ลูกจ้างชั่วคราว   '),
-(8, 'ลูกจ้างเหมา'),
-(9, 'ด่านฯ ท่าเรือศรีราชา'),
-(10, 'ด่านฯ ท่าเรือแหลมฉบัง'),
-(11, 'ด่านฯ ท่าเรือเกาะสีชัง '),
-(12, 'ด่านฯ ท่าเรือสัตหีบ และ ด่านฯ อู่ตะเภา'),
-(13, 'ด่านฯ บ้านคลองลึก อ.อรัญประเทศ'),
-(15, 'ด่านฯ บ้านแหลม อ.โป่งน้ำร้อน'),
-(16, 'ด่านฯ บ้านผักกาด อ.โป่งน้ำร้อน'),
-(17, 'ด่านฯ ท่าเรือมาบตาพุด'),
-(18, 'กด');
+INSERT INTO `ps_type` (`type_id`, `type_code`, `type_name`) VALUES
+(1, 0001, 'พนักงานหน่วยงาน'),
+(2, 0002, 'พนักงานราชการ'),
+(3, 0003, 'พนักงานกระทรวงสาธารณสุข'),
+(4, 0004, 'กลุ่มควบคุมโรคเขตเมือง'),
+(5, 0005, 'พนักงานกระทรวง'),
+(6, 0006, 'ลูกจ้างประจำ'),
+(7, 0007, 'ลูกจ้างชั่วคราว   '),
+(8, 0008, 'ลูกจ้างเหมา'),
+(9, 0009, 'ลูกจ้างเหมาบริการ'),
+(10, 0010, 'ลูกจ้างเงิน ปตท.'),
+(11, 0011, 'พนักงานกระทรวง สธ'),
+(12, 0012, 'ข้าราชการ');
 
 -- --------------------------------------------------------
 
@@ -12193,15 +11746,10 @@ INSERT INTO `tb_profile` (`card_id`, `pro_idpos`, `pro_sex`, `pro_first`, `pro_n
 --
 
 --
--- Indexes for table `his_education`
+-- Indexes for table `ps_academic`
 --
-ALTER TABLE `his_education`
-  ADD PRIMARY KEY (`hised_id`),
-  ADD UNIQUE KEY `hised_id_2` (`hised_id`),
-  ADD UNIQUE KEY `hised_id_3` (`hised_id`),
-  ADD UNIQUE KEY `hised_id_4` (`hised_id`),
-  ADD KEY `hised_id` (`hised_id`),
-  ADD KEY `hised_id_5` (`hised_id`);
+ALTER TABLE `ps_academic`
+  ADD PRIMARY KEY (`academic_id`);
 
 --
 -- Indexes for table `ps_address`
@@ -12257,6 +11805,17 @@ ALTER TABLE `ps_district`
   ADD PRIMARY KEY (`DISTRICT_ID`);
 
 --
+-- Indexes for table `ps_education`
+--
+ALTER TABLE `ps_education`
+  ADD PRIMARY KEY (`hised_id`),
+  ADD UNIQUE KEY `hised_id_2` (`hised_id`),
+  ADD UNIQUE KEY `hised_id_3` (`hised_id`),
+  ADD UNIQUE KEY `hised_id_4` (`hised_id`),
+  ADD KEY `hised_id` (`hised_id`),
+  ADD KEY `hised_id_5` (`hised_id`);
+
+--
 -- Indexes for table `ps_geninformation`
 --
 ALTER TABLE `ps_geninformation`
@@ -12277,16 +11836,10 @@ ALTER TABLE `ps_heir`
   ADD KEY `id_heir` (`id_heir`);
 
 --
--- Indexes for table `ps_hisfeat`
+-- Indexes for table `ps_hisaward`
 --
-ALTER TABLE `ps_hisfeat`
-  ADD PRIMARY KEY (`feat_id`);
-
---
--- Indexes for table `ps_hislate`
---
-ALTER TABLE `ps_hislate`
-  ADD PRIMARY KEY (`id_late`);
+ALTER TABLE `ps_hisaward`
+  ADD PRIMARY KEY (`award_id`);
 
 --
 -- Indexes for table `ps_hismarry`
@@ -12304,25 +11857,43 @@ ALTER TABLE `ps_hismeetting`
 -- Indexes for table `ps_hisroyal`
 --
 ALTER TABLE `ps_hisroyal`
-  ADD PRIMARY KEY (`royal_id`);
+  ADD PRIMARY KEY (`hisroyal_id`);
 
 --
 -- Indexes for table `ps_hissalaryup`
 --
 ALTER TABLE `ps_hissalaryup`
-  ADD PRIMARY KEY (`serup_id`);
+  ADD PRIMARY KEY (`hisslrup_id`);
 
 --
 -- Indexes for table `ps_hisservice`
 --
 ALTER TABLE `ps_hisservice`
-  ADD PRIMARY KEY (`his_id`);
+  ADD PRIMARY KEY (`hissv_id`);
 
 --
--- Indexes for table `ps_histimeup`
+-- Indexes for table `ps_hisservicespecial`
 --
-ALTER TABLE `ps_histimeup`
-  ADD PRIMARY KEY (`time_id`);
+ALTER TABLE `ps_hisservicespecial`
+  ADD PRIMARY KEY (`hissvp_id`);
+
+--
+-- Indexes for table `ps_histreat_assignment`
+--
+ALTER TABLE `ps_histreat_assignment`
+  ADD PRIMARY KEY (`hisas_id`);
+
+--
+-- Indexes for table `ps_leaverelax`
+--
+ALTER TABLE `ps_leaverelax`
+  ADD PRIMARY KEY (`leavelax_id`);
+
+--
+-- Indexes for table `ps_leavesmp`
+--
+ALTER TABLE `ps_leavesmp`
+  ADD PRIMARY KEY (`leave_idsmp`);
 
 --
 -- Indexes for table `ps_leveboss`
@@ -12343,18 +11914,6 @@ ALTER TABLE `ps_leveleducation`
   ADD PRIMARY KEY (`edu_id`);
 
 --
--- Indexes for table `ps_metter`
---
-ALTER TABLE `ps_metter`
-  ADD PRIMARY KEY (`id_metter`);
-
---
--- Indexes for table `ps_monnyspecial`
---
-ALTER TABLE `ps_monnyspecial`
-  ADD PRIMARY KEY (`monny_id`);
-
---
 -- Indexes for table `ps_nationality`
 --
 ALTER TABLE `ps_nationality`
@@ -12373,10 +11932,22 @@ ALTER TABLE `ps_personnal`
   ADD PRIMARY KEY (`member_id`);
 
 --
+-- Indexes for table `ps_plan`
+--
+ALTER TABLE `ps_plan`
+  ADD PRIMARY KEY (`plan_id`);
+
+--
 -- Indexes for table `ps_position`
 --
 ALTER TABLE `ps_position`
   ADD PRIMARY KEY (`pos_id`);
+
+--
+-- Indexes for table `ps_preaddress`
+--
+ALTER TABLE `ps_preaddress`
+  ADD PRIMARY KEY (`pro_id`);
 
 --
 -- Indexes for table `ps_prefix`
@@ -12409,28 +11980,16 @@ ALTER TABLE `ps_religion`
   ADD PRIMARY KEY (`religion_id`);
 
 --
--- Indexes for table `ps_salary`
+-- Indexes for table `ps_salaryspecial`
 --
-ALTER TABLE `ps_salary`
-  ADD PRIMARY KEY (`sar_id`);
+ALTER TABLE `ps_salaryspecial`
+  ADD PRIMARY KEY (`salarysp_id`);
 
 --
 -- Indexes for table `ps_skillful`
 --
 ALTER TABLE `ps_skillful`
   ADD PRIMARY KEY (`skill_id`);
-
---
--- Indexes for table `ps_talent`
---
-ALTER TABLE `ps_talent`
-  ADD PRIMARY KEY (`id_talent`);
-
---
--- Indexes for table `ps_treatservice`
---
-ALTER TABLE `ps_treatservice`
-  ADD PRIMARY KEY (`treatservice_id`);
 
 --
 -- Indexes for table `ps_type`
@@ -12449,16 +12008,16 @@ ALTER TABLE `tb_profile`
 --
 
 --
--- AUTO_INCREMENT for table `his_education`
+-- AUTO_INCREMENT for table `ps_academic`
 --
-ALTER TABLE `his_education`
-  MODIFY `hised_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `ps_academic`
+  MODIFY `academic_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `ps_address`
 --
 ALTER TABLE `ps_address`
-  MODIFY `address_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `address_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ps_amphur`
@@ -12476,19 +12035,19 @@ ALTER TABLE `ps_bank`
 -- AUTO_INCREMENT for table `ps_blame`
 --
 ALTER TABLE `ps_blame`
-  MODIFY `blame_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `blame_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ps_changname`
 --
 ALTER TABLE `ps_changname`
-  MODIFY `chang_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `chang_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `ps_class`
 --
 ALTER TABLE `ps_class`
-  MODIFY `class_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `class_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `ps_department`
@@ -12503,10 +12062,16 @@ ALTER TABLE `ps_district`
   MODIFY `DISTRICT_ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8861;
 
 --
+-- AUTO_INCREMENT for table `ps_education`
+--
+ALTER TABLE `ps_education`
+  MODIFY `hised_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+
+--
 -- AUTO_INCREMENT for table `ps_geninformation`
 --
 ALTER TABLE `ps_geninformation`
-  MODIFY `gen_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `gen_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ps_geography`
@@ -12518,25 +12083,19 @@ ALTER TABLE `ps_geography`
 -- AUTO_INCREMENT for table `ps_heir`
 --
 ALTER TABLE `ps_heir`
-  MODIFY `id_heir` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_heir` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `ps_hisfeat`
+-- AUTO_INCREMENT for table `ps_hisaward`
 --
-ALTER TABLE `ps_hisfeat`
-  MODIFY `feat_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `ps_hislate`
---
-ALTER TABLE `ps_hislate`
-  MODIFY `id_late` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `ps_hisaward`
+  MODIFY `award_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `ps_hismarry`
 --
 ALTER TABLE `ps_hismarry`
-  MODIFY `marry_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `marry_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ps_hismeetting`
@@ -12548,25 +12107,43 @@ ALTER TABLE `ps_hismeetting`
 -- AUTO_INCREMENT for table `ps_hisroyal`
 --
 ALTER TABLE `ps_hisroyal`
-  MODIFY `royal_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `hisroyal_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ps_hissalaryup`
 --
 ALTER TABLE `ps_hissalaryup`
-  MODIFY `serup_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `hisslrup_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ps_hisservice`
 --
 ALTER TABLE `ps_hisservice`
-  MODIFY `his_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `hissv_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `ps_histimeup`
+-- AUTO_INCREMENT for table `ps_hisservicespecial`
 --
-ALTER TABLE `ps_histimeup`
-  MODIFY `time_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+ALTER TABLE `ps_hisservicespecial`
+  MODIFY `hissvp_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `ps_histreat_assignment`
+--
+ALTER TABLE `ps_histreat_assignment`
+  MODIFY `hisas_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `ps_leaverelax`
+--
+ALTER TABLE `ps_leaverelax`
+  MODIFY `leavelax_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `ps_leavesmp`
+--
+ALTER TABLE `ps_leavesmp`
+  MODIFY `leave_idsmp` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `ps_leveboss`
@@ -12578,25 +12155,13 @@ ALTER TABLE `ps_leveboss`
 -- AUTO_INCREMENT for table `ps_level`
 --
 ALTER TABLE `ps_level`
-  MODIFY `lv_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `lv_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `ps_leveleducation`
 --
 ALTER TABLE `ps_leveleducation`
   MODIFY `edu_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `ps_metter`
---
-ALTER TABLE `ps_metter`
-  MODIFY `id_metter` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `ps_monnyspecial`
---
-ALTER TABLE `ps_monnyspecial`
-  MODIFY `monny_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ps_officeout`
@@ -12608,7 +12173,13 @@ ALTER TABLE `ps_officeout`
 -- AUTO_INCREMENT for table `ps_personnal`
 --
 ALTER TABLE `ps_personnal`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `ps_plan`
+--
+ALTER TABLE `ps_plan`
+  MODIFY `plan_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ps_position`
@@ -12626,7 +12197,7 @@ ALTER TABLE `ps_prefix`
 -- AUTO_INCREMENT for table `ps_profile`
 --
 ALTER TABLE `ps_profile`
-  MODIFY `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2025;
+  MODIFY `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2558;
 
 --
 -- AUTO_INCREMENT for table `ps_province`
@@ -12647,10 +12218,10 @@ ALTER TABLE `ps_religion`
   MODIFY `religion_id` int(2) NOT NULL AUTO_INCREMENT COMMENT 'ไอดัี', AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `ps_salary`
+-- AUTO_INCREMENT for table `ps_salaryspecial`
 --
-ALTER TABLE `ps_salary`
-  MODIFY `sar_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `ps_salaryspecial`
+  MODIFY `salarysp_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `ps_skillful`
@@ -12659,22 +12230,10 @@ ALTER TABLE `ps_skillful`
   MODIFY `skill_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `ps_talent`
---
-ALTER TABLE `ps_talent`
-  MODIFY `id_talent` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `ps_treatservice`
---
-ALTER TABLE `ps_treatservice`
-  MODIFY `treatservice_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `ps_type`
 --
 ALTER TABLE `ps_type`
-  MODIFY `type_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `type_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tb_profile`

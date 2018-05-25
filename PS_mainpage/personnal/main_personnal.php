@@ -102,14 +102,14 @@ if (!isset($_POST['ch_new'])) {
                                         echo $_SESSION['pro_picture'];
                                     }
                                 } else {
-                                    echo '../../images/moon.jpg';
+                                    echo '../../images/img-profile/no_img.png';
                                 }
                                 ?>" id="zoom" data-sub-html="รูปประจำตัว">
                                     <img class="img-responsive thumbnail" id="blah" src="<?php
                                     if ($_SESSION['pro_picture'] != '') {
                                         echo $_SESSION['pro_picture'];
                                     } else {
-                                        echo '../../images/moon.jpg';
+                                        echo '../../images/img-profile/no_img.png';
                                     }
                                     ?>" style="height: 100px; width: 100px;"alt="User">
                                 </a>
@@ -120,10 +120,10 @@ if (!isset($_POST['ch_new'])) {
                                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['name'] ?></div>
                                 <div class="email">Online</div>
                             </div><br><br>
-<!--                            <label class="custom-file-upload">
-                                <input type='file' id="imgInp" />
-                                เปลี่ยนรูป
-                            </label>-->
+                            <!--                            <label class="custom-file-upload">
+                                                            <input type='file' id="imgInp" />
+                                                            เปลี่ยนรูป
+                                                        </label>-->
                         </div>
                     </div>
                 </div>
@@ -140,81 +140,141 @@ if (!isset($_POST['ch_new'])) {
                                 <span>DashBoard</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <div class="image">
-                                    <img class="logo-head-person"/> 
-                                </div>
-                                <span>จัดการบุคลากร</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="person_manageBasic.php"><img class="logo-data-basic"/> 
-                                        <span>จัดการข้อมูลพื้นฐาน</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="person_addData.php"><img class="logo-add-person"/> 
-                                        <span>จัดการข้อมูลบุคลากร</span>
-                                    </a>
-                                </li>
-                                <!--                                <li>
-                                                                    <a href="javascript:void(0);"><img class="logo-promotion"/> 
-                                                                        <span>ขั้นตำแหน่งงาน</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="javascript:void(0);"><img class="logo-salary"/> 
-                                                                        <span>ขั้นเงินเดือน</span>
-                                                                    </a>
-                                                                </li>-->
-                                <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        <img class="logo-setting-person"/> 
-                                        <span>ตั้งค่าการใช้งานระบบ</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="person_setting.php">
-                                                <img class="logo-setting1-person"/> 
-                                                <span>ตั้งค่าผู้ใช้งานระบบ</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="person_authority.php">
-                                                <img class="logo-setting2-person"/> 
-                                                <span>ตั้งค่าสิทธิ์เข้าใช้งาน</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <?php if ($_SESSION['level'] == '1') { ?>
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <div class="image">
+                                        <img class="logo-head-person"/> 
+                                    </div>
+                                    <span>จัดการบุคลากร</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="person_manageBasic.php"><img class="logo-data-basic"/> 
+                                            <span>จัดการข้อมูลพื้นฐาน</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="person_addData.php"><img class="logo-add-person"/> 
+                                            <span>จัดการข้อมูลบุคลากร</span>
+                                        </a>
+                                    </li>
+                                    <!--                                <li>
+                                                                        <a href="javascript:void(0);"><img class="logo-promotion"/> 
+                                                                            <span>ขั้นตำแหน่งงาน</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="javascript:void(0);"><img class="logo-salary"/> 
+                                                                            <span>ข ั้นเงินเดือน</span>
+                                                                        </a>
+                                                                    </li>-->
+                                    <li>
+                                        <a href="person_setting.php"><img class="logo-setting-person"/> 
+                                            <span>ตั้งค่าสิทธิ์เข้าใช้งาน</span>
+                                        </a>
+                                    </li>
+                                    <!--                                <li>
+                                                                        <a href="javascript:void(0);" class="menu-toggle">
+                                                                            <img class="logo-setting-person"/> 
+                                                                            <span>ตั้งค่าการใช้งานระบบ</span>
+                                                                        </a>
+                                                                        <ul class="ml-menu">
+                                                                            <li>
+                                                                                <a href="person_setting.php">
+                                                                                    <img class="logo-setting1-person"/> 
+                                                                                    <span>ตั้งค่าผู้ใช้งานระบบ</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="person_authority.php">
+                                                                                    <img class="logo-setting2-person"/> 
+                                                                                    <span>ตั้งค่าสิทธิ์เข้าใช้งาน</span>
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>-->
+                                </ul>
 
-                        </li>
+                            </li>
+                        <?php } ?>
                         <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
+                            <a href="report_power.php">
                                 <div class="image">
                                     <img src="../../images/calculation.png" width="40" height="40" alt="User" /> 
                                 </div>
                                 <span>กรอบอัตรากำลัง</span>
+                            </a>	
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <div class="image">
+                                    <img src="../../images/leaves.png" width="40" height="40" alt="User" /> 
+                                </div>
+                                <span>การลา</span>
                             </a>
                             <ul class="ml-menu">
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
+                                    <div class="image">
+                                        <a href="leave_history.php">
+                                            <img src="../../images/doleave.png" width="25" height="25" alt="User" /> 
+                                            <span>ทำเรื่องการลา</span>
+                                        </a>
+                                    </div>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
+
+                                    <div class="image">
+                                        <a href="leaves_approv.php"><img src="../../images/approval.png" width="25" height="25" alt="User" /> 
+                                            <span>อนุมัติ</span>
+                                            <?php
+                                            $cn = new management;
+                                            $cn->con_db();
+                                            $sql = "SELECT * FROM ps_leaverelax WHERE status_leaves = '0'";
+                                            $rs = $cn->mysqli_num_rows($sql);
+                                            if ($rs > '99') {
+
+                                                echo '99+';
+                                            } else {
+                                                if ($rs != '0') {
+                                                    echo '<span style="color: white; width: 4em; margin-left: 6em;" class="badge bg-red">' . $rs . '</span>';
+                                                }
+                                            }
+                                            ?></a>
+
+                                    </div>
+
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
+                                    <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                                        <div class="image">
+                                            <img src="../../images/calculation.png" width="25" height="25" alt="User" /> 
+
+                                            <span>ตรวจสอบสถานะเเละพิมพ์ฟอร์ม</span>
+                                        </div>
+                                    </a> 
+                                    <ul class="ml-menu">
+                                        <li> 
+                                            <div class="image" >
+                                                <a href="check_status.php"><img src="../../images/printer.png" width="25" height="25" alt="User" /> 
+                                                    <span>ตรวจสอบสถานะการลาพักผ่อน</span></a>
+                                            </div>
+                                        </li>
+                                        <li> 
+                                            <div class="image" >
+                                                <a href="check_status2.php"><img src="../../images/printer.png" width="25" height="25" alt="User" /> 
+                                                    <span>ตรวจสอบสถานะการลาป่วย ลาคลอดบุตร ลากิจส่วนตัว </span></a>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
+                                    <div class="image">
+                                        <a href="leave_history.php"><img src="../../images/leave.png" width="25" height="25" alt="User" /> 
+                                            <span>ประวัติการลา</span></a>
+                                    </div>
                                 </li>
-                                <li>
-                                    <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
-                                </li>
-                            </ul>	
+                            </ul>
                         </li>
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
@@ -264,35 +324,7 @@ if (!isset($_POST['ch_new'])) {
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <div class="image">
-                                    <img src="../../images/leaves.png" width="40" height="40" alt="User" /> 
-                                </div>
-                                <span>การลา</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <div class="image">
-                                        <a href="leave_history.php"><img src="../../images/leave.png" width="25" height="25" alt="User" /> 
-                                            <span>ประวัติการลา</span></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="image">
-                                        <a class="ddd"><img src="../../images/printer.png" width="25" height="25" alt="User" /> 
-                                            <span>ตรวจสอบสถานะเเละพิมพ์ฟอร์ม</span></a>
-                                    </div>
-                                </li>
-                                <li>
 
-                                    <div class="image">
-                                        <a><img src="../../images/doleave.png" width="25" height="25" alt="User" /> 
-                                            <span>ทำเรื่องการลา</span></a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">

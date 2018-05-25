@@ -77,7 +77,7 @@
         <!-- Data Picker -->
         <link href="../../dist/css/jquery.datetimepicker.css" rel="stylesheet" />
 
-        Fullcalendar 
+        <!--Fullcalendar--> 
         <link href='../../fullcalendar/fullcalendar.min.css' rel='stylesheet' />
         <link href='../../fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
        

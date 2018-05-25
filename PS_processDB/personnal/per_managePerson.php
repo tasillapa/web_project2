@@ -114,7 +114,7 @@ if (!empty($_FILES['filePerson'])) {
                 $num = mysqli_num_rows($query_check);
                 if (($num == 0) && ($card_id != '')) {
                     $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_transfer, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
-                            . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '" . chistDate($pro_dateIn) . "', '" . chistDate($pro_dateOut) . "', '" . $pro_transfer . "', '$person_update', '', '$person_update', '')";
+                            . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '" . chistDate($pro_dateIn) . "', '" . chistDate($pro_dateOut) . "', '" . $pro_transfer . "', '$person_update', '$date', '$person_update', '$date')";
                     $stmt = $cn->Connect->prepare($sql);
                     $ret = $stmt->execute();
                 }
@@ -198,6 +198,40 @@ function del_profile() {
                     unlink($file); // delete file
             }
         }
+        $sql_G = "DELETE FROM ps_geninformation WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_G);
+        $sql_C = "DELETE FROM ps_changname WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_C);
+        $sql_HM = "DELETE FROM ps_hismarry WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_HM);
+        $sql_H = "DELETE FROM ps_heir WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_H);
+        $sql_B = "DELETE FROM ps_blame WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_B);
+        $sql_A = "DELETE FROM ps_address WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_A);
+        $sql = "DELETE FROM ps_preaddress WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql);
+        $sql_E = "DELETE FROM ps_education WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_E);
+        $sql_HS = "DELETE FROM ps_hisservice WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_HS);
+        $sql_HSP = "DELETE FROM ps_hisservicespecial WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_HSP);
+        $sql_HA = "DELETE FROM ps_histreat_assignment WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_HA);
+        $sql_HAWARD = "DELETE FROM ps_hisaward WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_HAWARD);
+        $sql_AC = "DELETE FROM ps_academic WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_AC);
+        $sql_P = "DELETE FROM ps_plan WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_P);
+        $sql_HR = "DELETE FROM ps_hisroyal WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_HR);
+        $sql_HS = "DELETE FROM ps_hissalaryup WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_HS);
+        $sql_HSCP = "DELETE FROM ps_salaryspecial WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_HSCP);
         $sql = "DELETE FROM ps_profile WHERE pro_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
@@ -293,8 +327,8 @@ function edit_profile_main() {
 //        print_r($get_data);
 //        exit();
         $path = '';
-//        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[22]'";
-//        $Query = $cn->Connect->query($sql_img);
+        $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[22]'";
+        $Query = $cn->Connect->query($sql_img);
         while ($Row = mysqli_fetch_array($Query)) {
             $path = $Row['pro_picture'];
         }

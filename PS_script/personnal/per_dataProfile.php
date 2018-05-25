@@ -4,6 +4,7 @@
     var name = '<?= $_SESSION["name"]; ?>';
     var pro_id = '<?= $_SESSION["pro_id"]; ?>';
     var get_id = '<?= $_GET['id']; ?>';
+    var NoImg = '../../images/img-profile/no_img.png';
     var dataID = '';
     var i = 1;
     $(function () {
@@ -171,14 +172,14 @@
 
             if ($(obj).attr("id") == "plan_dateStart") {
                 this.setOptions({
-                    minDate: true,
+                    minDate: false,
                     maxDate: maxDateSet ? maxDateSet : false
                 })
             }
             if ($(obj).attr("id") == "plan_dateEnd") {
                 this.setOptions({
                     maxDate: false,
-                    minDate: minDateSet ? minDateSet : true
+                    minDate: minDateSet ? minDateSet : false
                 })
             }
         }
@@ -202,7 +203,7 @@
             if ($(obj).attr("id") == "plan_dateEndE") {
                 this.setOptions({
                     maxDate: false,
-                    minDate: minDateSet ? minDateSet : true
+                    minDate: minDateSet ? minDateSet : false
                 })
             }
         }
@@ -536,8 +537,13 @@
         });
 
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [dataID], true, function (data) {
-            $('#imgSE').attr('src', data[0].pro_picture);
-            $('#person_imgE').attr('href', data[0].pro_picture);
+            if (data[0].pro_picture == '') {
+                $('#imgSE').attr('src', NoImg);
+                $('#person_imgE').attr('href', NoImg);
+            } else {
+                $('#imgSE').attr('src', data[0].pro_picture);
+                $('#person_imgE').attr('href', data[0].pro_picture);
+            }
             $('#pro_id').val(data[0].pro_id);
             $('#card_idE').val(data[0].card_id);
             $('#gen_card_id').val(data[0].card_id);
@@ -746,7 +752,7 @@
     }
     function addChName(ACN) {
         var array = [];
-        array.push($('#chName_old').val(), $('#chName_new').val(), formatDateDB($('#chName_date').val()), dataID);
+        array.push($('#fname_old').val() + ' ' + $('#lname_old').val(), $('#fname_new').val() + '  ' + $('#lname_new').val(), formatDateDB($('#chName_date').val()), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", ACN, array, true, function (data) {
             $('#add_chName').removeClass('in');
             $('#add_chName').find('.btn-danger').trigger('click');
@@ -800,7 +806,7 @@
     }
     function addMarry(AMR) {
         var array = [];
-        array.push($('#marry_name').val(), $('#marry_relationship').val(), dataID);
+        array.push($('#marry_fname').val() + ' ' + $('#marry_lname').val(), $('#marry_relationship').val(), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AMR, array, true, function (data) {
             $('#add_marry').removeClass('in');
             $('#add_marry').find('.btn-danger').trigger('click');
@@ -854,7 +860,7 @@
     }
     function addHeir(AH) {
         var array = [];
-        array.push($('#heir_name').val(), $('#heir_relationship').val(), dataID);
+        array.push($('#heir_fname').val() + ' ' + $('#heir_lname').val(), $('#heir_relationship').val(), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AH, array, true, function (data) {
             $('#add_heir').removeClass('in');
             $('#add_heir').find('.btn-danger').trigger('click');
@@ -1061,18 +1067,16 @@
                     array2.push($('#hised_level' + p).val(), $('#hised_year' + p).val(), $('#hised_background' + p).val(), $('#hised_major' + p).val(), $('#hised_address' + p).val(), $('#hised_country' + p).val(), dataID);
                     cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AED, array2, true, function (data) {
                         if (p == 1) {
-                            $('#hised_level option[value=""]').prop('selected', true);
-                            $('#hised_year option[value=""]').prop('selected', true);
+                            $('#reset_edu').find('#hised_level  option[value=""]').prop("selected", true);
                             $('#reset_edu').find('.btn-danger').trigger('click');
                             show_education();
                             swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
                         }
                     });
-                    $("#reset_edu" + p + "").remove();
+                    $("#clone_edu" + p + "").remove();
                 }
             } else {
-                $('#hised_level option[value=""]').prop('selected', true);
-                $('#hised_year option[value=""]').prop('selected', true);
+                $('#reset_edu').find('#hised_level  option[value=""]').prop("selected", true);
                 $('#reset_edu').find('.btn-danger').trigger('click');
                 show_education();
                 swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
@@ -1479,7 +1483,7 @@
         var a = 0;
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['<center>' + a + '</center>', data[i].plan_name, data[i].plan_detail, data[i].plan_dateStart, data[i].plan_dateEnd, '<center><img class="btn-edit" id="' + data[i].plan_id + '" data-toggle="modal" data-target="#editPlan" onclick="javascript: slEditPlan(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].plan_id + '" onclick="javascript: delPlan(this)"/></center>']);
+            dataSet.push(['<center>' + a + '</center>', data[i].plan_name, data[i].plan_detail, DateThai(data[i].plan_dateStart), DateThai(data[i].plan_dateEnd), '<center><img class="btn-edit" id="' + data[i].plan_id + '" data-toggle="modal" data-target="#editPlan" onclick="javascript: slEditPlan(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].plan_id + '" onclick="javascript: delPlan(this)"/></center>']);
         });
         $('#table_plan_show').html('<table class="table table-bordered table-striped table-hover table_plan dataTable" width="100%"></table>');
         $('.table_plan').DataTable({
@@ -1575,7 +1579,11 @@
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_plan", [dataID], true, function (data) {
             var dateCalandar = [];
             $.each(data, function (i, k) {
-                dateCalandar.push({'title': data[i].plan_name, 'start': data[i].plan_dateStart, 'end': endDate(data[i].plan_dateEnd), color: '#ff9900'});
+                if (data[i].plan_status == '1') {
+                    dateCalandar.push({'title': data[i].plan_name, 'start': data[i].plan_dateStart, 'end': endDate(data[i].plan_dateEnd), color: '#009900'});
+                } else {
+                    dateCalandar.push({'title': data[i].plan_name, 'start': data[i].plan_dateStart, 'end': endDate(data[i].plan_dateEnd), color: '#ff9900'});
+                }
             });
             calandar_plan('th', dateCalandar);
         });
@@ -1585,9 +1593,40 @@
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_plan", [$(data).attr("id")], true, function (data) {
             $('#plan_nameE').val(data[0].plan_name);
             $('#plan_detailE').val(data[0].plan_detail);
-            $('#plan_dateStartE').val(data[0].plan_dateStart);
-            $('#plan_dateEndE').val(data[0].plan_dateEnd);
+            $('#plan_dateStartE').val(formatDateShow(data[0].plan_dateStart));
+            $('#plan_dateEndE').val(formatDateShow(data[0].plan_dateEnd));
             $('#plan_idE').val(data[0].plan_id);
+            if (data[0].plan_status == '1')
+            {
+                $("#check_status").prop('checked', true);
+            } else
+            {
+                $("#check_status").prop('checked', false);
+            }
+            $('#show_statusE').html('กำลังดำเนินตามแผนงาน');
+        });
+    }
+    $('#check_status').click(function () {
+        if ($('#check_status').is(":checked")) {
+            $('#show_statusE2').html('ดำเนินการเสร็จสิ้น');
+            $('#show_statusE2').show();
+            $('#show_statusE').hide();
+            $('#plan_status').val('1');
+        } else {
+            $('#show_statusE2').hide();
+            $('#show_statusE').html('กำลังดำเนินตามแผนงาน');
+            $('#show_statusE').show();
+            $('#plan_status').val('0');
+        }
+    });
+    function editPlan(EPLAN) {
+        var array = [];
+        array.push($('#plan_nameE').val(), $('#plan_detailE').val(), formatDateDB($('#plan_dateStartE').val()), formatDateDB($('#plan_dateEndE').val()), $('#plan_status').val(), $('#plan_idE').val(), dataID);
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", EPLAN, array, true, function (data) {
+            show_plan();
+            sl_data_plan();
+            $('#editPlan').modal('hide');
+            swal("แก้ไขสำเร็จ!", "บันทึกแผนงานของคุณเรียบร้อยเเล้ว", "success");
         });
     }
 

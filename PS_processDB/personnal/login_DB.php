@@ -34,6 +34,8 @@ function chklogin() {
                 $_SESSION['lv_name'] = $rs['lv_name'];
                 $_SESSION['lvb_name'] = $rs['lvb_name'];
                 $_SESSION['pro_id'] = $rs['pro_id'];
+                $_SESSION['level'] = $rs['level'];
+                $_SESSION['pro_prefix'] = $rs['pro_prefix'];
                 $_SESSION['pro_picture'] = $rs['pro_picture'];
                 $_SESSION['tel'] = $rs['tel'];
                 $_SESSION['name'] = $rs['nameuser'] . ' ' . $rs['lastname'];

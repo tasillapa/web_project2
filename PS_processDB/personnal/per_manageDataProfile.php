@@ -711,6 +711,18 @@ function del_plan() {
     exit();
 }
 
+function edit_plan() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "UPDATE ps_plan SET plan_name = '$get_data[0]', plan_detail = '$get_data[1]', plan_dateStart = '$get_data[2]', plan_dateEnd = '$get_data[3]', plan_status = '$get_data[4]' WHERE plan_id = '$get_data[5]'";
+        $rs = $cn->execute($sql);
+        echo $rs;
+    }
+    exit();
+}
+
 function sl_table_royal() {
     $cn = new management;
     $cn->con_db();
