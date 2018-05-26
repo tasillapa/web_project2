@@ -266,4 +266,36 @@
             }
         });
     }
+
+    function check_cardId() {
+        if ($('#card_id').val().replace(/\D/g, "").length == 13) {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_data_profile", [split($('#card_id').val())], true, function (data) {
+                if (data != '') {
+                    $('#nameuser').val(data[0].pro_fname);
+                    $('#lastname').val(data[0].pro_lname);
+                    $("#pos_id  option[value=" + data[0].pos_id + "]").prop("selected", true);
+                    $("#pos_id").select2();
+                    $("#class_id  option[value=" + data[0].class_id + "]").prop("selected", true);
+                    $("#class_id").select2();
+                } else {
+                    $('#nameuser').val('');
+                    $('#lastname').val('');
+                    $("#pos_id  option[value='']").prop("selected", true);
+                    $("#pos_id").select2();
+                    $("#class_id  option[value='']").prop("selected", true);
+                    $("#class_id").select2();
+                    $('#error-cardId').fadeIn();
+                    $('#error-cardId').html('<label class="error">ไม่มีข้อมูลในระบบ</label>').addClass('form-line focused error');
+                }
+            });
+        } else {
+            $('#nameuser').val('');
+            $('#lastname').val('');
+            $("#pos_id  option[value='']").prop("selected", true);
+            $("#pos_id").select2();
+            $("#class_id  option[value='']").prop("selected", true);
+            $("#class_id").select2();
+            $('#error-cardId').fadeOut(100);
+        }
+    }
 </script>

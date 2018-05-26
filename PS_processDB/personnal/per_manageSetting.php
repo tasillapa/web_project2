@@ -19,6 +19,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "IMUSER": import_user();
             break;
+        case "sl_data_profile": sl_data_profile();
+            break;
     }
 }
 
@@ -161,11 +163,22 @@ function import_user() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        print_r($get_data);
-        exit();
         $sql = "DELETE FROM ps_personnal WHERE member_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
+    }
+    exit();
+}
+
+function sl_data_profile() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "SELECT * from ps_profile AS pp LEFT JOIN ps_position AS pps ON pp.pos_id = pps.pos_id LEFT JOIN ps_class AS pc ON pp.class_id = pc.class_id LEFT JOIN ps_department AS pd ON pp.dep_id = pd.dep_id WHERE card_id = '$get_data[0]'";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
     }
     exit();
 }

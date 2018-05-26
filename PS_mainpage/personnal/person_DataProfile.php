@@ -830,10 +830,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >สถานะปัจจุบัน</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-5 col-sm-9 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="marry_relationship" class="form-control" placeholder="ระบุสถานะปัจจุบัน">
@@ -926,7 +926,7 @@ if (!isset($_GET['id'])) {
                                                             <div class="collapse" id="add_blame"><br>
                                                                 <from>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-1 col-sm-4 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                             <label >วันที่รับโทษ</label>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-5 col-sm-8 col-xs-12">
@@ -1010,20 +1010,20 @@ if (!isset($_GET['id'])) {
                                                         <div class="body">
                                                             <!--<h2 class="card-inside-title">ที่อยู่ตามทะเบียนบ้าน</h2>-->
                                                             <div class="row clearfix">
-                                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                     <label >เลขที่</label>
                                                                 </div>
-                                                                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
                                                                             <input type="text" id="address_number" class="form-control" placeholder="กรอกเลขที่อยู่">
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                     <label >หมู่</label>
                                                                 </div>
-                                                                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
                                                                             <input type="text" id="address_swine" class="form-control" placeholder="กรอกหมู่">
@@ -1133,20 +1133,20 @@ if (!isset($_GET['id'])) {
                                                                 </div>
                                                             </div>
                                                             <div class="row clearfix">
-                                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                     <label >โทรศัพท์</label>
                                                                 </div>
-                                                                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
                                                                             <input type="text" id="address_call" class="form-control phone-number" placeholder="กรอกหมายเลขโทรศัพท์">
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                     <label >มือถือ</label>
                                                                 </div>
-                                                                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
                                                                             <input type="text" id="address_fhone" class="form-control mobile-number" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
@@ -1170,20 +1170,20 @@ if (!isset($_GET['id'])) {
                                                         <div class="body">
                                                             <!--<h2 class="card-inside-title">ที่อยู่ตามทะเบียนบ้าน</h2>-->
                                                             <div class="row clearfix">
-                                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                     <label >เลขที่</label>
                                                                 </div>
-                                                                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
                                                                             <input type="text" id="pread_number" class="form-control" placeholder="กรอกเลขที่อยู่">
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                     <label >หมู่</label>
                                                                 </div>
-                                                                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
                                                                             <input type="text" id="pread_swine" class="form-control" placeholder="กรอกหมู่">
@@ -1273,20 +1273,20 @@ if (!isset($_GET['id'])) {
                                                                 </div>
                                                             </div>
                                                             <div class="row clearfix">
-                                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                     <label >โทรศัพท์</label>
                                                                 </div>
-                                                                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
                                                                             <input type="text" id="pread_call" class="form-control phone-number" placeholder="กรอกหมายเลขโทรศัพท์">
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                     <label >มือถือ</label>
                                                                 </div>
-                                                                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
                                                                             <input type="text" id="pread_fhone" class="form-control mobile-number" placeholder="กรอกเบอร์โทรศัพท์มือถือ">
@@ -1469,10 +1469,10 @@ if (!isset($_GET['id'])) {
                                                                 </button>
                                                                 <div class="collapse" id="add_hisser"><br>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >กรม</label>
                                                                         </div>
-                                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hissv_office" class="form-control" placeholder="กรอกกรมที่เคยรับราชการ">
@@ -1481,10 +1481,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >สังกัด</label>
                                                                         </div>
-                                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hissv_department" class="form-control" placeholder="กรอกสังกัด">
@@ -1493,20 +1493,20 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >ตำแหน่ง</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hissv_position" class="form-control" placeholder="กรอกตำแหน่ง">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >เลขที่ตำแหน่ง</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hissv_poscod" class="form-control" placeholder="กรอกเลขที่ตำแหน่ง" maxlength="10" onkeypress="return isNumberKey(event)">
@@ -1515,21 +1515,21 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >วันที่รับราชการ</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hissv_date" class="form-control date" placeholder="กรอกวันที่รับราชการ">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >อัตราเงินเดือน</label>
                                                                         </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                            <div class="input-group m-l--10">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
+                                                                            <div class="input-group m-l--10" style="margin-bottom: 0px;">
                                                                                 <span class="input-group-addon">
                                                                                     <i class="material-icons">credit_card</i>
                                                                                 </span>
@@ -1540,10 +1540,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-control-label-l">
                                                                             <label >ประเภทการเคลื่อนไหว</label>
                                                                         </div>
-                                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <textarea type="text" id="hissv_type" class="form-control" placeholder="กรอกประเภทการเคลื่อนไหว"></textarea>
@@ -1576,10 +1576,10 @@ if (!isset($_GET['id'])) {
                                                                 </button>
                                                                 <div class="collapse" id="add_serSpecial"><br>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >ราชการพิเศษ</label>
                                                                         </div>
-                                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hissvp_special" class="form-control" placeholder="กรอกราชการพิเศษ">
@@ -1588,10 +1588,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >หัวข้อโครงการ</label>
                                                                         </div>
-                                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="hissvp_topic" class="form-control" placeholder="กรอกหัวข้อโครงการ">
@@ -1622,10 +1622,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >สถานที่</label>
                                                                         </div>
-                                                                        <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <textarea type="text" id="hissvp_place" class="form-control" placeholder="กรอกสถานที่"></textarea>
@@ -1634,10 +1634,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >หมายเหตุ</label>
                                                                         </div>
-                                                                        <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <textarea type="text" id="hissvp_note" class="form-control" placeholder="กรอกหมายเหตุ"></textarea>
@@ -1748,10 +1748,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-control-label-l">
                                                                             <label >ประเภทการเคลื่อนไหว</label>
                                                                         </div>
-                                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <textarea type="text" id="hisas_type" class="form-control" placeholder="กรอกประเภทการเคลื่อนไหว"></textarea>
@@ -1895,10 +1895,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                             <label >วันที่ได้รับ</label>
                                                                         </div>  
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <input type="text" id="academic_date" class="form-control date" placeholder="__/__/____"/>
@@ -2119,7 +2119,7 @@ if (!isset($_GET['id'])) {
                                                                             <label >เงินเดือน</label>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                            <div class="input-group m-l--15">
+                                                                            <div class="input-group m-l--15" style="margin-bottom: 0px;">
                                                                                 <span class="input-group-addon">
                                                                                     <i class="material-icons">credit_card</i>
                                                                                 </span>
@@ -2130,10 +2130,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-control-label-l">
                                                                             <label >ประเภทการเคลื่อนไหว</label>
                                                                         </div>
-                                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <textarea type="text" id="hisslrup_type" class="form-control" placeholder="กรอกประเภทการเคลื่อนไหว"/></textarea>
@@ -2192,7 +2192,7 @@ if (!isset($_GET['id'])) {
                                                                             <label >เงินพิเศษ</label>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                            <div class="input-group m-l--15">
+                                                                            <div class="input-group m-l--15" style="margin-bottom: 0px;">
                                                                                 <span class="input-group-addon">
                                                                                     <i class="material-icons">credit_card</i>
                                                                                 </span>
@@ -2203,10 +2203,10 @@ if (!isset($_GET['id'])) {
                                                                         </div>
                                                                     </div>
                                                                     <div class="row clearfix">
-                                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control-label-l">
                                                                             <label >ประเภทเงินพิเศษ</label>
                                                                         </div>
-                                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                                                                        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                                                                             <div class="form-group">
                                                                                 <div class="form-line">
                                                                                     <textarea type="text" id="salarysp_type" class="form-control" placeholder="กรอกประเภทเงินพิเศษ"/></textarea>
@@ -2333,6 +2333,5 @@ if (!isset($_GET['id'])) {
         </section>
         <!-- Script -->
         <?php include ("../../PS_script/personnal/per_dataProfile.php"); ?>
-
     </body>
 </html>

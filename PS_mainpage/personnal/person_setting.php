@@ -78,7 +78,8 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="card_id" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน">
+                                                                    <input type="text" id="card_id" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน" onkeyup="javascript: check_cardId()">
+                                                                    <div id="error-cardId"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -90,7 +91,7 @@
                                                         <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="nameuser" class="form-control" placeholder="กรอกชื่อ">
+                                                                    <input type="text" id="nameuser" class="form-control" placeholder="กรอกชื่อ" disabled="">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -100,7 +101,7 @@
                                                         <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="lastname" class="form-control" placeholder="กรอกสกุล">
+                                                                    <input type="text" id="lastname" class="form-control" placeholder="กรอกสกุล" disabled="">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -132,7 +133,7 @@
                                                             <label >ตำแหน่ง</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
-                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pos_id">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pos_id" disabled="">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
@@ -151,7 +152,7 @@
                                                             <label>กลุ่มงาน</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
-                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="class_id">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="class_id" disabled="">
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();

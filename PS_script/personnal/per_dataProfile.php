@@ -1068,6 +1068,9 @@
                     cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AED, array2, true, function (data) {
                         if (p == 1) {
                             $('#reset_edu').find('#hised_level  option[value=""]').prop("selected", true);
+                            $('#hised_level').select2();
+                            $('#reset_edu').find('#hised_year  option[value=""]').prop("selected", true);
+                            $('#hised_year').select2();
                             $('#reset_edu').find('.btn-danger').trigger('click');
                             show_education();
                             swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
@@ -1077,6 +1080,9 @@
                 }
             } else {
                 $('#reset_edu').find('#hised_level  option[value=""]').prop("selected", true);
+                $('#hised_level').select2();
+                $('#reset_edu').find('#hised_year  option[value=""]').prop("selected", true);
+                $('#hised_year').select2();
                 $('#reset_edu').find('.btn-danger').trigger('click');
                 show_education();
                 swal("บันทึกสำเร็จ!", "บันทึกประวัติการศึกษาเรียบร้อยเเล้ว", "success");
@@ -1599,11 +1605,14 @@
             if (data[0].plan_status == '1')
             {
                 $("#check_status").prop('checked', true);
+                $('#show_statusE').html('');
+                $('#show_statusE2').html('ดำเนินการเสร็จสิ้น');
             } else
             {
                 $("#check_status").prop('checked', false);
+                $('#show_statusE').html('');
+                $('#show_statusE').html('กำลังดำเนินตามแผนงาน');
             }
-            $('#show_statusE').html('กำลังดำเนินตามแผนงาน');
         });
     }
     $('#check_status').click(function () {
