@@ -947,9 +947,6 @@
         });
     }
     function editPerson(EPS) {
-//        var array = [];
-//        array.push();
-//        console.log(array);
         var Improfile = $('#pro_pictureE').prop('files')[0];
         var form_data_img = new FormData();
         form_data_img.append('Improfile', Improfile);
@@ -1596,6 +1593,7 @@
     }
 
     function slEditPlan(data) {
+
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_plan", [$(data).attr("id")], true, function (data) {
             $('#plan_nameE').val(data[0].plan_name);
             $('#plan_detailE').val(data[0].plan_detail);
@@ -1605,13 +1603,15 @@
             if (data[0].plan_status == '1')
             {
                 $("#check_status").prop('checked', true);
-                $('#show_statusE').html('');
                 $('#show_statusE2').html('ดำเนินการเสร็จสิ้น');
+                $('#show_statusE2').show();
+                $('#show_statusE').hide();
             } else
             {
                 $("#check_status").prop('checked', false);
-                $('#show_statusE').html('');
+                $('#show_statusE2').hide();
                 $('#show_statusE').html('กำลังดำเนินตามแผนงาน');
+                $('#show_statusE').show();
             }
         });
     }

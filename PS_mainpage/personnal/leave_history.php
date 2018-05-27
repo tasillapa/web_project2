@@ -39,7 +39,7 @@
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade fade active in" id="home_with_icon_title">
 
-                                        <div style="margin-left: 30%;" class="col-lg-8 col-md-2 col-sm-3 col-xs-5 form-control-label">
+                                        <div style="margin-left: 30%;" class="col-lg-8 col-md-2 col-sm-3 col-xs-5 form-control-label" hidden>
                                             <label>เขียนที่ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี</label>
                                         </div>
 
@@ -57,7 +57,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row clearfix">
+                                        <div class="row clearfix hidden">
                                             <div  class="col-lg-1 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
                                                 <label>เรื่อง</label>
                                             </div>
@@ -89,7 +89,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row clearfix">
+                                        <div class="row clearfix" hidden>
                                             <div style="margin-left: 17%;" >
                                                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
                                                     <label >ข้าพเจ้า</label>
@@ -103,7 +103,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row clearfix">
+                                        <div class="row clearfix" hidden>
                                             <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                 <label >ตำแหน่ง</label>
                                             </div>
@@ -126,7 +126,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="row clearfix">
+                                        <div class="row clearfix" hidden>
                                             <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                 <label >สังกัด</label>
                                             </div>

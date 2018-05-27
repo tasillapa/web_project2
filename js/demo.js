@@ -279,16 +279,16 @@ function mobileNum(val) {
 }
 
 function endDate(val) {
-    var today = new Date(val);
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
+    var endDay = new Date(val);
+    var dd = endDay.getDate() + 1; //บวกเกินไป 1 วันให้ปฏิทินเเสดงตรงตามวันที่
+    var mm = endDay.getMonth() + 1; //January is 0!
+    var yyyy = endDay.getFullYear();
     if (dd < 10) {
         dd = '0' + dd
     }
     if (mm < 10) {
         mm = '0' + mm
     }
-    today = yyyy + '-' + mm + '-' + (dd + 1);
-    return today;
+    endDay = yyyy + '-' + mm + '-' + dd;
+    return endDay;
 }

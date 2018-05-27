@@ -59,16 +59,16 @@
                                                             echo "<th   colspan='2'>" . $row['class_name'] . "</th>";
                                                             $f = 0;
                                                             $m = 0;
+                                                            $count = 0;
                                                             $check_data = [12, 2, 6, 11, 10, 9];
                                                             $arr_type_id = array();
                                                             for ($i = 0; $i < 6; $i++) {
-                                                                $sql_m = "SELECT ps.pro_id AS sex_m FROM ps_profile AS ps LEFT JOIN ps_type AS pt ON ps.type_id = pt.type_id LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id WHERE ps.class_id = '" . $row['class_id'] . "' AND ps.type_id = '" . $check_data[$i] . "' AND ps.pro_sex = 1";
-                                                                $query_m = $cn->Connect->query($sql_m);
-                                                                $m += mysqli_num_rows($query_m);
-
-                                                                $sql_f = "SELECT ps.pro_id AS sex_m FROM ps_profile AS ps LEFT JOIN ps_type AS pt ON ps.type_id = pt.type_id LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id WHERE ps.class_id = '" . $row['class_id'] . "' AND ps.type_id = '" . $check_data[$i] . "' AND ps.pro_sex = 2";
-                                                                $query_f = $cn->Connect->query($sql_f);
-                                                                $f += mysqli_num_rows($query_f);
+//                                                                $sql_m = "SELECT ps.pro_id AS sex_m FROM ps_profile AS ps LEFT JOIN ps_type AS pt ON ps.type_id = pt.type_id LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id WHERE ps.class_id = '" . $row['class_id'] . "' AND ps.type_id = '" . $check_data[$i] . "' AND ps.pro_sex = 1";
+//                                                                $query_m = $cn->Connect->query($sql_m);
+//                                                                $m += mysqli_num_rows($query_m);
+//                                                                $sql_f = "SELECT ps.pro_id AS sex_m FROM ps_profile AS ps LEFT JOIN ps_type AS pt ON ps.type_id = pt.type_id LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id WHERE ps.class_id = '" . $row['class_id'] . "' AND ps.type_id = '" . $check_data[$i] . "' AND ps.pro_sex = 2";
+//                                                                $query_f = $cn->Connect->query($sql_f);
+//                                                                $f += mysqli_num_rows($query_f);
                                                                 $sql2 = "SELECT ps.pro_sex ,COUNT(ps.pro_id) AS num FROM ps_profile AS ps LEFT JOIN ps_type AS pt ON ps.type_id = pt.type_id LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id WHERE ps.class_id = '" . $row['class_id'] . "' AND ps.type_id = '" . $check_data[$i] . "'";
                                                                 $query2 = $cn->Connect->query($sql2);
                                                                 if (mysqli_num_rows($query2) >= 1) {
@@ -76,18 +76,37 @@
                                                                         array_push($arr_type_id, $row2['pro_sex']);
 
                                                                         if ($row2['pro_sex'] != '') {
-                                                                            echo "<td>" . $row2['num'] . "</td>";
+                                                                            echo "<td><center><a class = 'detail-power' id ='" . $row['class_id'] . "' value = '" . $check_data[$i] . "' data-toggle='modal' data-target='#ShowDetailPower'>" . $row2['num'] . "</a></center></td>";
                                                                         } else {
-                                                                            echo "<td>-</td>";
+                                                                            echo "<td><center>-</center></td>";
                                                                         }
                                                                     }
                                                                 } else {
                                                                     echo "<td>-</td>";
                                                                 }
                                                             }
-                                                            echo "<td>" . $m . "</td>";
-                                                            echo "<td>" . $f . "</td>";
-                                                            echo "<td>" . ($m + $f) . "</td>";
+                                                            $sql_m = "SELECT ps.pro_id AS sex_m FROM ps_profile AS ps LEFT JOIN ps_type AS pt ON ps.type_id = pt.type_id LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id WHERE ps.class_id = '" . $row['class_id'] . "' AND ps.type_id IN (2, 6, 9, 10, 11, 12) AND ps.pro_sex = 1";
+                                                            $query_m = $cn->Connect->query($sql_m);
+                                                            $m = mysqli_num_rows($query_m);
+                                                            if ($m == 0) {
+                                                                echo "<td><center>-</center></td>";
+                                                            } else {
+                                                                echo "<td><center><a class = 'detail-power-man' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $m . "</a></center></td>";
+                                                            }
+                                                            $sql_f = "SELECT ps.pro_id AS sex_m FROM ps_profile AS ps LEFT JOIN ps_type AS pt ON ps.type_id = pt.type_id LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id WHERE ps.class_id = '" . $row['class_id'] . "' AND ps.type_id IN (2, 6, 9, 10, 11, 12) AND ps.pro_sex = 2";
+                                                            $query_f = $cn->Connect->query($sql_f);
+                                                            $f = mysqli_num_rows($query_f);
+                                                            if ($f == 0) {
+                                                                echo "<td><center>-</center></td>";
+                                                            } else {
+                                                                echo "<td><center><a class = 'detail-power-feman' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $f . "</a></center></td>";
+                                                            }
+                                                            $count = $m + $f;
+                                                            if ($count == 0) {
+                                                                echo "<td><center>-</center></td>";
+                                                            } else {
+                                                                echo "<td><center><a class = 'detail-power-all' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $count . "</a></center></td>";
+                                                            }
                                                         }
                                                         ?>
                                                     </tbody>
@@ -102,6 +121,28 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal Show Power -->
+            <div class="modal fade" id="ShowDetailPower" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content modal-lg">
+                        <div class="modal-header bg-green">
+                            <h4 class="modal-title" id="ShowDetailPowerLabel">รายละเอียด</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <div id="table_setting_show"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">ยกเลิก</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal Show Power -->
         </section>
+
+        <?php include ("../../PS_script/personnal/repo_power.php"); ?>
     </body>
 </html>
