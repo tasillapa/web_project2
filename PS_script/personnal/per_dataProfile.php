@@ -561,6 +561,7 @@
             $('#gen_status option[value="' + data[0].pro_status + '"]').prop('selected', true);
             $('#gen_status').select2();
             $('#pro_salaryE').val(parseInt(data[0].pro_salary));
+            age(data[0].pro_birthday)
             $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));
             $('#gen_birthday').val(formatDateShow(data[0].pro_birthday));
             $('#pro_dateInE').val(formatDateShow(data[0].pro_dateIn));
@@ -658,6 +659,36 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+    function age(old) {
+        var dayBirth = old;
+        var getdayBirth = dayBirth.split("-");
+        var YB = getdayBirth[0];
+        var MB = getdayBirth[1];
+        var DB = getdayBirth[2];
+        var setdayBirth = moment(YB + "-" + MB + "-" + DB);
+        var setNowDate = moment();
+        var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
+        var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
+        var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
+        var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
+        var str_year_month = yearReal + " ปี " + monthDiff + " เดือน"; // ต่อวันเดือนปี  
+        $("#gen_old").val(str_year_month);
+    }
+    function OnchangAge(old) {
+        var dayBirth = old;
+        var getdayBirth = dayBirth.split("/");
+        var YB = getdayBirth[2] - 543;
+        var MB = getdayBirth[1];
+        var DB = getdayBirth[0];
+        var setdayBirth = moment(YB + "-" + MB + "-" + DB);
+        var setNowDate = moment();
+        var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
+        var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
+        var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
+        var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
+        var str_year_month = yearReal + " ปี " + monthDiff + " เดือน"; // ต่อวันเดือนปี  
+        $("#gen_old").val(str_year_month);
+    }
     function back() {
         window.location.href = '../../PS_mainpage/personnal/person_addData.php';
 //        window.history.back();
@@ -684,6 +715,7 @@
         $('#gen_status').select2();
     }
     function changeBirthday() {
+        OnchangAge($('#pro_birthdayE').val());
         $('#gen_birthday').val($('#pro_birthdayE').val());
     }
     function show_chName() {
@@ -960,6 +992,9 @@
             type: 'post',
             success: function (data) {
                 var array = [];
+                if (data == '0') {
+                    data = '';
+                }
                 array.push(split($('#card_idE').val()), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
                         , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
                         , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), data, name, formatDateToday(), $('#pro_id').val(), $('#imgSE').attr('src')
@@ -1029,7 +1064,6 @@
                 \n\<div class="row clearfix"><div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l"><label >วุฒิการศึกษา</label></div><div class="col-lg-4 col-md-4 col-sm-8 col-xs-12"><div class="form-group"><div class="form-line"><input type="text" id="hised_background' + i + '" class="form-control" placeholder="กรอกวุฒิการศึกษา"></div></div></div><div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l"><label >วิชาเอก</label></div><div class="col-lg-4 col-md-4 col-sm-8 col-xs-12"><div class="form-group"><div class="form-line"><input type="text" id="hised_major' + i + '" class="form-control" placeholder="กรอกวิชาเอก"></div></div></div></div>\n\
                 <div class="row clearfix"><div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l"><label >สถานศึกษา</label></div><div class="col-lg-4 col-md-4 col-sm-8 col-xs-12"><div class="form-group"><div class="form-line"><input type="text" id="hised_address' + i + '" class="form-control" placeholder="กรอกสถานศึกษา"></div></div></div><div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l"><label >ประเทศ</label></div><div class="col-lg-4 col-md-4 col-sm-8 col-xs-12"><div class="form-group"><div class="form-line"><input type="text" id="hised_country' + i + '" class="form-control" placeholder="กรอกประเทศ"></div></div></div></div>\n\
             </div>').appendTo($('.insert-edu')).slideDown("slow");
-
             cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", 'sl_lv_edu', '', true, function (data) {
                 $('#hised_level' + i).html('<option selected="selected" value="">เลือก</opition>');
                 $.each(data, function (a) {
@@ -1051,7 +1085,6 @@
             i--;
         }
         $("#clone_edu" + i + "").remove();
-
     });
     function addEdu(AED) {
         var array = [];

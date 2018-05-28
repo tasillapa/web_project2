@@ -110,8 +110,6 @@
         <script src="../../dist/js/select2.js"></script>
         <script src="../../dist/js/jquery.datetimepicker.js"></script>
         <script src="../../dist/js/jquery.datetimepicker.full.min.js"></script>
-
-
-
+        <script src ="../../dist/moment/min/moment-with-locales.min.js"></script>
 </html>
 

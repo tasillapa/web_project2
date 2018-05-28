@@ -37,7 +37,7 @@
             columns: [
                 {title: "ลำดับ"},
                 {title: "รหัส"},
-                {title: "ชื่อหน่วยงาน"},
+                {title: "กลุ่มงาน"},
                 {title: "..."},
             ],
             "fnRowCallback": function (nRow) {

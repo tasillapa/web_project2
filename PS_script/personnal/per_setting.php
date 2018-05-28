@@ -91,26 +91,39 @@
         });
     }
     function addUser(AUSER) {
-        if ($('#password').val() == $('#ch_password').val()) {
-            var array = [];
-            var status = 0;
-            if ($('#status').is(':checked')) {
-                status = 1;
+        cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_data_profile", [split($('#card_id').val())], true, function (data) {
+            if (data != '') {
+                if ($('#password').val() == $('#ch_password').val()) {
+                    var array = [];
+                    var status = 0;
+                    if ($('#status').is(':checked')) {
+                        status = 1;
+                    }
+                    array.push(split($('#card_id').val()), $('#nameuser').val(), $('#lastname').val(), split($('#tel').val()), $('#email').val()
+                            , $('#pos_id').val(), $('#class_id').val(), $('#username').val(), $('#password').val()
+                            , $('#level').val(), status, name, formatDateToday(), name, formatDateToday());
+                    cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", AUSER, array, true, function (data) {
+                        show_setting();
+                        swal("บันทึกสำเร็จ!", "บันทึกข้อมูลผู้ใช้งานเเล้ว", "success");
+                        $('#addUser').modal('hide');
+                    });
+                } else {
+                    $('#password-error').html('<label  class="error">รหัสผ่านไม่ตรงกัน</label>').addClass('form-line focused error');
+                    $('#password-error').fadeIn(100);
+                    $('#ch-password-error').html('<label class="error">รหัสผ่านไม่ตรงกัน</label>').addClass('form-line focused error');
+                    $('#ch-password-error').fadeIn(100);
+                }
+            } else {
+                $('#nameuser').val('');
+                $('#lastname').val('');
+                $("#pos_id  option[value='']").prop("selected", true);
+                $("#pos_id").select2();
+                $("#class_id  option[value='']").prop("selected", true);
+                $("#class_id").select2();
+                $('#error-cardId').fadeIn();
+                $('#error-cardId').html('<label class="error">ไม่มีข้อมูลในระบบ</label>').addClass('form-line focused error');
             }
-            array.push(split($('#card_id').val()), $('#nameuser').val(), $('#lastname').val(), split($('#tel').val()), $('#email').val()
-                    , $('#pos_id').val(), $('#class_id').val(), $('#username').val(), $('#password').val()
-                    , $('#level').val(), status, name, formatDateToday(), name, formatDateToday());
-            cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", AUSER, array, true, function (data) {
-                show_setting();
-                swal("บันทึกสำเร็จ!", "บันทึกข้อมูลผู้ใช้งานเเล้ว", "success");
-                $('#addUser').modal('hide');
-            });
-        } else {
-            $('#password-error').html('<label  class="error">รหัสผ่านไม่ตรงกัน</label>').addClass('form-line focused error');
-            $('#password-error').fadeIn(100);
-            $('#ch-password-error').html('<label class="error">รหัสผ่านไม่ตรงกัน</label>').addClass('form-line focused error');
-            $('#ch-password-error').fadeIn(100);
-        }
+        });
     }
 
     function slUserEdit(data) {

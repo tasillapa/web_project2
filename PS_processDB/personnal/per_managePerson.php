@@ -33,6 +33,10 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "get_department":get_department();
             break;
+        case "data_tranfer":data_tranfer();
+            break;
+        case "get_tranferOut":get_tranferOut();
+            break;
     }
 }
 
@@ -130,7 +134,7 @@ if (!empty($_FILES['filePerson'])) {
     if ($file_array[1] == ('png' || "jpg")) {
         $cn = new management;
         $cn->con_db();
-        $rand = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'), 0, 15);
+        $rand = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'), 0, 10);
         $new_images = $rand . '-' . $_FILES["Improfile"]["name"];
         $tmpFolder = "../../images/img-profile/" . $new_images;
         move_uploaded_file($_FILES['Improfile']['tmp_name'], $tmpFolder);
@@ -265,8 +269,9 @@ function edit_profile() {
                     unlink($file); // delete file
             }
             $get_data[18] = $path;
+        }else if ($get_data[18] == "0") {
+            $get_data[18] = "";
         }
-
         $sql_sl_geninfo = "SELECT * FROM ps_geninformation WHERE pro_id = '$get_data[43]'";
         $Query_geninfo = $cn->Connect->query($sql_sl_geninfo);
         if (mysqli_num_rows($Query_geninfo) == '0') {
@@ -346,7 +351,6 @@ function edit_profile_main() {
             }
             $get_data[19] = $path;
         }
-
         $sql = "UPDATE ps_profile
         SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'
             , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_transfer = '$get_data[18]', pro_picture = '$get_data[19]', pro_person_update = '$get_data[20]', pro_date_update = '$get_data[21]'
@@ -435,6 +439,49 @@ function get_department() {
     $cn->con_db();
     if ($cn->Connect) {
         $sql = "select * from ps_department ";
+        $rs = $cn->select($sql);
+        $json = json_encode($rs);
+        echo $json;
+    }
+    exit();
+}
+
+function data_tranfer() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "SELECT * FROM ps_transferout WHERE pro_id = '$get_data[4]'";
+        $query = $cn->Connect->query($sql);
+        $num = mysqli_num_rows($query);
+        if ($num > 0) {
+            while ($row = mysqli_fetch_array($query)) {
+                if ($get_data[3] == '0') {
+                    $tran_id = $row['tran_id'];
+                    $sql_del = "DELETE FROM ps_transferout WHERE tran_id = '$tran_id'";
+                    $rs_del = $cn->execute($sql_del);
+                    echo $rs_del;
+                } else {
+                    $sql_edit = "UPDATE ps_transferout SET tran_name = '$get_data[0]', tran_note = '$get_data[1]', tran_date = '$get_data[2]', tran_status = '$get_data[3]' WHERE pro_id = '$get_data[4]'";
+                    $rs_edit = $cn->execute($sql_edit);
+                    echo $rs_edit;
+                }
+            }
+        } else {
+            $sql_add = "INSERT INTO ps_transferout (tran_name, tran_note, tran_date, tran_status, pro_id) VALUES ('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]')";
+            $rs_add = $cn->execute($sql_add);
+            echo $rs_add;
+        }
+    }
+    exit();
+}
+
+function get_tranferOut() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "SELECT * FROM ps_transferout WHERE pro_id = '$get_data[0]'";
         $rs = $cn->select($sql);
         $json = json_encode($rs);
         echo $json;

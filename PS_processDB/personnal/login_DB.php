@@ -29,6 +29,7 @@ function chklogin() {
                 $_SESSION['username'] = $rs['username'];
                 $_SESSION['password'] = $rs['password'];
                 $_SESSION['class_name'] = $rs['class_name'];
+                $_SESSION['class_id'] = $rs['class_id'];
                 $_SESSION['pos_name'] = $rs['pos_name'];
                 $_SESSION['dep_name'] = $rs['dep_name'];
                 $_SESSION['lv_name'] = $rs['lv_name'];
@@ -39,6 +40,7 @@ function chklogin() {
                 $_SESSION['pro_picture'] = $rs['pro_picture'];
                 $_SESSION['tel'] = $rs['tel'];
                 $_SESSION['name'] = $rs['nameuser'] . ' ' . $rs['lastname'];
+                $_SESSION['fullname'] = $rs['pro_prefix'].$rs['nameuser'] . ' ' . $rs['lastname'];
             }
             echo "ok";
         } else {

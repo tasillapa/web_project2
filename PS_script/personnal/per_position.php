@@ -36,7 +36,7 @@
             columns: [
                 {title: "ลำดับ"},
                 {title: "รหัส"},
-                {title: "ชื่อตำแหน่ง"},
+                {title: "ตำแหน่ง"},
                 {title: "..."},
             ],
             "fnRowCallback": function (nRow) {

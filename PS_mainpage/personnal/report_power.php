@@ -76,7 +76,7 @@
                                                                         array_push($arr_type_id, $row2['pro_sex']);
 
                                                                         if ($row2['pro_sex'] != '') {
-                                                                            echo "<td><center><a class = 'detail-power' id ='" . $row['class_id'] . "' value = '" . $check_data[$i] . "' data-toggle='modal' data-target='#ShowDetailPower'>" . $row2['num'] . "</a></center></td>";
+                                                                            echo "<td><center><a class = 'detail-power' style='cursor: pointer' id ='" . $row['class_id'] . "' value = '" . $check_data[$i] . "' data-toggle='modal' data-target='#ShowDetailPower'>" . $row2['num'] . "</a></center></td>";
                                                                         } else {
                                                                             echo "<td><center>-</center></td>";
                                                                         }
@@ -91,7 +91,7 @@
                                                             if ($m == 0) {
                                                                 echo "<td><center>-</center></td>";
                                                             } else {
-                                                                echo "<td><center><a class = 'detail-power-man' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $m . "</a></center></td>";
+                                                                echo "<td><center><a style='cursor: pointer' class = 'detail-power-man' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $m . "</a></center></td>";
                                                             }
                                                             $sql_f = "SELECT ps.pro_id AS sex_m FROM ps_profile AS ps LEFT JOIN ps_type AS pt ON ps.type_id = pt.type_id LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id WHERE ps.class_id = '" . $row['class_id'] . "' AND ps.type_id IN (2, 6, 9, 10, 11, 12) AND ps.pro_sex = 2";
                                                             $query_f = $cn->Connect->query($sql_f);
@@ -99,13 +99,13 @@
                                                             if ($f == 0) {
                                                                 echo "<td><center>-</center></td>";
                                                             } else {
-                                                                echo "<td><center><a class = 'detail-power-feman' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $f . "</a></center></td>";
+                                                                echo "<td><center><a style='cursor: pointer' class = 'detail-power-feman' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $f . "</a></center></td>";
                                                             }
                                                             $count = $m + $f;
                                                             if ($count == 0) {
                                                                 echo "<td><center>-</center></td>";
                                                             } else {
-                                                                echo "<td><center><a class = 'detail-power-all' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $count . "</a></center></td>";
+                                                                echo "<td><center><a style='cursor: pointer' class = 'detail-power-all' id ='" . $row['class_id'] . "'' data-toggle='modal' data-target='#ShowDetailPower'>" . $count . "</a></center></td>";
                                                             }
                                                         }
                                                         ?>

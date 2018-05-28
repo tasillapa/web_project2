@@ -1,7 +1,7 @@
 <?php include 'main_personnal.php'; ?>
 <?php
 require_once '../../connect/connect_DB_personal.php';
-$NoImg = '../../images/no_img.png';
+$NoImg = '../../images/img-profile/no_img.png';
 ?>
 
 <!DOCTYPE html>
@@ -363,16 +363,16 @@ $NoImg = '../../images/no_img.png';
                                                     </div>
                                                     <div class="row clearfix">
                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
-                                                            <label >การโอนย้าย</label>
+                                                            <label >โอนย้ายเข้า</label>
                                                         </div>
-                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 demo-checkbox form-control-label-l asd">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 demo-checkbox form-control-label-l">
                                                             <input type="checkbox" id="check_tran" class="filled-in chk-col-orange">
                                                             <label class="font-bold col-red" for="check_tran">ถ้ามี</label>
                                                         </div>
                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="sw_input">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_transfer" class="form-control" placeholder="กรอกสถานที่ หรือสังกัดที่โอนย้าย">
+                                                                    <input type="text" id="pro_transfer" class="form-control" placeholder="กรอกสถานที่หรือสังกัดที่โอนย้ายเข้า">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -606,7 +606,7 @@ $NoImg = '../../images/no_img.png';
                                                             <label >เงินเดือน</label>
                                                         </div>
                                                         <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8">
-                                                            <div class="input-group">
+                                                            <div class="input-group" style="margin-bottom: 0px;">
                                                                 <span class="input-group-addon">
                                                                     <i class="material-icons">credit_card</i>
                                                                 </span>
@@ -620,17 +620,65 @@ $NoImg = '../../images/no_img.png';
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
-                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
-                                                            <label >การโอนย้าย</label>
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
+                                                            <label >โอนย้ายเข้า</label>
                                                         </div>
-                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 demo-checkbox form-control-label-l asd">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 demo-checkbox form-control-label-l">
                                                             <input type="checkbox" id="check_tranE" class="filled-in chk-col-orange">
                                                             <label class="font-bold col-red" for="check_tranE">ถ้ามี</label>
                                                         </div>
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="sw_inputE">
+                                                        <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12" id="sw_inputE">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_transferE" class="form-control" placeholder="กรอกสถานที่ หรือสังกัดที่โอนย้าย">
+                                                                    <input type="text" id="pro_transferE" class="form-control" placeholder="กรอกสถานที่หรือสังกัดที่โอนย้าย">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >โอนย้ายออก</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 demo-checkbox form-control-label-l">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="tran_status">
+                                                                <option  value="0">เลือก</opition>
+                                                                <option  value="1">โอนย้ายออก</opition>
+                                                                <option  value="2">ลาออก</opition>
+                                                            </select>
+                                                        </div>
+                                                        <div class="row clearfix see_tranout">
+                                                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                                <label >ทำเรื่องวันที่</label>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 demo-checkbox form-control-label-l">
+                                                                <div class="form-group">
+                                                                    <div class="form-line">
+                                                                        <input type="text" id="tran_date" class="form-control input" disabled="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix see_tranout">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label>หมายเหตุ</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <textarea type="text" id="tran_note" class="form-control input" placeholder="กรอกหมายเหตุหรือสาเหตุที่ลาออก"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix see_tranout see_out">
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label>ย้ายไปที่</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id="tran_name" class="form-control input" placeholder="กรอกสถานที่หรือสังกัดที่ย้ายไป"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -838,6 +886,14 @@ $NoImg = '../../images/no_img.png';
                                                             <span class="sp-pad" id="pro_transferD"></span>
                                                         </div>
                                                     </div>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label class="font-bold col-orange">โอนย้ายออก</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="dfsdf"></span>
+                                                        </div>
+                                                    </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="form-group">
                                                             <div class="form-line">
@@ -925,6 +981,6 @@ $NoImg = '../../images/no_img.png';
             <!-- #END# Modal Import Person -->
         </section>
         <!-- Script -->
-<?php include ("../../PS_script/personnal/per_addData.php"); ?>
+        <?php include ("../../PS_script/personnal/per_addData.php"); ?>
     </body>
 </html>

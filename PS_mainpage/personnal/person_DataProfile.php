@@ -415,7 +415,7 @@ if (!isset($_GET['id'])) {
                                                                 <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
-                                                                            <input type="text" id="gen_old" class="form-control" placeholder="กรอกอายุ (ปี)" onkeypress="return isNumberKey(event)">
+                                                                            <input type="text" id="gen_old" class="form-control" placeholder="กรอกอายุ (ปี)" disabled="">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -598,12 +598,12 @@ if (!isset($_GET['id'])) {
                                                             </div>
                                                             <div class="row clearfix">
                                                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
-                                                                    <label >อีเมล</label>
+                                                                    <label>E-mail</label>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                     <div class="form-group">
                                                                         <div class="form-line">
-                                                                            <input type="text" id="gen_email" class="form-control email" placeholder="กรอกอีเมล">
+                                                                            <input type="text" id="gen_email" class="form-control email" placeholder="กรอก E-mail">
                                                                         </div>
                                                                     </div>
                                                                 </div>

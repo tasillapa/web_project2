@@ -89,19 +89,9 @@
                 $input.val(fulldateTH);
             },
         });
-        $("#leave_date").datetimepicker({
-            timepicker: false,
-            format: 'd/m/Y',
-            lang: 'th',
-            yearOffset: 543,
-            onSelectDate: function (dp, $input) {
-                var yearT = new Date(dp).getFullYear() - 0;
-                var yearTH = yearT + 543;
-                var fulldate = $input.val();
-                var fulldateTH = fulldate.replace(yearT, yearTH);
-                $input.val(fulldateTH);
-            },
-        });
+        
+        $("#leave_date").val(DateToday());
+        
         function formatDatePK(date) {
             var srt = [];
             srt[0] = date.substr(0, 2);
@@ -224,6 +214,7 @@
         cls.GetJSON("../../PS_processDB/personnal/lea_relax.php", "sl_table_approvesmp", "", true, table_approvesmp);
     }
     function addRelax(ALR) {
+//        alert($("#leave_date").val());
         if ($('#leave_dayreplace').val() == '') {
             var num = 0;
         } else {
@@ -249,7 +240,6 @@
                 window.location.href = 'form_leave.php';
             });
         }
-
     }
 
     function addPsm(ASM) {

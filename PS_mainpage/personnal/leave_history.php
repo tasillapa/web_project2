@@ -12,7 +12,7 @@
                         <div class="card">
                             <div class="header bg-green" >
                                 <h2>
-                                    การลา
+                                    ทำเรื่องการลา
                                 </h2>
 
                             </div>
@@ -37,290 +37,288 @@
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade fade active in" id="home_with_icon_title">
-
-                                        <div style="margin-left: 30%;" class="col-lg-8 col-md-2 col-sm-3 col-xs-5 form-control-label" hidden>
-                                            <label>เขียนที่ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี</label>
-                                        </div>
-
-                                        <div style="margin-left: 45%;" class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label">
-                                            <label> วันที่</label>
-
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">date_range</i>
-                                                </span>
-                                                <div class="form-line">
-                                                    <input type="text" id="leave_date" class="form-control" placeholder="Ex: 30/07/2561">
+                                    <div role="tabpanel" class="tab-pane fade fade active in form-horizontal" id="home_with_icon_title">
+                                        <div class="card">
+                                            <div class="body">
+                                                <div style="margin-left: 30%;" class="col-lg-8 col-md-2 col-sm-3 col-xs-5 form-control-label" hidden>
+                                                    <label>เขียนที่ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี</label>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix hidden">
-                                            <div  class="col-lg-1 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label>เรื่อง</label>
-                                            </div>
-                                            <div class="col-sm-2">
-
-                                                <label>ขอลาพักผ่อน</label>
-
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label >เรียน</label>
-                                            </div>
-                                            <div class="col-lg-4 col-md-9 col-sm-4 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id ="leave_topic" class="form-control" placeholder="กรอกชื่อผู้อนุมัติ select" value="<?php
-                                                        $cn = new management;
-                                                        $cn->con_db();
-                                                        $sql = "select p.pro_prefix,p.pro_fname, p.pro_lname from ps_profile as p left join ps_leveboss AS lb on p.lvb_id = lb.lvb_id where p.class_id = (select p.class_id from ps_profile as p left join ps_class as c on p.class_id = c.class_id where p.card_id = '" . $_SESSION['card_id'] . "') and lb.lvb_id ='7'";
-
-                                                        $query = $cn->Connect->query($sql);
-                                                        while ($rs = mysqli_fetch_array($query)) {
-                                                            echo $rs['pro_prefix'] . $rs['pro_fname'] . ' ' . $rs['pro_lname'];
-                                                        }
-                                                        ?>"/>
-
+                                                <div class="row clearfix hidden">
+                                                    <div style="margin-left: 45%;" class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label">
+                                                        <label> วันที่</label>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix" hidden>
-                                            <div style="margin-left: 17%;" >
-                                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                    <label >ข้าพเจ้า</label>
-                                                </div>
-                                                <div class="col-lg-9 col-md-9 col-sm-5 col-xs-12">
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id ="leave_name" class="form-control" placeholder="กรอกชื่อผู้ขออนุมัติ select" value="<?php echo $_SESSION['pro_prefix'] . $_SESSION['name'] ?>"/>
+                                                    <div class="col-sm-4">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="material-icons">date_range</i>
+                                                            </span>
+                                                            <div class="form-line">
+                                                                <input type="text" id="leave_date" class="form-control" placeholder="Ex: 30/07/2561">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix" hidden>
-                                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
-                                                <label >ตำแหน่ง</label>
-                                            </div>
-                                            <div class="col-lg-4 col-md-10 col-sm-9 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="position_name" class="form-control" value="<?php echo $_SESSION['pos_name'] ?>"/>
+                                                <div class="row clearfix hidden">
+                                                    <div  class="col-lg-1 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
+                                                        <label>เรื่อง</label>
+                                                    </div>
+                                                    <div class="col-sm-2">
+
+                                                        <label>ขอลาพักผ่อน</label>
+
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label">
-                                                <label >ระดับ</label>
-                                            </div>
-                                            <div class="col-lg-4 col-md-10 col-sm-9 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="levels_la" class="form-control" value="<?php echo $_SESSION['lv_name'] ?>"/> 
+                                                <div class="row clearfix" hidden="">
+                                                    <div class="col-lg-1 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
+                                                        <label >เรียน</label>
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="row clearfix" hidden>
-                                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
-                                                <label >สังกัด</label>
-                                            </div>
-                                            <div class="col-lg-10 col-md-10t col-sm-9 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="sangkad_la" class="form-control" value="<?php echo $_SESSION['dep_name'] ?>"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-3 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label >มีวันลาพักผ่อนสะสม</label>
-                                            </div>
-                                            <div class="col-lg-1 col-md-9 col-sm-4 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="leave_daylax" class="form-control" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-5 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label >วันทำการ  &nbsp; &nbsp;มีสิทธิลาพักผ่อนประจำปีนี้อีก 10 วันทำการ </label>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row clearfix">
-                                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label >รวมเป็น</label>
-                                            </div>
-                                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="leave_totalday" class="form-control" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label >วันทำการ   </label>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-3 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label >ขอลาพักผ่อนตั้งแต่วันที่</label>
-                                            </div>
-                                            <div class="col-lg-2 col-md-4 col-sm-8 col-xs-12 form-control-label" >
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="leave_Inday" class="form-control" placeholder="__/__/____">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-5 form-control-label">
-                                                <label >ถึงวันที่ </label>
-                                            </div>
-                                            <div class="col-lg-2 col-md-4 col-sm-8 col-xs-12 form-control-label" >
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="leave_outday" class="form-control" placeholder="__/__/____">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="row clearfix">
-                                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label >มีกำหนด</label>
-                                            </div>
-                                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-5 form-control-label">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="leave_dayreplace" class="form-control" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
-                                                <label >วันทำการ   </label>
-                                            </div> 
-
-                                        </div>     
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
-                                                <label >ในระหว่างลาจะติดต่อข้าพเจ้าได้ที่</label>
-                                            </div>
-                                            <div class="col-lg-3 col-md-9 col-sm-4 col-xs-12">
-                                                <div class="form-group">
-
-                                                    <textarea rows="3" cols="40" id="leave_address"></textarea>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
-                                                <label >โทรศัพท์</label>
-                                            </div>
-                                            <div class="col-lg-2 col-md-9 col-sm-4 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="tel_leave" class="form-control" placeholder=""  maxlength="10" onkeypress="return isNumberKey(event)" value="<?php echo $_SESSION['tel'] ?>"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="row clearfix">
-                                            <div class="demo-checkbox">
-                                                <div class="col-lg-4 col-md-6 col-sm-3 col-xs-12 form-control-label-l">
-                                                    <label><b><u>หมายเหตุ</u></b></label> &nbsp; <input  type="checkbox" id="ssss" class="filled-in chk-col-light-blue">
-                                                    <label for="ssss">(ถ้ามี)ลาต่อเนื่องวันหยุด</label>
-                                                </div>
-                                            </div>
-                                        </div>  
-                                        <div class="row clearfix" id="input-hide">
-                                            <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
-                                                <label >เนื่องจาก</label>
-                                            </div>
-                                            <div class="col-lg-11 col-md-9 col-sm-4 col-xs-12">
-                                                <div class="form-group">
-                                                    <textarea rows="3" cols="100" id="leave_since"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix" id="input-2">
-                                            <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
-                                                <label >ชื่อ</label>
-                                            </div>
-                                            <div class="col-lg-4 col-md-9 col-sm-4 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="leave_name2" class="form-control" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row clearfix" id="input-2">
-                                                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
-                                                    <label >ตำแหน่ง</label>
-                                                </div>
-                                                <div class="col-lg-4 col-md-10 col-sm-9 col-xs-12">
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pos_name">
-                                                                <?php
+                                                    <div class="col-lg-4 col-md-9 col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id ="leave_topic" class="form-control" placeholder="กรอกชื่อผู้อนุมัติ select" value="<?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
-                                                                echo '<option  value="">เลือก</opition>';
-                                                                $sql = "select * from ps_position ";
+                                                                $sql = "select p.pro_prefix,p.pro_fname, p.pro_lname from ps_profile as p left join ps_leveboss AS lb on p.lvb_id = lb.lvb_id where p.class_id = '" . $_SESSION['class_id'] . "' AND lb.lvb_claim = (select MIN(lb.lvb_claim) from ps_profile as p left join ps_leveboss AS lb on p.lvb_id = lb.lvb_id WHERE p.class_id = '" . $_SESSION['class_id'] . "')";
                                                                 $query = $cn->Connect->query($sql);
                                                                 while ($rs = mysqli_fetch_array($query)) {
-                                                                    echo '<option  value="' . $rs['pos_name'] . '">' . $rs['pos_name'] . '</opition>';
+                                                                    echo $rs['pro_prefix'] . $rs['pro_fname'] . ' ' . $rs['pro_lname'];
                                                                 }
-                                                                ?>
-                                                            </select>
+                                                                ?>"/>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix" hidden>
+                                                    <div style="margin-left: 17%;" >
+                                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 form-control-label-l">
+                                                            <label >ข้าพเจ้า</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-5 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" id ="leave_name" class="form-control" placeholder="กรอกชื่อผู้ขออนุมัติ select" value="<?php echo $_SESSION['fullname']; ?>"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix" hidden>
+                                                    <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >ตำแหน่ง</label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-10 col-sm-9 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="position_name" class="form-control" value="<?php echo $_SESSION['pos_name'] ?>"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label">
+                                                        <label >ระดับ</label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-10 col-sm-9 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="levels_la" class="form-control" value="<?php echo $_SESSION['lv_name'] ?>"/> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row clearfix" hidden>
+                                                    <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >สังกัด</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-10t col-sm-9 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="sangkad_la" class="form-control" value="<?php echo $_SESSION['dep_name'] ?>"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >มีวันลาพักผ่อนสะสม</label>
+                                                    </div>
+                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-5">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <center> <input type="text" id="leave_daylax" class="form-control" placeholder=""></center>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 form-control-label-l">
+                                                        <label>วันทำการ</label>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-control-label-l">
+                                                        <label class="font-bold col-teal">มีสิทธิลาพักผ่อนประจำปีนี้อีก 10 วันทำการ </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >รวมเป็น</label>
+                                                    </div>
+                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-5 form-control-label-l">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="leave_totalday" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7 form-control-label-l">
+                                                        <label >วันทำการ   </label>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label >ขอลาพักผ่อนตั้งแต่วันที่</label>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label" >
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="leave_Inday" class="form-control date" placeholder="__/__/____">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                        <label >ถึงวันที่ </label>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label" >
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="leave_outday" class="form-control date" placeholder="__/__/____">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                            </div>
-
-                                        </div>
-                                        <div class="row clearfix" id="input-Position">
-                                            <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
-                                                <label >(ลงชื่อ)</label>
-                                            </div>
-                                            <div class="col-lg-4 col-md-9 col-sm-4 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="name_place" class="form-control" placeholder="">
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >มีกำหนด</label>
+                                                    </div>
+                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-5 form-control-label">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="leave_dayreplace" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-7 form-control-label-l">
+                                                        <label >วันทำการ   </label>
+                                                    </div> 
+                                                </div>     
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 form-control-label-l">
+                                                        <label >ในระหว่างลาจะติดต่อข้าพเจ้าได้ที่</label>
+                                                    </div>
+                                                    <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <textarea class="form-control" id="leave_address" placeholder="กรอกข้อมูลที่ติดต่อได้"></textarea>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row clearfix" id="input-Position">
-                                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
-                                                    <label >ผู้ปฎิบัติหน้าที่แทน</label>
-                                                </div>
-                                                <div class="col-lg-4 col-md-10 col-sm-9 col-xs-12">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">date_range</i>
-                                                        </span>
-                                                        <div class="form-line">
-                                                            <input type="text" id="leave_dates" class="form-control" placeholder="Ex: 30/07/2561">
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >โทรศัพท์</label>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="tel_leave" class="form-control" placeholder="กรอกหมายเลขโทรศัพท์"  maxlength="10" onkeypress="return isNumberKey(event)" value="<?php echo $_SESSION['tel'] ?>"/>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                            </div>
+                                                <div class="row clearfix">
+                                                    <div class="demo-checkbox">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form-control-label-l">
+                                                            <label><b><u>หมายเหตุ</u></b></label> &nbsp; <input  type="checkbox" id="ssss" class="filled-in chk-col-light-blue">
+                                                            <label for="ssss">(ถ้ามี)ลาต่อเนื่องวันหยุด</label>
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                                <div class="row clearfix" id="input-hide">
+                                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >เนื่องจาก</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9 col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <textarea class="form-control" id="leave_since" placeholder="กรอกสาเหตุ"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix" id="input-2">
+                                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >ชื่อ-สกุล</label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-9 col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="leave_name2" class="form-control" placeholder="กรอกชื่อ-สกุล">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix" id="input-2">
+                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ตำแหน่ง</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-10 col-sm-9 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="pos_name">
+                                                                        <?php
+                                                                        $cn = new management;
+                                                                        $cn->con_db();
+                                                                        echo '<option  value="">เลือก</opition>';
+                                                                        $sql = "select * from ps_position ";
+                                                                        $query = $cn->Connect->query($sql);
+                                                                        while ($rs = mysqli_fetch_array($query)) {
+                                                                            echo '<option  value="' . $rs['pos_name'] . '">' . $rs['pos_name'] . '</opition>';
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix" id="input-Position">
+                                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                        <label >(ลงชื่อ)</label>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-9 col-sm-4 col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="name_place" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix" id="input-Position">
+                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 form-control-label-l">
+                                                            <label >ผู้ปฎิบัติหน้าที่แทน</label>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-10 col-sm-9 col-xs-12">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="material-icons">date_range</i>
+                                                                </span>
+                                                                <div class="form-line">
+                                                                    <input type="text" id="leave_dates" class="form-control" placeholder="Ex: 30/07/2561">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-primary waves-effect" onclick="javascript: addRelax('ALR')">บันทึก</button>

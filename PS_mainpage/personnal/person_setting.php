@@ -91,7 +91,7 @@
                                                         <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="nameuser" class="form-control" placeholder="กรอกชื่อ" disabled="">
+                                                                    <input type="text" id="nameuser" class="form-control" placeholder="กรุณาใส่เลขบัตรประชาชน" disabled="">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -101,7 +101,7 @@
                                                         <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="lastname" class="form-control" placeholder="กรอกสกุล" disabled="">
+                                                                    <input type="text" id="lastname" class="form-control" placeholder="กรุณาใส่เลขบัตรประชาชน" disabled="">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -123,7 +123,7 @@
                                                         <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="email" class="form-control email" placeholder="Ex: example@example.com">
+                                                                    <input type="text" id="email" class="form-control email" placeholder="กรอก E-mail">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -137,7 +137,7 @@
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
-                                                                echo '<option  value="">เลือก</opition>';
+                                                                echo '<option  value="">กรุณาใส่เลขบัตรประชาชน</opition>';
                                                                 $sql = "select * from ps_position ";
                                                                 $query = $cn->Connect->query($sql);
                                                                 while ($rs = mysqli_fetch_array($query)) {
@@ -156,7 +156,7 @@
                                                                 <?php
                                                                 $cn = new management;
                                                                 $cn->con_db();
-                                                                echo '<option  value="">เลือก</opition>';
+                                                                echo '<option  value="">กรุณาใส่เลขบัตรประชาชน</opition>';
                                                                 $sql = "select * from ps_class ";
                                                                 $query = $cn->Connect->query($sql);
                                                                 while ($rs = mysqli_fetch_array($query)) {
@@ -310,7 +310,7 @@
                                                     <div class="col-lg-4 col-md-9 col-sm-8 col-xs-12">
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="text" id="emailE" class="form-control email" placeholder="Ex: example@example.com">
+                                                                <input type="text" id="emailE" class="form-control email" placeholder="กรอก E-mail">
                                                             </div>
                                                         </div>
                                                     </div>

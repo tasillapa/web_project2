@@ -2,6 +2,7 @@
     var cls = new Call_Service();
     var card_id = '<?= $_SESSION["card_id"]; ?>';
     var name = '<?= $_SESSION["name"]; ?>';
+    var proID = '<?= $_SESSION["pro_id"]; ?>';
     var NoImg = '../../images/img-profile/no_img.png';
     $(function () {
         $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
@@ -100,6 +101,9 @@
         $('#class_id').select2();
         $('#dep_id').select2();
         $('#sw_input').hide();
+        $('#tran_status').select2();
+        $('.see_out').hide();
+        $('.see_tranout').hide();
     });
 
     $('#check_tran').click(function () {
@@ -119,6 +123,22 @@
         }
     });
 
+    $('#tran_status').change(function () {
+        if ($('#tran_status').val() == '0') {
+            $('.see_tranout').hide();
+            $('.see_out').hide();
+            $('.see_tranout').find('.input').val('');
+        } else if ($('#tran_status').val() == '1') {
+            $('.see_tranout').find('.input').val('');
+            $('.see_tranout').show();
+            $('#tran_date').val(DateTodayThai());
+        } else {
+            $('.see_tranout').find('.input').val('');
+            $('#tran_date').val(DateTodayThai());
+            $('.see_tranout').show();
+            $('.see_out').hide();
+        }
+    });
     function show_profile() {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
     }
@@ -326,6 +346,25 @@
                 });
                 $('#dep_idE').select2();
             });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_tranferOut", [data[0].pro_id], true, function (data2) {
+                if (data2.length != 0) {
+                    if (data2[0].tran_status == '1') {
+                        $('#tran_status  option[value="1"]').prop("selected", true);
+                        $('#tran_status').select2();
+                        $('.see_tranout').show();
+                        $('#tran_date').val(DateTodayThai());
+                        $('#tran_note').val(data2[0].tran_note);
+                        $('#tran_name').val(data2[0].tran_name);
+                    } else {
+                        $('#tran_status  option[value="2"]').prop("selected", true);
+                        $('#tran_status').select2();
+                        $('.see_tranout').show();
+                        $('.see_out').hide();
+                        $('#tran_date').val(DateTodayThai());
+                        $('#tran_note').val(data2[0].tran_note);
+                    }
+                }
+            });
         });
     }
     function slDetail(data) {
@@ -407,6 +446,25 @@
                     }
                 });
             });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_tranferOut", [data[0].pro_id], true, function (data2) {
+                if (data2.length != 0) {
+                    if (data2[0].tran_status == '1') {
+                        $('#tran_status  option[value="1"]').prop("selected", true);
+                        $('#tran_status').select2();
+                        $('.see_tranout').show();
+                        $('#tran_date').val(DateTodayThai());
+                        $('#tran_note').val(data2[0].tran_note);
+                        $('#tran_name').val(data2[0].tran_name);
+                    } else {
+                        $('#tran_status  option[value="2"]').prop("selected", true);
+                        $('#tran_status').select2();
+                        $('.see_tranout').show();
+                        $('.see_out').hide();
+                        $('#tran_date').val(DateTodayThai());
+                        $('#tran_note').val(data2[0].tran_note);
+                    }
+                }
+            });
         });
     }
     function editPerson(EPSM) {
@@ -423,16 +481,23 @@
             type: 'post',
             success: function (data) {
                 var array = [];
+                if (data == '0') {
+                    data = '';
+                }
                 array.push(split($('#card_idE').val()), $('#pro_idposE').val(), $('input[name=group1E]:checked', '#pro_sexE').val(), $('#pro_prefixE').val(), $('#pro_fnameE').val(), $('#pro_lnameE').val(), $('#pro_nicknameE').val()
                         , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
                         , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), $('#pro_transferE').val(), data, name, formatDateToday(), $('#pro_id').val(), $('#imgSE').attr('src'));
                 cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPSM, array, true, function (result) {
-                    show_profile()
-                    swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
-                    $('#editPerson').modal('hide');
 //                    $.post("../../PS_mainpage/personnal/main_personnal.php", {ch_new: data}, function (result) {
 ////                         alert(result);
 //                    });
+                    var arr_tran = [];
+                    arr_tran.push($('#tran_name').val(), $('#tran_note').val(), formatDateDB($('#tran_date').val()), $('#tran_status').val(), $('#pro_id').val());
+                    cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", 'data_tranfer', arr_tran, true, function (result) {
+                        show_profile()
+                        swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
+                        $('#editPerson').modal('hide');
+                    });
                 });
             }
         });
