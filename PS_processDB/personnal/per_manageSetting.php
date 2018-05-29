@@ -21,6 +21,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "sl_data_profile": sl_data_profile();
             break;
+        case "check_user_personnal": check_user_personnal();
+            break;
     }
 }
 
@@ -230,6 +232,18 @@ function sl_data_profile() {
         $rs = $cn->select($sql);
         $json = json_encode($rs);
         echo $json;
+    }
+    exit();
+}
+
+function check_user_personnal() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        $sql = "SELECT * FROM ps_personnal WHERE card_id = '$get_data[0]'";
+        $rs = $cn->mysqli_num_rows($sql);
+        echo $rs;
     }
     exit();
 }

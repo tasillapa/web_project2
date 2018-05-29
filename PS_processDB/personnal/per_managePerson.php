@@ -238,6 +238,8 @@ function del_profile() {
         $cn->exec($sql_HSCP);
         $sql_TRAN = "DELETE FROM ps_transferout WHERE pro_id = '$get_data[0]'";
         $cn->exec($sql_TRAN);
+        $sql_USER = "DELETE FROM ps_personnal WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_USER);
         $sql = "DELETE FROM ps_profile WHERE pro_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;

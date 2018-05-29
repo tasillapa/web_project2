@@ -300,6 +300,9 @@
 
     function check_cardId() {
         if ($('#card_id').val().replace(/\D/g, "").length == 13) {
+            cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "check_user_personnal", [split($('#card_id').val())], true, function (result) {
+                 
+            });
             cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_data_profile", [split($('#card_id').val())], true, function (data) {
                 if (data != '') {
                     $('#nameuser').val(data[0].pro_fname);

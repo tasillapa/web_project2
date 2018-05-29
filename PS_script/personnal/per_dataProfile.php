@@ -665,14 +665,18 @@
         var YB = getdayBirth[0];
         var MB = getdayBirth[1];
         var DB = getdayBirth[2];
-        var setdayBirth = moment(YB + "-" + MB + "-" + DB);
-        var setNowDate = moment();
-        var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
-        var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
-        var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
-        var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
-        var str_year_month = yearReal + " ปี " + monthDiff + " เดือน"; // ต่อวันเดือนปี  
-        $("#gen_old").val(str_year_month);
+        if (MB != 0) {
+            var setdayBirth = moment(YB + "-" + MB + "-" + DB);
+            var setNowDate = moment();
+            var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
+            var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
+            var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
+            var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
+            var str_year_month = yearReal + " ปี " + monthDiff + " เดือน"; // ต่อวันเดือนปี  
+            $("#gen_old").val(str_year_month);
+        } else {
+            $("#gen_old").val('ยังไม่ได้ระบุวันเกิด');
+        }
     }
     function OnchangAge(old) {
         var dayBirth = old;
@@ -680,14 +684,18 @@
         var YB = getdayBirth[2] - 543;
         var MB = getdayBirth[1];
         var DB = getdayBirth[0];
-        var setdayBirth = moment(YB + "-" + MB + "-" + DB);
-        var setNowDate = moment();
-        var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
-        var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
-        var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
-        var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
-        var str_year_month = yearReal + " ปี " + monthDiff + " เดือน"; // ต่อวันเดือนปี  
-        $("#gen_old").val(str_year_month);
+        if (MB != 0) {
+            var setdayBirth = moment(YB + "-" + MB + "-" + DB);
+            var setNowDate = moment();
+            var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
+            var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
+            var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
+            var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
+            var str_year_month = yearReal + " ปี " + monthDiff + " เดือน"; // ต่อวันเดือนปี  
+            $("#gen_old").val(str_year_month);
+        } else {
+            $("#gen_old").val('ยังไม่ได้ระบุวันเกิด');
+        }
     }
     function back() {
         window.location.href = '../../PS_mainpage/personnal/person_addData.php';
