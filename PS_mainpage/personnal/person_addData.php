@@ -886,12 +886,28 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                             <span class="sp-pad" id="pro_transferD"></span>
                                                         </div>
                                                     </div>
-                                                    <div class="row clearfix">
+                                                    <div class="row clearfix see_tranout">
                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
-                                                            <label class="font-bold col-orange">โอนย้ายออก</label>
+                                                            <label class="font-bold col-orange" id="topic_tran"></label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-t-8">
-                                                            <span class="sp-pad" id="dfsdf"></span>
+                                                            <span class="sp-pad" id="tran_dateD"></span>
+                                                        </div>
+                                                    </div>
+                                                     <div class="row clearfix see_tranout">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label>หมายเหตุ</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="tran_noteD"></span>
+                                                        </div>
+                                                    </div>
+                                                     <div class="row clearfix see_tranout see_out">
+                                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                            <label>ย้ายไปที่</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-t-8">
+                                                            <span class="sp-pad" id="tran_nameD"></span>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

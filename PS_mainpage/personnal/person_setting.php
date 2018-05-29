@@ -167,6 +167,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="row clearfix">
+                                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                            <label>สังกัด</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
+                                                            <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="dep_id" disabled="">
+                                                                <?php
+                                                                $cn = new management;
+                                                                $cn->con_db();
+                                                                echo '<option  value="">กรุณาใส่เลขบัตรประชาชน</opition>';
+                                                                $sql = "select * from ps_department";
+                                                                $query = $cn->Connect->query($sql);
+                                                                while ($rs = mysqli_fetch_array($query)) {
+                                                                    echo '<option  value="' . $rs['dep_id'] . '">' . $rs['dep_name'] . '</opition>';
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row clearfix">
                                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
                                                             <label> ชื่อผู้ใช้งาน</label>
                                                         </div>
@@ -332,6 +351,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="row clearfix">
+                                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
+                                                        <label>สังกัด</label>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
+                                                        <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="dep_idE"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 form-control-label-l">
                                                         <label> ชื่อผู้ใช้งาน</label>
                                                     </div>
@@ -340,6 +367,7 @@
                                                             <div class="form-line">
                                                                 <input type="text" id="usernameE" class="form-control" placeholder="กรอกชื่อผู้ใช้งาน">
                                                                 <input type="hidden" id="member_id">
+                                                                <input type="hidden" id="pro_id">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -469,6 +497,14 @@
                                                 </div>
                                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-d-8">
                                                     <span id="class_idD"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
+                                                    <label>สังกัด</label>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 p-d-8">
+                                                    <span id="dep_idD"></span>
                                                 </div>
                                             </div>
                                             <div class="row clearfix">

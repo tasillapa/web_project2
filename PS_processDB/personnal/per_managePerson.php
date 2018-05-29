@@ -236,6 +236,8 @@ function del_profile() {
         $cn->exec($sql_HS);
         $sql_HSCP = "DELETE FROM ps_salaryspecial WHERE pro_id = '$get_data[0]'";
         $cn->exec($sql_HSCP);
+        $sql_TRAN = "DELETE FROM ps_transferout WHERE pro_id = '$get_data[0]'";
+        $cn->exec($sql_TRAN);
         $sql = "DELETE FROM ps_profile WHERE pro_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
@@ -314,6 +316,13 @@ function edit_profile() {
             $cn->exec($sql_edit_pread);
         }
 
+        $sql_sl_personnal = "SELECT * FROM ps_personnal WHERE pro_id = '$get_data[21]'";
+        $Query_personnal = $cn->Connect->query($sql_sl_personnal);
+        if (mysqli_num_rows($Query_personnal) != '0') {
+            $sql_edit_personnal = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[4]', lastname = '$get_data[5]', pos_id = '$get_data[9]', class_id = '$get_data[13]', dep_id = '$get_data[14]', person_update = '$get_data[19]', date_update = '$get_data[20]'  WHERE pro_id = '$get_data[21]'";
+            $cn->exec($sql_edit_personnal);
+        }
+
         $sql = "UPDATE ps_profile
         SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'
             , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_picture = '$get_data[18]', pro_person_update = '$get_data[19]', pro_date_update = '$get_data[20]'
@@ -351,6 +360,15 @@ function edit_profile_main() {
             }
             $get_data[19] = $path;
         }
+
+
+        $sql_sl_personnal = "SELECT * FROM ps_personnal WHERE pro_id = '$get_data[22]'";
+        $Query_personnal = $cn->Connect->query($sql_sl_personnal);
+        if (mysqli_num_rows($Query_personnal) != '0') {
+            $sql_edit_personnal = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[4]', lastname = '$get_data[5]', pos_id = '$get_data[9]', class_id = '$get_data[13]', dep_id = '$get_data[14]', person_update = '$get_data[20]', date_update = '$get_data[21]'  WHERE pro_id = '$get_data[22]'";
+            $cn->exec($sql_edit_personnal);
+        }
+
         $sql = "UPDATE ps_profile
         SET card_id = '$get_data[0]', pro_idpos = '$get_data[1]', pro_sex = '$get_data[2]', pro_prefix = '$get_data[3]', pro_fname = '$get_data[4]', pro_lname = '$get_data[5]', pro_nickname = '$get_data[6]', pro_birthday = '$get_data[7]', pro_status = '$get_data[8]', pos_id = '$get_data[9]', type_id = '$get_data[10]', lvb_id = '$get_data[11]'
             , lv_id = '$get_data[12]', class_id = '$get_data[13]', dep_id = '$get_data[14]', pro_salary = '$get_data[15]', pro_dateIn = '$get_data[16]', pro_dateOut = '$get_data[17]', pro_transfer = '$get_data[18]', pro_picture = '$get_data[19]', pro_person_update = '$get_data[20]', pro_date_update = '$get_data[21]'
@@ -457,17 +475,26 @@ function data_tranfer() {
         if ($num > 0) {
             while ($row = mysqli_fetch_array($query)) {
                 if ($get_data[3] == '0') {
+                    $sql_change_status = "UPDATE ps_personnal SET status = '1' WHERE pro_id = '$get_data[4]'";
+                    $rs_edit = $cn->exec($sql_change_status);
+
                     $tran_id = $row['tran_id'];
                     $sql_del = "DELETE FROM ps_transferout WHERE tran_id = '$tran_id'";
                     $rs_del = $cn->execute($sql_del);
                     echo $rs_del;
                 } else {
+                    $sql_change_status = "UPDATE ps_personnal SET status = '0' WHERE pro_id = '$get_data[4]'";
+                    $rs_edit = $cn->exec($sql_change_status);
+
                     $sql_edit = "UPDATE ps_transferout SET tran_name = '$get_data[0]', tran_note = '$get_data[1]', tran_date = '$get_data[2]', tran_status = '$get_data[3]' WHERE pro_id = '$get_data[4]'";
                     $rs_edit = $cn->execute($sql_edit);
                     echo $rs_edit;
                 }
             }
         } else {
+            $sql_change_status = "UPDATE ps_personnal SET status = '0' WHERE pro_id = '$get_data[4]'";
+            $rs_edit = $cn->exec($sql_change_status);
+
             $sql_add = "INSERT INTO ps_transferout (tran_name, tran_note, tran_date, tran_status, pro_id) VALUES ('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]')";
             $rs_add = $cn->execute($sql_add);
             echo $rs_add;

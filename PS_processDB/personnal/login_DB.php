@@ -39,8 +39,8 @@ function chklogin() {
                 $_SESSION['pro_prefix'] = $rs['pro_prefix'];
                 $_SESSION['pro_picture'] = $rs['pro_picture'];
                 $_SESSION['tel'] = $rs['tel'];
-                $_SESSION['name'] = $rs['nameuser'] . ' ' . $rs['lastname'];
-                $_SESSION['fullname'] = $rs['pro_prefix'].$rs['nameuser'] . ' ' . $rs['lastname'];
+                $_SESSION['name'] = $rs['pro_fname'] . ' ' . $rs['pro_lname'];
+                $_SESSION['fullname'] = $rs['pro_prefix'].$rs['pro_fname'] . ' ' . $rs['pro_lname'];
             }
             echo "ok";
         } else {

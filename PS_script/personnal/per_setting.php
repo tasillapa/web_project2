@@ -44,13 +44,17 @@
         cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_table_setting", "", true, table_setting);
         $('#pos_id').select2();
         $('#class_id').select2();
+        $('#dep_id').select2();
         $('#level').select2();
 
     });
     function show_setting() {
         cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_table_setting", "", true, table_setting);
     }
-
+    $(document).on("click", ".table_setting tbody tr td:not(:last-child)", function () {
+        var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
+        window.location.href = '../../PS_mainpage/personnal/person_DataProfile.php?id=' + clickedBtnID + '';
+    });
     function table_setting(data) {
         $(".table_setting").html('');
         var dataSet = [];
@@ -63,8 +67,7 @@
                 tag = '<button style="border-radius: 12px; width: 5em; padding: 2px" type="button" class="btn btn-success waves-effect">เปิดใช้</button>';
             }
             a++;
-//            , data[i].tel, data[i].email, data[i].username, data[i].password
-            dataSet.push(['<center>' + a + '</center>', cardID(data[i].card_id), data[i].nameuser + ' ' + data[i].lastname, data[i].pos_name, data[i].class_name, tag, '<img class="btn-detail" id="' + data[i].member_id + '" data-toggle="modal" data-target="#detailUser" onclick="javascript: slUserDetail(this)"/>' + ' ' + '<img class="btn-edit" id="' + data[i].member_id + '" data-toggle="modal" data-target="#editUser" onclick="javascript: slUserEdit(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].member_id + '" onclick="javascript: delUser(this)"/>']);
+            dataSet.push(['<center>' + a + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].nameuser + ' ' + data[i].lastname, data[i].pos_name, data[i].class_name, tag, '<img class="btn-detail" link="' + data[i].pro_id + '" id="' + data[i].member_id + '" data-toggle="modal" data-target="#detailUser" onclick="javascript: slUserDetail(this)"/>' + ' ' + '<img class="btn-edit" id="' + data[i].member_id + '" data-toggle="modal" data-target="#editUser" onclick="javascript: slUserEdit(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].member_id + '" onclick="javascript: delUser(this)"/>']);
         });
         $('#table_setting_show').html('<table class="table table-bordered table-striped table-hover table_setting dataTable" width="100%"></table>');
         $('.table_setting').DataTable({
@@ -76,16 +79,12 @@
                 {title: "ชื่อ-สกุล"},
                 {title: "ตำแหน่ง"},
                 {title: "กลุ่ม"},
-//                {title: "เบอร์โทรศัพท์"},
-//                {title: "E-mail"},
-//                {title: "Username"},
-//                {title: "Password"},
                 {title: "สถานะ"},
                 {title: "...", "width": "12%"},
             ],
             "fnRowCallback": function (nRow) {
 //                console.log($(nRow).find('img').attr('id'));
-                $(nRow).attr('id', $(nRow).find('img').attr('id'));
+                $(nRow).attr('id', $(nRow).find('img').attr('link'));
                 $(nRow).css('cursor', 'pointer');
             }
         });
@@ -99,8 +98,8 @@
                     if ($('#status').is(':checked')) {
                         status = 1;
                     }
-                    array.push(split($('#card_id').val()), $('#nameuser').val(), $('#lastname').val(), split($('#tel').val()), $('#email').val()
-                            , $('#pos_id').val(), $('#class_id').val(), $('#username').val(), $('#password').val()
+                    array.push(data[0].pro_id, split($('#card_id').val()), $('#nameuser').val(), $('#lastname').val(), split($('#tel').val()), $('#email').val()
+                            , $('#pos_id').val(), $('#class_id').val(), $('#dep_id').val(), $('#username').val(), $('#password').val()
                             , $('#level').val(), status, name, formatDateToday(), name, formatDateToday());
                     cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", AUSER, array, true, function (data) {
                         show_setting();
@@ -155,6 +154,17 @@
                 });
                 $('#class_idE').select2();
             });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_department", "", true, function (data2) {
+                $('#dep_idE').html('<option  value="">เลือก</opition>');
+                $.each(data2, function (i) {
+                    if (data[0].dep_id == data2[i].dep_id) {
+                        $("#dep_idE").append('<option selected="selected" value="' + data2[i].dep_id + '">' + data2[i].dep_name + '</opition>');
+                    } else {
+                        $("#dep_idE").append('<option value="' + data2[i].dep_id + '">' + data2[i].dep_name + '</opition>');
+                    }
+                });
+                $('#dep_idE').select2();
+            });
             $('#usernameE').val(data[0].username);
             $('#passwordE').val(data[0].password);
             $('#ch_passwordE').val(data[0].password);
@@ -169,6 +179,7 @@
                 $('#statusE').prop('checked', false);
             }
             $('#member_id').val(data[0].member_id);
+            $('#pro_id').val(data[0].pro_id);
         });
     }
 
@@ -190,6 +201,13 @@
                 $.each(data2, function (i) {
                     if (data[0].class_id == data2[i].class_id) {
                         $('#class_idD').html(data2[i].class_name);
+                    }
+                });
+            });
+            cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_department", "", true, function (data2) {
+                $.each(data2, function (i) {
+                    if (data[0].dep_id == data2[i].dep_id) {
+                        $('#dep_idD').html(data2[i].dep_name);
                     }
                 });
             });
@@ -225,8 +243,8 @@
             status = 1;
         }
         array.push(split($('#card_idE').val()), $('#nameuserE').val(), $('#lastnameE').val(), split($('#telE').val()), $('#emailE').val()
-                , $('#pos_idE').val(), $('#class_idE').val(), $('#usernameE').val(), $('#passwordE').val()
-                , $('#levelE').val(), status, name, formatDateToday(), $('#member_id').val());
+                , $('#pos_idE').val(), $('#class_idE').val(), $('#dep_idE').val(), $('#usernameE').val(), $('#passwordE').val()
+                , $('#levelE').val(), status, name, formatDateToday(), $('#member_id').val(), $('#pro_id').val());
         cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", EUSER, array, true, function (data) {
             show_setting();
             swal("แก้ไขสำเร็จ!", "ข้อมูลผู้ใช้งาน อัพเดทเเล้ว", "success");
@@ -290,6 +308,8 @@
                     $("#pos_id").select2();
                     $("#class_id  option[value=" + data[0].class_id + "]").prop("selected", true);
                     $("#class_id").select2();
+                    $("#dep_id  option[value=" + data[0].dep_id + "]").prop("selected", true);
+                    $("#dep_id").select2();
                 } else {
                     $('#nameuser').val('');
                     $('#lastname').val('');
@@ -297,6 +317,8 @@
                     $("#pos_id").select2();
                     $("#class_id  option[value='']").prop("selected", true);
                     $("#class_id").select2();
+                    $("#dep_id  option[value='']").prop("selected", true);
+                    $("#dep_id").select2();
                     $('#error-cardId').fadeIn();
                     $('#error-cardId').html('<label class="error">ไม่มีข้อมูลในระบบ</label>').addClass('form-line focused error');
                 }
@@ -308,6 +330,8 @@
             $("#pos_id").select2();
             $("#class_id  option[value='']").prop("selected", true);
             $("#class_id").select2();
+            $("#dep_id  option[value='']").prop("selected", true);
+            $("#dep_id").select2();
             $('#error-cardId').fadeOut(100);
         }
     }

@@ -97,9 +97,9 @@ function sl_data_setting() {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
         if ($id == '') {
-            $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_id ORDER BY ps.status DESC";
+            $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_id LEFT JOIN ps_profile AS pro ON ps.pro_id = pro.pro_id ORDER BY ps.status DESC";
         } else {
-            $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_id WHERE ps.member_id ='$id' ORDER BY ps.status DESC";
+            $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_id LEFT JOIN ps_profile AS pro ON ps.pro_id = pro.pro_id WHERE ps.member_id ='$id' ORDER BY ps.status DESC";
         }
         $rs = $cn->select($sql);
         $json = json_encode($rs);
@@ -113,8 +113,33 @@ function add_user() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "INSERT INTO ps_personnal (card_id, nameuser, lastname, tel, email, pos_id, class_id, username, password, level, status, person_create, date_create, person_update, date_update)"
-                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '$get_data[10]', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]')";
+
+        $sql_sl_geninfo = "SELECT * FROM ps_geninformation WHERE pro_id = '$get_data[0]'";
+        $Query_geninfo = $cn->Connect->query($sql_sl_geninfo);
+        if ($get_data[5] != '') {
+            if (mysqli_num_rows($Query_geninfo) == '0') {
+                $sql_add_geninfo = "INSERT INTO ps_geninformation (gen_email, pro_id) VALUES('$get_data[5]', '$get_data[0]')";
+                $cn->exec($sql_add_geninfo);
+            } else {
+                $sql_edit_geninfo = "UPDATE ps_geninformation SET gen_email = '$get_data[5]' WHERE pro_id = '$get_data[0]'";
+                $cn->exec($sql_edit_geninfo);
+            }
+        }
+        $sql_address = "SELECT * FROM ps_address WHERE pro_id = '$get_data[0]'";
+        $Query_address = $cn->Connect->query($sql_address);
+        if ($get_data[4] != '') {
+            if (mysqli_num_rows($Query_address) == '0') {
+                $sql_add_address = "INSERT INTO ps_address(address_fhone, pro_id) VALUES('$get_data[4]', '$get_data[0]')";
+                $cn->exec($sql_add_address);
+            } else {
+                $sql_edit_address = " UPDATE ps_address SET address_fhone = '$get_data[4]'"
+                        . " WHERE pro_id = '$get_data[0]'";
+                $cn->exec($sql_edit_address);
+            }
+        }
+
+        $sql = "INSERT INTO ps_personnal (pro_id, card_id, nameuser, lastname, tel, email, pos_id, class_id, dep_id, username, password, level, status, person_create, date_create, person_update, date_update)"
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '$get_data[10]', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]', '$get_data[15]', '$get_data[16]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -138,8 +163,34 @@ function edit_user() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[1]', lastname = '$get_data[2]', tel = '$get_data[3]', email = '$get_data[4]', pos_id= '$get_data[5]', class_id = '$get_data[6]', username = '$get_data[7]', password= '$get_data[8]', level = '$get_data[9]', status ='$get_data[10]', person_update = '$get_data[11]', date_update = '$get_data[12]'"
-                . " WHERE member_id = '$get_data[13]'";
+//        print_r($get_data);exit();
+        $sql_update_profile = "UPDATE ps_profile SET card_id = '$get_data[0]', pro_fname = '$get_data[1]', pro_lname = '$get_data[2]', pos_id= '$get_data[5]', class_id = '$get_data[6]', dep_id = '$get_data[7]', pro_person_update = '$get_data[12]', pro_date_update = '$get_data[13]'"
+                . " WHERE pro_id = '$get_data[15]'";
+        $cn->exec($sql_update_profile);
+
+        $sql_sl_geninfo = "SELECT * FROM ps_geninformation WHERE pro_id = '$get_data[15]'";
+        $Query_geninfo = $cn->Connect->query($sql_sl_geninfo);
+        if (mysqli_num_rows($Query_geninfo) == '0') {
+            $sql_add_geninfo = "INSERT INTO ps_geninformation (gen_email, pro_id) VALUES('$get_data[4]', '$get_data[15]')";
+            $cn->exec($sql_add_geninfo);
+        } else {
+            $sql_edit_geninfo = "UPDATE ps_geninformation SET gen_email = '$get_data[4]' WHERE pro_id = '$get_data[15]'";
+            $cn->exec($sql_edit_geninfo);
+        }
+
+        $sql_address = "SELECT * FROM ps_address WHERE pro_id = '$get_data[15]'";
+        $Query_address = $cn->Connect->query($sql_address);
+        if (mysqli_num_rows($Query_address) == '0') {
+            $sql_add_address = "INSERT INTO ps_address(address_fhone, pro_id) VALUES('$get_data[3]', '$get_data[15]')";
+            $cn->exec($sql_add_address);
+        } else {
+            $sql_edit_address = " UPDATE ps_address SET address_fhone = '$get_data[3]'"
+                    . " WHERE pro_id = '$get_data[15]'";
+            $cn->exec($sql_edit_address);
+        }
+
+        $sql = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[1]', lastname = '$get_data[2]', tel = '$get_data[3]', email = '$get_data[4]', pos_id= '$get_data[5]', class_id = '$get_data[6]', dep_id = '$get_data[7]', username = '$get_data[8]', password= '$get_data[9]', level = '$get_data[10]', status ='$get_data[11]', person_update = '$get_data[12]', date_update = '$get_data[13]'"
+                . " WHERE member_id = '$get_data[14]'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

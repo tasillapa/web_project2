@@ -352,17 +352,23 @@
                         $('#tran_status  option[value="1"]').prop("selected", true);
                         $('#tran_status').select2();
                         $('.see_tranout').show();
-                        $('#tran_date').val(DateTodayThai());
+                        $('#tran_date').val(formatDateShow(data2[0].tran_date));
                         $('#tran_note').val(data2[0].tran_note);
                         $('#tran_name').val(data2[0].tran_name);
-                    } else {
+                    } else if ((data2[0].tran_status == '2')) {
                         $('#tran_status  option[value="2"]').prop("selected", true);
                         $('#tran_status').select2();
                         $('.see_tranout').show();
                         $('.see_out').hide();
-                        $('#tran_date').val(DateTodayThai());
+                        $('#tran_date').val(formatDateShow(data2[0].tran_date));
                         $('#tran_note').val(data2[0].tran_note);
                     }
+                } else {
+                    $('.see_tranout').hide();
+                    $('.see_out').hide();
+                    $('#tran_status  option[value="0"]').prop("selected", true);
+                    $('#tran_status').select2();
+                    $('.see_tranout').find('.input').val('');
                 }
             });
         });
@@ -389,9 +395,9 @@
             }
             $('#pro_statusD').html(data[0].pro_status);
             $('#pro_salaryD').html(parseInt(data[0].pro_salary));
-            $('#pro_birthdayD').html(formatDateShow(data[0].pro_birthday));
-            $('#pro_dateInD').html(formatDateShow(data[0].pro_dateIn));
-            $('#pro_dateOutD').html(formatDateShow(data[0].pro_dateOut));
+            $('#pro_birthdayD').html(DateThai(data[0].pro_birthday));
+            $('#pro_dateInD').html(DateThai(data[0].pro_dateIn));
+            $('#pro_dateOutD').html(DateThai(data[0].pro_dateOut));
             $('#pro_person_create').html(data[0].pro_person_create);
             $('#pro_date_create').html(data[0].pro_date_create);
             $('#pro_person_update').html(data[0].pro_person_update);
@@ -452,17 +458,22 @@
                         $('#tran_status  option[value="1"]').prop("selected", true);
                         $('#tran_status').select2();
                         $('.see_tranout').show();
-                        $('#tran_date').val(DateTodayThai());
-                        $('#tran_note').val(data2[0].tran_note);
-                        $('#tran_name').val(data2[0].tran_name);
-                    } else {
+                        $('#tran_dateD').html(DateThai(data2[0].tran_date));
+                        $('#tran_noteD').html(data2[0].tran_note);
+                        $('#tran_nameD').html(data2[0].tran_name);
+                        $('#topic_tran').html('โอนย้ายออก');
+                    } else if (data2[0].tran_status == '2') {
                         $('#tran_status  option[value="2"]').prop("selected", true);
                         $('#tran_status').select2();
                         $('.see_tranout').show();
                         $('.see_out').hide();
-                        $('#tran_date').val(DateTodayThai());
-                        $('#tran_note').val(data2[0].tran_note);
+                        $('#tran_dateD').html(DateThai(data2[0].tran_date));
+                        $('#tran_noteD').html(data2[0].tran_note);
+                        $('#topic_tran').html('ลาออก');
                     }
+                } else {
+                    $('.see_tranout').hide();
+                    $('.see_out').hide();
                 }
             });
         });
