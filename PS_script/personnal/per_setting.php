@@ -90,29 +90,44 @@
         });
     }
     function addUser(AUSER) {
-        cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_data_profile", [split($('#card_id').val())], true, function (data) {
-            if (data != '') {
-                if ($('#password').val() == $('#ch_password').val()) {
-                    var array = [];
-                    var status = 0;
-                    if ($('#status').is(':checked')) {
-                        status = 1;
+        cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "check_user_personnal", [split($('#card_id').val())], true, function (result) {
+            if (result == '0') {
+                $('#error-cardId').fadeOut();
+                cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_data_profile", [split($('#card_id').val())], true, function (data) {
+                    if (data != '') {
+                        if ($('#password').val() == $('#ch_password').val()) {
+                            var array = [];
+                            var status = 0;
+                            if ($('#status').is(':checked')) {
+                                status = 1;
+                            }
+                            array.push(data[0].pro_id, split($('#card_id').val()), $('#nameuser').val(), $('#lastname').val(), split($('#tel').val()), $('#email').val()
+                                    , $('#pos_id').val(), $('#class_id').val(), $('#dep_id').val(), $('#username').val(), $('#password').val()
+                                    , $('#level').val(), status, name, formatDateToday(), name, formatDateToday());
+                            cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", AUSER, array, true, function (data) {
+                                show_setting();
+                                swal("บันทึกสำเร็จ!", "บันทึกข้อมูลผู้ใช้งานเเล้ว", "success");
+                                $('#addUser').modal('hide');
+                            });
+                        } else {
+                            $('#password-error').html('<label  class="error">รหัสผ่านไม่ตรงกัน</label>').addClass('form-line focused error');
+                            $('#password-error').fadeIn(100);
+                            $('#ch-password-error').html('<label class="error">รหัสผ่านไม่ตรงกัน</label>').addClass('form-line focused error');
+                            $('#ch-password-error').fadeIn(100);
+                        }
+                    } else {
+                        $('#nameuser').val('');
+                        $('#lastname').val('');
+                        $("#pos_id  option[value='']").prop("selected", true);
+                        $("#pos_id").select2();
+                        $("#class_id  option[value='']").prop("selected", true);
+                        $("#class_id").select2();
+                        $('#error-cardId').fadeIn();
+                        $('#error-cardId').html('<label class="error">ไม่มีข้อมูลในระบบ</label>').addClass('form-line focused error');
                     }
-                    array.push(data[0].pro_id, split($('#card_id').val()), $('#nameuser').val(), $('#lastname').val(), split($('#tel').val()), $('#email').val()
-                            , $('#pos_id').val(), $('#class_id').val(), $('#dep_id').val(), $('#username').val(), $('#password').val()
-                            , $('#level').val(), status, name, formatDateToday(), name, formatDateToday());
-                    cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", AUSER, array, true, function (data) {
-                        show_setting();
-                        swal("บันทึกสำเร็จ!", "บันทึกข้อมูลผู้ใช้งานเเล้ว", "success");
-                        $('#addUser').modal('hide');
-                    });
-                } else {
-                    $('#password-error').html('<label  class="error">รหัสผ่านไม่ตรงกัน</label>').addClass('form-line focused error');
-                    $('#password-error').fadeIn(100);
-                    $('#ch-password-error').html('<label class="error">รหัสผ่านไม่ตรงกัน</label>').addClass('form-line focused error');
-                    $('#ch-password-error').fadeIn(100);
-                }
+                });
             } else {
+                alert('55555');
                 $('#nameuser').val('');
                 $('#lastname').val('');
                 $("#pos_id  option[value='']").prop("selected", true);
@@ -120,7 +135,7 @@
                 $("#class_id  option[value='']").prop("selected", true);
                 $("#class_id").select2();
                 $('#error-cardId').fadeIn();
-                $('#error-cardId').html('<label class="error">ไม่มีข้อมูลในระบบ</label>').addClass('form-line focused error');
+                $('#error-cardId').html('<label class="error">มีข้อมูลอยู่ในระบบเเล้ว</label>').addClass('form-line focused error');
             }
         });
     }
@@ -301,18 +316,31 @@
     function check_cardId() {
         if ($('#card_id').val().replace(/\D/g, "").length == 13) {
             cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "check_user_personnal", [split($('#card_id').val())], true, function (result) {
-                 
-            });
-            cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_data_profile", [split($('#card_id').val())], true, function (data) {
-                if (data != '') {
-                    $('#nameuser').val(data[0].pro_fname);
-                    $('#lastname').val(data[0].pro_lname);
-                    $("#pos_id  option[value=" + data[0].pos_id + "]").prop("selected", true);
-                    $("#pos_id").select2();
-                    $("#class_id  option[value=" + data[0].class_id + "]").prop("selected", true);
-                    $("#class_id").select2();
-                    $("#dep_id  option[value=" + data[0].dep_id + "]").prop("selected", true);
-                    $("#dep_id").select2();
+                if (result == '0') {
+                    cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", "sl_data_profile", [split($('#card_id').val())], true, function (data) {
+                        if (data != '') {
+                            $('#error-cardId').fadeOut();
+                            $('#nameuser').val(data[0].pro_fname);
+                            $('#lastname').val(data[0].pro_lname);
+                            $("#pos_id  option[value=" + data[0].pos_id + "]").prop("selected", true);
+                            $("#pos_id").select2();
+                            $("#class_id  option[value=" + data[0].class_id + "]").prop("selected", true);
+                            $("#class_id").select2();
+                            $("#dep_id  option[value=" + data[0].dep_id + "]").prop("selected", true);
+                            $("#dep_id").select2();
+                        } else {
+                            $('#nameuser').val('');
+                            $('#lastname').val('');
+                            $("#pos_id  option[value='']").prop("selected", true);
+                            $("#pos_id").select2();
+                            $("#class_id  option[value='']").prop("selected", true);
+                            $("#class_id").select2();
+                            $("#dep_id  option[value='']").prop("selected", true);
+                            $("#dep_id").select2();
+                            $('#error-cardId').fadeIn();
+                            $('#error-cardId').html('<label class="error">ไม่มีข้อมูลในระบบ</label>').addClass('form-line focused error');
+                        }
+                    });
                 } else {
                     $('#nameuser').val('');
                     $('#lastname').val('');
@@ -323,7 +351,7 @@
                     $("#dep_id  option[value='']").prop("selected", true);
                     $("#dep_id").select2();
                     $('#error-cardId').fadeIn();
-                    $('#error-cardId').html('<label class="error">ไม่มีข้อมูลในระบบ</label>').addClass('form-line focused error');
+                    $('#error-cardId').html('<label class="error">มีข้อมูลอยู่ในระบบแล้ว</label>').addClass('form-line focused error');
                 }
             });
         } else {
