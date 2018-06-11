@@ -15,7 +15,7 @@ if (!isset($_GET['id'])) {
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
                         <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">home</i> Home</a></li>
-                        <li  class="active font-bold col-cyan font-14"><i class="material-icons">picture_in_picture</i> DashBoard</li>
+                        <li  class="active font-bold col-cyan font-14"><i class="material-icons">picture_in_picture</i> ข้อมูลส่วนตัว</li>
                     </ol>
                 </div>
                 <!-- Tabs With Icon Title -->
@@ -302,7 +302,7 @@ if (!isset($_GET['id'])) {
                                                             <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
                                                             </div>
-                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6 btn-saveAll">
                                                                 <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
                                                             </div>
                                                         <?php } else { ?>
@@ -344,7 +344,7 @@ if (!isset($_GET['id'])) {
                                                                 </div>
                                                             </div>
                                                             <div class="row clearfix">
-                                                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
+                                                                <div class="col-lg-2 col-md-2 col-sm-3 coผl-xs-12 form-control-label-l">
                                                                     <label >คำนำหน้าเพศ</label>
                                                                 </div>
                                                                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
@@ -721,11 +721,11 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <!--<h2 class="card-inside-title">ประวัติการเปลี่ยนชื่อ-สกุล</h2>-->
-                                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการเปลี่ยนชื่อ" data-toggle="collapse" data-target="#add_chName" aria-expanded="false" aria-controls="collapseExample">
+                                                            <button id="btn_chName" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการเปลี่ยนชื่อ" data-toggle="collapse" data-target="#add_chName" aria-expanded="false" aria-controls="collapseExample">
                                                                 <div class=""> <i class="material-icons">add</i></div>
                                                             </button>
                                                             <div class="collapse" id="add_chName"><br>
-                                                                <from>
+                                                                <form>
                                                                     <div class="row clearfix">
                                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                                             <label >วันที่เปลี่ยน</label>
@@ -786,7 +786,7 @@ if (!isset($_GET['id'])) {
                                                                         <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
                                                                         <button type="button" class="btn btn-success waves-effect" onclick="javascript: addChName('ACN')">บันทึก</button>
                                                                     </div>
-                                                                </from>
+                                                                </form>
                                                             </div><br>
                                                             <div class="table-responsive">
                                                                 <div id="table_chName_show"></div>
@@ -802,11 +802,11 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <!--<h2 class="card-inside-title">ประวัติการสมรส</h2>-->
-                                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติสมรส" data-toggle="collapse" data-target="#add_marry" aria-expanded="false" aria-controls="collapseExample">
+                                                            <button id="btn_marry" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติสมรส" data-toggle="collapse" data-target="#add_marry" aria-expanded="false" aria-controls="collapseExample">
                                                                 <div class=""> <i class="material-icons">add</i></div>
                                                             </button>
                                                             <div class="collapse" id="add_marry"><br>
-                                                                <from>
+                                                                <form>
                                                                     <div class="row clearfix">
                                                                         <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 form-control-label-l">
                                                                             <label >ชื่อ</label>
@@ -845,7 +845,7 @@ if (!isset($_GET['id'])) {
                                                                         <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
                                                                         <button type="button" class="btn btn-success waves-effect" onclick="javascript: addMarry('AMR')">บันทึก</button>
                                                                     </div>
-                                                                </from>
+                                                                </form>
                                                             </div><br>
                                                             <div class="table-responsive">
                                                                 <div id="table_marry_show"></div>
@@ -861,11 +861,11 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <!--<h2 class="card-inside-title">ข้อมูลทายาท</h2>-->
-                                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มข้อมูลทายาท" data-toggle="collapse" data-target="#add_heir" aria-expanded="false" aria-controls="collapseExample">
+                                                            <button id="btn_heir" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มข้อมูลทายาท" data-toggle="collapse" data-target="#add_heir" aria-expanded="false" aria-controls="collapseExample">
                                                                 <div class=""> <i class="material-icons">add</i></div>
                                                             </button>
                                                             <div class="collapse" id="add_heir"><br>
-                                                                <from>
+                                                                <form>
                                                                     <div class="row clearfix">
                                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 form-control-label-l">
                                                                             <label >ชื่อ</label>
@@ -904,7 +904,7 @@ if (!isset($_GET['id'])) {
                                                                         <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
                                                                         <button type="button" class="btn btn-success waves-effect" onclick="javascript: addHeir('AH')">บันทึก</button>
                                                                     </div>
-                                                                </from>
+                                                                </form>
                                                             </div><br>
                                                             <div class="table-responsive">
                                                                 <div id="table_heir_show"></div>
@@ -920,11 +920,11 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <!--<h2 class="card-inside-title">ประวัติทางวินัย</h2>-->
-                                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติทางวินัย" data-toggle="collapse" data-target="#add_blame" aria-expanded="false" aria-controls="collapseExample">
+                                                            <button id="btn_blame" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติทางวินัย" data-toggle="collapse" data-target="#add_blame" aria-expanded="false" aria-controls="collapseExample">
                                                                 <div class=""> <i class="material-icons">add</i></div>
                                                             </button>
                                                             <div class="collapse" id="add_blame"><br>
-                                                                <from>
+                                                                <form>
                                                                     <div class="row clearfix">
                                                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
                                                                             <label >วันที่รับโทษ</label>
@@ -965,7 +965,7 @@ if (!isset($_GET['id'])) {
                                                                         <button type="reset" class="btn btn-danger waves-effect m-r-5">ยกเลิก</button>
                                                                         <button type="button" class="btn btn-success waves-effect" onclick="javascript: addBlame('AB')">บันทึก</button>
                                                                     </div>
-                                                                </from>
+                                                                </form>
                                                             </div><br>
                                                             <div class="table-responsive">
                                                                 <div id="table_blame_show"></div>
@@ -979,7 +979,7 @@ if (!isset($_GET['id'])) {
                                                             <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
                                                             </div>
-                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6 btn-saveAll">
                                                                 <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
                                                             </div>
                                                         <?php } else { ?>
@@ -1303,7 +1303,7 @@ if (!isset($_GET['id'])) {
                                                             <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
                                                             </div>
-                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6 btn-saveAll">
                                                                 <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
                                                             </div>
                                                         <?php } else { ?>
@@ -1330,13 +1330,13 @@ if (!isset($_GET['id'])) {
                                                                                                                         </h2>
                                                                                                                     </div>-->
                                                         <div class="body">
-                                                            <button type="button" class="btn bg-indigo waves-effect btn-aedu" style="padding: 2px 10px;" data-toggle-tootip="tooltip" data-placement="top" title="" data-original-title="เพิ่มช่องกรอกข้อมูล">
+                                                            <button type="button" class="btn bg-indigo waves-effect btn-aedu btn_edu" style="padding: 2px 10px;" data-toggle-tootip="tooltip" data-placement="top" title="" data-original-title="เพิ่มช่องกรอกข้อมูล">
                                                                 <i class="material-icons">add</i>
                                                             </button>
-                                                            <button type="button" class="btn bg-red waves-effect btn-dedu" style="padding: 2px 10px;" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="ลดช่องกรอกข้อมูล">
+                                                            <button type="button" class="btn bg-red waves-effect btn-dedu btn_edu" style="padding: 2px 10px;" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="ลดช่องกรอกข้อมูล">
                                                                 <i class="material-icons">remove</i>
                                                             </button><br><br>
-                                                            <form class="form-horizontal" id="reset_edu">
+                                                            <form class="form-horizontal btn_edu" id="reset_edu">
                                                                 <div id="clone_edu">
                                                                     <div class="row clearfix">
                                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
@@ -1436,7 +1436,7 @@ if (!isset($_GET['id'])) {
                                                             <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
                                                             </div>
-                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6 btn-saveAll">
                                                                 <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
                                                             </div>
                                                         <?php } else { ?>
@@ -1464,7 +1464,7 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <form class="form-horizontal">
-                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับราชการ" data-toggle="collapse" data-target="#add_hisser" aria-expanded="false" aria-controls="collapseExample">
+                                                                <button id="btn_hisser" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับราชการ" data-toggle="collapse" data-target="#add_hisser" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
                                                                 <div class="collapse" id="add_hisser"><br>
@@ -1571,7 +1571,7 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <form class="form-horizontal">
-                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติราชการพิเศษ" data-toggle="collapse" data-target="#add_serSpecial" aria-expanded="false" aria-controls="collapseExample">
+                                                                <button id="btn_serSpecial" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติราชการพิเศษ" data-toggle="collapse" data-target="#add_serSpecial" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
                                                                 <div class="collapse" id="add_serSpecial"><br>
@@ -1665,7 +1665,7 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <form class="form-horizontal">
-                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรักษาราชการ" data-toggle="collapse" data-target="#add_assignment" aria-expanded="false" aria-controls="collapseExample">
+                                                                <button id="btn_assignment" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรักษาราชการ" data-toggle="collapse" data-target="#add_assignment" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
                                                                 <div class="collapse" id="add_assignment"><br>
@@ -1778,7 +1778,7 @@ if (!isset($_GET['id'])) {
                                                             <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
                                                             </div>
-                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6 btn-saveAll">
                                                                 <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
                                                             </div>
                                                         <?php } else { ?>
@@ -1806,7 +1806,7 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <form class="form-horizontal">
-                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับรางวัล" data-toggle="collapse" data-target="#add_award" aria-expanded="false" aria-controls="collapseExample">
+                                                                <button id="btn_award" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับรางวัล" data-toggle="collapse" data-target="#add_award" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
                                                                 <div class="collapse" id="add_award"><br>
@@ -1866,7 +1866,7 @@ if (!isset($_GET['id'])) {
                                                         </div>
                                                         <div class="body">
                                                             <form class="form-horizontal">
-                                                                <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มผลงานวิชาการ" data-toggle="collapse" data-target="#add_academic" aria-expanded="false" aria-controls="collapseExample">
+                                                                <button id="btn_academic" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มผลงานวิชาการ" data-toggle="collapse" data-target="#add_academic" aria-expanded="false" aria-controls="collapseExample">
                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                 </button>
                                                                 <div class="collapse" id="add_academic"><br>
@@ -1937,7 +1937,7 @@ if (!isset($_GET['id'])) {
                                                             <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
                                                             </div>
-                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6 btn-saveAll">
                                                                 <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
                                                             </div>
                                                         <?php } else { ?>
@@ -1964,7 +1964,7 @@ if (!isset($_GET['id'])) {
                                                             </h2>
                                                         </div>
                                                         <div class="body">
-                                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_plan" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มแผนงาน">
+                                                            <button id="btn_plan" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_plan" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มแผนงาน">
                                                                 <div class=""> <i class="material-icons">add</i></div>
                                                             </button> <br>
                                                             <div class="collapse" id="add_plan">
@@ -2039,7 +2039,7 @@ if (!isset($_GET['id'])) {
                                                             </h2>
                                                         </div>
                                                         <div class="body">
-                                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_hisroyal" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับเครื่องราช">
+                                                            <button id="btn_hisroyal" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_hisroyal" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับเครื่องราช">
                                                                 <div class=""> <i class="material-icons">add</i></div>
                                                             </button> <br>
                                                             <div class="collapse" id="add_hisroyal">
@@ -2099,7 +2099,7 @@ if (!isset($_GET['id'])) {
                                                             </h2>
                                                         </div>
                                                         <div class="body">
-                                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_salaryup" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="ประวัติการรับเลื่อนขั้นเงินเดือน">
+                                                            <button id="btn_salaryup" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_salaryup" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="ประวัติการรับเลื่อนขั้นเงินเดือน">
                                                                 <div class=""> <i class="material-icons">add</i></div>
                                                             </button> <br>
                                                             <div class="collapse" id="add_salaryup">
@@ -2160,7 +2160,7 @@ if (!isset($_GET['id'])) {
                                                             </h2>
                                                         </div>
                                                         <div class="body">
-                                                            <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_salaryspecial" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับเงินเพิ่มพิเศษ">
+                                                            <button id="btn_salaryspecial" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_salaryspecial" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับเงินเพิ่มพิเศษ">
                                                                 <div class=""> <i class="material-icons">add</i></div>
                                                             </button> <br>
                                                             <div class="collapse" id="add_salaryspecial">
@@ -2232,7 +2232,7 @@ if (!isset($_GET['id'])) {
                                                             <div class="align-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <button type="button" class="btn btn-warning waves-effect" onclick="javascript: back()">ย้อนกลับ</button>
                                                             </div>
-                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <div class="align-right col-lg-6 col-md-6 col-sm-6 col-xs-6 btn-saveAll">
                                                                 <button type="button" class="btn btn-primary waves-effect" onclick="javascript: editPerson('EPS')">บันทึก</button>
                                                             </div>
                                                         <?php } else { ?>

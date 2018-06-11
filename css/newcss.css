@@ -237,6 +237,11 @@ input[type="file"] {
     margin-top: 3px;
 }
 /* Logo Menu Main Personnal */
+.logo-data-person {
+    content:url("../images/btn-menu/add_personnal.png");
+    width: 40px;
+    height: 40px;   
+}
 .logo-head-person {
     content:url("../images/btn-menu/personnal.png");
     width: 40px;

@@ -85,7 +85,7 @@ if (!empty($_FILES['filePerson'])) {
                     $type_id = $rs_type_id['type_id'];
                 }
                 $lvb_name = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(9, $row)->getValue());
-                $sql_lvb_id = "SELECT lvb_id FROM ps_leveboss WHERE lvb_name = '$lvb_name'";
+                $sql_lvb_id = "SELECT lvb_id FROM ps_levelboss WHERE lvb_name = '$lvb_name'";
                 $query_lvb_id = $cn->Connect->query($sql_lvb_id);
                 while ($rs_lvb_id = mysqli_fetch_array($query_lvb_id)) {
                     $lvb_id = $rs_lvb_id['lvb_id'];
@@ -152,10 +152,15 @@ function sl_data_profile() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        if ($id == '') {
+        $lvb_claim = $_SESSION['lvb_claim'];
+        $class_id = $_SESSION['class_id'];
+        $level = $_SESSION['level'];
+        if (($id == '') && ($level == 1)) {
             $sql = "SELECT * from ps_profile LEFT JOIN ps_class ON ps_profile.class_id = ps_class.class_id";
-        } else {
+        } else if ($id != '') {
             $sql = "SELECT * from ps_profile LEFT JOIN ps_class ON ps_profile.class_id = ps_class.class_id WHERE ps_profile.pro_id ='$id'";
+        } else {
+            $sql = "SELECT * from ps_profile AS pp LEFT JOIN ps_class AS pc ON pp.class_id = pc.class_id LEFT JOIN ps_levelboss AS plb ON pp.lvb_id = plb.lvb_id WHERE pc.class_id = '$class_id' AND (plb.lvb_claim > '$lvb_claim' OR plb.lvb_claim IS NULL) ORDER BY plb.lvb_claim IS NULL, plb.lvb_claim ASC";
         }
         $rs = $cn->select($sql);
         $json = json_encode($rs);
@@ -434,7 +439,7 @@ function get_levelBoss() {
     $cn = new management;
     $cn->con_db();
     if ($cn->Connect) {
-        $sql = "select * from ps_leveboss";
+        $sql = "select * from ps_levelboss";
         $rs = $cn->select($sql);
         $json = json_encode($rs);
         echo $json;
@@ -476,7 +481,7 @@ function data_tranfer() {
         $num = mysqli_num_rows($query);
         if ($num > 0) {
             while ($row = mysqli_fetch_array($query)) {
-                if ($get_data[3] == '0') {
+                if ($get_data[3] == '') {
                     $sql_change_status = "UPDATE ps_personnal SET status = '1' WHERE pro_id = '$get_data[4]'";
                     $rs_edit = $cn->exec($sql_change_status);
 
@@ -494,12 +499,16 @@ function data_tranfer() {
                 }
             }
         } else {
-            $sql_change_status = "UPDATE ps_personnal SET status = '0' WHERE pro_id = '$get_data[4]'";
-            $rs_edit = $cn->exec($sql_change_status);
+            if ($get_data[3] != '') {
+                $sql_change_status = "UPDATE ps_personnal SET status = '0' WHERE pro_id = '$get_data[4]'";
+                $rs_edit = $cn->exec($sql_change_status);
 
-            $sql_add = "INSERT INTO ps_transferout (tran_name, tran_note, tran_date, tran_status, pro_id) VALUES ('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]')";
-            $rs_add = $cn->execute($sql_add);
-            echo $rs_add;
+                $sql_add = "INSERT INTO ps_transferout (tran_name, tran_note, tran_date, tran_status, pro_id) VALUES ('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]')";
+                $rs_add = $cn->execute($sql_add);
+                echo $rs_add;
+            } else {
+                echo 1;
+            }
         }
     }
     exit();

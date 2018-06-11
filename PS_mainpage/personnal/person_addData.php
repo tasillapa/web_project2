@@ -274,7 +274,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                                 $cn = new management;
                                                                 $cn->con_db();
                                                                 echo '<option  value="">เลือก</opition>';
-                                                                $sql = "select * from ps_leveboss ";
+                                                                $sql = "select * from ps_levelboss ";
                                                                 $query = $cn->Connect->query($sql);
                                                                 while ($rs = mysqli_fetch_array($query)) {
                                                                     echo '<option  value="' . $rs['lvb_id'] . '">' . $rs['lvb_name'] . '</opition>';
@@ -641,7 +641,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                         </div>
                                                         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 demo-checkbox form-control-label-l">
                                                             <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="tran_status">
-                                                                <option  value="0">เลือก</opition>
+                                                                <option  value="">เลือก</opition>
                                                                 <option  value="1">โอนย้ายออก</opition>
                                                                 <option  value="2">ลาออก</opition>
                                                             </select>

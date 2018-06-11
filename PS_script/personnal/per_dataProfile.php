@@ -4,9 +4,13 @@
     var name = '<?= $_SESSION["name"]; ?>';
     var pro_id = '<?= $_SESSION["pro_id"]; ?>';
     var get_id = '<?= $_GET['id']; ?>';
+    var level = '<?= $_SESSION['level']; ?>';
+    var lvb_claim = '<?= $_SESSION['lvb_claim']; ?>';
     var NoImg = '../../images/img-profile/no_img.png';
     var dataID = '';
     var i = 1;
+    var hide_td = true;
+
     $(function () {
         if (get_id == '') {
             dataID = pro_id;
@@ -28,6 +32,25 @@
             },
         });
 
+        if ((lvb_claim != 9) && (lvb_claim != 'NULL')) {
+            hide_td = false;
+            $('#btn_chName').hide();
+            $('#btn_marry').hide();
+            $('#btn_heir').hide();
+            $('#btn_blame').hide();
+            $('.btn_edu').hide();
+            $('#btn_hisser').hide();
+            $('#btn_serSpecial').hide();
+            $('#btn_assignment').hide();
+            $('#btn_award').hide();
+            $('#btn_academic').hide();
+            $('#btn_plan').hide();
+            $('#btn_hisroyal').hide();
+            $('#btn_salaryup').hide();
+            $('#btn_salaryspecial').hide();
+            $('.btn-saveAll').hide();
+        }
+        
         $("#chName_date").datetimepicker({
             timepicker: false,
             format: 'd/m/Y',
@@ -545,6 +568,17 @@
                 $('#person_imgE').attr('href', data[0].pro_picture);
             }
             $('#pro_id').val(data[0].pro_id);
+            if (level != '1') {
+                $('#type_idE').prop('disabled', true);
+                $('#pos_idE').prop('disabled', true);
+                $('#lv_idE').prop('disabled', true);
+                $('#lvb_idE').prop('disabled', true);
+                $('#class_idE').prop('disabled', true);
+                $('#dep_idE').prop('disabled', true);
+                $('#pro_dateInE').prop('disabled', true);
+                $('#pro_dateOutE').prop('disabled', true);
+                $('#pro_salaryE').prop('disabled', true);
+            }
             $('#card_idE').val(data[0].card_id);
             $('#gen_card_id').val(data[0].card_id);
             $('#pro_idposE').val(data[0].pro_idpos);
@@ -787,6 +821,12 @@
                 {title: "ชื่อ-สกุลใหม่"},
                 {title: "วันที่เปลี่ยน"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [4],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -841,6 +881,12 @@
                 {title: "ชื่อ-สกุล"},
                 {title: "ความสัมพันธ์"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [3],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -895,6 +941,12 @@
                 {title: "ชื่อ-สกุล"},
                 {title: "ความสัมพันธ์"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [3],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -950,6 +1002,12 @@
                 {title: "กรณีความผิด"},
                 {title: "วันที่รับโทษ"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [4],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1056,6 +1114,12 @@
                 {title: "ประเทศ"},
                 {title: "ปีจบ"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [7],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1173,6 +1237,12 @@
                 {title: "เงินเดือน"},
                 {title: "ประเภท"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [8],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1233,6 +1303,12 @@
                 {title: "สถานที่"},
                 {title: "หมายเหตุ"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [7],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1295,6 +1371,12 @@
                 {title: "สำนัก/กอง"},
                 {title: "ประเภทการเคลื่อนไหว", width: "15%"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [9],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1370,6 +1452,12 @@
                 {title: "เรื่องที่ได้รับ"},
                 {title: "ไฟล์ดาวน์โหลด"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [4],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1393,6 +1481,7 @@
                     cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AAWARD, array, true, function (data) {
                         $('#add_award').removeClass('in');
                         $('#add_award').find('.btn-danger').trigger('click');
+                        $('#show_fileAward').html('ยังไม่เลือกไฟล์');
                         show_award();
                         swal("บันทึกสำเร็จ!", "บันทึกประวัติการได้รับรางวัลเรียบร้อยเเล้ว", "success");
                     });
@@ -1464,6 +1553,12 @@
                 {title: "วันที่ได้รับ"},
                 {title: "ไฟล์ดาวน์โหลด"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [5],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1487,11 +1582,12 @@
                     cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", AACADE, array, true, function (data) {
                         $('#add_academic').removeClass('in');
                         $('#add_academic').find('.btn-danger').trigger('click');
+                        $('#show_fileacademic').html('ยังไม่เลือกไฟล์');
                         show_acade();
                         swal("บันทึกสำเร็จ!", "บันทึกผลงานวิชาการเรียบร้อยเเล้ว", "success");
                     });
                 } else if (data == '1') {
-                    $('#show_fileAward').html('รูปแบบไฟล์ผิดพลาด *').css("color", "red");
+                    $('#show_fileacademic').html('รูปแบบไฟล์ผิดพลาด *').css("color", "red");
                 }
             }
         });
@@ -1540,6 +1636,12 @@
                 {title: "วันที่เริ่มต้น"},
                 {title: "วันที่สิ้นสุด"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [5],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1698,6 +1800,12 @@
                 {title: "ราชกิจจานุเบกษา"},
                 {title: "วันที่เปลี่ยน"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [4],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1755,6 +1863,12 @@
                 {title: "เงินเดือน"},
                 {title: "ประเภทการเคลื่อนไหว"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [4],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1813,6 +1927,12 @@
                 {title: "เงินพิเศษ"},
                 {title: "ประเภทเงินพิเศษ"},
                 {title: "..."},
+            ],
+            "columnDefs": [
+                {
+                    "targets": [5],
+                    "visible": hide_td,
+                }
             ]
         });
     }
@@ -1821,8 +1941,8 @@
         var array = [];
         array.push(formatDateDB($('#salarysp_startDate').val()), formatDateDB($('#salarysp_endDate').val()), $('#salarysp_money').val(), $('#salarysp_type').val(), dataID);
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", ASALARYSP, array, true, function (data) {
-            $('#add_salaryup').removeClass('in');
-            $('#add_salaryup').find('.btn-danger').trigger('click');
+            $('#add_salaryspecial').removeClass('in');
+            $('#add_salaryspecial').find('.btn-danger').trigger('click');
             show_salarysp();
             swal("บันทึกสำเร็จ!", "บันทึกประวัติการรับเงินเพิ่มพิเศษเรียบร้อยเเล้ว", "success");
         });

@@ -137,7 +137,7 @@ if (!isset($_POST['ch_new'])) {
                         <li class="active">
                             <a href="../../PS_mainpage/personnal/person_DataProfile.php">
                                 <i class="material-icons">home</i>
-                                <span>DashBoard</span>
+                                <span>ข้อมูลส่วนตัว</span>
                             </a>
                         </li>
                         <?php if ($_SESSION['level'] == '1') { ?>
@@ -159,16 +159,7 @@ if (!isset($_POST['ch_new'])) {
                                             <span>จัดการข้อมูลบุคลากร</span>
                                         </a>
                                     </li>
-                                    <!--                                <li>
-                                                                        <a href="javascript:void(0);"><img class="logo-promotion"/> 
-                                                                            <span>ขั้นตำแหน่งงาน</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="javascript:void(0);"><img class="logo-salary"/> 
-                                                                            <span>ข ั้นเงินเดือน</span>
-                                                                        </a>
-                                                                    </li>-->
+
                                     <li>
                                         <a href="person_setting.php"><img class="logo-setting-person"/> 
                                             <span>ตั้งค่าสิทธิ์เข้าใช้งาน</span>
@@ -196,6 +187,13 @@ if (!isset($_POST['ch_new'])) {
                                                                     </li>-->
                                 </ul>
 
+                            </li>
+                        <?php } ?>
+                        <?php if (($_SESSION['lvb_claim'] != '9') && ($_SESSION['lvb_claim'] != 'NULL') && ($_SESSION['level'] != '1')) { ?>
+                            <li>
+                                <a href="person_addData.php"><img class="logo-data-person"/> 
+                                    <span>ข้อมูลบุคลากร</span>
+                                </a>
                             </li>
                         <?php } ?>
                         <li>
@@ -301,26 +299,27 @@ if (!isset($_POST['ch_new'])) {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
+                                    <a href="report_position.php">
+                                        <!--class="menu-toggle"-->
                                         <span>รายงานตำเเหน่ง</span>
                                     </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
-                                        </li>
-                                        <li>
-                                            <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
-                                        </li>
-                                        <li>
-                                            <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
-                                        </li>
-                                        <li>
-                                            <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
-                                        </li>
-                                        <li>
-                                            <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
-                                        </li>
-                                    </ul>
+                                    <!--                                    <ul class="ml-menu">
+                                                                            <li>
+                                                                                <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
+                                                                            </li>
+                                                                        </ul>-->
                                 </li>
                             </ul>
                         </li>

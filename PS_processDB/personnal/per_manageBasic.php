@@ -399,9 +399,9 @@ function sl_data_lvboss() {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
         if ($id == '') {
-            $sql = "SELECT * from ps_leveboss";
+            $sql = "SELECT * from ps_levelboss";
         } else {
-            $sql = "SELECT * from ps_leveboss WHERE lvb_id ='$id'";
+            $sql = "SELECT * from ps_levelboss WHERE lvb_id ='$id'";
         }
 
         $rs = $cn->select($sql);
@@ -416,8 +416,8 @@ function add_lvboss() {
     $cn->con_db();
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
-        $sql = "INSERT INTO ps_leveboss (lvb_code, lvb_name)"
-                . "VALUES('$get_data[0]', '$get_data[1]')";
+        $sql = "INSERT INTO ps_levelboss (lvb_code, lvb_name, lvb_claim)"
+                . "VALUES('$get_data[0]', '$get_data[1]', 9)";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -430,7 +430,7 @@ function del_lvboss() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "DELETE FROM ps_leveboss WHERE lvb_id = '$id'";
+        $sql = "DELETE FROM ps_levelboss WHERE lvb_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -443,7 +443,7 @@ function edit_lvboss() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
-        $sql = "UPDATE ps_leveboss SET lvb_code = '$get_data[1]', lvb_name = '$get_data[2]' WHERE lvb_id = '$id'";
+        $sql = "UPDATE ps_levelboss SET lvb_code = '$get_data[1]', lvb_name = '$get_data[2]' WHERE lvb_id = '$id'";
         $rs = $cn->execute($sql);
         echo $rs;
     }

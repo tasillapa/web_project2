@@ -3,6 +3,8 @@
     var card_id = '<?= $_SESSION["card_id"]; ?>';
     var name = '<?= $_SESSION["name"]; ?>';
     var proID = '<?= $_SESSION["pro_id"]; ?>';
+    var lvb_claim = '<?= $_SESSION["lvb_claim"]; ?>';
+    var level = '<?= $_SESSION['level']; ?>';
     var NoImg = '../../images/img-profile/no_img.png';
     $(function () {
         $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
@@ -124,7 +126,7 @@
     });
 
     $('#tran_status').change(function () {
-        if ($('#tran_status').val() == '0') {
+        if ($('#tran_status').val() == '') {
             $('.see_tranout').hide();
             $('.see_out').hide();
             $('.see_tranout').find('.input').val('');
@@ -139,6 +141,7 @@
             $('.see_out').hide();
         }
     });
+
     function show_profile() {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
     }
@@ -147,9 +150,15 @@
         $(".table_profile").html('');
         var dataSet = [];
         var a = 0;
+        var tools = '';
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), '<img class="btn-detail" data-toggle="modal" data-target="#detailPerson" onclick="javascript: slDetail(this)" id="' + data[i].pro_id + '"/>' + ' ' + '<img class="btn-edit" id="' + data[i].pro_id + '" data-toggle="modal" data-target="#editPerson" onclick="javascript: slEdit(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/>']);
+            if (level == '1') {
+                tools = '<img class="btn-detail" data-toggle="modal" data-target="#detailPerson" onclick="javascript: slDetail(this)" id="' + data[i].pro_id + '"/>' + ' ' + '<img class="btn-edit" id="' + data[i].pro_id + '" data-toggle="modal" data-target="#editPerson" onclick="javascript: slEdit(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].pro_id + '" onclick="javascript: delProfile(this)"/>';
+            } else {
+                tools = '<center><img class="btn-detail" data-toggle="modal" data-target="#detailPerson" onclick="javascript: slDetail(this)" id="' + data[i].pro_id + '"/></center>';
+            }
+            dataSet.push(['<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), tools]);
         });
         $('#table_profile_show').html('<table class="table table-bordered table-striped table-hover table_profile dataTable" width="100%"></table>');
         $('.table_profile').DataTable({
@@ -499,9 +508,6 @@
                         , formatDateDB($('#pro_birthdayE').val()), $('input[name=group2E]:checked', '#pro_statusE').val(), $('#pos_idE').val(), $('#type_idE').val(), $('#lvb_idE').val(), $('#lv_idE').val()
                         , $('#class_idE').val(), $('#dep_idE').val(), $('#pro_salaryE').val(), formatDateDB($('#pro_dateInE').val()), formatDateDB($('#pro_dateOutE').val()), $('#pro_transferE').val(), data, name, formatDateToday(), $('#pro_id').val(), $('#imgSE').attr('src'));
                 cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPSM, array, true, function (result) {
-//                    $.post("../../PS_mainpage/personnal/main_personnal.php", {ch_new: data}, function (result) {
-////                         alert(result);
-//                    });
                     var arr_tran = [];
                     arr_tran.push($('#tran_name').val(), $('#tran_note').val(), formatDateDB($('#tran_date').val()), $('#tran_status').val(), $('#pro_id').val());
                     cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", 'data_tranfer', arr_tran, true, function (result) {
