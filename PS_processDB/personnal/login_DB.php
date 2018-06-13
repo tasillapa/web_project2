@@ -30,6 +30,7 @@ function chklogin() {
                 $_SESSION['password'] = $rs['password'];
                 $_SESSION['class_name'] = $rs['class_name'];
                 $_SESSION['class_id'] = $rs['class_id'];
+                $_SESSION['class_claim'] = $rs['class_claim'];
                 $_SESSION['pos_name'] = $rs['pos_name'];
                 $_SESSION['dep_name'] = $rs['dep_name'];
                 $_SESSION['lv_name'] = $rs['lv_name'];

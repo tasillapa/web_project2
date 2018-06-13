@@ -154,11 +154,15 @@ function sl_data_profile() {
         $id = $get_data[0];
         $lvb_claim = $_SESSION['lvb_claim'];
         $class_id = $_SESSION['class_id'];
+        $class_claim = $_SESSION['class_claim'];
         $level = $_SESSION['level'];
         if (($id == '') && ($level == 1)) {
             $sql = "SELECT * from ps_profile LEFT JOIN ps_class ON ps_profile.class_id = ps_class.class_id";
         } else if ($id != '') {
             $sql = "SELECT * from ps_profile LEFT JOIN ps_class ON ps_profile.class_id = ps_class.class_id WHERE ps_profile.pro_id ='$id'";
+        } else if ($class_claim == 0) {
+            $sql = "SELECT * from ps_profile AS pp LEFT JOIN ps_class AS pc ON pp.class_id = pc.class_id LEFT JOIN ps_levelboss AS plb ON pp.lvb_id = plb.lvb_id WHERE plb.lvb_claim > '$lvb_claim' OR plb.lvb_claim IS NULL ORDER BY plb.lvb_claim IS NULL, plb.lvb_claim ASC";
+//            exit();
         } else {
             $sql = "SELECT * from ps_profile AS pp LEFT JOIN ps_class AS pc ON pp.class_id = pc.class_id LEFT JOIN ps_levelboss AS plb ON pp.lvb_id = plb.lvb_id WHERE pc.class_id = '$class_id' AND (plb.lvb_claim > '$lvb_claim' OR plb.lvb_claim IS NULL) ORDER BY plb.lvb_claim IS NULL, plb.lvb_claim ASC";
         }
@@ -326,7 +330,7 @@ function edit_profile() {
         $sql_sl_personnal = "SELECT * FROM ps_personnal WHERE pro_id = '$get_data[21]'";
         $Query_personnal = $cn->Connect->query($sql_sl_personnal);
         if (mysqli_num_rows($Query_personnal) != '0') {
-            $sql_edit_personnal = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[4]', lastname = '$get_data[5]', pos_id = '$get_data[9]', class_id = '$get_data[13]', dep_id = '$get_data[14]', person_update = '$get_data[19]', date_update = '$get_data[20]'  WHERE pro_id = '$get_data[21]'";
+            $sql_edit_personnal = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[4]', lastname = '$get_data[5]', pos_id = '$get_data[9]', class_id = '$get_data[13]', dep_id = '$get_data[14]', tel = '$get_data[65]', email = '$get_data[35]', person_update = '$get_data[19]', date_update = '$get_data[20]'  WHERE pro_id = '$get_data[21]'";
             $cn->exec($sql_edit_personnal);
         }
 

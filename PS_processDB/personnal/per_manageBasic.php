@@ -100,8 +100,8 @@ function add_BnIn() {
         $cod = $get_data[0];
         $cod = (int) $cod;
         $name = $get_data[1];
-        $sql = "INSERT INTO ps_class (class_code, class_name)"
-                . "VALUES('$cod','$name')";
+        $sql = "INSERT INTO ps_class (class_code, class_name, class_claim)"
+                . "VALUES('$cod','$name', 9)";
         $rs = $cn->execute($sql);
         echo $rs;
     }

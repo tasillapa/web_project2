@@ -50,7 +50,7 @@
             $('#btn_salaryspecial').hide();
             $('.btn-saveAll').hide();
         }
-        
+
         $("#chName_date").datetimepicker({
             timepicker: false,
             format: 'd/m/Y',
@@ -1068,8 +1068,8 @@
                         , $('#gen_soldier').val(), $('#gen_tax').val(), $('#gen_passport').val(), $('#bank_id').val(), $('#gen_account_number').val(), $('#gen_email').val()
                         , $('#gen_facebook').val(), $('#gen_twitter').val(), $('#gen_line').val(), $('#gen_talent').val(), $('#gen_interest').val(), $('#expert_name').val(), $('#expert_ex').val(), dataID
                         , $('#address_number').val(), $('#address_swine').val(), $('#address_soi').val(), $('#address_road').val(), $('#address_village').val(), $('#address_province').val(), $('#address_amphur').val()
-                        , $('#address_district').val(), $('#address_zip_code').val(), $('#address_call').val(), $('#address_fhone').val(), $('#pread_number').val(), $('#pread_swine').val(), $('#pread_soi').val(), $('#pread_road').val(), $('#pread_village').val(), $('#pread_province').val(), $('#pread_amphur').val()
-                        , $('#pread_district').val(), $('#pread_zip_code').val(), $('#pread_call').val(), $('#pread_fhone').val());
+                        , $('#address_district').val(), $('#address_zip_code').val(), split($('#address_call').val()), split($('#address_fhone').val()), $('#pread_number').val(), $('#pread_swine').val(), $('#pread_soi').val(), $('#pread_road').val(), $('#pread_village').val(), $('#pread_province').val(), $('#pread_amphur').val()
+                        , $('#pread_district').val(), $('#pread_zip_code').val(), split($('#pread_call').val()), split($('#pread_fhone').val()));
                 cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", EPS, array, true, function (result) {
                     swal({
                         title: "บันทึกข้อมูลสำเร็จ!",

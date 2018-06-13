@@ -189,7 +189,7 @@ if (!isset($_POST['ch_new'])) {
 
                             </li>
                         <?php } ?>
-                        <?php if (($_SESSION['lvb_claim'] != '9') && ($_SESSION['lvb_claim'] != 'NULL') && ($_SESSION['level'] != '1')) { ?>
+                        <?php if (($_SESSION['lvb_claim'] != '9') && ($_SESSION['lvb_claim'] != NULL) && ($_SESSION['lvb_claim'] != '') && ($_SESSION['level'] != '1')) { ?>
                             <li>
                                 <a href="person_addData.php"><img class="logo-data-person"/> 
                                     <span>ข้อมูลบุคลากร</span>

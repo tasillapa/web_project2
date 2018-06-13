@@ -133,10 +133,15 @@ function add_user() {
             if (mysqli_num_rows($Query_address) == '0') {
                 $sql_add_address = "INSERT INTO ps_address(address_fhone, pro_id) VALUES('$get_data[4]', '$get_data[0]')";
                 $cn->exec($sql_add_address);
+                $sql_add_preaddress = "INSERT INTO ps_preaddress(pread_fhone, pro_id) VALUES('$get_data[4]', '$get_data[0]')";
+                $cn->exec($sql_add_preaddress);
             } else {
                 $sql_edit_address = " UPDATE ps_address SET address_fhone = '$get_data[4]'"
                         . " WHERE pro_id = '$get_data[0]'";
                 $cn->exec($sql_edit_address);
+                $sql_edit_preaddress = " UPDATE ps_preaddress SET pread_fhone = '$get_data[4]'"
+                        . " WHERE pro_id = '$get_data[0]'";
+                $cn->exec($sql_edit_preaddress);
             }
         }
 
@@ -180,15 +185,15 @@ function edit_user() {
             $cn->exec($sql_edit_geninfo);
         }
 
-        $sql_address = "SELECT * FROM ps_address WHERE pro_id = '$get_data[15]'";
-        $Query_address = $cn->Connect->query($sql_address);
-        if (mysqli_num_rows($Query_address) == '0') {
-            $sql_add_address = "INSERT INTO ps_address(address_fhone, pro_id) VALUES('$get_data[3]', '$get_data[15]')";
-            $cn->exec($sql_add_address);
+        $sql_pread = "SELECT * FROM ps_preaddress WHERE pro_id = '$get_data[15]'";
+        $Query_pread = $cn->Connect->query($sql_pread);
+        if (mysqli_num_rows($Query_pread) == '0') {
+            $sql_add_pread = "INSERT INTO ps_preaddress(pread_fhone, pro_id) VALUES('$get_data[3]', '$get_data[15]')";
+            $cn->exec($sql_add_pread);
         } else {
-            $sql_edit_address = " UPDATE ps_address SET address_fhone = '$get_data[3]'"
+            $sql_edit_pread = " UPDATE ps_preaddress SET pread_fhone = '$get_data[3]'"
                     . " WHERE pro_id = '$get_data[15]'";
-            $cn->exec($sql_edit_address);
+            $cn->exec($sql_edit_pread);
         }
 
         $sql = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[1]', lastname = '$get_data[2]', tel = '$get_data[3]', email = '$get_data[4]', pos_id= '$get_data[5]', class_id = '$get_data[6]', dep_id = '$get_data[7]', username = '$get_data[8]', password= '$get_data[9]', level = '$get_data[10]', status ='$get_data[11]', person_update = '$get_data[12]', date_update = '$get_data[13]'"

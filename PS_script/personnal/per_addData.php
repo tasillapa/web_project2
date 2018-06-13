@@ -158,13 +158,14 @@
             } else {
                 tools = '<center><img class="btn-detail" data-toggle="modal" data-target="#detailPerson" onclick="javascript: slDetail(this)" id="' + data[i].pro_id + '"/></center>';
             }
-            dataSet.push(['<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), tools]);
+            dataSet.push(['<center><input type="checkbox" id="checkBox_'+a+'" class="filled-in chk-col-indigo" checked=""><label for="checkBox_'+a+'"></label></center>','<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), tools]);
         });
         $('#table_profile_show').html('<table class="table table-bordered table-striped table-hover table_profile dataTable" width="100%"></table>');
         $('.table_profile').DataTable({
             responsive: true,
             data: dataSet,
             columns: [
+                {title: '<input type="checkbox" id="checkBox_all" class="filled-in chk-col-indigo" checked=""><label for="checkBox_all"></label>'},
                 {title: "ลำดับ", "width": "1%"},
                 {title: "เลขตำแหน่ง", "width": "1%"},
                 {title: "เลขบัตรประชาชน", "width": "16%"},
@@ -420,44 +421,42 @@
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_type", "", true, function (data2) {
                 $.each(data2, function (i) {
                     if (data[0].type_id == data2[i].type_id) {
-                        $('#type_nameD').html(data2[0].type_name);
+                        $('#type_nameD').html(data2[i].type_name);
                     }
                 });
             });
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_position", "", true, function (data2) {
                 $.each(data2, function (i) {
                     if (data[0].pos_id == data2[i].pos_id) {
-                        $('#pos_nameD').html(data2[0].pos_name);
+                        $('#pos_nameD').html(data2[i].pos_name);
                     }
                 });
             });
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_level", "", true, function (data2) {
                 $.each(data2, function (i) {
                     if (data[0].lv_id == data2[i].lv_id) {
-                        $('#lv_nameD').html(data2[0].lv_name);
+                        $('#lv_nameD').html(data2[i].lv_name);
                     }
                 });
             });
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_levelBoss", "", true, function (data2) {
                 $.each(data2, function (i) {
                     if (data[0].lvb_id == data2[i].lvb_id) {
-                        $('#lvb_nameD').html(data2[0].lvb_name);
+                        $('#lvb_nameD').html(data2[i].lvb_name);
                     }
                 });
             });
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_class", "", true, function (data2) {
                 $.each(data2, function (i) {
                     if (data[0].class_id == data2[i].class_id) {
-                        $('#class_nameD').html(data2[0].class_name);
-                    } else {
+                        $('#class_nameD').html(data2[i].class_name);
                     }
                 });
             });
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_department", "", true, function (data2) {
                 $.each(data2, function (i) {
                     if (data[0].dep_id == data2[i].dep_id) {
-                        $('#dep_nameD').html(data2[0].dep_name);
-                    } else {
+                        $('#dep_nameD').html(data2[i].dep_name);
                     }
                 });
             });
