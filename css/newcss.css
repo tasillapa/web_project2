@@ -247,6 +247,16 @@ input[type="file"] {
     width: 40px;
     height: 40px;   
 }
+.logo-head-retirement{
+    content:url("../images/btn-menu/retirement.png");
+    width: 40px;
+    height: 40px;   
+}
+.logo-head-Government_House{
+    content:url("../images/btn-menu/Government_House.png");
+    width: 40px;
+    height: 40px;   
+}
 .logo-data-basic {
     content:url("../images/btn-menu/hierarchy.png");
     width: 30px;

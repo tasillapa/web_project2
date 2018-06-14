@@ -1,5 +1,13 @@
+
 <script>
     $(function () {
+
+       
+            //table date in 
+            cls.GetJSON("../../PS_processDB/personnal/sup_db.php", "get_prifile", '', true, function (data2) {
+                table_chart_allshow (data2);
+            });
+
         cls.GetJSON("../../PS_processDB/personnal/sup_db.php", "getYear", '', true, function (data) {
             var array = [];
             var array2 = [];
@@ -15,7 +23,6 @@
         $('#datein').select2();
         $('#dateout').select2();
     });
-
     function getMorris(type, element, data, data2) {
         if (type === 'bar') {
             Morris.Bar({
@@ -41,7 +48,16 @@
         var e = document.getElementById("datein");
         var secdatein = e.options[e.selectedIndex].value;
         secdatein = secdatein - 543;
-        if ($('#dateout').val() != '') {
+         
+              cls.GetJSON("../../PS_processDB/personnal/sup_db.php", "get_data_year_table", [secdatein], true, function (data2) {
+                table_chart_show(data2);
+               
+            });
+     
+        if (($('#dateout').val() != '' ) && ($('#datein').val() != '' ))  {
+
+                
+           
             var max = '';
             var min = '';
             var secdateout = $('#dateout').val() - 543;
@@ -53,6 +69,8 @@
                 min = secdateout;
             }
             cls.GetJSON("../../PS_processDB/personnal/sup_db.php", "get_year_between", [max, min], true, function (data) {
+                
+               
                 var array = [];
                 var array2 = [];
                 $.each(data, function (i) {
@@ -67,7 +85,19 @@
                 getMorris('bar', 'bar_chart', array, array2);
             });
         } else {
-            cls.GetJSON("../../PS_processDB/personnal/sup_db.php", "get_year", [secdatein], true, function (data) {
+            var func = '';
+            if($('#datein').val() != ''){
+                secdatein = secdatein;
+                func = "get_year";
+            }else if($('#dateout').val() != ''){
+                secdatein = $('#dateout').val() -543;
+                func = "get_year";
+            }else{
+                secdateout = '';
+                func = "getYear";
+            }
+            cls.GetJSON("../../PS_processDB/personnal/sup_db.php", func, [secdatein], true, function (data) {
+                
                 var array = [];
                 var array2 = [];
                 $.each(data, function (i) {
@@ -87,10 +117,19 @@
         var e = document.getElementById("dateout");
         var secdateout = e.options[e.selectedIndex].value;
         secdateout = secdateout - 543;
-        if ($('#datein').val() != '') {
+
+         
+             cls.GetJSON("../../PS_processDB/personnal/sup_db.php", "get_data_year_table", [secdateout], true, function (data2) {
+            table_chart_show(data2);
+            
+            });
+
+        if (($('#datein').val() != '') && ($('#dateout').val() != '' ))  {
             var max = '';
             var min = '';
             var secdatein = $('#datein').val() - 543;
+
+          
             if (secdateout > secdatein) {
                 max = secdateout;
                 min = secdatein;
@@ -98,7 +137,10 @@
                 max = secdatein;
                 min = secdateout;
             }
+
+           
             cls.GetJSON("../../PS_processDB/personnal/sup_db.php", "get_year_between", [max, min], true, function (data) {
+               
                 var array = [];
                 var array2 = [];
                 $.each(data, function (i) {
@@ -111,9 +153,23 @@
                 $('#bar_chart').html('');
                 getMorris('donut', 'donut_chart', array, array2);
                 getMorris('bar', 'bar_chart', array, array2);
+                
+              
+
             });
         } else {
-            cls.GetJSON("../../PS_processDB/personnal/sup_db.php", "get_year", [secdateout], true, function (data) {
+            var func = '';
+            if($('#dateout').val() != ''){
+                secdateout = secdateout;
+                func = "get_year";
+            }else if($('#datein').val() != ''){
+                secdateout = $('#datein').val() -543;
+                func = "get_year";
+            }else{
+                secdateout = '';
+                func = "getYear";
+            }
+            cls.GetJSON("../../PS_processDB/personnal/sup_db.php", func, [secdateout], true, function (data) {
                 var array = [];
                 var array2 = [];
                 $.each(data, function (i) {
@@ -128,9 +184,69 @@
                 getMorris('bar', 'bar_chart', array, array2);
             });
         }
-    }
-</script>
 
+
+    }
+
+  //ตาราง chart // 
+
+    function table_chart_show(data) {
+        $(".table_chart_show").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', data[i].card_id, data[i].pro_prefix +'  '+ data[i].pro_fname +' '+ data[i].pro_lname , data[i].pos_name , data[i].class_name , DateThai(data[i].pro_dateOut) ,]);
+        });
+        $('#table_chart').html('<table class="table table-bordered table-striped table-hover table_chart_show dataTable" width="100%"></table>');
+        $('.table_chart_show').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ", width: "1%"},
+                {title: "เลขบัตรประชาชน", width: "10%"},
+                {title: "ชื่อ-สกุล", width: "21%"},
+                {title: "ตำแหน่ง", width: "10%"},
+                {title: "กลุ่มงาน", width: "13%"},
+                {title: "วันเกษียณอายุ", width: "15%"},
+
+               
+            ]
+        });
+
+
+    }
+
+
+function table_chart_allshow(data) {
+        $(".table_chart_show").html('');
+        var dataSet = [];
+        var a = 0;
+        $.each(data, function (i, k) {
+            a++;
+            dataSet.push(['<center>' + a + '</center>', data[i].card_id, data[i].pro_prefix +'  '+ data[i].pro_fname +' '+ data[i].pro_lname , data[i].pos_name , data[i].class_name , DateThai(data[i].pro_dateOut) ,]);
+        });
+        $('#table_chart').html('<table class="table table-bordered table-striped table-hover table_chart_show dataTable" width="100%"></table>');
+        $('.table_chart_show').DataTable({
+            responsive: true,
+            data: dataSet,
+            columns: [
+                {title: "ลำดับ", width: "1%"},
+                {title: "เลขบัตรประชาชน", width: "10%"},
+                {title: "ชื่อ-สกุล", width: "21%"},
+                {title: "ตำแหน่ง", width: "10%"},
+                {title: "กลุ่มงาน", width: "13%"},
+                {title: "วันเกษียณอายุ", width: "15%"},
+
+               
+            ]
+        });
+
+        
+    }
+
+    
+</script>
 
 
 

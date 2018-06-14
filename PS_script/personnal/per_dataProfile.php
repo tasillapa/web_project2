@@ -579,6 +579,7 @@
                 $('#pro_dateOutE').prop('disabled', true);
                 $('#pro_salaryE').prop('disabled', true);
             }
+            $('#showName').html('(' + data[0].pro_prefix + data[0].pro_fname + ' ' + data[0].pro_lname + ')');
             $('#card_idE').val(data[0].card_id);
             $('#gen_card_id').val(data[0].card_id);
             $('#pro_idposE').val(data[0].pro_idpos);
@@ -1081,7 +1082,13 @@
                         if ((pro_id == get_id) || (get_id == '')) {
                             var name = $('#pro_fnameE').val() + ' ' + $('#pro_lnameE').val();
                             var card_id = $('#card_idE').val();
-                            $.post("../../PS_mainpage/personnal/main_personnal.php", {ch_new: 'new', img: data, name: name, card_id: card_id}, function (result) {
+                            var fullname = $('#pro_prefixE').val() + $('#pro_fnameE').val() + ' ' + $('#pro_lnameE').val();
+                            var class_id = $('#class_idE').val();
+                            var pos_id = $('#pos_idE').val();
+                            var dep_id = $('#dep_idE').val();
+                            var lvb_id = $('#lvb_idE').val();
+                            var tel = split($('#pread_fhone').val());
+                            $.post("../../PS_mainpage/personnal/main_personnal.php", {ch_new: 'new', img: data, name: name, card_id: card_id, fullname: fullname, class_id: class_id, pos_id: pos_id, dep_id: dep_id, lvb_id: lvb_id, tel: tel}, function (result) {
                                 window.location.reload(true);
                             });
                         } else {

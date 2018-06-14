@@ -2,6 +2,8 @@
     var cls = new Call_Service();
     var card_id = '<?= $_SESSION["card_id"]; ?>';
     var name = '<?= $_SESSION["name"]; ?>';
+    var proID = '<?= $_SESSION["pro_id"]; ?>';
+    var lvb_id = '<?= $_SESSION["lvb_id"]; ?>';
     var pass, ch_pass;
     $(function () {
         $('#show_fileUser').html('ยังไม่ได้เลือกไฟล์');
@@ -75,7 +77,7 @@
             data: dataSet,
             columns: [
                 {title: "ลำดับ", "width": "1%"},
-                {title: "รหัสบัตรประชาชน"},
+                {title: "รหัสบัตรประชาชน", "width": "16%"},
                 {title: "ชื่อ-สกุล"},
                 {title: "ตำแหน่ง"},
                 {title: "กลุ่ม"},
@@ -261,9 +263,22 @@
                 , $('#pos_idE').val(), $('#class_idE').val(), $('#dep_idE').val(), $('#usernameE').val(), $('#passwordE').val()
                 , $('#levelE').val(), status, name, formatDateToday(), $('#member_id').val(), $('#pro_id').val());
         cls.GetJSON("../../PS_processDB/personnal/per_manageSetting.php", EUSER, array, true, function (data) {
-            show_setting();
-            swal("แก้ไขสำเร็จ!", "ข้อมูลผู้ใช้งาน อัพเดทเเล้ว", "success");
-            $('#editUser').modal('hide');
+            if (proID == $('#pro_id').val()) {
+                var name = $('#nameuserE').val() + ' ' + $('#lastnameE').val();
+                var card_id = $('#card_idE').val();
+                var class_id = $('#class_idE').val();
+                var pos_id = $('#pos_idE').val();
+                var dep_id = $('#dep_idE').val();
+                $.post("../../PS_mainpage/personnal/main_personnal.php", {ch_new: 'new', name: name, card_id: card_id, class_id: class_id, pos_id: pos_id, dep_id: dep_id, lvb_id: lvb_id}, function (result) {
+                    show_setting();
+                    swal("แก้ไขสำเร็จ!", "ข้อมูลผู้ใช้งาน อัพเดทเเล้ว", "success");
+                    $('#editUser').modal('hide');
+                });
+            } else {
+                show_setting();
+                swal("แก้ไขสำเร็จ!", "ข้อมูลผู้ใช้งาน อัพเดทเเล้ว", "success");
+                $('#editUser').modal('hide');
+            }
         });
     }
     function delUser(data) {

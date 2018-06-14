@@ -7,11 +7,21 @@ include '../../common/header.php';
 if (!isset($_POST['ch_new'])) {
     $_POST['ch_new'] = '';
 } else {
-    if ($_POST['img'] != '0') {
+    if (($_POST['img'] != '0') && ($_POST['img'] != '')) {
         $_SESSION["pro_picture"] = $_POST['img'];
     }
     $_SESSION["name"] = $_POST['name'];
     $_SESSION["card_id"] = $_POST['card_id'];
+    if (isset($_POST['fullname'])) {
+        $_SESSION["fullname"] = $_POST['fullname'];
+    }
+    $_SESSION["class_id"] = $_POST['class_id'];
+    $_SESSION["pos_id"] = $_POST['pos_id'];
+    $_SESSION["dep_id"] = $_POST['dep_id'];
+    $_SESSION["lvb_id"] = $_POST['lvb_id'];
+    if (isset($_POST['tel'])) {
+        $_SESSION["tel"] = $_POST['tel'];
+    }
 }
 ?>
 ﻿<!DOCTYPE html>
@@ -55,7 +65,6 @@ if (!isset($_POST['ch_new'])) {
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a href="javascript:void(0);" class="bars"></a>
-
                     <a class="navbar-brand" href="../../index.php" style="padding: 8px 15px;">
                         <span>
                             <img class="logo-head" />
@@ -140,6 +149,7 @@ if (!isset($_POST['ch_new'])) {
                                 <span>ข้อมูลส่วนตัว</span>
                             </a>
                         </li>
+
                         <?php if ($_SESSION['level'] == '1') { ?>
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
@@ -196,6 +206,15 @@ if (!isset($_POST['ch_new'])) {
                                 </a>
                             </li>
                         <?php } ?>
+                        <li>
+                            <a href="person_GovernmentHouse.php" >
+                                <div class="image">
+                                    <img class="logo-head-Government_House"/> 
+
+                                </div>
+                                <span>ทำเนียบบุคลากร</span>
+                            </a>
+                        </li>
                         <li>
                             <a href="report_power.php">
                                 <div class="image">
@@ -283,47 +302,64 @@ if (!isset($_POST['ch_new'])) {
                             </a>
                             <ul class="ml-menu">
                                 <li>
-                                    <a href="javascript:void(0);" class="menu-toggle">
+                                    <a href="report_personnal.php">
+                                        <!--class="menu-toggle"-->
                                         <span>รายงานบุคลากร</span>
                                     </a>
-                                    <ul class="ml-menu">
-                                        <li>
-                                            <a href="pages/widgets/cards/basic.html">Basic</a>
-                                        </li>
-                                        <li>
-                                            <a href="pages/widgets/cards/colored.html">Colored</a>
-                                        </li>
-                                        <li>
-                                            <a href="pages/widgets/cards/no-header.html">No Header</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li>
                                     <a href="report_position.php">
                                         <!--class="menu-toggle"-->
                                         <span>รายงานตำเเหน่ง</span>
                                     </a>
-                                    <!--                                    <ul class="ml-menu">
-                                                                            <li>
-                                                                                <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
-                                                                            </li>
-                                                                        </ul>-->
                                 </li>
                             </ul>
                         </li>
 
+                        <!--                        <li>
+                                                    <a href="javascript:void(0);" class="menu-toggle">
+                                                        <div class="image">
+                                                            <img src="../../images/lecture.png" width="40" height="40" alt="User" /> 
+                                                        </div>
+                                                        <span>อบรม สัมนา ดูงาน</span>
+                                                    </a>
+                                                    <ul class="ml-menu">
+                                                        <li>
+                                                            <div class="image">
+                                                                <a><img src="../../images/notes.png" width="30" height="30" alt="User" /> 
+                                                                    <span>หลักสูตรการอบรม</span></a>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="image">
+                                                                <a><img src="../../images/ereader.png" width="30" height="30" alt="User" /> 
+                                                                    <span>ทำเรื่องไปอบรม</span></a>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="image">
+                                                                <a><img src="../../images/printer.png" width="30" height="30" alt="User" /> 
+                                                                    <span>ตรวจสอบสถานะเเละพิมพ์ฟอร์ม</span></a>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="image">
+                                                                <a><img src="../../images/report.png" width="30" height="30" alt="User" /> 
+                                                                    <span>รายงานการอบรม</span></a>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>-->
+
+                        <li>
+                            <a href="superannuate.php" >
+                                <div class="image">
+                                    <div class="logo-head-retirement"></div>
+                                </div>
+                                <span>เกษียณอายุราชการ</span>
+                            </a>
+
+                        </li>
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
                                 <div class="image">
@@ -334,29 +370,35 @@ if (!isset($_POST['ch_new'])) {
                             <ul class="ml-menu">
                                 <li>
                                     <div class="image">
-                                        <a><img src="../../images/notes.png" width="30" height="30" alt="User" /> 
+                                        <a href="meeting_report.php"><img src="../../images/notes.png" width="30" height="30" alt="User" /> 
                                             <span>หลักสูตรการอบรม</span></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <a><img src="../../images/ereader.png" width="30" height="30" alt="User" /> 
-                                            <span>ทำเรื่องไปอบรม</span></a>
+                                        <a href="tranning_form.php"><img src="../../images/ereader.png" width="30" height="30" alt="User" /> 
+                                            <span>ทำเรื่องการเดินทางไปราชการ</span></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <a><img src="../../images/printer.png" width="30" height="30" alt="User" /> 
-                                            <span>ตรวจสอบสถานะเเละพิมพ์ฟอร์ม</span></a>
+                                        <a href="meeting_approv.php"><img src="../../images/printer.png" width="30" height="30" alt="User" /> 
+                                            <span>จัดการการเดินทางไปราชการ (สำหรับหัวหน้างาน)</span></a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <a><img src="../../images/report.png" width="30" height="30" alt="User" /> 
-                                            <span>รายงานการอบรม</span></a>
+                                        <a href="meeting_approv_Director.php"><img src="../../images/printer.png" width="30" height="30" alt="User" /> 
+                                            <span>จัดการการเดินทางไปราชการ(ผู้อำนวยการ)</span></a>
                                     </div>
                                 </li>
+                                <li>
 
+                                    <div class="image">
+                                        <a href="meeting_status.php"><img src="../../images/report.png" width="30" height="30" alt="User" /> 
+                                            <span>ตรวจสอบสถานะเเละรายงานการเดินทางไปราชการ</span></a>
+                                    </div>
+                                </li>
                             </ul>
                         </li>
                     </ul>

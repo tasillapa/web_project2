@@ -32,13 +32,15 @@ function chklogin() {
                 $_SESSION['class_id'] = $rs['class_id'];
                 $_SESSION['class_claim'] = $rs['class_claim'];
                 $_SESSION['pos_name'] = $rs['pos_name'];
+                $_SESSION['pos_id'] = $rs['pos_id'];
                 $_SESSION['dep_name'] = $rs['dep_name'];
+                $_SESSION['dep_id'] = $rs['dep_id'];
                 $_SESSION['lv_name'] = $rs['lv_name'];
                 $_SESSION['lvb_name'] = $rs['lvb_name'];
+                $_SESSION['lvb_id'] = $rs['lvb_id'];
                 $_SESSION['lvb_claim'] = $rs['lvb_claim'];
                 $_SESSION['pro_id'] = $rs['pro_id'];
                 $_SESSION['level'] = $rs['level'];
-                $_SESSION['pro_prefix'] = $rs['pro_prefix'];
                 $_SESSION['pro_picture'] = $rs['pro_picture'];
                 $_SESSION['tel'] = $rs['tel'];
                 $_SESSION['name'] = $rs['pro_fname'] . ' ' . $rs['pro_lname'];

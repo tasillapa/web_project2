@@ -158,7 +158,7 @@
             } else {
                 tools = '<center><img class="btn-detail" data-toggle="modal" data-target="#detailPerson" onclick="javascript: slDetail(this)" id="' + data[i].pro_id + '"/></center>';
             }
-            dataSet.push(['<center><input type="checkbox" id="checkBox_'+a+'" class="filled-in chk-col-indigo" checked=""><label for="checkBox_'+a+'"></label></center>','<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), tools]);
+            dataSet.push(['<center><input type="checkbox" id="checkBox_' + a + '" class="filled-in chk-col-indigo" checked=""><label for="checkBox_' + a + '"></label></center>', '<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), tools]);
         });
         $('#table_profile_show').html('<table class="table table-bordered table-striped table-hover table_profile dataTable" width="100%"></table>');
         $('.table_profile').DataTable({
@@ -510,9 +510,24 @@
                     var arr_tran = [];
                     arr_tran.push($('#tran_name').val(), $('#tran_note').val(), formatDateDB($('#tran_date').val()), $('#tran_status').val(), $('#pro_id').val());
                     cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", 'data_tranfer', arr_tran, true, function (result) {
-                        show_profile()
-                        swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
-                        $('#editPerson').modal('hide');
+                        if (proID == $('#pro_id').val()) {
+                            var name = $('#pro_fnameE').val() + ' ' + $('#pro_lnameE').val();
+                            var card_id = $('#card_idE').val();
+                            var fullname = $('#pro_prefixE').val() + $('#pro_fnameE').val() + ' ' + $('#pro_lnameE').val();
+                            var class_id = $('#class_idE').val();
+                            var pos_id = $('#pos_idE').val();
+                            var dep_id = $('#dep_idE').val();
+                            var lvb_id = $('#lvb_idE').val();
+                            $.post("../../PS_mainpage/personnal/main_personnal.php", {ch_new: 'new', img: data, name: name, card_id: card_id, fullname: fullname, class_id: class_id, pos_id: pos_id, dep_id: dep_id, lvb_id: lvb_id}, function (result) {
+                                show_profile()
+                                swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
+                                $('#editPerson').modal('hide');
+                            });
+                        } else {
+                            show_profile()
+                            swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
+                            $('#editPerson').modal('hide');
+                        }
                     });
                 });
             }
