@@ -74,7 +74,10 @@ if (!empty($_FILES['fileUser'])) {
                 $sql_check = "SELECT * FROM ps_personnal WHERE card_id = '$card_id'";
                 $query_check = $cn->Connect->query($sql_check);
                 $num = mysqli_num_rows($query_check);
-                if (($num == 0) && ($card_id != '')) {
+                $sql_checkProfile = "SELECT * FROM ps_profile WHERE card_id = '$card_id'";
+                $query_checkProfile = $cn->Connect->query($sql_checkProfile);
+                $num_profile = mysqli_num_rows($query_checkProfile);
+                if (($num == 0) && ($card_id != '') && ($num_profile == 0)) {
                     $sql = "INSERT INTO ps_personnal (card_id, nameuser, lastname, pos_id, class_id, dep_id, tel, email, username, password, level, status, person_create, date_create, person_update, date_update)"
                             . "VALUES('$card_id', '$nameuser', '$lastname', '$pos_id', '$class_id', '$dep_id', '$tel', '$email', '$username', '$password', '$level', '$status', '$person_create', '$date', '$person_update', '$date')";
                     $stmt = $cn->Connect->prepare($sql);
