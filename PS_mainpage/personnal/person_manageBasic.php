@@ -9,8 +9,9 @@
             <div class="container-fluid">
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
-                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">home</i> Home</a></li>
-                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
+                        <li><a href="../../index.php"><i class="material-icons">home</i> หน้าหลัก</a></li>
+                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">person</i> ระบบบุคลากร</a></li>
+                        <li><a href="#"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
                         <li  class="active font-bold col-cyan font-14"><i class="material-icons">library_books</i> จัดการข้อมูลพื้นฐาน</li>
                     </ol>
                 </div>
@@ -746,7 +747,7 @@
             </div>
         </div>
         <!-- #END# Modal Edit Level -->
-        
+
         <!-- Modal Add Department -->
         <div class="modal fade" id="addDPM" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -803,7 +804,7 @@
                     <div class="modal-body">
                         <!--<div class="card">-->
                         <form id="fm_editDPM" method="POST">
-                             <div class="row clearfix">
+                            <div class="row clearfix">
                                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 form-control-label">
                                     <label>รหัส</label>
                                 </div>

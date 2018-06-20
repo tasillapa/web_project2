@@ -14,8 +14,9 @@ $NoImg = '../../images/img-profile/no_img.png';
             <div class="container-fluid">
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
-                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">home</i> Home</a></li>
-                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
+                        <li><a href="../../index.php"><i class="material-icons">home</i> หน้าหลัก</a></li>
+                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">person</i> ระบบบุคลากร</a></li>
+                        <li><a href="#"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
                         <li  class="active font-bold col-cyan font-14"><i class="material-icons">assignment_ind</i> จัดการข้อมูลบุคลากร</li>
                     </ol>
                 </div>
@@ -47,6 +48,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="card">
                                             <div class="body">
+                                                <img class="btn-delete-selected" id="del_selected" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="ลบข้อมูลที่เลือก" hidden/>
                                                 <div class="table-responsive">
                                                     <div id="table_profile_show"></div>
                                                 </div>
@@ -894,7 +896,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                             <span class="sp-pad" id="tran_dateD"></span>
                                                         </div>
                                                     </div>
-                                                     <div class="row clearfix see_tranout">
+                                                    <div class="row clearfix see_tranout">
                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                             <label>หมายเหตุ</label>
                                                         </div>
@@ -902,7 +904,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                             <span class="sp-pad" id="tran_noteD"></span>
                                                         </div>
                                                     </div>
-                                                     <div class="row clearfix see_tranout see_out">
+                                                    <div class="row clearfix see_tranout see_out">
                                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
                                                             <label>ย้ายไปที่</label>
                                                         </div>

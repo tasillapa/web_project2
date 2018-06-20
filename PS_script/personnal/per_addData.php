@@ -6,20 +6,50 @@
     var lvb_claim = '<?= $_SESSION["lvb_claim"]; ?>';
     var level = '<?= $_SESSION['level']; ?>';
     var NoImg = '../../images/img-profile/no_img.png';
+    var table_prifile = '';
     $(function () {
         $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
         $('#filePerson').change(function () {
             var myFile = $('#filePerson').prop('files')[0];
             $('#show_filePerson').html(myFile.name).css("color", "#777");
         });
-        $(document).on("click", ".table_profile tbody tr td:not(:last-child)", function () {
+        $(document).on("click", ".table_profile tbody tr td:not(:first-child):not(:last-child)", function () {
             var clickedBtnID = $(this).parent().attr('id'); // or var clickedBtnID = this.id
-//            alert(clickedBtnID);
-            window.location.href = '../../PS_mainpage/personnal/person_DataProfile.php?id=' + clickedBtnID + '';
+            window.location.href = '../../PS_mainpage/personnal/person_DataProfile.php?id=' + clickedBtnID + '&page=viewPerson';
+        });
+        $(document).on("click", ".table_profile input[type='checkbox']", function () {
+            if ($('.table_profile input[type="checkbox"]').is(':checked')) {
+                $('#del_selected').prop('hidden', false);
+            } else {
+                $('#del_selected').prop('hidden', true);
+            }
+        });
+        $('#del_selected').click(function () {
+            swal({
+                title: "คุณต้องการลบหรือไม่?",
+                text: "หากลบจะไม่สามารถกู้คืนข้อมูลที่ลบได้อีก!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "ใช่, ต้องการลบ!",
+                cancelButtonText: "ยกเลิก",
+                closeOnConfirm: false
+            }, function () {
+                var pro_id = [];
+                $("input:checkbox:checked", table_prifile.cells().nodes()).each(function (i) {
+                    pro_id.push($(this).attr('value'));
+                });
+                cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "del_selected", pro_id, true, function (data) {
+                    show_profile();
+                    $('#del_selected').prop('hidden', true);
+                    swal("ลบสำเร็จ!", "ข้อมูลของคุณถูกลบเรียบร้อยเเล้ว", "success");
+                });
+            });
         });
         $.datetimepicker.setLocale('th');
         $("#pro_birthday").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -83,6 +113,7 @@
         }));
         $("#pro_birthdayE").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -107,7 +138,6 @@
         $('.see_out').hide();
         $('.see_tranout').hide();
     });
-
     $('#check_tran').click(function () {
         if ($('#check_tran').is(":checked")) {
             $('#sw_input').show();
@@ -124,7 +154,6 @@
             $('#pro_transferE').val('');
         }
     });
-
     $('#tran_status').change(function () {
         if ($('#tran_status').val() == '') {
             $('.see_tranout').hide();
@@ -141,7 +170,6 @@
             $('.see_out').hide();
         }
     });
-
     function show_profile() {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
     }
@@ -158,14 +186,37 @@
             } else {
                 tools = '<center><img class="btn-detail" data-toggle="modal" data-target="#detailPerson" onclick="javascript: slDetail(this)" id="' + data[i].pro_id + '"/></center>';
             }
-            dataSet.push(['<center><input type="checkbox" id="checkBox_' + a + '" class="filled-in chk-col-indigo" checked=""><label for="checkBox_' + a + '"></label></center>', '<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), tools]);
+            dataSet.push(['<center><input type="checkbox" value="' + data[i].pro_id + '" id="checkBox_' + a + '" class="filled-in chk-col-indigo checkBox_sub"><label for="checkBox_' + a + '"></label></center>', '<center>' + a + '</center>', '<center>' + data[i].pro_idpos + '</center>', cardID(data[i].card_id), data[i].pro_prefix + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].class_name, DateThai(data[i].pro_dateIn), tools]);
         });
         $('#table_profile_show').html('<table class="table table-bordered table-striped table-hover table_profile dataTable" width="100%"></table>');
-        $('.table_profile').DataTable({
+        table_prifile = $('.table_profile').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
-                {title: '<input type="checkbox" id="checkBox_all" class="filled-in chk-col-indigo" checked=""><label for="checkBox_all"></label>'},
+                {title: '<input type="checkbox" id="checkBox_all" class="filled-in chk-col-indigo checkBox_all"><label for="checkBox_all"></label>'},
                 {title: "ลำดับ", "width": "1%"},
                 {title: "เลขตำแหน่ง", "width": "1%"},
                 {title: "เลขบัตรประชาชน", "width": "16%"},
@@ -175,9 +226,15 @@
                 {title: "...", "width": "12%"},
             ],
             "fnRowCallback": function (nRow) {
-//                console.log($(nRow).find('img').attr('id'));
                 $(nRow).attr('id', $(nRow).find('img').attr('id'));
                 $(nRow).css('cursor', 'pointer');
+                $('#table_profile_show').find('#checkBox_all').click(function () {
+                    if ($('#checkBox_all').is(':checked')) {
+                        $('input', table_prifile.cells().nodes()).prop('checked', true);
+                    } else {
+                        $('input', table_prifile.cells().nodes()).prop('checked', false);
+                    }
+                });
             }
         });
     }
@@ -519,9 +576,19 @@
                             var dep_id = $('#dep_idE').val();
                             var lvb_id = $('#lvb_idE').val();
                             $.post("../../PS_mainpage/personnal/main_personnal.php", {ch_new: 'new', img: data, name: name, card_id: card_id, fullname: fullname, class_id: class_id, pos_id: pos_id, dep_id: dep_id, lvb_id: lvb_id}, function (result) {
-                                show_profile()
-                                swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
-                                $('#editPerson').modal('hide');
+                                swal({
+                                    title: "บันทึกข้อมูลสำเร็จ!",
+                                    text: "ข้อมูลของคุณ ถูกบันทึกลงระบบเเล้ว",
+                                    type: "success",
+                                    timer: 1000,
+                                    showConfirmButton: false,
+                                }, function () {
+                                    $('#editPerson').modal('hide');
+                                    window.location.reload(true);
+                                });
+//                                show_profile()
+//                                swal("แก้ไขสำเร็จ!", "ข้อมูลของคุณ อัพเดทเเล้ว", "success");
+//                                $('#editPerson').modal('hide');
                             });
                         } else {
                             show_profile()

@@ -200,6 +200,12 @@ input[type="file"] {
     width: 25px;
     height: 25px;   
 }
+.btn-delete-selected {
+    content:url("../images/btn-management/delete-selected .png");
+    cursor: pointer;
+    width: 40px;
+    height: 35px; 
+}
 
 .icon-pdf{
     content:url("../images/icon-file/pdf.png");

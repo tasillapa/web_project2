@@ -11,8 +11,9 @@
             <div class="container-fluid">
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
-                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">home</i> Home</a></li>
-                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
+                        <li><a href="../../index.php"><i class="material-icons">home</i> หน้าหลัก</a></li>
+                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">person</i> ระบบบุคลากร</a></li>
+                        <li><a href="#"><i class="material-icons">assessment</i> จัดการบุคลากร</a></li>
                         <li  class="active font-bold col-cyan font-14"><i class="material-icons">settings</i> ตั้งค่าสิทธิ์เข้าใช้งาน</li>
                     </ol>
                 </div>
@@ -44,6 +45,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="card">
                                             <div class="body">
+                                                <img class="btn-delete-selected" id="del_selected" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="ลบข้อมูลที่เลือก" hidden/>
                                                 <div class="table-responsive">
                                                     <div id="table_setting_show"></div>
                                                 </div>
@@ -192,7 +194,8 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="username" class="form-control" placeholder="กรอกชื่อผู้ใช้งาน" required>
+                                                                    <input type="text" id="username" class="form-control validate" placeholder="กรอกชื่อผู้ใช้งาน" required>
+                                                                    <div id="username-error"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -204,7 +207,7 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="password" id="password" class="form-control" placeholder="กรอกรหัสผ่าน">
+                                                                    <input type="password" id="password" class="form-control validate" placeholder="กรอกรหัสผ่าน">
                                                                     <div id="password-error"></div>
                                                                 </div>
                                                             </div>
@@ -217,7 +220,7 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="password" id="ch_password" class="form-control" placeholder="กรอกรหัสยืนยัน">
+                                                                    <input type="password" id="ch_password" class="form-control validate" placeholder="กรอกรหัสยืนยัน">
                                                                     <div id="ch-password-error"></div>
                                                                 </div>
                                                             </div>
@@ -365,7 +368,8 @@
                                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="text" id="usernameE" class="form-control" placeholder="กรอกชื่อผู้ใช้งาน">
+                                                                <input type="text" id="usernameE" class="form-control validateE" placeholder="กรอกชื่อผู้ใช้งาน">
+                                                                <div id="usernameE-error"></div>
                                                                 <input type="hidden" id="member_id">
                                                                 <input type="hidden" id="pro_id">
                                                             </div>
@@ -379,7 +383,8 @@
                                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="text" id="passwordE" class="form-control" placeholder="กรอกรหัสผ่าน">
+                                                                <input type="text" id="passwordE" class="form-control validateE" placeholder="กรอกรหัสผ่าน">
+                                                                <div id="passwordE-error"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -391,7 +396,8 @@
                                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="password" id="ch_passwordE" class="form-control" placeholder="กรอกรหัสยืนยัน">
+                                                                <input type="password" id="ch_passwordE" value="555555" class="form-control validateE" placeholder="กรอกรหัสยืนยัน">
+                                                                <div id="ch-passwordE-error"></div>
                                                             </div>
                                                         </div>
                                                     </div>

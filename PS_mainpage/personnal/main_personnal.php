@@ -16,6 +16,14 @@ if (!isset($_POST['ch_new'])) {
         $_SESSION["fullname"] = $_POST['fullname'];
     }
     $_SESSION["class_id"] = $_POST['class_id'];
+    $cn = new management;
+    $cn->con_db();
+    $class_id = $_POST['class_id'];
+    $sql_class_name = "SELECT class_name FROM ps_class WHERE class_id = '$class_id'";
+    $query_class_name = $cn->Connect->query($sql_class_name);
+    while ($rs_class_name = mysqli_fetch_array($query_class_name)) {
+        $_SESSION["class_name"] = $rs_class_name['class_name'];
+    }
     $_SESSION["pos_id"] = $_POST['pos_id'];
     $_SESSION["dep_id"] = $_POST['dep_id'];
     $_SESSION["lvb_id"] = $_POST['lvb_id'];
@@ -84,7 +92,7 @@ if (!isset($_POST['ch_new'])) {
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="header">System option</li>
-                                <li  data-toggle="modal" data-target="#change_pass"><a href="javascript:void(0);"><i class="material-icons link_log">assignment_ind</i>Change Password</a></li>
+                                <li data-toggle="modal" data-target="#change_pass"><a href="javascript:void(0);"><i class="material-icons link_log">assignment_ind</i>Change Password</a></li>
                                 <li><a href="../../js/logout.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
                             </ul>
                         </li>
@@ -101,7 +109,7 @@ if (!isset($_POST['ch_new'])) {
                 <!-- User Info -->
                 <div class="user-info">
                     <div class="image">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 m-t-10">
                             <div class="list-unstyled aniimated-thumbnials">
                                 <a href="<?php
                                 if (($_SESSION['pro_picture'] != '') || ($_POST['ch_new'] != '')) {
@@ -120,19 +128,24 @@ if (!isset($_POST['ch_new'])) {
                                     } else {
                                         echo '../../images/img-profile/no_img.png';
                                     }
-                                    ?>" style="height: 100px; width: 100px;"alt="User">
+                                    ?>" style="height: 80px; width: 110px;"alt="User">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                             <div class="info-container">
-                                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['name'] ?></div>
-                                <div class="email">Online</div>
-                            </div><br><br>
-                            <!--                            <label class="custom-file-upload">
-                                                            <input type='file' id="imgInp" />
-                                                            เปลี่ยนรูป
-                                                        </label>-->
+                                <div class="name font-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['name']; ?></div>
+                                <div class="font-bold email"><?php echo $_SESSION['class_name']; ?></div>
+                                <div class="font-bold col-light-green">Online</div>
+                            </div><br>
+                            <div class="col-white user-helper-dropdown m-l-110 m-t-10">
+                                <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="person_DataProfile.php"><i class="material-icons">person</i>ข้อมูลส่วนตัว</a></li>
+                                    <li data-toggle="modal" data-target="#change_pass"><a href="javascript:void(0);"><i class="material-icons">assignment_ind</i>เปลี่ยนรหัสผ่าน</a></li>
+                                    <li><a href="../../js/logout.php"><i class="material-icons">input</i>ออกจากระบบt</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

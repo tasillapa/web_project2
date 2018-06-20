@@ -17,6 +17,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "DUSER": del_user();
             break;
+        case "del_selected": del_selected_user();
+            break;
         case "IMUSER": import_user();
             break;
         case "sl_data_profile": sl_data_profile();
@@ -40,6 +42,7 @@ if (!empty($_FILES['fileUser'])) {
         $pos_id = '';
         $class_id = '';
         $dep_id = '';
+        $pro_id = '';
         $person_create = $_SESSION['name'];
         foreach ($object->getWorksheetIterator() as $worksheet) {
             $highestRow = $worksheet->getHighestRow();
@@ -77,9 +80,12 @@ if (!empty($_FILES['fileUser'])) {
                 $sql_checkProfile = "SELECT * FROM ps_profile WHERE card_id = '$card_id'";
                 $query_checkProfile = $cn->Connect->query($sql_checkProfile);
                 $num_profile = mysqli_num_rows($query_checkProfile);
-                if (($num == 0) && ($card_id != '') && ($num_profile == 0)) {
-                    $sql = "INSERT INTO ps_personnal (card_id, nameuser, lastname, pos_id, class_id, dep_id, tel, email, username, password, level, status, person_create, date_create, person_update, date_update)"
-                            . "VALUES('$card_id', '$nameuser', '$lastname', '$pos_id', '$class_id', '$dep_id', '$tel', '$email', '$username', '$password', '$level', '$status', '$person_create', '$date', '$person_update', '$date')";
+                if (($num == 0) && ($card_id != '') && ($num_profile != 0)) {
+                    while ($rs_pro_id = mysqli_fetch_array($query_checkProfile)) {
+                        $pro_id = $rs_pro_id['pro_id'];
+                    }
+                    $sql = "INSERT INTO ps_personnal (pro_id, card_id, nameuser, lastname, pos_id, class_id, dep_id, tel, email, username, password, level, status, person_create, date_create, person_update, date_update)"
+                            . "VALUES('$pro_id', '$card_id', '$nameuser', '$lastname', '$pos_id', '$class_id', '$dep_id', '$tel', '$email', '$username', '$password', '$level', '$status', '$person_create', '$date', '$person_update', '$date')";
                     $stmt = $cn->Connect->prepare($sql);
                     $ret = $stmt->execute();
                 }
@@ -215,6 +221,20 @@ function del_user() {
         $sql = "DELETE FROM ps_personnal WHERE member_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
+    }
+    exit();
+}
+
+function del_selected_user() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        for ($i = 0; $i < count($get_data); $i++) {
+            $sql = "DELETE FROM ps_personnal WHERE member_id = '$get_data[$i]'";
+            $cn->exec($sql);
+        }
+        echo '1';
     }
     exit();
 }

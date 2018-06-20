@@ -13,6 +13,8 @@ if (isset($_POST["FN"]) && !empty($_POST["FN"])) {
             break;
         case "DPS":del_profile();
             break;
+        case "del_selected":del_selected_profile();
+            break;
         case "EPS":edit_profile();
             break;
         case "EPSM":edit_profile_main();
@@ -162,7 +164,6 @@ function sl_data_profile() {
             $sql = "SELECT * from ps_profile LEFT JOIN ps_class ON ps_profile.class_id = ps_class.class_id WHERE ps_profile.pro_id ='$id'";
         } else if ($class_claim == 0) {
             $sql = "SELECT * from ps_profile AS pp LEFT JOIN ps_class AS pc ON pp.class_id = pc.class_id LEFT JOIN ps_levelboss AS plb ON pp.lvb_id = plb.lvb_id WHERE plb.lvb_claim > '$lvb_claim' OR plb.lvb_claim IS NULL ORDER BY plb.lvb_claim IS NULL, plb.lvb_claim ASC";
-//            exit();
         } else {
             $sql = "SELECT * from ps_profile AS pp LEFT JOIN ps_class AS pc ON pp.class_id = pc.class_id LEFT JOIN ps_levelboss AS plb ON pp.lvb_id = plb.lvb_id WHERE pc.class_id = '$class_id' AND (plb.lvb_claim > '$lvb_claim' OR plb.lvb_claim IS NULL) ORDER BY plb.lvb_claim IS NULL, plb.lvb_claim ASC";
         }
@@ -252,6 +253,71 @@ function del_profile() {
         $sql = "DELETE FROM ps_profile WHERE pro_id = '$get_data[0]'";
         $rs = $cn->execute($sql);
         echo $rs;
+    }
+    exit();
+}
+
+function del_selected_profile() {
+    $cn = new management;
+    $cn->con_db();
+    if ($cn->Connect) {
+        $get_data = explode("|", $_POST["PARM"]);
+        for ($i = 0; $i < count($get_data); $i++) {
+            $path = '';
+            $sql_img = "SELECT pro_picture FROM ps_profile WHERE pro_id = '$get_data[$i]'";
+            $Query = $cn->Connect->query($sql_img);
+            while ($Row = mysqli_fetch_array($Query)) {
+                $path = $Row['pro_picture'];
+            }
+            if ($path != '') {
+                $files = glob($path);
+                foreach ($files as $file) { // iterate files
+                    if (is_file($file))
+                        unlink($file); // delete file
+                }
+            }
+            $sql_G = "DELETE FROM ps_geninformation WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_G);
+            $sql_C = "DELETE FROM ps_changname WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_C);
+            $sql_HM = "DELETE FROM ps_hismarry WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_HM);
+            $sql_H = "DELETE FROM ps_heir WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_H);
+            $sql_B = "DELETE FROM ps_blame WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_B);
+            $sql_A = "DELETE FROM ps_address WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_A);
+            $sql = "DELETE FROM ps_preaddress WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql);
+            $sql_E = "DELETE FROM ps_education WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_E);
+            $sql_HS = "DELETE FROM ps_hisservice WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_HS);
+            $sql_HSP = "DELETE FROM ps_hisservicespecial WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_HSP);
+            $sql_HA = "DELETE FROM ps_histreat_assignment WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_HA);
+            $sql_HAWARD = "DELETE FROM ps_hisaward WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_HAWARD);
+            $sql_AC = "DELETE FROM ps_academic WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_AC);
+            $sql_P = "DELETE FROM ps_plan WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_P);
+            $sql_HR = "DELETE FROM ps_hisroyal WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_HR);
+            $sql_HS = "DELETE FROM ps_hissalaryup WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_HS);
+            $sql_HSCP = "DELETE FROM ps_salaryspecial WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_HSCP);
+            $sql_TRAN = "DELETE FROM ps_transferout WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_TRAN);
+            $sql_USER = "DELETE FROM ps_personnal WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql_USER);
+            $sql = "DELETE FROM ps_profile WHERE pro_id = '$get_data[$i]'";
+            $cn->exec($sql);
+        }
+        echo '1';
     }
     exit();
 }

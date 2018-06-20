@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2018 at 06:46 AM
+-- Generation Time: Jun 20, 2018 at 02:34 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -25,6 +25,95 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `meet_location`
+--
+
+CREATE TABLE `meet_location` (
+  `location_id` int(11) NOT NULL,
+  `meet_id` int(20) NOT NULL,
+  `location_name` text NOT NULL COMMENT 'สถานที่ไปราชการ',
+  `location_provice` text NOT NULL COMMENT 'จังหวัดที่ไป',
+  `location_datefrom` date NOT NULL,
+  `location_dateto` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `meet_location`
+--
+
+INSERT INTO `meet_location` (`location_id`, `meet_id`, `location_name`, `location_provice`, `location_datefrom`, `location_dateto`) VALUES
+(22, 2435, 'กรุงเทพ', '10', '2018-05-29', '2018-05-31'),
+(23, 2434, 'dwdwdw', '11', '2018-05-29', '2018-05-31'),
+(24, 2434, 'dwdwdw', '10', '2018-05-07', '2018-05-31'),
+(25, 0, '', 'เลือก', '0000-00-00', '0000-00-00'),
+(26, 0, '', 'เลือก', '0000-00-00', '0000-00-00'),
+(27, 0, '', 'เลือก', '0000-00-00', '0000-00-00'),
+(28, 0, '', 'เลือก', '0000-00-00', '0000-00-00'),
+(29, 0, '', 'เลือก', '0000-00-00', '0000-00-00'),
+(30, 0, '', 'เลือก', '0000-00-00', '0000-00-00'),
+(31, 0, '', 'เลือก', '0000-00-00', '0000-00-00'),
+(32, 0, '', 'เลือก', '0000-00-00', '0000-00-00'),
+(33, 0, '', 'เลือก', '0000-00-00', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `meet_pspart`
+--
+
+CREATE TABLE `meet_pspart` (
+  `pspart_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `name_pspart` varchar(30) NOT NULL COMMENT 'ผู้ร่วมไปราชการ'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `meet_pspart`
+--
+
+INSERT INTO `meet_pspart` (`pspart_id`, `name_pspart`) VALUES
+(0002, '2435,2434,2433'),
+(0003, '2434,2433,2431,2432'),
+(0004, '2434,2433,2431'),
+(0005, 'null'),
+(0006, 'null'),
+(0007, 'null'),
+(0008, 'null'),
+(0009, 'null'),
+(0010, 'null'),
+(0011, 'null'),
+(0012, 'null'),
+(0013, 'null');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `meet_report`
+--
+
+CREATE TABLE `meet_report` (
+  `report_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `report_goal` text NOT NULL,
+  `report_contents` text NOT NULL,
+  `report_benefits` text NOT NULL,
+  `report_pdf` text NOT NULL,
+  `report_status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `meet_report`
+--
+
+INSERT INTO `meet_report` (`report_id`, `report_goal`, `report_contents`, `report_benefits`, `report_pdf`, `report_status`) VALUES
+(0001, 'ทำงาน', 'เชียงใหม่', 'ไม่รุู้นะ', '../../fpdf17/MyPDF/การไปราชการ.pdf', 1),
+(0005, '', '', 'iukk7o9l87o', '../../fpdf17/MyPDF/M.pdf', 0),
+(0006, '', '', '', '\r\n', 0),
+(0007, '', '', '', '\r\n', 0),
+(0008, '$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', 0),
+(0009, '', '', '', '../../fpdf17/MyPDF/se57160264เอาอันนี้.pdf', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ps_academic`
 --
 
@@ -36,6 +125,18 @@ CREATE TABLE `ps_academic` (
   `academic_file` text CHARACTER SET utf32 NOT NULL COMMENT 'ไฟล์แนบ',
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ผลงานวิชาการ';
+
+--
+-- Dumping data for table `ps_academic`
+--
+
+INSERT INTO `ps_academic` (`academic_id`, `academic_name`, `academic_type`, `academic_date`, `academic_file`, `pro_id`) VALUES
+(17, 'การพัฒนาศักยภาพด้านการสื่อสาร', 'วิจัย', '2018-04-04', '../../doc/award-academic/analytics.png', 0001),
+(18, 'fghfg', 'hsdrfsdrwe', '2018-06-13', '../../doc/award-academic/suriyaPJ.docx', 0004),
+(19, 'fghfg', 'hsdrfsdrwe', '2018-06-13', '../../doc/award-academic/suriyaPJ.docx', 0004),
+(20, 'fghfg', 'hsdrfsdrwe', '2018-06-13', '../../doc/award-academic/suriyaPJ.docx', 0004),
+(21, 'dfgdf', 'gdfgdfg', '2018-08-19', '0', 0004),
+(22, 'fdgfdg', 'dfgdfg', '2018-06-21', '../../doc/award-academic/ฟ้า.pdf', 0004);
 
 -- --------------------------------------------------------
 
@@ -54,8 +155,8 @@ CREATE TABLE `ps_address` (
   `address_amphur` int(5) NOT NULL COMMENT 'อำเภอ',
   `address_district` int(5) NOT NULL COMMENT 'ตำบล',
   `address_zip_code` varchar(5) NOT NULL COMMENT 'รหัสไปรษณีย์',
-  `address_call` varchar(11) NOT NULL COMMENT 'โทร.',
-  `address_fhone` varchar(11) NOT NULL COMMENT 'มือถือ',
+  `address_call` varchar(9) NOT NULL COMMENT 'โทร.',
+  `address_fhone` varchar(10) NOT NULL COMMENT 'มือถือ',
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ที่อยู่ตามทะเบียนบ้าน';
 
@@ -64,7 +165,10 @@ CREATE TABLE `ps_address` (
 --
 
 INSERT INTO `ps_address` (`address_id`, `address_number`, `address_swine`, `address_soi`, `address_road`, `address_village`, `address_province`, `address_amphur`, `address_district`, `address_zip_code`, `address_call`, `address_fhone`, `pro_id`) VALUES
-(20, '', '', '', '', '', 0, 0, 0, '', '', '0978901111', 0001);
+(20, '', '', '', '', '', 73, 959, 0, '93120', '', '0978901156', 0001),
+(21, '', '', '', '', '', 0, 0, 0, '', '', '', 0010),
+(22, '', '', '', '', '', 0, 0, 0, '', '', '', 0005),
+(24, '', '', '', '', '', 0, 0, 0, '', '', '5555555555', 0020);
 
 -- --------------------------------------------------------
 
@@ -1127,6 +1231,14 @@ CREATE TABLE `ps_blame` (
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติทางวินัย';
 
+--
+-- Dumping data for table `ps_blame`
+--
+
+INSERT INTO `ps_blame` (`blame_id`, `blame_name`, `blame_somename`, `blame_date`, `pro_id`) VALUES
+(0013, 'sfdgsdf', 'gsdfgsfg', '2018-06-14', 0004),
+(0014, 'sdfdsfsdf', 'sdfsdfsdf', '2018-06-05', 0001);
+
 -- --------------------------------------------------------
 
 --
@@ -1141,6 +1253,13 @@ CREATE TABLE `ps_changname` (
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการเปลี่ยนชื่อ-สกุล';
 
+--
+-- Dumping data for table `ps_changname`
+--
+
+INSERT INTO `ps_changname` (`chang_id`, `chang_nameold`, `chang_namenew`, `chang_date`, `pro_id`) VALUES
+(0050, 'fsdf sdfsdfsd', 'sfsdfsd  fsdfsdf', '2018-06-14', 0004);
+
 -- --------------------------------------------------------
 
 --
@@ -1150,45 +1269,45 @@ CREATE TABLE `ps_changname` (
 CREATE TABLE `ps_class` (
   `class_id` int(4) UNSIGNED ZEROFILL NOT NULL,
   `class_code` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `class_name` text COLLATE utf8_unicode_ci NOT NULL
+  `class_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `class_claim` int(2) NOT NULL COMMENT 'ระดับสิทธิ์กลุ่มงาน'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='หน่วยงานภายใน';
 
 --
 -- Dumping data for table `ps_class`
 --
 
-INSERT INTO `ps_class` (`class_id`, `class_code`, `class_name`) VALUES
-(0001, 0111, 'กลุ่มบริหารทั่วไป'),
-(0002, 0112, 'กลุ่มพัฒนาวิชาการ'),
-(0003, 0113, 'กลุ่มพัฒนาภาคีเครือข่าย'),
-(0004, 0114, 'กลุ่มสื่อสาร'),
-(0005, 0115, 'กลุ่มระบาดวิทยา'),
-(0006, 0116, 'กลุ่มแผนงานและประเมินผล'),
-(0007, 0117, 'กลุ่มพัฒนาองค์กร'),
-(0055, 0140, 'กลุ่มอำนวยการ'),
-(0023, 0125, 'ศตม 6.5 จันทบุรี'),
-(0022, 0124, 'ศตม.6.4 ตราด'),
-(0019, 0121, 'ศตม.6.1 ศรีราชา'),
-(0021, 0123, 'ศตม.6.3 ระยอง'),
-(0020, 0122, 'ศตม.6.2 สระแก้ว'),
-(0026, 0126, 'ด่านท่าเรือศรีราชา'),
-(0027, 0127, 'ด่านท่าเรือแหลมฉบัง'),
-(0028, 0128, 'ด่านท่าเรือเกาะสีชัง'),
-(0029, 0129, 'ด่านท่าเรือมาบตาพุด'),
-(0030, 0130, 'ด่านท่าอากาศยานอู่ตะเภา'),
-(0031, 0131, 'ด่านอรัญประเทศ'),
-(0032, 0132, 'ด่านคลองใหญ่'),
-(0033, 0133, 'ด่านบ้านแหลม'),
-(0034, 0134, 'ด่านบ้านผักกาด'),
-(0035, 0135, 'หน่วยกามโรคที่ 3.1 อ.บางละมุง'),
-(0049, 0136, 'วัณโรค'),
-(0050, 0137, 'กลุ่มห้องปฏิบัติการ'),
-(0053, 0138, 'รองผู้อำนวยการ'),
-(0076, 1102, 'กลุ่มงานสถาปัตยกรรมข้อมูล '),
-(0056, 0139, 'กลุ่มปฏิบัติการ'),
-(0077, 0691, 'พัฒนาภาคีเครือข่าย'),
-(0082, 1526, 'กลุ่มงานสนับสนุน'),
-(0081, 5321, 'กลุ่มงานบริการพื้นฐาน');
+INSERT INTO `ps_class` (`class_id`, `class_code`, `class_name`, `class_claim`) VALUES
+(0001, 0111, 'กลุ่มบริหารทั่วไป', 9),
+(0002, 0112, 'กลุ่มพัฒนาวิชาการ', 9),
+(0003, 0113, 'กลุ่มพัฒนาภาคีเครือข่าย', 9),
+(0004, 0114, 'กลุ่มสื่อสาร', 9),
+(0005, 0115, 'กลุ่มระบาดวิทยา', 9),
+(0006, 0116, 'กลุ่มแผนงานและประเมินผล', 9),
+(0007, 0117, 'กลุ่มพัฒนาองค์กร', 9),
+(0055, 0140, 'กลุ่มอำนวยการ', 0),
+(0023, 0125, 'ศตม 6.5 จันทบุรี', 9),
+(0022, 0124, 'ศตม.6.4 ตราด', 9),
+(0019, 0121, 'ศตม.6.1 ศรีราชา', 9),
+(0021, 0123, 'ศตม.6.3 ระยอง', 9),
+(0020, 0122, 'ศตม.6.2 สระแก้ว', 9),
+(0026, 0126, 'ด่านท่าเรือศรีราชา', 9),
+(0027, 0127, 'ด่านท่าเรือแหลมฉบัง', 9),
+(0028, 0128, 'ด่านท่าเรือเกาะสีชัง', 9),
+(0029, 0129, 'ด่านท่าเรือมาบตาพุด', 9),
+(0030, 0130, 'ด่านท่าอากาศยานอู่ตะเภา', 9),
+(0031, 0131, 'ด่านอรัญประเทศ', 9),
+(0032, 0132, 'ด่านคลองใหญ่', 9),
+(0033, 0133, 'ด่านบ้านแหลม', 9),
+(0034, 0134, 'ด่านบ้านผักกาด', 9),
+(0035, 0135, 'หน่วยกามโรคที่ 3.1 อ.บางละมุง', 9),
+(0049, 0136, 'วัณโรค', 9),
+(0050, 0137, 'กลุ่มห้องปฏิบัติการ', 9),
+(0076, 1102, 'กลุ่มงานสถาปัตยกรรมข้อมูล ', 9),
+(0056, 0139, 'กลุ่มปฏิบัติการ', 9),
+(0077, 0691, 'พัฒนาภาคีเครือข่าย', 9),
+(0082, 1526, 'กลุ่มงานสนับสนุน', 9),
+(0081, 5321, 'กลุ่มงานบริการพื้นฐาน', 9);
 
 -- --------------------------------------------------------
 
@@ -10125,6 +10244,13 @@ CREATE TABLE `ps_education` (
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'ไอดี ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='ประวัติการศึกษา';
 
+--
+-- Dumping data for table `ps_education`
+--
+
+INSERT INTO `ps_education` (`hised_id`, `edu_id`, `hised_year`, `hised_background`, `hised_major`, `hised_address`, `hised_country`, `pro_id`) VALUES
+(0119, 0002, '2452', 'dfdsf', 'sdfsdf', 'sdfsdfs', 'dfsdf', 0004);
+
 -- --------------------------------------------------------
 
 --
@@ -10162,7 +10288,11 @@ CREATE TABLE `ps_geninformation` (
 --
 
 INSERT INTO `ps_geninformation` (`gen_id`, `gen_card_id`, `gen_prefix`, `gen_old`, `PROVINCE_ID`, `nationality_id`, `nationality_id_race`, `religion_id`, `gen_blood`, `gen_soldier`, `gen_tax`, `gen_passport`, `bank_id`, `gen_account_number`, `gen_email`, `gen_facebook`, `gen_twitter`, `gen_line`, `gen_talent`, `gen_interest`, `expert_name`, `expert_ex`, `pro_id`) VALUES
-(24, '1310400087339', '', '0 ปี 2 เดือน', 0, 0, 0, 0, '', '', '', '', 0, '', 'phoonsawat_jo@hotmail.com', '', '', '', '', '', '', '', 0001);
+(24, '1310400087338', '', '0 ปี -2 เดือน', 0, 0, 0, 0, '', '', '', '', 0, '', 'phoonsawat_jo@hotmail.com', '', '', '', '', '', '', '', 0001),
+(25, '3659900370111', '', 'ยังไม่ได้ระบุวันเกิด', 0, 0, 0, 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0010),
+(26, '1125400454578', '', 'ยังไม่ได้ระบุวันเกิด', 0, 0, 0, 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0005),
+(28, '', '', '', 0, 0, 0, 0, '', '', '', '', 0, '', '5555@hotmail.com', '', '', '', '', '', '', '', 0020),
+(30, '', '', '', 0, 0, 0, 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0004);
 
 -- --------------------------------------------------------
 
@@ -10200,6 +10330,14 @@ CREATE TABLE `ps_heir` (
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `ps_heir`
+--
+
+INSERT INTO `ps_heir` (`id_heir`, `heir_name`, `heir_relationship`, `pro_id`) VALUES
+(0011, 'ด้ด้ ดเ้ด้', 'เด้ดเ้ดเ้', 0001),
+(0013, 'jfhjfhj fhe566', 'dfgasda', 0004);
+
 -- --------------------------------------------------------
 
 --
@@ -10214,6 +10352,14 @@ CREATE TABLE `ps_hisaward` (
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการได้รับรางวัล ประกาศ เชิดชูเกียรติ';
 
+--
+-- Dumping data for table `ps_hisaward`
+--
+
+INSERT INTO `ps_hisaward` (`award_id`, `award_date`, `award_topic`, `award_file`, `pro_id`) VALUES
+(0014, '2018-06-05', '456465', '../../doc/award/analytics.png', 0004),
+(0017, '2018-06-07', 'รางวัลพนักงานดีเด่น', '../../doc/award/สคริปสัมภาษณ์งาน.docx', 0001);
+
 -- --------------------------------------------------------
 
 --
@@ -10227,6 +10373,14 @@ CREATE TABLE `ps_hismarry` (
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `ps_hismarry`
+--
+
+INSERT INTO `ps_hismarry` (`marry_id`, `marry_name`, `marry_status`, `pro_id`) VALUES
+(0014, 'นางปราณี เจริญทรัพย์', 'ภรรยา', 0001),
+(0017, 'sdfsdf sdfsd', 'fsdfsdf', 0004);
+
 -- --------------------------------------------------------
 
 --
@@ -10234,53 +10388,53 @@ CREATE TABLE `ps_hismarry` (
 --
 
 CREATE TABLE `ps_hismeetting` (
-  `id_meetting` int(4) UNSIGNED ZEROFILL NOT NULL,
-  `meet_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `meet_datefrom` date NOT NULL,
-  `meet_dateto` date NOT NULL,
-  `meet_budget` int(7) NOT NULL,
-  `meet_datetime` int(2) NOT NULL,
-  `meet_type` text COLLATE utf8_unicode_ci NOT NULL,
-  `meet_area` text COLLATE utf8_unicode_ci NOT NULL,
-  `meet_location` text COLLATE utf8_unicode_ci NOT NULL,
-  `meetout_location` text COLLATE utf8_unicode_ci NOT NULL,
-  `meet_reasoning` text COLLATE utf8_unicode_ci NOT NULL,
-  `card_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL
+  `meet_id` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `meet_no` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'เลขที่หนังสือ',
+  `meet_date` date NOT NULL COMMENT 'วันที่เขียน',
+  `meet_name` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'เรื่องการไปราชการ',
+  `meet_vehicle` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'ยานพาหนะ',
+  `meet_datefrom` date NOT NULL COMMENT 'วันที่ไปราชการ',
+  `meet_dateto` date NOT NULL COMMENT 'ไปราชการถึงวันที่',
+  `meet_budget` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'เบิกงบประมาณจาก',
+  `meet_dateout` date NOT NULL COMMENT 'วันที่ออกเดินทาง',
+  `meet_dateback` date NOT NULL COMMENT 'วันที่เดินทางกลับ',
+  `meet_type` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'ปรเภทการไปราชการ อบรมสัมมนาประชุม',
+  `meet_psname` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ผู้ขออบรม',
+  `class_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'กลุ่มงาน',
+  `lvb_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ผู้อนุมัติ',
+  `meet_status` int(1) NOT NULL COMMENT 'สถานะการขอไปราชการ',
+  `meet_timeout` time NOT NULL COMMENT 'เวลาออกเดินทาง',
+  `meet_datecome` time NOT NULL COMMENT 'เวลาเดินทางกลับ',
+  `meet_status_director` int(11) NOT NULL COMMENT 'สถานะการอนุมัติไปราชการผู้อนวยการ',
+  `meet_status_vehicle` int(11) NOT NULL,
+  `status_report` int(11) NOT NULL,
+  `pro_id` int(4) NOT NULL,
+  `product_money` int(11) NOT NULL COMMENT 'จำนวนเงินงบประมาณ ',
+  `budget_money` int(11) NOT NULL COMMENT 'จำนวนเงินนอกงบประมาณ',
+  `liceplate_stm` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'ทะเบียนรถศตม.',
+  `liceplate_car` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'ทะเบียนรถส่วนตัว',
+  `budget_ve_num` int(100) NOT NULL COMMENT 'จำนวนวันเช่ารถตู้',
+  `budget_ve_money` int(100) NOT NULL COMMENT 'จำนวนเงินที่เช่ารถตู้',
+  `report_m_pdf` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'reportpdf'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `ps_hismeetting`
 --
 
-INSERT INTO `ps_hismeetting` (`id_meetting`, `meet_name`, `meet_datefrom`, `meet_dateto`, `meet_budget`, `meet_datetime`, `meet_type`, `meet_area`, `meet_location`, `meetout_location`, `meet_reasoning`, `card_id`) VALUES
-(0002, 'test8', '2014-07-10', '2014-07-12', 2010, 2, 'สัมมนา', '0117', 'สระแก้ว', '-', 'เยี่ยม', '1310400087338'),
-(0003, 'test1', '2014-06-01', '2014-07-01', 2011, 31, 'อบรม', '0117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0004, 'test2', '2014-06-02', '2014-07-02', 2012, 31, 'อบรม', '0117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0005, 'test3', '2014-06-03', '2014-07-03', 2013, 31, 'อบรม', '0117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0006, 'test4', '2014-06-04', '2014-07-04', 2013, 31, 'อบรม', '', 'สระแก้ว', '0111', 'verygood', '1310400087338'),
-(0007, 'test5', '2014-06-05', '2014-07-05', 2013, 31, 'อบรม', '', 'สระแก้ว', '0112', 'verygood', '1310400087338'),
-(0008, 'test6', '2014-06-06', '2014-07-06', 2014, 31, 'อบรม', '0117', 'สระแก้ว วังน้ำเขียว', '', 'verygood', '1310400087338'),
-(0009, 'test7', '2014-06-07', '2014-07-07', 2014, 31, 'อบรม', '117', 'สระแก้ว', '', 'verygood', '1310400087338'),
-(0010, 'test8', '2014-06-08', '2014-07-08', 2014, 31, 'อบรม', '117', 'สระแก้ว', '', 'verygood', '1310400087338'),
-(0011, 'test9', '2014-06-09', '2014-07-09', 2014, 31, 'อบรม', '117', 'สระแก้ว', '', 'verygood', '1310400087338'),
-(0012, 'test10', '2014-06-10', '2014-07-10', 2014, 31, 'อบรม', '117', 'สระแก้ว', '', 'verygood', '1310400087338'),
-(0013, 'test11', '2014-06-11', '2014-07-11', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0014, 'test12', '2014-06-12', '2014-07-12', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0015, 'test13', '2014-06-13', '2014-07-13', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0016, 'test14', '2014-06-14', '2014-07-14', 2014, 31, 'อบรม', '', 'สระแก้ว', '0112', 'verygood', '1310400087338'),
-(0017, 'test15', '2014-06-15', '2014-07-15', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0018, 'test16', '2014-06-16', '2014-07-16', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0019, 'test17', '2014-06-17', '2014-07-17', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0020, 'test18', '2014-06-18', '2014-07-18', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0021, 'test19', '2014-06-19', '2014-07-19', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0022, 'test20', '2014-06-20', '2014-07-20', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0023, 'test21', '2014-06-21', '2014-07-21', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0024, 'test22', '2014-06-22', '2014-07-22', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0025, 'test23', '2014-06-23', '2014-07-23', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0026, 'test24', '2014-06-24', '2014-07-24', 2014, 31, 'อบรม', '117', 'สระแก้ว', '-', 'verygood', '1310400087338'),
-(0027, 'พัฒนาศักยภาพบุคคลากรภายในองค์กร', '2014-07-17', '2014-07-19', 2014, 3, 'อบรม', '0117', 'สมุทสงคราม บ้านอัมพวา', '', 'เพิ่อให้บุคคลากรภายในสำนักงานมีความคิดวิเคราะห์และนำไปใช้ในชีวิตประจำวันและการทำงานให้มีประสิทธิ์ภาพมากยิ่งขึ้น', '7696796786574'),
-(0028, 'อบรมโปรแกรมพื้นฐาน Dashborad', '2015-07-23', '2015-07-26', 2015, 4, 'อบรม', '0117', 'กรุงเทพ', '0112', '-', '1310400087338'),
-(0029, 'อบรมโปรแกรมพื้นฐาน Dashborad', '2015-07-23', '2015-07-26', 2015, 4, 'อบรม', '0117', 'กรุงเทพ', '0112', '-', '1310400087338');
+INSERT INTO `ps_hismeetting` (`meet_id`, `meet_no`, `meet_date`, `meet_name`, `meet_vehicle`, `meet_datefrom`, `meet_dateto`, `meet_budget`, `meet_dateout`, `meet_dateback`, `meet_type`, `meet_psname`, `class_name`, `lvb_name`, `meet_status`, `meet_timeout`, `meet_datecome`, `meet_status_director`, `meet_status_vehicle`, `status_report`, `pro_id`, `product_money`, `budget_money`, `liceplate_stm`, `liceplate_car`, `budget_ve_num`, `budget_ve_money`, `report_m_pdf`) VALUES
+(0019, 'เลขที่หนังสือ สร', '1475-05-28', 'อบรมวิชาการ', '', '2018-05-29', '2018-05-31', 'ผู้จัดประชุมอบรม', '2018-05-29', '2018-05-31', 'อบรม', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', 'สุริยะ เต่าทองคำ', 0, '12:00:00', '13:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0030, '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0020, 'ddd', '1475-05-28', 'dwdwdwdwdw', '', '2018-05-29', '2018-05-31', 'ผู้จัดประชุมอบรม', '2018-05-30', '2018-05-28', 'อบรม', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', 'ddddddd', 0, '11:20:00', '11:30:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0021, 'dwdwdw', '1475-05-28', 'dwdwdw', '', '2018-05-29', '2018-05-31', 'ผู้จัดประชุมอบรม', '2018-05-28', '2018-05-29', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', 'dwdwdwdwdwdwdw', 0, '11:20:00', '12:20:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0022, '', '1475-05-28', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0023, '', '1475-05-28', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0024, '', '1475-05-28', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0025, '', '1475-05-28', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0026, '', '1475-05-28', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0027, '', '1475-05-29', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0028, '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, ''),
+(0029, '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', 'undefined', '0000-00-00', '0000-00-00', 'undefined', 'นายบุญล้อม พูนสวัสดิ์', 'กลุ่มบริหารทั่วไป', '', 0, '00:00:00', '00:00:00', 0, 0, 0, 1751, 0, 0, '', '', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -10294,7 +10448,15 @@ CREATE TABLE `ps_hisroyal` (
   `hisroyal_somename` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'ราชกิจจานุเบกษา',
   `hisroyal_date` date NOT NULL COMMENT 'วันที่เปลี่ยน',
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการรับเครื่องราชา';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการรับเครื่องราช';
+
+--
+-- Dumping data for table `ps_hisroyal`
+--
+
+INSERT INTO `ps_hisroyal` (`hisroyal_id`, `hisroyal_name`, `hisroyal_somename`, `hisroyal_date`, `pro_id`) VALUES
+(0007, 'dsf', 'sdfsdfsd', '2018-06-05', 0004),
+(0008, 'asdasd', 'asdasdasd', '2018-06-05', 0001);
 
 -- --------------------------------------------------------
 
@@ -10309,6 +10471,13 @@ CREATE TABLE `ps_hissalaryup` (
   `hisslrup_type` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'ประเภทการเคลื่อนไหว',
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการรับเลื่อนขั้นเงินเดือน';
+
+--
+-- Dumping data for table `ps_hissalaryup`
+--
+
+INSERT INTO `ps_hissalaryup` (`hisslrup_id`, `hisslrup_date`, `hisslrup_money`, `hisslrup_type`, `pro_id`) VALUES
+(0013, '2018-06-13', 4684768, 'fsdfds', 0004);
 
 -- --------------------------------------------------------
 
@@ -10328,6 +10497,14 @@ CREATE TABLE `ps_hisservice` (
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='ประวัติการรับราชการ';
 
+--
+-- Dumping data for table `ps_hisservice`
+--
+
+INSERT INTO `ps_hisservice` (`hissv_id`, `hissv_office`, `hissv_department`, `hissv_position`, `his_idpos`, `hissv_date`, `hissv_salary`, `hissv_type`, `pro_id`) VALUES
+(17, 'sdf', 'sdfsd', 'ffgfd', 0, '2018-06-11', 564536546, 'rtetert', 0004),
+(18, 'xcz', 'xczx', 'czxc', 45345345, '2018-05-30', 4536456, '4524524525', 0004);
+
 -- --------------------------------------------------------
 
 --
@@ -10344,6 +10521,13 @@ CREATE TABLE `ps_hisservicespecial` (
   `hissvp_note` text CHARACTER SET utf8 NOT NULL COMMENT 'หมายเหตุ',
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติราชการพิเศษ';
+
+--
+-- Dumping data for table `ps_hisservicespecial`
+--
+
+INSERT INTO `ps_hisservicespecial` (`hissvp_id`, `hissvp_special`, `hissvp_topic`, `hissvp_code`, `hissvp_date`, `hissvp_place`, `hissvp_note`, `pro_id`) VALUES
+(0007, 'gfdg', 'dfgdfg', 5464654, '2018-06-06', 'fgdgdfg', 'dgdfgdg', 0004);
 
 -- --------------------------------------------------------
 
@@ -10363,6 +10547,13 @@ CREATE TABLE `ps_histreat_assignment` (
   `hisas_type` text CHARACTER SET utf8 NOT NULL COMMENT 'ประเภทการเคลื่อนไหว',
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='ประวัติการรักษาราชการ มอบหมายงาน';
+
+--
+-- Dumping data for table `ps_histreat_assignment`
+--
+
+INSERT INTO `ps_histreat_assignment` (`hisas_id`, `hisas_code`, `hisas_poscode`, `hisas_date_start`, `hisas_date_end`, `hisas_position`, `hisas_office`, `hisas_pile`, `hisas_type`, `pro_id`) VALUES
+(0014, 45645646, 54564654, '2018-06-07', '2018-06-20', 'gdfgdf', 'gdfg', 'dfgdfgd', 'gdfgdfgdfg', 0004);
 
 -- --------------------------------------------------------
 
@@ -10403,8 +10594,8 @@ CREATE TABLE `ps_leaverelax` (
 
 INSERT INTO `ps_leaverelax` (`leavelax_id`, `leave_write`, `leave_date`, `leave_rerng`, `leave_topic`, `leave_name`, `leave_since`, `leave_name2`, `leave_dayreplace`, `leave_daylax`, `leave_totalday`, `leave_Inday`, `leave_outday`, `leave_dates`, `leave_address`, `pos_name`, `position_name`, `levels_la`, `sangkad_la`, `name_place`, `status_leaves`, `tel_leave`, `pic_lasick`, `pro_id`) VALUES
 (28, 'undefined', '1475-05-27', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 0, 0, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
-(29, 'undefined', '1475-05-27', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 1, 0, 0, '2018-05-28', '2018-05-28', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
-(30, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 2, 1, 1, '2018-05-29', '2018-05-30', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(29, 'undefined', '1475-05-27', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 1, 0, 0, '2018-05-28', '2018-05-28', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 1, '0978900003', '', 1751),
+(30, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 2, 1, 1, '2018-05-29', '2018-05-30', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 2, '0978900003', '', 1751),
 (31, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 3, 3, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', 'กดเกดเกดเกดเกด', 0, '0978900003', '', 1751),
 (32, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 3, 3, '0000-00-00', '0000-00-00', '2018-05-22', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
 (33, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 3, 3, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
@@ -10412,7 +10603,8 @@ INSERT INTO `ps_leaverelax` (`leavelax_id`, `leave_write`, `leave_date`, `leave_
 (35, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', 'หกฟหกฟหกฟหก', 'หหหหหห', 0, 3, 3, '0000-00-00', '0000-00-00', '1475-05-11', '', 'นักจัดการงานทั่วไป', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', 'dsfsdfsdfdsf', 0, '0978900003', '', 1751),
 (36, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', 'fgdfgdfg', 0, 3, 3, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
 (37, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 8, 3, 3, '2018-06-28', '2018-07-05', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
-(38, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 11, 11, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751);
+(38, 'undefined', '1475-05-28', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 0, 11, 11, '0000-00-00', '0000-00-00', '0000-00-00', '', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978900003', '', 1751),
+(39, 'undefined', '1475-06-01', 'ลาพักผ่อน', 'นายเเพทย์จตุพร ทิพยท', 'นายบุญล้อม พูนสวัสดิ์', '', '', 2, 11, 11, '2018-06-12', '2018-06-13', '0000-00-00', 'นายสุริยะเต่า ทองคำ  โทร. 0982556641', '', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '', 0, '0978901111', '', 1);
 
 -- --------------------------------------------------------
 
@@ -10453,41 +10645,10 @@ CREATE TABLE `ps_leavesmp` (
 INSERT INTO `ps_leavesmp` (`leave_idsmp`, `leave_writesmp`, `leave_datesmp`, `leave_type`, `leave_type2`, `leave_type3`, `leave_sincesmp`, `leave_Indaysmp`, `leave_outdaysmp`, `leave_totalsmp`, `leave_lastday`, `leave_lastday2`, `leave_totalsmp2`, `leave_address2`, `leader_name`, `name_mesmp`, `posi_name`, `degree_name`, `sangkad_name`, `Tel_me`, `status_leaves2`, `pic_lasick`, `pro_id`) VALUES
 (97, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '2018-05-25', '2018-05-30', 6, '0000-00-00', '0000-00-00', 0, '', '', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '0985121545', 0, '', 1751),
 (98, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '0000-00-00', '0000-00-00', 0, '0000-00-00', '0000-00-00', 0, '', '', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '0985121545', 0, '', 1751),
-(99, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '0000-00-00', '0000-00-00', 0, '0000-00-00', '0000-00-00', 0, '', '', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '0985121545', 0, '', 1751),
+(99, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '0000-00-00', '0000-00-00', 0, '0000-00-00', '0000-00-00', 0, '', '', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานสาธารณสุข', 'ส 3', 'สำนักงานป้องกันควบคุมโรคที่ 3 จังหวัดนครสวรรค์', '0985121545', 1, '', 1751),
 (100, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '0000-00-00', '0000-00-00', 0, '0000-00-00', '0000-00-00', 0, '', 'นายเเพทย์จตุพร ทิพยทิฆัมพร', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '0978900003', 0, '', 1751),
-(101, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '2018-05-25', '2018-05-29', 5, '0000-00-00', '0000-00-00', 0, '', 'นายเเพทย์จตุพร ทิพยทิฆัมพร', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '0978900003', 0, '', 1751);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ps_leveboss`
---
-
-CREATE TABLE `ps_leveboss` (
-  `lvb_id` int(2) NOT NULL,
-  `lvb_code` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'รหัสตำแหน่งบริหาร',
-  `lvb_name` varchar(50) NOT NULL COMMENT 'ตำแหน่งบริหาร',
-  `lvb_claim` int(2) NOT NULL COMMENT 'ระดับสิทธิ์'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `ps_leveboss`
---
-
-INSERT INTO `ps_leveboss` (`lvb_id`, `lvb_code`, `lvb_name`, `lvb_claim`) VALUES
-(1, 0001, 'ผู้อำนวยการ', 1),
-(2, 0002, 'รองผู้อำนวยการ', 2),
-(3, 0003, 'ผู้ช่วยผู้อำนวยการ', 2),
-(4, 0004, 'หัวหน้ากลุ่ม', 3),
-(5, 0005, 'รักษาการหัวหน้ากลุ่ม', 3),
-(6, 0006, 'หัวหน้าหน่วย', 3),
-(7, 0007, 'หัวหน้างาน', 4),
-(8, 0011, 'หัวหน้า', 4),
-(9, 0009, 'ข้าราชการ', 0),
-(10, 0010, 'ลูกจ้างประจำ', 0),
-(12, 0012, 'รก.หน.ศตม.6.2', 0),
-(13, 0013, 'หัวหน้านิคมฯ', 0),
-(14, 0013, 'ทั่วไป', 0);
+(101, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '2018-05-25', '2018-05-29', 5, '0000-00-00', '0000-00-00', 0, '', 'นายเเพทย์จตุพร ทิพยทิฆัมพร', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '0978900003', 2, '', 1751),
+(102, 'undefined', '0000-00-00', 'ขอลาป่วย', 'undefined', 'undefined', '', '0000-00-00', '0000-00-00', 0, '2018-05-25', '2018-05-29', 5, '', 'นายเเพทย์จตุพร ทิพยทิฆัมพร', 'นายบุญล้อม พูนสวัสดิ์', 'เจ้าพนักงานคอมพิวเตอร์', '', 'สำนักงานป้องกันควบคุมโรคที่ 6 จังหวัดชลบุรี', '0978901111', 2, '', 1);
 
 -- --------------------------------------------------------
 
@@ -10516,6 +10677,38 @@ INSERT INTO `ps_level` (`lv_id`, `lv_code`, `lv_name`) VALUES
 (8, 0008, 'ส 2'),
 (9, 0009, 'ส 3'),
 (12, 2115, 'บ 2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ps_levelboss`
+--
+
+CREATE TABLE `ps_levelboss` (
+  `lvb_id` int(2) NOT NULL,
+  `lvb_code` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'รหัสตำแหน่งบริหาร',
+  `lvb_name` varchar(50) NOT NULL COMMENT 'ตำแหน่งบริหาร',
+  `lvb_claim` int(2) NOT NULL COMMENT 'ระดับสิทธิ์'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_levelboss`
+--
+
+INSERT INTO `ps_levelboss` (`lvb_id`, `lvb_code`, `lvb_name`, `lvb_claim`) VALUES
+(1, 0001, 'ผู้อำนวยการ', 0),
+(2, 0002, 'รองผู้อำนวยการ', 1),
+(3, 0003, 'ผู้ช่วยผู้อำนวยการ', 1),
+(4, 0004, 'หัวหน้ากลุ่ม', 2),
+(5, 0005, 'รักษาการหัวหน้ากลุ่ม', 2),
+(6, 0006, 'หัวหน้าหน่วย', 2),
+(7, 0007, 'หัวหน้างาน', 3),
+(8, 0011, 'หัวหน้า', 3),
+(9, 0009, 'ข้าราชการ', 9),
+(10, 0010, 'ลูกจ้างประจำ', 9),
+(12, 0012, 'รก.หน.ศตม.6.2', 9),
+(13, 0013, 'หัวหน้านิคมฯ', 9),
+(14, 0013, 'ทั่วไป', 9);
 
 -- --------------------------------------------------------
 
@@ -10865,10 +11058,10 @@ CREATE TABLE `ps_personnal` (
 --
 
 INSERT INTO `ps_personnal` (`member_id`, `pro_id`, `card_id`, `nameuser`, `lastname`, `pos_id`, `class_id`, `dep_id`, `tel`, `email`, `username`, `password`, `level`, `status`, `person_create`, `date_create`, `person_update`, `date_update`) VALUES
-(1, 0001, '1310400087338', 'บุญล้อม', 'พูนสวัสดิ์', 0122, 0076, 0006, '0978901111', 'phoonsawat_jo@hotmail.com', 'jojo', '147', 1, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'บุญล้อมsssss พูนสวัสดิ์ssss', '2018-05-29 15:48:10'),
-(5, 0004, '3210300330271', 'ฉวีวรรณ', 'ตรึกหากิจ', 0016, 0002, 0006, '', '', 'root', 'root', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-29 13:59:34', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 18:07:09'),
-(16, 0005, '1125400454578', 'จตุพร', 'ทิพยทิฆัมพร', 0147, 0076, 0006, '', '', '', '', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-29 17:46:25', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 17:46:25'),
-(17, 0010, '3659900370111', 'หรรษา', 'รักษาคม', 0000, 0055, 0000, '', '', '', '', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-29 18:00:55', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 18:00:55');
+(1, 0001, '1310400087338', 'บุญล้อม', 'พูนสวัสดิ์', 0122, 0076, 0006, '', 'phoonsawat_jo@hotmail.com', 'jojo', '147', 1, 1, 'บุญล้อม พูนสวัสดิ์', '2018-04-29 17:49:42', 'บุญล้อม พูนสวัสดิ์', '2018-06-20 05:42:19'),
+(5, 0004, '3210300330271', 'ฉวีวรรณ', 'ตรึกหากิจ', 0016, 0002, 0006, '', '', 'root', 'aaaaa', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-29 13:59:34', 'บุญล้อม พูนสวัสดิ์', '2018-06-20 04:16:04'),
+(16, 0005, '1125400454578', 'จตุพร', 'ทิพยทิฆัมพร', 0147, 0076, 0006, '', '', 'jaja', 'jaja', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-29 17:46:25', 'บุญล้อม พูนสวัสดิ์', '2018-06-20 04:15:53'),
+(17, 0010, '3659900370111', 'หรรษา', 'รักษาคม', 0001, 0055, 0000, '', '', 'aaaa', '3333', 0, 1, 'บุญล้อม พูนสวัสดิ์', '2018-05-29 18:00:55', 'บุญล้อม พูนสวัสดิ์', '2018-06-20 04:15:58');
 
 -- --------------------------------------------------------
 
@@ -10885,6 +11078,15 @@ CREATE TABLE `ps_plan` (
   `plan_status` int(1) NOT NULL COMMENT 'สถานะ',
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_plan`
+--
+
+INSERT INTO `ps_plan` (`plan_id`, `plan_name`, `plan_detail`, `plan_dateStart`, `plan_dateEnd`, `plan_status`, `pro_id`) VALUES
+(1, 'ส่งคอมพิวเตอร์เปลี่ยนเครื่องใหม่ให้กลุ่มงานบริหารทั่วไป', 'คอมพิวเตอร์เก่าเริ่มใช้งานไม่ได้ จำเป็นต้องมีการปรับเปลี่ยนเพื่อรองรับต่อการใช้งานมากกว่าเดิม', '2018-06-20', '2018-06-22', 0, 0001),
+(2, 'dfgdfg', 'dfgdfgdfg', '2018-06-06', '2018-06-13', 0, 0004),
+(3, 'dsfdsf', 'sdfsdf', '2018-06-07', '0000-00-00', 0, 0004);
 
 -- --------------------------------------------------------
 
@@ -10943,7 +11145,14 @@ INSERT INTO `ps_position` (`pos_id`, `pos_code`, `pos_name`) VALUES
 (0140, 0138, 'นักกีฏวิทยา'),
 (0142, 0139, 'นักวิทยาศาสตร์การแพทย์'),
 (0145, 0140, 'นักวิชาการสาธารณสุขเชี่ยวชาญ'),
-(0147, 0141, 'นายแพทย์');
+(0147, 0141, 'นายแพทย์'),
+(0154, 0142, 'นักวิชาการสาธารณสุขปฏิบัติการ'),
+(0155, 0143, 'แพทย์หญิงชำนาญการพิเศษ'),
+(0156, 0144, 'นักวิชาการสาธารณสุขชำนาญการพิเศษ'),
+(0157, 0145, 'นักวิชาการเงินและบัญชีชำนาญการ'),
+(0158, 0146, 'นักวิชาการสาธารณสุขชำนาญการ'),
+(0159, 0147, 'พนักงานขับรถยนต์ระดับ ส2'),
+(0160, 0148, 'นักวิเคราะห์นโยบายและแผนกลุ่มงานบริหารทั่วไป');
 
 -- --------------------------------------------------------
 
@@ -10962,8 +11171,8 @@ CREATE TABLE `ps_preaddress` (
   `pread_amphur` int(5) NOT NULL COMMENT 'อำเภอ',
   `pread_district` int(5) NOT NULL COMMENT 'ตำบล',
   `pread_zip_code` varchar(5) NOT NULL COMMENT 'รหัสไปรษณีย์	',
-  `pread_call` varchar(11) NOT NULL COMMENT 'โทร.',
-  `pread_fhone` varchar(11) NOT NULL COMMENT 'มือถือ',
+  `pread_call` varchar(9) NOT NULL COMMENT 'โทร.',
+  `pread_fhone` varchar(10) NOT NULL COMMENT 'มือถือ',
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10972,7 +11181,11 @@ CREATE TABLE `ps_preaddress` (
 --
 
 INSERT INTO `ps_preaddress` (`pread_id`, `pread_number`, `pread_swine`, `pread_soi`, `pread_road`, `pread_village`, `pread_province`, `pread_amphur`, `pread_district`, `pread_zip_code`, `pread_call`, `pread_fhone`, `pro_id`) VALUES
-(1, '', '', '', '', '', 0, 0, 0, '', '', '', 0001);
+(1, '', '', '', '', '', 0, 0, 0, '', '', '', 0001),
+(2, '', '', '', '', '', 0, 0, 0, '', '', '', 0005),
+(4, '', '', '', '', '', 0, 0, 0, '', '', '', 0010),
+(5, '', '', '', '', '', 0, 0, 0, '', '', '5555555555', 0020),
+(7, '', '', '', '', '', 0, 0, 0, '', '', '', 0004);
 
 -- --------------------------------------------------------
 
@@ -11045,69 +11258,21 @@ CREATE TABLE `ps_profile` (
 --
 
 INSERT INTO `ps_profile` (`pro_id`, `card_id`, `pro_idpos`, `pro_sex`, `pro_prefix`, `pro_fname`, `pro_lname`, `pro_nickname`, `pro_birthday`, `pro_status`, `pos_id`, `type_id`, `lvb_id`, `lv_id`, `class_id`, `dep_id`, `pro_salary`, `pro_dateIn`, `pro_dateOut`, `pro_transfer`, `pro_picture`, `pro_person_create`, `pro_date_create`, `pro_person_update`, `pro_date_update`) VALUES
-(0004, '3210300330271', 3733, 2, 'นางสาว', 'ฉวีวรรณ', 'ตรึกหากิจ', 'อ้อ', '2018-09-28', 'โสด', 0016, 2, 3, 8, 0002, 0006, 19030, '2018-07-29', '2018-06-28', 'sdfsdfsdfsdfdsf', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 18:07:09'),
+(0004, '3210300330271', 3733, 2, 'นางสาว', 'ฉวีวรรณ', 'ตรึกหากิจ', 'อ้อ', '2019-03-12', 'โสด', 0016, 2, 0, 0, 0002, 0006, 19030, '2018-12-11', '2018-08-11', '', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-06-20 04:16:04'),
 (0003, '1154588652447', 1423, 1, 'นาย', 'ธนู', 'พรรคอนันต์', '', '0000-00-00', 'โสด', 0016, 2, 3, 8, 0006, 0003, 30820, '2018-07-11', '0000-00-00', '', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 11:58:54'),
-(0002, '1102002326598', 1416, 1, 'นาย', 'สมยศ', 'จันทเลิศ', '', '2018-03-24', 'โสด', 0016, 2, 3, 8, 0006, 0003, 25170, '2018-05-09', '2018-05-19', '', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 15:01:25'),
-(0001, '1310400087338', 0219, 1, 'นาย', 'บุญล้อม', 'พูนสวัสดิ์', 'โจ้โจ้', '2018-03-29', 'โสด', 0122, 3, 0, 0, 0076, 0006, 0, '2017-09-20', '2018-08-26', 'dsdsad', '../../images/img-profile/NLVJZ9TEPS6I73H-growth (1).png', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อมsssss พูนสวัสดิ์ssss', '2018-05-29 15:48:10'),
-(0005, '1125400454578', 2122, 1, 'นายเเพทย์', 'จตุพร', 'ทิพยทิฆัมพร', '', '0000-00-00', 'โสด', 0147, 0, 7, 3, 0076, 0006, 0, '2012-07-18', '2018-06-24', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:27:24', 'บุญล้อม พูนสวัสดิ์', '2018-05-28 22:15:53'),
-(0006, '3809800164640', 1114, 2, 'นาง', 'สุภาพร', 'พุทธรัตน์', '', '2018-06-28', 'สมรส', 0145, 0, 1, 1, 0055, 0000, 57290, '1986-07-01', '1768-06-28', '', '../../images/img-profile/LX4IC5J2A8MK3WR-pat.jpg', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-28 22:58:12'),
-(0007, '3240400341622', 1129, 2, 'นาง', 'รวิสรา', 'จิรโรจน์วัฒน', '', '0000-00-00', '', 0145, 0, 1, 2, 0055, 0000, 56020, '1982-04-01', '2020-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:23:21'),
-(0010, '3659900370111', 1097, 2, 'นางสาว', 'หรรษา', 'รักษาคม', '', '0000-00-00', '', 0000, 0, 1, 0, 0055, 0000, 40270, '1999-04-01', '2035-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0011, '3100503700341', 1127, 2, 'นาง', 'ลานทิพย์', 'เหราบัตย์', '', '0000-00-00', '', 0145, 0, 1, 2, 0055, 0000, 33830, '1998-01-06', '2029-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0012, '3100902326167', 1175, 1, 'จ่าสิบเอก', 'พูนศักดิ์', 'ศรีประพัฒน์', '', '0000-00-00', '', 0145, 0, 1, 2, 0055, 0000, 50340, '1977-04-13', '2020-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0013, '3140900219177', 1105, 2, 'นาง', 'จงจิตต์', 'สุขปราโมทย์', '', '0000-00-00', '', 0145, 0, 1, 3, 0001, 0000, 43300, '1977-11-21', '2018-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0014, '3200100374797', 3607, 1, 'นาย', 'ณรงค์ศักดิ์', 'ทองธรรมชาติ', '', '0000-00-00', '', 0145, 0, 1, 3, 0001, 0000, 35530, '1991-06-03', '2030-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0015, '3779900050639', 1185, 2, 'นาง', 'สิริลักษณ์', 'บัวเย็น', '', '0000-00-00', '', 0145, 0, 1, 4, 0001, 0000, 26340, '1997-06-02', '2034-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0016, '3100203271185', 1187, 2, 'นางสาว', 'นิดาพร', 'ศุขเขษม', '', '0000-00-00', '', 0145, 0, 1, 4, 0006, 0000, 22750, '2001-04-02', '2042-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0017, '3101403047522', 1191, 1, 'นาย', 'ลองเดช', 'รายณะสุข', '', '0000-00-00', '', 0145, 0, 1, 3, 0006, 0000, 43120, '1986-05-01', '2021-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0018, '3200600875248', 1197, 2, 'นาง', 'สมปอง', 'โรจน์รุ่งศศิธร', '', '0000-00-00', '', 0145, 0, 1, 2, 0006, 0000, 44720, '1989-04-03', '2026-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0019, '3549900170105', 1115, 2, 'นาง', 'ชนันภรณ์', 'เทียนแก้ว', '', '0000-00-00', '', 0145, 0, 1, 3, 0007, 0000, 31140, '1998-09-28', '2036-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0020, '5710390032918', 1116, 2, 'นาง', 'จิรากัญ', 'ปักเคเต', '', '0000-00-00', '', 0145, 0, 14, 3, 0007, 0000, 13940, '2012-07-02', '2041-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0021, '3200400056502', 1118, 2, 'นางสาว', 'อภิญญา', 'เปี่ยมวัฒนาทรัพย์', '', '0000-00-00', '', 0145, 0, 14, 2, 0007, 0000, 39550, '1990-04-02', '2030-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0022, '3200101391997', 1119, 2, 'นาง', 'วัลภา', 'ศรีสุภาพ', '', '0000-00-00', '', 0145, 0, 14, 2, 0007, 0000, 36930, '1990-04-02', '2029-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0023, '1549900112486', 1120, 2, 'นาง', 'รัตติกาล', 'คำมูล', '', '0000-00-00', '', 0145, 0, 14, 4, 0006, 0000, 16520, '1987-04-07', '2047-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0024, '3440700163981', 1121, 2, 'นาง', 'มนตริยา', 'อุ่นเทียมโสม', '', '0000-00-00', '', 0145, 0, 14, 3, 0007, 0000, 27100, '2005-01-17', '2037-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0025, '3240600579711', 1122, 2, 'นาง', 'วิชญาภัทร์', 'สามารถ', '', '0000-00-00', '', 0145, 0, 14, 4, 0003, 0000, 24290, '2004-05-11', '2040-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0026, '1100700679704', 1125, 2, 'นางสาว', 'นันทนา', 'จำปา', '', '0000-00-00', '', 0145, 0, 14, 4, 0003, 0000, 22930, '2012-04-02', '2047-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0027, '3200900335451', 0166, 1, 'นาย', 'วชิระ', 'มากเจริญ', '', '0000-00-00', '', 0132, 6, 14, 4, 0081, 0000, 17270, '1984-11-05', '2020-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0028, '3200101213355', 0167, 1, 'นาย', 'สมชาย', 'เกิดปราง', '', '0000-00-00', '', 0132, 6, 14, 4, 0081, 0000, 17270, '1990-06-01', '2027-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0029, '3200101043077', 0566, 1, 'นาย', 'วิชาญ', 'วงษ์สุนทร', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 19100, '1999-09-19', '2033-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0030, '1420200008930', 0014, 2, 'นางสาว', 'วมิลรัตน์', 'ปัสสาวัฒนะ', '', '0000-00-00', '', 0132, 2, 14, 4, 0082, 0000, 20650, '2010-04-19', '2045-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0031, '3200101206685', 0568, 1, 'นาย', 'วิรัตน์', 'จุลนพ', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 21880, '1995-04-10', '2024-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0032, '3200100375513', 0569, 1, 'นาย', 'พิเชษ ', 'ภูกาบพลอย', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 17570, '1999-07-01', '2023-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0033, '3209900411491', 0570, 1, 'นาย', 'ภิญโญ', ' กาญจนสิงห์', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 23340, '1990-07-02', '2025-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0034, '3209600034322', 0571, 2, 'นาย', 'ลออ', ' ทวีรัตน์', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 17570, '1996-10-01', '2017-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0035, '3200100100867', 0574, 1, 'นาย', 'วัฒนา', ' ยูถะสุนทร', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 22980, '1993-08-04', '2021-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0036, '3200500284019', 0580, 2, 'นาย', 'สุพิน', 'กุณฑลบุตร', '', '0000-00-00', '', 0135, 6, 14, 4, 0082, 0000, 19660, '1983-04-01', '2023-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0037, '3200100169689', 0584, 2, 'นาย', 'เสาวลักษณ์', 'พรงาม', '', '0000-00-00', '', 0133, 6, 14, 4, 0082, 0000, 17570, '1989-05-02', '2024-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0038, '3240500329438', 0585, 2, 'นาย', 'สุธามาศ ', 'เที่ยงตรง', '', '0000-00-00', '', 0133, 6, 14, 4, 0082, 0000, 17880, '1991-06-03', '2029-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0039, '3200101180945', 0586, 2, 'นาย', 'วันเพ็ญ', 'เกิดปราง', '', '0000-00-00', '', 0131, 6, 14, 4, 0081, 0000, 22230, '1988-07-01', '2016-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0040, '3200701032033', 0589, 2, 'นาย', 'อัญชลี', 'นาคแท้', '', '0000-00-00', '', 0131, 6, 14, 4, 0082, 0000, 20040, '1996-06-03', '2026-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0041, '3220200053283', 0590, 1, 'นาย', 'ศักดิ์ชัย', 'วงษ์สุวรรณ', '', '0000-00-00', '', 0136, 6, 14, 4, 0081, 0000, 17570, '1992-12-16', '2019-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0042, '3100600924576', 0593, 2, 'นาง', 'อัญชนา', 'นัดพบสุข', '', '0000-00-00', '', 0136, 6, 14, 4, 0082, 0000, 22980, '1990-02-01', '2027-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0043, '3220100424557', 0594, 2, 'นาง', 'กนกวรรณ', 'สุวรรณา', '', '0000-00-00', '', 0131, 6, 14, 4, 0081, 0000, 22600, '1977-08-01', '2017-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0044, '3200100365984', 0595, 1, 'นาย', 'อรรณพ ', 'สารพัฒน์', '', '0000-00-00', '', 0131, 6, 14, 4, 0082, 0000, 22980, '1993-07-16', '2026-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0045, '3451100518950', 0597, 1, 'นาย', 'ไพฑูรย์', 'มิรัตนไพร', '', '0000-00-00', '', 0132, 6, 14, 4, 0081, 0000, 17570, '1988-12-12', '2023-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0046, '3100202757939', 0610, 1, 'นาย', 'สมพงษ์', 'ศรีสก', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 22600, '1979-06-08', '2017-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0047, '3230100435630', 0611, 1, 'นาย', 'บุญลือ', 'เพ็ชรมาก', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 22600, '1985-10-01', '2022-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0048, '3360100772597', 0613, 1, 'นาย', 'ชนะ', 'แม้นชัยภูมิ', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 22600, '1987-08-03', '2020-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0049, '3220100356446', 0614, 1, 'นาย', 'คำนวณ', 'เฉียบแหลม', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 22980, '1983-09-01', '2018-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0050, '3809900603947', 0616, 1, 'นาย', 'สุนันท์', 'วุฒิศักดิ์', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 20360, '1991-04-15', '2023-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0051, '3200900485259', 0619, 1, 'นาย', 'สุทธิ', 'งามเสงี่ยม', '', '0000-00-00', '', 0132, 6, 14, 4, 0082, 0000, 22230, '1987-02-02', '2021-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0052, '3200101166357', 0036, 2, 'นางสาว', 'นพรินทร์', 'ปู่ชูประเสริฐ', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 13660, '2005-11-10', '2024-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0053, '3560300135122', 0037, 2, 'นางสาว', 'สุพิชญา ', 'บัวผัด', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 13810, '2005-11-10', '2033-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0054, '3251100540230', 0042, 2, 'นางสาว', 'อนัญญา ', 'ม่วงพรหม', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 13850, '2005-11-01', '2029-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0055, '3200101172985', 0043, 2, 'นางสาว', 'ปรานอม', 'สุขีฐาน', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 13800, '2005-11-01', '2022-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0056, '3470100228373', 0105, 2, 'นาง', 'อัจฉรา', 'ปัญญาประชุม', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 13850, '2006-04-01', '2026-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0057, '3510300041098', 0218, 1, 'นาย', 'อาทิตย์', 'บุญสุทธิ์', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 22610, '2008-01-18', '2042-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0058, '1679900236699', 0220, 2, 'นาง', 'อนัญญา ', 'หาบุญมี', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 18720, '2014-07-15', '2052-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0059, '1430800006121', 0221, 2, 'นาง', 'สุภาพร ', 'ศรพรหม', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 20650, '2010-04-01', '2045-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0060, '2849900020994', 0222, 2, 'นางสาว', 'ปรียาพร', 'เทือกสุบรรณ', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 21580, '2006-08-01', '2044-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0061, '1969900159501', 0223, 2, 'นางสาว', 'ปภัสรา ', 'มาชัยภูมิ', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 18000, '2015-08-04', '2052-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0062, '3110200516276', 0224, 1, 'นาย', 'ธีรยุทธ ', 'ก่ำสีดา', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 21560, '2006-08-01', '2043-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0063, '1500700076691', 0225, 2, 'นางสาว', 'ชิดชญา ', 'ใจเป็ง', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 18000, '2015-08-17', '2046-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0064, '1330300099199', 0226, 2, 'ว่าที่ร้อยตรี', 'เพ็ญประภา ', 'เพ็ญจันทร์', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 20020, '2012-09-13', '2047-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22'),
-(0065, '1460900055973', 0393, 2, 'นางสาว', 'เพ็ญศิริ ', 'นาถวิล', '', '0000-00-00', '', 0136, 2, 14, 4, 0081, 0000, 18720, '2014-07-01', '2050-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22');
+(0002, '1102002326598', 1416, 1, 'นาย', 'สมยศ', 'จันทเลิศ', '', '2018-03-24', 'โสด', 0016, 2, 3, 8, 0006, 0003, 25170, '2018-05-09', '2018-05-19', '', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-06-13 21:06:26'),
+(0001, '1310400087338', 0219, 1, 'นาย', 'บุญล้อม', 'พูนสวัสดิ์', 'โจ้โจ้', '2018-08-13', 'โสด', 0122, 3, 9, 1, 0076, 0006, 0, '2018-07-13', '2018-11-13', '', '', 'บุญล้อม พูนสวัสดิ์', '0000-00-00 00:00:00', 'บุญล้อม พูนสวัสดิ์', '2018-06-20 05:42:19'),
+(0005, '1125400454578', 2122, 1, 'นายเเพทย์', 'จตุพร', 'ทิพยทิฆัมพร', '', '2018-11-19', 'โสด', 0147, 0, 4, 3, 0076, 0006, 0, '2018-08-10', '2018-06-24', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-24 15:27:24', 'บุญล้อม พูนสวัสดิ์', '2018-06-20 04:15:53'),
+(0010, '3659900370111', 1097, 2, 'นางสาว', 'หรรษา', 'รักษาคม', 'บอส', '0000-00-00', 'undefined', 0001, 0, 1, 0, 0055, 0000, 40270, '2018-10-12', '2035-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-05-29 12:36:22', 'บุญล้อม พูนสวัสดิ์', '2018-06-20 04:15:58'),
+(0113, '3100503700341', 1127, 2, 'นาง', 'ลานทิพย์', 'เหราบัตย์', '', '0000-00-00', '', 0155, 0, 1, 2, 0055, 0000, 33830, '1998-01-06', '2029-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 17:48:52', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 17:48:52'),
+(0100, '3200101043077', 0566, 1, 'นาย', 'วิชาญ', 'วงษ์สุนทร', '', '0000-00-00', '', 0159, 6, 1, 2, 0082, 0000, 19100, '1999-09-19', '2033-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 12:20:38', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 12:20:38'),
+(0111, '1420200008930', 0014, 2, 'นางสาว', 'วมิลรัตน์', 'ปัสสาวัฒนะ', '', '0000-00-00', '', 0160, 2, 1, 2, 0082, 0000, 20650, '2010-04-19', '2045-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26'),
+(0110, '3200900335451', 0166, 1, 'นาย', 'วชิระ', 'มากเจริญ', '', '0000-00-00', '', 0132, 6, 1, 2, 0081, 0000, 17270, '1984-11-05', '2020-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26'),
+(0108, '3101403047522', 1191, 1, 'นาย', 'ลองเดช', 'รายณะสุข', '', '0000-00-00', '', 0158, 0, 1, 3, 0006, 0000, 43120, '1986-05-01', '2021-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26'),
+(0109, '3200600875248', 1197, 2, 'นาง', 'สมปอง', 'โรจน์รุ่งศศิธร', '', '0000-00-00', '', 0156, 0, 1, 2, 0006, 0000, 44720, '1989-04-03', '2026-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26'),
+(0103, '3100902326167', 1175, 1, 'นาย', 'พูนศักดิ์', 'ศรีประพัฒน์', '', '0000-00-00', '', 0156, 0, 1, 2, 0055, 0000, 50340, '1977-04-13', '2020-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 13:42:26'),
+(0115, '3779900050639', 1185, 2, 'นาง', 'สิริลักษณ์', 'บัวเย็น', '', '0000-00-00', '', 0154, 0, 1, 4, 0001, 0000, 26340, '1997-06-02', '2034-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 17:48:52', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 17:48:52'),
+(0116, '3200101213355', 0167, 1, 'นาย', 'สมชาย', 'เกิดปราง', '', '0000-00-00', '', 0132, 6, 1, 2, 0081, 0000, 17270, '1990-06-01', '2027-10-01', '', '', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 17:48:52', 'บุญล้อม พูนสวัสดิ์', '2018-06-19 17:48:52');
 
 -- --------------------------------------------------------
 
@@ -11248,6 +11413,13 @@ CREATE TABLE `ps_salaryspecial` (
   `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL COMMENT 'id ps_profile'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='ประวัติการรับเงินเพิ่มพิเศษ';
 
+--
+-- Dumping data for table `ps_salaryspecial`
+--
+
+INSERT INTO `ps_salaryspecial` (`salarysp_id`, `salarysp_startDate`, `salarysp_endDate`, `salarysp_money`, `salarysp_type`, `pro_id`) VALUES
+(0016, '2018-06-06', '2018-06-13', 546546, 'fsdfdsf', 0004);
+
 -- --------------------------------------------------------
 
 --
@@ -11296,6 +11468,24 @@ INSERT INTO `ps_type` (`type_id`, `type_code`, `type_name`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `meet_location`
+--
+ALTER TABLE `meet_location`
+  ADD PRIMARY KEY (`location_id`);
+
+--
+-- Indexes for table `meet_pspart`
+--
+ALTER TABLE `meet_pspart`
+  ADD PRIMARY KEY (`pspart_id`);
+
+--
+-- Indexes for table `meet_report`
+--
+ALTER TABLE `meet_report`
+  ADD PRIMARY KEY (`report_id`);
 
 --
 -- Indexes for table `ps_academic`
@@ -11403,7 +11593,7 @@ ALTER TABLE `ps_hismarry`
 -- Indexes for table `ps_hismeetting`
 --
 ALTER TABLE `ps_hismeetting`
-  ADD PRIMARY KEY (`id_meetting`);
+  ADD PRIMARY KEY (`meet_id`);
 
 --
 -- Indexes for table `ps_hisroyal`
@@ -11448,16 +11638,16 @@ ALTER TABLE `ps_leavesmp`
   ADD PRIMARY KEY (`leave_idsmp`);
 
 --
--- Indexes for table `ps_leveboss`
---
-ALTER TABLE `ps_leveboss`
-  ADD PRIMARY KEY (`lvb_id`);
-
---
 -- Indexes for table `ps_level`
 --
 ALTER TABLE `ps_level`
   ADD PRIMARY KEY (`lv_id`);
+
+--
+-- Indexes for table `ps_levelboss`
+--
+ALTER TABLE `ps_levelboss`
+  ADD PRIMARY KEY (`lvb_id`);
 
 --
 -- Indexes for table `ps_leveleducation`
@@ -11548,16 +11738,34 @@ ALTER TABLE `ps_type`
 --
 
 --
+-- AUTO_INCREMENT for table `meet_location`
+--
+ALTER TABLE `meet_location`
+  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `meet_pspart`
+--
+ALTER TABLE `meet_pspart`
+  MODIFY `pspart_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `meet_report`
+--
+ALTER TABLE `meet_report`
+  MODIFY `report_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `ps_academic`
 --
 ALTER TABLE `ps_academic`
-  MODIFY `academic_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `academic_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `ps_address`
 --
 ALTER TABLE `ps_address`
-  MODIFY `address_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `address_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `ps_amphur`
@@ -11575,19 +11783,19 @@ ALTER TABLE `ps_bank`
 -- AUTO_INCREMENT for table `ps_blame`
 --
 ALTER TABLE `ps_blame`
-  MODIFY `blame_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `blame_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ps_changname`
 --
 ALTER TABLE `ps_changname`
-  MODIFY `chang_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `chang_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `ps_class`
 --
 ALTER TABLE `ps_class`
-  MODIFY `class_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `class_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `ps_department`
@@ -11605,13 +11813,13 @@ ALTER TABLE `ps_district`
 -- AUTO_INCREMENT for table `ps_education`
 --
 ALTER TABLE `ps_education`
-  MODIFY `hised_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `hised_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `ps_geninformation`
 --
 ALTER TABLE `ps_geninformation`
-  MODIFY `gen_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `gen_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `ps_geography`
@@ -11623,79 +11831,79 @@ ALTER TABLE `ps_geography`
 -- AUTO_INCREMENT for table `ps_heir`
 --
 ALTER TABLE `ps_heir`
-  MODIFY `id_heir` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_heir` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ps_hisaward`
 --
 ALTER TABLE `ps_hisaward`
-  MODIFY `award_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `award_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `ps_hismarry`
 --
 ALTER TABLE `ps_hismarry`
-  MODIFY `marry_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `marry_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `ps_hismeetting`
 --
 ALTER TABLE `ps_hismeetting`
-  MODIFY `id_meetting` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `meet_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `ps_hisroyal`
 --
 ALTER TABLE `ps_hisroyal`
-  MODIFY `hisroyal_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `hisroyal_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ps_hissalaryup`
 --
 ALTER TABLE `ps_hissalaryup`
-  MODIFY `hisslrup_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `hisslrup_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ps_hisservice`
 --
 ALTER TABLE `ps_hisservice`
-  MODIFY `hissv_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `hissv_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `ps_hisservicespecial`
 --
 ALTER TABLE `ps_hisservicespecial`
-  MODIFY `hissvp_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `hissvp_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ps_histreat_assignment`
 --
 ALTER TABLE `ps_histreat_assignment`
-  MODIFY `hisas_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `hisas_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `ps_leaverelax`
 --
 ALTER TABLE `ps_leaverelax`
-  MODIFY `leavelax_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `leavelax_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `ps_leavesmp`
 --
 ALTER TABLE `ps_leavesmp`
-  MODIFY `leave_idsmp` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
-
---
--- AUTO_INCREMENT for table `ps_leveboss`
---
-ALTER TABLE `ps_leveboss`
-  MODIFY `lvb_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `leave_idsmp` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `ps_level`
 --
 ALTER TABLE `ps_level`
   MODIFY `lv_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `ps_levelboss`
+--
+ALTER TABLE `ps_levelboss`
+  MODIFY `lvb_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ps_leveleducation`
@@ -11713,25 +11921,25 @@ ALTER TABLE `ps_officeout`
 -- AUTO_INCREMENT for table `ps_personnal`
 --
 ALTER TABLE `ps_personnal`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `ps_plan`
 --
 ALTER TABLE `ps_plan`
-  MODIFY `plan_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `plan_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ps_position`
 --
 ALTER TABLE `ps_position`
-  MODIFY `pos_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `pos_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT for table `ps_preaddress`
 --
 ALTER TABLE `ps_preaddress`
-  MODIFY `pread_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pread_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `ps_prefix`
@@ -11743,7 +11951,7 @@ ALTER TABLE `ps_prefix`
 -- AUTO_INCREMENT for table `ps_profile`
 --
 ALTER TABLE `ps_profile`
-  MODIFY `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `pro_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `ps_province`
@@ -11761,7 +11969,7 @@ ALTER TABLE `ps_religion`
 -- AUTO_INCREMENT for table `ps_salaryspecial`
 --
 ALTER TABLE `ps_salaryspecial`
-  MODIFY `salarysp_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `salarysp_id` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `ps_transferout`

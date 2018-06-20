@@ -2,6 +2,7 @@
 <?php
 if (!isset($_GET['id'])) {
     $_GET['id'] = '';
+    $_GET['page'] = '';
 }
 ?>
 <!DOCTYPE html>
@@ -14,7 +15,8 @@ if (!isset($_GET['id'])) {
             <div class="container-fluid">
                 <div class="block-header">
                     <ol class="breadcrumb breadcrumb-col-orange">
-                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">home</i> Home</a></li>
+                        <li><a href="../../index.php"><i class="material-icons">home</i> หน้าหลัก</a></li>
+                        <li><a href="../../PS_mainpage/personnal/person_DataProfile.php"><i class="material-icons">person</i> ระบบบุคลากร</a></li>
                         <li class="active font-bold col-cyan font-14"><i class="material-icons">picture_in_picture</i> ข้อมูลส่วนตัว <span id="showName"><span></li>
                                     </ol>
                                     </div>
@@ -532,7 +534,7 @@ if (!isset($_GET['id'])) {
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
-                                                                                        <label >สถานะภาพทหาร</label>
+                                                                                        <label >สถานภาพทหาร</label>
                                                                                     </div>
                                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                                         <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="gen_soldier">
@@ -1363,8 +1365,8 @@ if (!isset($_GET['id'])) {
                                                                                                 <select class="form-control show-tick" style="width: 100%" data-live-search="true" id="hised_year">
                                                                                                     <?php
                                                                                                     echo '<option  value="">เลือก</opition>';
-                                                                                                    $i = 2450;
-                                                                                                    while ($i < 2600) {
+                                                                                                    $i = (date("Y") - 70) + 543;
+                                                                                                    while ($i <= (date("Y") + 543)) {
                                                                                                         echo '<option  value="' . $i . '">' . $i . '</opition>';
                                                                                                         $i++;
                                                                                                     }

@@ -4,6 +4,7 @@
     var name = '<?= $_SESSION["name"]; ?>';
     var pro_id = '<?= $_SESSION["pro_id"]; ?>';
     var get_id = '<?= $_GET['id']; ?>';
+    var page = '<?= $_GET['page']; ?>';
     var level = '<?= $_SESSION['level']; ?>';
     var lvb_claim = '<?= $_SESSION['lvb_claim']; ?>';
     var NoImg = '../../images/img-profile/no_img.png';
@@ -20,6 +21,7 @@
         $.datetimepicker.setLocale('th');
         $("#blame_date").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -53,6 +55,7 @@
 
         $("#chName_date").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -67,6 +70,7 @@
 
         $("#pro_birthdayE").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -81,6 +85,7 @@
 
         $("#hissv_date").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -95,6 +100,7 @@
 
         $("#hissvp_date").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -109,6 +115,7 @@
 
         $("#award_date").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -123,6 +130,7 @@
 
         $("#academic_date").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -172,12 +180,12 @@
             if ($(obj).attr("id") == "hisas_date_start") {
                 this.setOptions({
                     minDate: false,
-                    maxDate: maxDateSet ? maxDateSet : false
+                    maxDate: maxDateSet ? maxDateSet : true
                 })
             }
             if ($(obj).attr("id") == "hisas_date_end") {
                 this.setOptions({
-                    maxDate: false,
+                    maxDate: true,
                     minDate: minDateSet ? minDateSet : false
                 })
             }
@@ -239,6 +247,7 @@
 
         $("#hisroyal_date").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -253,6 +262,7 @@
 
         $("#hisslrup_date").datetimepicker({
             timepicker: false,
+            maxDate: true,
             format: 'd/m/Y',
             lang: 'th',
             yearOffset: 543,
@@ -272,12 +282,12 @@
             if ($(obj).attr("id") == "salarysp_startDate") {
                 this.setOptions({
                     minDate: false,
-                    maxDate: maxDateSet ? maxDateSet : false
+                    maxDate: maxDateSet ? maxDateSet : true
                 })
             }
             if ($(obj).attr("id") == "salarysp_endDate") {
                 this.setOptions({
-                    maxDate: false,
+                    maxDate: true,
                     minDate: minDateSet ? minDateSet : false
                 })
             }
@@ -733,7 +743,11 @@
         }
     }
     function back() {
-        window.location.href = '../../PS_mainpage/personnal/person_addData.php';
+        if (page == 'viewPerson') {
+            window.location.href = '../../PS_mainpage/personnal/person_addData.php';
+        } else {
+            window.location.href = '../../PS_mainpage/personnal/person_setting.php';
+        }
 //        window.history.back();
     }
 
@@ -814,6 +828,29 @@
         });
         $('#table_chName_show').html('<table class="table table-bordered table-striped table-hover table_chName dataTable" width="100%"></table>');
         $('.table_chName').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -875,6 +912,29 @@
         });
         $('#table_marry_show').html('<table class="table table-bordered table-striped table-hover table_marry dataTable" width="100%"></table>');
         $('.table_marry').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -935,6 +995,29 @@
         });
         $('#table_heir_show').html('<table class="table table-bordered table-striped table-hover table_heir dataTable" width="100%"></table>');
         $('.table_heir').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -995,6 +1078,29 @@
         });
         $('#table_blame_show').html('<table class="table table-bordered table-striped table-hover table_blame dataTable" width="100%"></table>');
         $('.table_blame').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1099,7 +1205,6 @@
             }
         });
     }
-
     function table_education(data) {
         $(".table_education").html('');
         var dataSet = [];
@@ -1110,6 +1215,29 @@
         });
         $('#table_education_show').html('<table class="table table-bordered table-striped table-hover table_education dataTable" width="100%"></table>');
         $('.table_education').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1149,7 +1277,9 @@
                     $('#hised_level' + i).append('<option value="' + data[a].edu_id + '">' + data[a].edu_name + '</opition>');
                 });
                 $('#hised_year' + i).html('<option selected="selected" value="">เลือก</opition>');
-                for (var y = 2450; y <= 2600; y++) {
+                var d = new Date();
+                var n = d.getFullYear();
+                for (var y = (n - 70) + 543; y <= n + 543; y++) {
                     $('#hised_year' + i).append('<option value="' + y + '">' + y + '</opition>');
                 }
                 $('#hised_level' + i).select2();
@@ -1232,6 +1362,29 @@
         });
         $('#table_hisService_show').html('<table class="table table-bordered table-striped table-hover table_hisService dataTable" width="100%"></table>');
         $('.table_hisService').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1299,6 +1452,29 @@
         });
         $('#table_hisSerSpecial_show').html('<table class="table table-bordered table-striped table-hover table_hisSerSpecial dataTable" width="100%"></table>');
         $('.table_hisSerSpecial').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1365,6 +1541,29 @@
         });
         $('#table_assignment_show').html('<table class="table table-bordered table-striped table-hover table_assignment dataTable" width="100%"></table>');
         $('.table_assignment').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1451,6 +1650,29 @@
         });
         $('#table_award_show').html('<table class="table table-bordered table-striped table-hover table_award dataTable" width="100%"></table>');
         $('.table_award').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1551,6 +1773,29 @@
         });
         $('#table_acade_show').html('<table class="table table-bordered table-striped table-hover table_acade dataTable" width="100%"></table>');
         $('.table_acade').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1634,6 +1879,29 @@
         });
         $('#table_plan_show').html('<table class="table table-bordered table-striped table-hover table_plan dataTable" width="100%"></table>');
         $('.table_plan').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1799,6 +2067,29 @@
         });
         $('#table_royal_show').html('<table class="table table-bordered table-striped table-hover table_royal dataTable" width="100%"></table>');
         $('.table_royal').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1862,6 +2153,29 @@
         });
         $('#table_hisslrup_show').html('<table class="table table-bordered table-striped table-hover table_hisslrup dataTable" width="100%"></table>');
         $('.table_hisslrup').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
@@ -1925,6 +2239,29 @@
         });
         $('#table_salarysp_show').html('<table class="table table-bordered table-striped table-hover table_salarysp dataTable" width="100%"></table>');
         $('.table_salarysp').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "ไม่มีข้อมูลในตาราง",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "แสดง _MENU_ แถว",
+                "sLoadingRecords": "กำลังโหลดข้อมูล...",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sSearch": "ค้นหา: ",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "หน้าสุดท้าย"
+                },
+                "oAria": {
+                    "sSortAscending": ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+                    "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+                }
+            },
             responsive: true,
             data: dataSet,
             columns: [
