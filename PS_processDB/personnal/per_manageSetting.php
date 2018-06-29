@@ -39,14 +39,14 @@ if (!empty($_FILES['fileUser'])) {
         $object = PHPExcel_IOFactory::load($tmpFolder . $_FILES["fileUser"]["name"]);
         $cn = new management;
         $cn->con_db();
-        $pos_id = '';
-        $class_id = '';
-        $dep_id = '';
-        $pro_id = '';
         $person_create = $_SESSION['name'];
         foreach ($object->getWorksheetIterator() as $worksheet) {
             $highestRow = $worksheet->getHighestRow();
             for ($row = 2; $row <= $highestRow; $row++) {
+                $pos_id = '';
+                $class_id = '';
+                $dep_id = '';
+                $pro_id = '';
                 $card_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(0, $row)->getValue());
                 $nameuser = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
                 $lastname = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());

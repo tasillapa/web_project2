@@ -33,9 +33,9 @@
         <script src="../../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
         <!-- ChartJs -->
-        <script src="../../plugins/chartjs/Chart.bundle.js"></script
-
-   <!-- Flot Charts Plugin Js -->
+            <script src="../../plugins/chartjs/Chart.bundle.js"></script
+        
+        <!-- Flot Charts Plugin Js -->
         <script src="../../plugins/flot-charts/jquery.flot.js"></script>
         <script src="../../plugins/flot-charts/jquery.flot.resize.js"></script>
         <script src="../../plugins/flot-charts/jquery.flot.pie.js"></script>
@@ -57,8 +57,8 @@
         <script src="../../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
         <script src="../../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
         <script src="../../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-        <script src="../../plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-        <script src="../../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+        <script src="../../plugins/jquery-datatable/extensions/export/skin/pdfmake.min.js"></script>
+        <script src="../../plugins/jquery-datatable/extensions/export/skin/vfs_fonts.js"></script>
         <script src="../../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
         <script src="../../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
@@ -96,6 +96,7 @@
 
         <!-- Custom Js -->
         <script src="../../js/admin.js"></script>
+        <script src="../../js/jquery.orgchart.js"></script>
         <script src="../../js/pages/index.js"></script>
         <script src="../../js/pages/forms/form-validation.js"></script>
         <script src="../../js/pages/forms/basic-form-elements.js"></script>
@@ -107,6 +108,9 @@
 
         <!-- Demo Js -->
         <script src="../../js/demo.js"></script>
+        <!--<script src="../../js/vfs_fonts.js"></script>-->
+<!--        <script src="../../js/pdfmake/pdfmake-build/pdfmake.min.js"></script>
+        <script src="../../js/pdfmake/pdfmake-build/vfs_fonts.js"></script>-->
         <script src="../../dist/js/select2.js"></script>
         <script src="../../dist/js/jquery.datetimepicker.js"></script>
         <script src="../../dist/js/jquery.datetimepicker.full.min.js"></script>

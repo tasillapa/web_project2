@@ -70,6 +70,7 @@
 
         <!-- New Css -->
         <link href="../../css/newcss.css" rel="stylesheet" />
+        <link href="../../css/jquery.orgchart.css" rel="stylesheet" />
 
         <!-- Select Option Boostrap -->
         <link href="../../dist/css/select2.css" rel="stylesheet" />

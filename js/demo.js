@@ -226,17 +226,21 @@ function formatDatePK(date) {
 }
 
 function DateThai(date) {
-    var strDate = new Date(date);
-    var dd = strDate.getDate();
-    var mm = strDate.getMonth() + 1; //January is 0!
-    var yyyy = strDate.getFullYear() + 543;
-    var strMonthCut = Array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษภาคม", "ธันวาคม");
-    var strMonthThai = strMonthCut[mm];
-    var newdate = dd + " " + strMonthThai + " " + yyyy;
-    if (date == "0000-00-00") {
-        newdate = 'ไม่ได้ระบุวันที่';
+    if (date.substr(4, 1) == '-') {
+        var strDate = new Date(date);
+        var dd = strDate.getDate();
+        var mm = strDate.getMonth() + 1; //January is 0!
+        var yyyy = strDate.getFullYear() + 543;
+        var strMonthCut = Array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษภาคม", "ธันวาคม");
+        var strMonthThai = strMonthCut[mm];
+        var newdate = dd + " " + strMonthThai + " " + yyyy;
+        if (date == "0000-00-00") {
+            newdate = 'ไม่ได้ระบุวันที่';
+        }
+        return newdate;
+    } else {
+        return date;
     }
-    return newdate;
 }
 
 function formatDateToday() {

@@ -6,6 +6,21 @@
     <head>
         <meta charset="UTF-8">
     </head>
+    <style type="text/css">
+        .orgchart { background: #fff; }
+        .orgchart td.left, .orgchart td.right, .orgchart td.top { border-color: #aaa; }
+        .orgchart td>.down { background-color: #aaa; }
+        .orgchart .middle-level .title { background-color: #006699; }
+        .orgchart .middle-level .content { border-color: #006699; }
+        .orgchart .product-dept .title { background-color: #009933; }
+        .orgchart .product-dept .content { border-color: #009933; }
+        .orgchart .rd-dept .title { background-color: #993366; }
+        .orgchart .rd-dept .content { border-color: #993366; }
+        .orgchart .pipeline1 .title { background-color: #996633; }
+        .orgchart .pipeline1 .content { border-color: #996633; }
+        .orgchart .frontend1 .title { background-color: #cc0066; }
+        .orgchart .frontend1 .content { border-color: #cc0066; }
+    </style>
     <body>
         <section class="content">
             <div class="container-fluid">
@@ -121,7 +136,13 @@
                     </div>
                 </div>
             </div>
-
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="table-responsive">
+                        <div id="chart-container"></div>
+                    </div>
+                </div>
+            </div>
             <!-- Modal Show Power -->
             <div class="modal fade" id="ShowDetailPower" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">

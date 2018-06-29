@@ -53,15 +53,16 @@ if (!empty($_FILES['filePerson'])) {
         $object = PHPExcel_IOFactory::load($tmpFolder . $_FILES["filePerson"]["name"]);
         $cn = new management;
         $cn->con_db();
-        $pos_id = '';
-        $type_id = '';
-        $lvb_id = '';
-        $lv_id = '';
-        $class_id = '';
-        $dep_id = '';
+
         foreach ($object->getWorksheetIterator() as $worksheet) {
             $highestRow = $worksheet->getHighestRow();
             for ($row = 2; $row <= $highestRow; $row++) {
+                $pos_id = '';
+                $type_id = '';
+                $lvb_id = '';
+                $lv_id = '';
+                $class_id = '';
+                $dep_id = '';
                 $card_id = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(0, $row)->getValue());
                 $pro_idpos = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(1, $row)->getValue());
                 $pro_sex = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(2, $row)->getValue());
@@ -92,6 +93,7 @@ if (!empty($_FILES['filePerson'])) {
                 while ($rs_lvb_id = mysqli_fetch_array($query_lvb_id)) {
                     $lvb_id = $rs_lvb_id['lvb_id'];
                 }
+
                 $lv_name = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(10, $row)->getValue());
                 $sql_lv_id = "SELECT lv_id FROM ps_level WHERE lv_name = '$lv_name'";
                 $query_lv_id = $cn->Connect->query($sql_lv_id);
@@ -113,14 +115,14 @@ if (!empty($_FILES['filePerson'])) {
                 $pro_salary = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(13, $row)->getValue());
                 $pro_salary = str_replace(',', '', $pro_salary);
                 $pro_dateIn = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(14, $row)->getValue());
-                $pro_dateOut = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
+                $pro_birthday = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(15, $row)->getValue());
                 $pro_transfer = mysqli_real_escape_string($cn->Connect, $worksheet->getCellByColumnAndRow(16, $row)->getValue());
                 $sql_check = "SELECT * FROM ps_profile WHERE card_id = '$card_id'";
                 $query_check = $cn->Connect->query($sql_check);
                 $num = mysqli_num_rows($query_check);
                 if (($num == 0) && ($card_id != '')) {
-                    $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_transfer, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
-                            . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '" . chistDate($pro_dateIn) . "', '" . chistDate($pro_dateOut) . "', '" . $pro_transfer . "', '$person_update', '$date', '$person_update', '$date')";
+                    $sql = "INSERT INTO ps_profile (card_id, pro_idpos, pro_sex, pro_prefix, pro_fname, pro_lname, pro_birthday, pro_status, pos_id, type_id, lvb_id, lv_id, class_id, dep_id, pro_salary, pro_dateIn, pro_dateOut, pro_transfer, pro_person_create, pro_date_create, pro_person_update, pro_date_update)"
+                            . "VALUES('$card_id', '$pro_idpos', '$pro_sex', '$pro_prefix', '$pro_fname', '$pro_lname', '" . chistDate($pro_birthday) . "', '$pro_status', '$pos_id', '$type_id', '$lvb_id', '$lv_id', '$class_id', '$dep_id', '$pro_salary', '" . chistDate($pro_dateIn) . "', '" . getAge(chistDate($pro_birthday)) . "', '" . $pro_transfer . "', '$person_update', '$date', '$person_update', '$date')";
                     $stmt = $cn->Connect->prepare($sql);
                     $ret = $stmt->execute();
                 }

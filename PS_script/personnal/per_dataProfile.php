@@ -11,6 +11,14 @@
     var dataID = '';
     var i = 1;
     var hide_td = true;
+    pdfMake.fonts = {
+        THSarabunNew: {
+            normal: 'THSarabunNew.ttf',
+            bold: 'THSarabunNew-Bold.ttf',
+            italics: 'THSarabunNew-Italic.ttf',
+            bolditalics: 'THSarabunNew-BoldItalic.ttf'
+        }
+    }
 
     $(function () {
         if (get_id == '') {
@@ -610,7 +618,11 @@
             $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));
             $('#gen_birthday').val(formatDateShow(data[0].pro_birthday));
             $('#pro_dateInE').val(formatDateShow(data[0].pro_dateIn));
-            $('#pro_dateOutE').val(formatDateShow(data[0].pro_dateOut));
+            if (data[0].pro_dateOut == '0000-00-00') {
+                $('#pro_dateOutE').val('กรุณาระบุวันเดือนปีเกิด');
+            } else {
+                $('#pro_dateOutE').val(formatDateShow(data[0].pro_dateOut));
+            }
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLPF", [$(data).pro_prefix], true, function (data2) {
                 $('#pro_prefixE').html('<option  value="">เลือก</opition>');
                 $.each(data2, function (i, k) {
@@ -710,7 +722,7 @@
         var YB = getdayBirth[0];
         var MB = getdayBirth[1];
         var DB = getdayBirth[2];
-        if (MB != 0) {
+        if ((MB != 0) && (MB != '') && (MB != undefined)) {
             var setdayBirth = moment(YB + "-" + MB + "-" + DB);
             var setNowDate = moment();
             var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
@@ -729,15 +741,19 @@
         var YB = getdayBirth[2] - 543;
         var MB = getdayBirth[1];
         var DB = getdayBirth[0];
-        if (MB != 0) {
+        if ((MB != 0) && (MB != '') && (MB != undefined)) {
             var setdayBirth = moment(YB + "-" + MB + "-" + DB);
             var setNowDate = moment();
             var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
             var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
             var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
             var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
-            var str_year_month = yearReal + " ปี " + monthDiff + " เดือน"; // ต่อวันเดือนปี  
+            var str_year_month = yearReal + " ปี " + monthDiff + " เดือน"; // ต่อวันเดือนปี 
+            var yearDiff = 60 - yearReal;
+            var d = new Date();
+            var yearPresent = d.getFullYear() + 543;
             $("#gen_old").val(str_year_month);
+            $("#pro_dateOutE").val('1/10/' + Math.floor(yearDiff + yearPresent));
         } else {
             $("#gen_old").val('ยังไม่ได้ระบุวันเกิด');
         }
@@ -851,6 +867,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -935,6 +969,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1018,6 +1070,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1101,6 +1171,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1238,6 +1326,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1385,6 +1491,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1475,6 +1599,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1564,6 +1706,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1673,6 +1833,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1796,6 +1974,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -1902,6 +2098,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -2090,6 +2304,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -2176,6 +2408,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -2262,6 +2512,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [

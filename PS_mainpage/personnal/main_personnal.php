@@ -143,7 +143,7 @@ if (!isset($_POST['ch_new'])) {
                                 <ul class="dropdown-menu pull-right">
                                     <li><a href="person_DataProfile.php"><i class="material-icons">person</i>ข้อมูลส่วนตัว</a></li>
                                     <li data-toggle="modal" data-target="#change_pass"><a href="javascript:void(0);"><i class="material-icons">assignment_ind</i>เปลี่ยนรหัสผ่าน</a></li>
-                                    <li><a href="../../js/logout.php"><i class="material-icons">input</i>ออกจากระบบt</a></li>
+                                    <li><a href="../../js/logout.php"><i class="material-icons">input</i>ออกจากระบบ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -423,7 +423,7 @@ if (!isset($_POST['ch_new'])) {
                         new. version(2018) <a href="javascript:void(0);">Personnal System</a>.
                     </div>
                     <div class="version">
-                        <b>Version: </b> 1.55
+                        <b>Version: </b> 2.01
                     </div>
                 </div>
                 <!-- #Footer -->

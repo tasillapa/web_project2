@@ -271,7 +271,7 @@ if (!isset($_GET['id'])) {
                                                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                                                             <div class="form-group">
                                                                                                 <div class="form-line">
-                                                                                                    <input type="text" id="pro_dateOutE" class="form-control date" placeholder="__/__/____">
+                                                                                                    <input type="text" id="pro_dateOutE" class="form-control" placeholder="กรุณาระบุวันเดือนปีเกิด" disabled>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -340,7 +340,7 @@ if (!isset($_GET['id'])) {
                                                                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12">
                                                                                         <div class="form-group">
                                                                                             <div class="form-line">
-                                                                                                <input type="text" id="gen_card_id" class="form-control card-id" placeholder="กรอกเลขบัตรประชาชน" disabled>
+                                                                                                <input type="text" id="gen_card_id" class="form-control card-id" placeholder="ยังไม่ได้ระบุเลขบัตรประชาชน" disabled>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -363,7 +363,7 @@ if (!isset($_GET['id'])) {
                                                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                                                                         <div class="form-group">
                                                                                             <div class="form-line">
-                                                                                                <input type="text" id="gen_fname" class="form-control" placeholder="กรอกชื่อ" disabled>
+                                                                                                <input type="text" id="gen_fname" class="form-control" placeholder="ยังไม่ได้ระบุชื่อ" disabled>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -373,7 +373,7 @@ if (!isset($_GET['id'])) {
                                                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                                                                         <div class="form-group">
                                                                                             <div class="form-line">
-                                                                                                <input type="text" id="gen_lname" class="form-control" placeholder="กรอกสกุล" disabled>
+                                                                                                <input type="text" id="gen_lname" class="form-control" placeholder="ยังไม่ได้ระบุสกุล" disabled>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -395,7 +395,7 @@ if (!isset($_GET['id'])) {
                                                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                                                                         <div class="form-group">
                                                                                             <div class="form-line">
-                                                                                                <input type="text" id="gen_nickname" class="form-control" placeholder="กรอกชื่อเล่น" disabled>
+                                                                                                <input type="text" id="gen_nickname" class="form-control" placeholder="ยังไม่ได้ระบุชื่อเล่น" disabled>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -405,7 +405,7 @@ if (!isset($_GET['id'])) {
                                                                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
                                                                                         <div class="form-group">
                                                                                             <div class="form-line">
-                                                                                                <input type="text" id="gen_birthday" class="form-control date" placeholder="กรอกวัน/เดือน/ปีเกิด" disabled>
+                                                                                                <input type="text" id="gen_birthday" class="form-control date" placeholder="ยังไม่ได้ระบุวันเกิด" disabled>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -723,10 +723,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <!--<h2 class="card-inside-title">ประวัติการเปลี่ยนชื่อ-สกุล</h2>-->
-                                                                                <button id="btn_chName" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการเปลี่ยนชื่อ" data-toggle="collapse" data-target="#add_chName" aria-expanded="false" aria-controls="collapseExample">
+                                                                                <button id="btn_chName" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการเปลี่ยนชื่อ" data-toggle="collapse" data-target="#add_chName" aria-expanded="false" aria-controls="collapseExample">
                                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                                 </button>
-                                                                                <div class="collapse" id="add_chName"><br>
+                                                                                <div class="collapse" id="add_chName">
                                                                                     <form>
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 form-control-label-l">
@@ -804,10 +804,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <!--<h2 class="card-inside-title">ประวัติการสมรส</h2>-->
-                                                                                <button id="btn_marry" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติสมรส" data-toggle="collapse" data-target="#add_marry" aria-expanded="false" aria-controls="collapseExample">
+                                                                                <button id="btn_marry" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติสมรส" data-toggle="collapse" data-target="#add_marry" aria-expanded="false" aria-controls="collapseExample">
                                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                                 </button>
-                                                                                <div class="collapse" id="add_marry"><br>
+                                                                                <div class="collapse" id="add_marry">
                                                                                     <form>
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 form-control-label-l">
@@ -863,10 +863,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <!--<h2 class="card-inside-title">ข้อมูลทายาท</h2>-->
-                                                                                <button id="btn_heir" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มข้อมูลทายาท" data-toggle="collapse" data-target="#add_heir" aria-expanded="false" aria-controls="collapseExample">
+                                                                                <button id="btn_heir" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มข้อมูลทายาท" data-toggle="collapse" data-target="#add_heir" aria-expanded="false" aria-controls="collapseExample">
                                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                                 </button>
-                                                                                <div class="collapse" id="add_heir"><br>
+                                                                                <div class="collapse" id="add_heir">
                                                                                     <form>
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 form-control-label-l">
@@ -922,10 +922,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <!--<h2 class="card-inside-title">ประวัติทางวินัย</h2>-->
-                                                                                <button id="btn_blame" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติทางวินัย" data-toggle="collapse" data-target="#add_blame" aria-expanded="false" aria-controls="collapseExample">
+                                                                                <button id="btn_blame" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติทางวินัย" data-toggle="collapse" data-target="#add_blame" aria-expanded="false" aria-controls="collapseExample">
                                                                                     <div class=""> <i class="material-icons">add</i></div>
                                                                                 </button>
-                                                                                <div class="collapse" id="add_blame"><br>
+                                                                                <div class="collapse" id="add_blame">
                                                                                     <form>
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control-label-l">
@@ -1466,10 +1466,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <form class="form-horizontal">
-                                                                                    <button id="btn_hisser" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับราชการ" data-toggle="collapse" data-target="#add_hisser" aria-expanded="false" aria-controls="collapseExample">
+                                                                                    <button id="btn_hisser" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับราชการ" data-toggle="collapse" data-target="#add_hisser" aria-expanded="false" aria-controls="collapseExample">
                                                                                         <div class=""> <i class="material-icons">add</i></div>
                                                                                     </button>
-                                                                                    <div class="collapse" id="add_hisser"><br>
+                                                                                    <div class="collapse" id="add_hisser">
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                                                 <label >กรม</label>
@@ -1573,10 +1573,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <form class="form-horizontal">
-                                                                                    <button id="btn_serSpecial" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติราชการพิเศษ" data-toggle="collapse" data-target="#add_serSpecial" aria-expanded="false" aria-controls="collapseExample">
+                                                                                    <button id="btn_serSpecial" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติราชการพิเศษ" data-toggle="collapse" data-target="#add_serSpecial" aria-expanded="false" aria-controls="collapseExample">
                                                                                         <div class=""> <i class="material-icons">add</i></div>
                                                                                     </button>
-                                                                                    <div class="collapse" id="add_serSpecial"><br>
+                                                                                    <div class="collapse" id="add_serSpecial">
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                                                 <label >ราชการพิเศษ</label>
@@ -1667,10 +1667,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <form class="form-horizontal">
-                                                                                    <button id="btn_assignment" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรักษาราชการ" data-toggle="collapse" data-target="#add_assignment" aria-expanded="false" aria-controls="collapseExample">
+                                                                                    <button id="btn_assignment" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรักษาราชการ" data-toggle="collapse" data-target="#add_assignment" aria-expanded="false" aria-controls="collapseExample">
                                                                                         <div class=""> <i class="material-icons">add</i></div>
                                                                                     </button>
-                                                                                    <div class="collapse" id="add_assignment"><br>
+                                                                                    <div class="collapse" id="add_assignment">
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                                                 <label >เลขที่คำสั่ง</label>
@@ -1808,10 +1808,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <form class="form-horizontal">
-                                                                                    <button id="btn_award" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับรางวัล" data-toggle="collapse" data-target="#add_award" aria-expanded="false" aria-controls="collapseExample">
+                                                                                    <button id="btn_award" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับรางวัล" data-toggle="collapse" data-target="#add_award" aria-expanded="false" aria-controls="collapseExample">
                                                                                         <div class=""> <i class="material-icons">add</i></div>
                                                                                     </button>
-                                                                                    <div class="collapse" id="add_award"><br>
+                                                                                    <div class="collapse" id="add_award">
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                                                 <label >วันที่ได้รับประกาศ</label>
@@ -1868,10 +1868,10 @@ if (!isset($_GET['id'])) {
                                                                             </div>
                                                                             <div class="body">
                                                                                 <form class="form-horizontal">
-                                                                                    <button id="btn_academic" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มผลงานวิชาการ" data-toggle="collapse" data-target="#add_academic" aria-expanded="false" aria-controls="collapseExample">
+                                                                                    <button id="btn_academic" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มผลงานวิชาการ" data-toggle="collapse" data-target="#add_academic" aria-expanded="false" aria-controls="collapseExample">
                                                                                         <div class=""> <i class="material-icons">add</i></div>
                                                                                     </button>
-                                                                                    <div class="collapse" id="add_academic"><br>
+                                                                                    <div class="collapse" id="add_academic">
                                                                                         <div class="row clearfix">
                                                                                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 form-control-label-l">
                                                                                                 <label >ชื่อผลงานวิชาการ</label>
@@ -1966,9 +1966,9 @@ if (!isset($_GET['id'])) {
                                                                                 </h2>
                                                                             </div>
                                                                             <div class="body">
-                                                                                <button id="btn_plan" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_plan" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มแผนงาน">
+                                                                                <button id="btn_plan" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle="collapse" data-target="#add_plan" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มแผนงาน">
                                                                                     <div class=""> <i class="material-icons">add</i></div>
-                                                                                </button> <br>
+                                                                                </button>
                                                                                 <div class="collapse" id="add_plan">
                                                                                     <form class="form-horizontal" id="plan_reset">
                                                                                         <div class="row clearfix">
@@ -2041,9 +2041,9 @@ if (!isset($_GET['id'])) {
                                                                                 </h2>
                                                                             </div>
                                                                             <div class="body">
-                                                                                <button id="btn_hisroyal" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_hisroyal" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับเครื่องราช">
+                                                                                <button id="btn_hisroyal" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle="collapse" data-target="#add_hisroyal" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับเครื่องราช">
                                                                                     <div class=""> <i class="material-icons">add</i></div>
-                                                                                </button> <br>
+                                                                                </button>
                                                                                 <div class="collapse" id="add_hisroyal">
                                                                                     <form class="form-horizontal">
                                                                                         <div class="row clearfix">
@@ -2101,9 +2101,9 @@ if (!isset($_GET['id'])) {
                                                                                 </h2>
                                                                             </div>
                                                                             <div class="body">
-                                                                                <button id="btn_salaryup" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_salaryup" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="ประวัติการรับเลื่อนขั้นเงินเดือน">
+                                                                                <button id="btn_salaryup" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle="collapse" data-target="#add_salaryup" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="ประวัติการรับเลื่อนขั้นเงินเดือน">
                                                                                     <div class=""> <i class="material-icons">add</i></div>
-                                                                                </button> <br>
+                                                                                </button>
                                                                                 <div class="collapse" id="add_salaryup">
                                                                                     <form class="form-horizontal">
                                                                                         <div class="row clearfix">
@@ -2162,9 +2162,9 @@ if (!isset($_GET['id'])) {
                                                                                 </h2>
                                                                             </div>
                                                                             <div class="body">
-                                                                                <button id="btn_salaryspecial" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" data-target="#add_salaryspecial" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับเงินเพิ่มพิเศษ">
+                                                                                <button id="btn_salaryspecial" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float m-b-10" data-toggle="collapse" data-target="#add_salaryspecial" aria-expanded="false" aria-controls="collapseExample" data-toggle-tootip="tooltip" data-placement="right" title="" data-original-title="เพิ่มประวัติการรับเงินเพิ่มพิเศษ">
                                                                                     <div class=""> <i class="material-icons">add</i></div>
-                                                                                </button> <br>
+                                                                                </button>
                                                                                 <div class="collapse" id="add_salaryspecial">
                                                                                     <form class="form-horizontal">
                                                                                         <div class="row clearfix">

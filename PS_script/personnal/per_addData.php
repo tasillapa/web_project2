@@ -7,6 +7,14 @@
     var level = '<?= $_SESSION['level']; ?>';
     var NoImg = '../../images/img-profile/no_img.png';
     var table_prifile = '';
+    pdfMake.fonts = {
+        THSarabunNew: {
+            normal: 'THSarabunNew.ttf',
+            bold: 'THSarabunNew-Bold.ttf',
+            italics: 'THSarabunNew-Italic.ttf',
+            bolditalics: 'THSarabunNew-BoldItalic.ttf'
+        }
+    }
     $(function () {
         $('#show_filePerson').html('ยังไม่ได้เลือกไฟล์');
         $('#filePerson').change(function () {
@@ -170,6 +178,58 @@
             $('.see_out').hide();
         }
     });
+
+    function OnchangAge(old) {
+        old = $('#pro_birthday').val();
+        $("#pro_dateOut").val(age(old));
+    }
+    function OnchangAgeE(old) {
+        old = $('#pro_birthdayE').val();
+        $("#pro_dateOutE").val(age(old));
+    }
+    function age(old) {
+        var dayBirth = old;
+        var getdayBirth = dayBirth.split("/");
+        var YB = getdayBirth[2] - 543;
+        var MB = getdayBirth[1];
+        var DB = getdayBirth[0];
+        if ((MB != 0) && (MB != '') && (MB != undefined)) {
+            var setdayBirth = moment(YB + "-" + MB + "-" + DB);
+            var setNowDate = moment();
+            var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
+            var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
+            var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
+            var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
+            var yearDiff = 60 - yearReal;
+            var d = new Date();
+            var yearPresent = d.getFullYear() + 543;
+            return '1/10/' + Math.floor(yearDiff + yearPresent);
+        } else {
+            return 'กรุณาระบุวันเดือนปีเกิด';
+        }
+    }
+    function ageDetail(old) {
+        var dayBirth = old;
+        var getdayBirth = dayBirth.split("-");
+        var YB = getdayBirth[0];
+        var MB = getdayBirth[1];
+        var DB = getdayBirth[2];
+        if ((MB != 0) && (MB != '') && (MB != undefined)) {
+            var setdayBirth = moment(YB + "-" + MB + "-" + DB);
+            var setNowDate = moment();
+            var yearData = setNowDate.diff(setdayBirth, 'years', true); // ข้อมูลปีแบบทศนิยม  
+            var yearFinal = Math.round(setNowDate.diff(setdayBirth, 'years', true), 0); // ปีเต็ม  
+            var yearReal = setNowDate.diff(setdayBirth, 'years'); // ปีจริง  
+            var monthDiff = Math.floor((yearData - yearReal) * 12); // เดือน  
+            var yearDiff = 60 - yearReal;
+            var d = new Date();
+            var yearPresent = d.getFullYear();
+            return Math.floor(yearDiff + yearPresent) + '-10-01';
+        } else {
+            return 'กรุณาระบุวันเดือนปีเกิด';
+        }
+    }
+
     function show_profile() {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "sl_table_profile", "", true, table_profile);
     }
@@ -213,6 +273,40 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
+//                        doc.content[1].table.widths = [40, 'auto', '*', '*'];
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                        var rowCount = doc.content[1].table.body.length; // หาจำนวนแะวทั้งหมดในตาราง
+                        // วนลูปเพื่อกำหนดค่าแต่ละคอลัมน์ เช่นการจัดตำแหน่ง
+                        for (i = 1; i < rowCount; i++) { // i เริ่มที่ 1 เพราะ i แรกเป็นแถวของหัวข้อ
+                            doc.content[1].table.body[i][0].alignment = 'center'; // คอลัมน์แรกเริ่มที่ 0
+                            doc.content[1].table.body[i][1].alignment = 'center';
+                            doc.content[1].table.body[i][2].alignment = 'left';
+                            doc.content[1].table.body[i][3].alignment = 'left';
+                            doc.content[1].table.body[i][4].alignment = 'left';
+                            doc.content[1].table.body[i][5].alignment = 'left';
+                            doc.content[1].table.body[i][6].alignment = 'left';
+                            doc.content[1].table.body[i][7].alignment = 'left';
+                        }
+                        
+                        console.log(doc); // เอาไว้ debug ดู doc object proptery เพื่ออ้างอิงเพิ่มเติม
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [
@@ -327,7 +421,7 @@
             $('#pro_salaryE').val(parseInt(data[0].pro_salary));
             $('#pro_birthdayE').val(formatDateShow(data[0].pro_birthday));
             $('#pro_dateInE').val(formatDateShow(data[0].pro_dateIn));
-            $('#pro_dateOutE').val(formatDateShow(data[0].pro_dateOut));
+            $('#pro_dateOutE').val(age(formatDateShow(data[0].pro_birthday)));
             if (data[0].pro_transfer != '') {
                 $('#check_tranE').prop("checked", true);
                 $('#sw_inputE').show();
@@ -464,7 +558,7 @@
             $('#pro_salaryD').html(parseInt(data[0].pro_salary));
             $('#pro_birthdayD').html(DateThai(data[0].pro_birthday));
             $('#pro_dateInD').html(DateThai(data[0].pro_dateIn));
-            $('#pro_dateOutD').html(DateThai(data[0].pro_dateOut));
+            $('#pro_dateOutD').html(DateThai(ageDetail(data[0].pro_birthday)));
             $('#pro_person_create').html(data[0].pro_person_create);
             $('#pro_date_create').html(data[0].pro_date_create);
             $('#pro_person_update').html(data[0].pro_person_update);

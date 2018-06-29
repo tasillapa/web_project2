@@ -30,20 +30,22 @@ $NoImg = '../../images/img-profile/no_img.png';
                                 </h2>
                             </div>
                             <div class="body">
-                                <div class="row clearfix">
-                                    <div class="col-xs-6">
-                                        <button type="button" data-toggle="modal" data-target="#addPerson" class="btn btn-success waves-effect">
-                                            <i class="material-icons">person_add</i>
-                                            <span>เพิ่มข้อมูลบุคลากร</span>
-                                        </button>
+                                <?php if ($_SESSION['level'] == '1') { ?>
+                                    <div class="row clearfix">
+                                        <div class="col-xs-6">
+                                            <button type="button" data-toggle="modal" data-target="#addPerson" class="btn btn-success waves-effect">
+                                                <i class="material-icons">person_add</i>
+                                                <span>เพิ่มข้อมูลบุคลากร</span>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-6 align-right">
+                                            <button type="button" data-toggle="modal" data-target="#importPerson" class="btn btn-primary waves-effect">
+                                                <i class="material-icons">group_add</i>
+                                                <span>นำเข้าแบบ Excel</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-6 align-right">
-                                        <button type="button" data-toggle="modal" data-target="#importPerson" class="btn btn-primary waves-effect">
-                                            <i class="material-icons">group_add</i>
-                                            <span>นำเข้าแบบ Excel</span>
-                                        </button>
-                                    </div>
-                                </div>
+                                <?php } ?>
                                 <div class="row clearfix">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="card">
@@ -191,7 +193,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                                     <i class="material-icons">date_range</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_birthday" class="form-control date" placeholder="Ex: 30/07/2561">
+                                                                    <input type="text" id="pro_birthday" class="form-control date" placeholder="Ex: 30/07/2561" onchange="javaScrip: OnchangAge();">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -340,7 +342,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_dateOut" class="form-control date" placeholder="__/__/____">
+                                                                    <input type="text" id="pro_dateOut" class="form-control" placeholder="กรุณาระบุวันเดือนปีเกิด" disabled>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -515,7 +517,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                                     <i class="material-icons">date_range</i>
                                                                 </span>
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_birthdayE" class="form-control date" placeholder="Ex: 30/07/2561">
+                                                                    <input type="text" id="pro_birthdayE" class="form-control date" placeholder="Ex: 30/07/2561" onchange="OnchangAgeE()">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -598,7 +600,7 @@ $NoImg = '../../images/img-profile/no_img.png';
                                                         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input type="text" id="pro_dateOutE" class="form-control date" placeholder="__/__/___">
+                                                                    <input type="text" id="pro_dateOutE" class="form-control" placeholder="กรุณาระบุวันเดือนปีเกิด" disabled>
                                                                 </div>
                                                             </div>
                                                         </div>

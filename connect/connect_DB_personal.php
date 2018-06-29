@@ -35,7 +35,7 @@ class management {
         $array_result = array();
         $Query = $this->Connect->query($sql);
         if ($Query) {
-                while ($Row = mysqli_fetch_array($Query)) {
+            while ($Row = mysqli_fetch_array($Query)) {
 
                 array_push($array_result, $Row);
             }
@@ -153,6 +153,16 @@ function chistDate($date) {
             break;
     }
     return $Y . "-" . $m . "-" . $d;
+}
+
+function getAge($birthday) {
+    $array = explode("-", $birthday);
+    $then = strtotime($birthday);
+    $age = (floor((time() - $then) / 31556926));
+    $ageDiff = 60 - $age;
+    $Y = (int) $array[0];
+    $YdateOut = ($ageDiff + $Y);
+    return $YdateOut . '-10-01';
 }
 
 ?>
