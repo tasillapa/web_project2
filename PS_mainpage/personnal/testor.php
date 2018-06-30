@@ -23,7 +23,7 @@ ob_start();
                 $sql = "SELECT * FROM `ps_class` LEFT JOIN ps_profile ON ps_class.class_id = ps_profile.class_id 
                     LEFT JOIN ps_position ON ps_position.pos_id = ps_profile.pos_id
                     LEFT JOIN ps_type ON ps_type.type_id = ps_profile.type_id
-                    LEFT JOIN ps_leveboss ON ps_leveboss.lvb_id = ps_profile.lvb_id
+                    LEFT JOIN ps_levelboss ON ps_levelboss.lvb_id = ps_profile.lvb_id
                     LEFT JOIN ps_level ON ps_level.lv_id = ps_profile.lv_id
                     LEFT JOIN ps_department ON ps_department.dep_id = ps_profile.dep_id
                     WHERE ( ps_class.class_id = " . $_GET['id'] . " OR ps_profile.pos_id = 0000 )
@@ -40,7 +40,13 @@ ob_start();
                         <div id="chart_div"></div>
                     </div>
                 </div>
-
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="table-responsive">
+                        <div id="chart-container"></div>
+                    </div>
+                </div>
             </div>
         </section>
     </body>
@@ -149,5 +155,5 @@ while ($rs = mysqli_fetch_array($query)) {
 
     }
 </script>
-
+<?php include ("../../PS_script/personnal/structure_person.php"); ?>
 
