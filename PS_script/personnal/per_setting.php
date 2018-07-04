@@ -22,7 +22,7 @@
         });
         $("#password").keyup(function (data) {
             pass = $("#password").val();
-            if ((pass == ch_pass) && (pass != '') && (ch_pass != '')) {
+            if ((pass == ch_pass) && (pass != '') && (ch_pass != '') && (pass.length >= 6)) {
                 $('#password-error').fadeIn(100);
                 $('#ch-password-error').fadeIn(100);
                 $('#password-error, #ch-password-error').html('<span style="color: green;" class="success">รหัสผ่านตรงกันแล้ว</span>').removeClass('form-line focused error');
@@ -34,7 +34,7 @@
         });
         $("#ch_password").keyup(function (data) {
             ch_pass = $("#ch_password").val();
-            if ((pass == ch_pass) && (pass != '') && (ch_pass != '')) {
+            if ((pass == ch_pass) && (pass != '') && (ch_pass != '') && (pass.length >= 6)) {
                 $('#ch-password-error').fadeIn(100);
                 $('#password-error').fadeIn(100);
                 $('#password-error, #ch-password-error').html('<span style="color: green;" class="success">รหัสผ่านตรงกันแล้ว</span>').removeClass('form-line focused error');
@@ -47,7 +47,7 @@
         $("#passwordE").keyup(function (data) {
             passE = $("#passwordE").val();
             ch_passE = $("#ch_passwordE").val();
-            if ((passE == ch_passE) && (passE != '') && (ch_passE != '')) {
+            if ((passE == ch_passE) && (passE != '') && (ch_passE != '') && (passE.length >= 6)) {
                 $('#passwordE-error').fadeIn(100);
                 $('#ch-passwordE-error').fadeIn(100);
                 $('#passwordE-error, #ch-passwordE-error').html('<span style="color: green;" class="success">รหัสผ่านตรงกันแล้ว</span>').removeClass('form-line focused error');
@@ -60,7 +60,7 @@
         $("#ch_passwordE").keyup(function (data) {
             passE = $("#passwordE").val();
             ch_passE = $("#ch_passwordE").val();
-            if ((passE == ch_passE) && (passE != '') && (ch_passE != '')) {
+            if ((passE == ch_passE) && (passE != '') && (ch_passE != '') && (passE.length >= 6)) {
                 $('#ch-passwordE-error').fadeIn(100);
                 $('#passwordE-error').fadeIn(100);
                 $('#passwordE-error, #ch-passwordE-error').html('<span style="color: green;" class="success">รหัสผ่านตรงกันแล้ว</span>').removeClass('form-line focused error');
@@ -222,13 +222,22 @@
                         var count = $('.validate').not(function () {
                             var name = $(this).attr('id');
                             if (($('#' + name + '').val() == '') && (name == 'username')) {
-                                $('#username-error').html('<label  class="error">กรุณากรอกชื่อผู้ใช้</label>').addClass('form-line focused error').fadeIn(100);
+                                $('#username-error').html('<label class="error">กรุณากรอกชื่อผู้ใช้</label>').addClass('form-line focused error').fadeIn(100);
                                 num++;
                             } else if (($('#' + name + '').val() == '') && (name == 'password')) {
-                                $('#password-error').html('<label  class="error">กรุณากรอกรหัสผ่าน</label>').addClass('form-line focused error').fadeIn(100);
+                                $('#password-error').html('<label class="error">กรุณากรอกรหัสผ่าน</label>').addClass('form-line focused error').fadeIn(100);
                                 num++;
                             } else if (($('#' + name + '').val() == '') && (name == 'ch_password')) {
-                                $('#ch-password-error').html('<label  class="error">กรุณากรอกยืนยันรหัสผ่าน</label>').addClass('form-line focused error').fadeIn(100);
+                                $('#ch-password-error').html('<label class="error">กรุณากรอกยืนยันรหัสผ่าน</label>').addClass('form-line focused error').fadeIn(100);
+                                num++;
+                            } else if (($('#' + name + '').val().length < 6) && (name == 'username')) {
+                                $('#username-error').html('<label class="error">กรุณากรอกชื่อผู้ใช้อย่างน้อย 6 ตัว</label>').addClass('form-line focused error').fadeIn(100);
+                                num++;
+                            } else if (($('#' + name + '').val().length < 6) && (name == 'password')) {
+                                $('#password-error').html('<label class="error">กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัว</label>').addClass('form-line focused error').fadeIn(100);
+                                num++;
+                            } else if (($('#' + name + '').val().length < 6) && (name == 'ch_password')) {
+                                $('#ch-password-error').html('<label class="error">กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัว</label>').addClass('form-line focused error').fadeIn(100);
                                 num++;
                             }
                         });
@@ -404,6 +413,15 @@
                 num++;
             } else if (($('#' + name + '').val() == '') && (name == 'ch_passwordE')) {
                 $('#ch-passwordE-error').html('<label  class="error">กรุณากรอกยืนยันรหัสผ่าน</label>').addClass('form-line focused error').fadeIn(100);
+                num++;
+            } else if (($('#' + name + '').val().length < 6) && (name == 'usernameE')) {
+                $('#usernameE-error').html('<label class="error">กรุณากรอกชื่อผู้ใช้อย่างน้อย 6 ตัว</label>').addClass('form-line focused error').fadeIn(100);
+                num++;
+            } else if (($('#' + name + '').val().length < 6) && (name == 'passwordE')) {
+                $('#passwordE-error').html('<label class="error">กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัว</label>').addClass('form-line focused error').fadeIn(100);
+                num++;
+            } else if (($('#' + name + '').val().length < 6) && (name == 'ch_passwordE')) {
+                $('#ch-passwordE-error').html('<label class="error">กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัว</label>').addClass('form-line focused error').fadeIn(100);
                 num++;
             }
         });

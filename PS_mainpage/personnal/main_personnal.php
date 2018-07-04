@@ -466,8 +466,9 @@ if (!isset($_POST['ch_new'])) {
                                             <i class="material-icons">lock</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="password" class="form-control" id="cp_password" minlength="6" placeholder="รหัสผ่านใหม่" required>
+                                            <input type="password" class="form-control validate" id="cp_password" minlength="6" placeholder="รหัสผ่านใหม่" required>
                                             <label style="display:none" id="error-new-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
+                                            <div id="error-new-passE" class="error"></div>
                                         </div>
                                     </div>
                                     <div class="input-group">
@@ -475,8 +476,9 @@ if (!isset($_POST['ch_new'])) {
                                             <i class="material-icons">lock</i>
                                         </span>
                                         <div class="form-line">
-                                            <input type="password" class="form-control" id="confirm" minlength="6" placeholder="ยืนยันรหัสผ่านใหม่" required>
+                                            <input type="password" class="form-control validate" id="confirm" minlength="6" placeholder="ยืนยันรหัสผ่านใหม่" required>
                                             <label style="display:none" id="error-confirm-pass" class="error">รหัสผ่านไม่ตรงกัน</label>
+                                            <div id="error-confirm-passE" class="error"></div>
                                         </div>
                                     </div>
                                     <button class="btn btn-block btn-lg bg-pink waves-effect" type="button" onclick ="javascript: btn_chPass('CHPASS')">บันทึก</button>

@@ -15,12 +15,14 @@
         });
         $("#cp_password").focus(function () {
             $('#error-new-pass').fadeOut(100);
+            $('#error-new-passE').html('').removeClass('form-line focused error').fadeOut(100);
         });
         $('#old_pass').focus(function () {
             $('#error-old-pass').fadeOut(100);
         });
         $("#confirm").focus(function () {
             $('#error-confirm-pass').fadeOut(100);
+            $('#error-confirm-passE').html('').removeClass('form-line focused error').fadeOut(100);
         });
     });
     function btn_login(LOGIN) {
@@ -86,7 +88,7 @@
                 path = "PS_processDB/personnal/login_DB.php";
             }
             cls.GetJSON(path, "CHK_USER", [$('#cp_username').val()], true, function (data) {
-                console.log(data);
+
                 if (data == 0) {
                     $('#cp_username').parents('.form-line').addClass('form-line focused error');
                     $('#error-username-cp').fadeIn(100);
@@ -123,11 +125,36 @@
                                         } else {
                                             path = "PS_processDB/personnal/change_pass.php";
                                         }
-                                        cls.GetJSON(path, 'CHPASS', [card_id, $('#confirm').val()], true, function (data) {
-                                            swal("บันทึกสำเร็จ!", "รหัสใหม่พร้อมใช้งาน", "success");
-                                            $('#change_pass').modal('hide');
+                                        var num = 0;
+                                        var count = $('.validate').not(function () {
+                                            var name = $(this).attr('id');
+                                            if (($('#' + name + '').val().length < 6) && (name == 'cp_password')) {
+                                                $('#error-new-passE').html('<label class="error">กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัว</label>').addClass('form-line focused error').fadeIn(100);
+                                                num++;
+                                            } else if (($('#' + name + '').val().length < 6) && (name == 'confirm')) {
+                                                $('#error-confirm-passE').html('<label class="error">กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัว</label>').addClass('form-line focused error').fadeIn(100);
+                                                num++;
+                                            }
                                         });
+                                        if (num == 0) {
+                                            cls.GetJSON(path, 'CHPASS', [card_id, $('#confirm').val()], true, function (data) {
+                                                swal("บันทึกสำเร็จ!", "รหัสใหม่พร้อมใช้งาน", "success");
+                                                $('#change_pass').modal('hide');
+                                            });
+                                        }
                                     }
+                                } else {
+                                    var num = 0;
+                                    var count = $('.validate').not(function () {
+                                        var name = $(this).attr('id');
+                                        if (($('#' + name + '').val() == '') && (name == 'cp_password')) {
+                                            $('#error-new-passE').html('<label class="error">กรุณากรอกรหัสผ่าน</label>').addClass('form-line focused error').fadeIn(100);
+                                            num++;
+                                        } else if (($('#' + name + '').val() == '') && (name == 'confirm')) {
+                                            $('#error-confirm-passE').html('<label class="error">กรุณากรอกยืนยันรหัสผ่าน</label>').addClass('form-line focused error').fadeIn(100);
+                                            num++;
+                                        }
+                                    });
                                 }
                             }
                         });
@@ -155,5 +182,5 @@
             console.log(reader);
         }
     }
-   
+
 </script>

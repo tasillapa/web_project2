@@ -54,6 +54,24 @@
                     "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
                 }
             },
+            dom: 'Bfrtip',
+            paging: true,
+            buttons: [
+                'copy', 'excel',
+                {// กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4            
+                    "customize": function (doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabunNew',
+                            fontSize: 16
+                        };
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                    }
+                }, 'print'
+            ],
             responsive: true,
             data: dataSet,
             columns: [

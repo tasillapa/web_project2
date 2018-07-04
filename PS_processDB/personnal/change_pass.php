@@ -18,7 +18,7 @@ function change_pass() {
     if ($cn->Connect) {
         $get_data = explode("|", $_POST["PARM"]);
         $card_id = $get_data[0];
-        $new_pass = $get_data[1];
+        $new_pass = base64_encode($get_data[1]);
         $sql = "UPDATE ps_personnal SET password = '$new_pass' WHERE card_id = '$card_id'";
         $rs = $cn->execute($sql);
         echo $rs;

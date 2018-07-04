@@ -84,8 +84,11 @@ if (!empty($_FILES['fileUser'])) {
                     while ($rs_pro_id = mysqli_fetch_array($query_checkProfile)) {
                         $pro_id = $rs_pro_id['pro_id'];
                     }
+                    if ((strlen($username) <= 6) || (strlen($password) <= 6)) {
+                        $status = 0;
+                    }
                     $sql = "INSERT INTO ps_personnal (pro_id, card_id, nameuser, lastname, pos_id, class_id, dep_id, tel, email, username, password, level, status, person_create, date_create, person_update, date_update)"
-                            . "VALUES('$pro_id', '$card_id', '$nameuser', '$lastname', '$pos_id', '$class_id', '$dep_id', '$tel', '$email', '$username', '$password', '$level', '$status', '$person_create', '$date', '$person_update', '$date')";
+                            . "VALUES('$pro_id', '$card_id', '$nameuser', '$lastname', '$pos_id', '$class_id', '$dep_id', '$tel', '$email', '$username', '" . base64_encode($password) . "', '$level', '$status', '$person_create', '$date', '$person_update', '$date')";
                     $stmt = $cn->Connect->prepare($sql);
                     $ret = $stmt->execute();
                 }
@@ -109,10 +112,12 @@ function sl_data_setting() {
         $id = $get_data[0];
         if ($id == '') {
             $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_id LEFT JOIN ps_profile AS pro ON ps.pro_id = pro.pro_id ORDER BY ps.status DESC";
+            $rs = $cn->select($sql);
         } else {
             $sql = "SELECT * from ps_personnal AS ps LEFT JOIN ps_class AS pc ON ps.class_id = pc.class_id LEFT JOIN ps_position AS pp ON ps.pos_id = pp.pos_id LEFT JOIN ps_profile AS pro ON ps.pro_id = pro.pro_id WHERE ps.member_id ='$id' ORDER BY ps.status DESC";
+            $rs = $cn->select($sql);
+            $rs[0]['password'] = base64_decode($rs[0]['password']);
         }
-        $rs = $cn->select($sql);
         $json = json_encode($rs);
         echo $json;
     }
@@ -155,7 +160,7 @@ function add_user() {
         }
 
         $sql = "INSERT INTO ps_personnal (pro_id, card_id, nameuser, lastname, tel, email, pos_id, class_id, dep_id, username, password, level, status, person_create, date_create, person_update, date_update)"
-                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '$get_data[10]', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]', '$get_data[15]', '$get_data[16]')";
+                . "VALUES('$get_data[0]', '$get_data[1]', '$get_data[2]', '$get_data[3]', '$get_data[4]', '$get_data[5]', '$get_data[6]', '$get_data[7]', '$get_data[8]', '$get_data[9]', '" . base64_encode($get_data[10]) . "', '$get_data[11]', '$get_data[12]', '$get_data[13]', '$get_data[14]', '$get_data[15]', '$get_data[16]')";
         $rs = $cn->execute($sql);
         echo $rs;
     }
@@ -205,7 +210,7 @@ function edit_user() {
             $cn->exec($sql_edit_pread);
         }
 
-        $sql = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[1]', lastname = '$get_data[2]', tel = '$get_data[3]', email = '$get_data[4]', pos_id= '$get_data[5]', class_id = '$get_data[6]', dep_id = '$get_data[7]', username = '$get_data[8]', password= '$get_data[9]', level = '$get_data[10]', status ='$get_data[11]', person_update = '$get_data[12]', date_update = '$get_data[13]'"
+        $sql = "UPDATE ps_personnal SET card_id = '$get_data[0]', nameuser = '$get_data[1]', lastname = '$get_data[2]', tel = '$get_data[3]', email = '$get_data[4]', pos_id= '$get_data[5]', class_id = '$get_data[6]', dep_id = '$get_data[7]', username = '$get_data[8]', password= '" . base64_encode($get_data[9]) . "', level = '$get_data[10]', status ='$get_data[11]', person_update = '$get_data[12]', date_update = '$get_data[13]'"
                 . " WHERE member_id = '$get_data[14]'";
         $rs = $cn->execute($sql);
         echo $rs;
