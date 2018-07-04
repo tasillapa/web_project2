@@ -41,7 +41,6 @@
                 $input.val(fulldateTH);
             },
         });
-
         if ((lvb_claim != 9) && (lvb_claim != 'NULL')) {
             hide_td = false;
             $('#btn_chName').hide();
@@ -75,7 +74,6 @@
                 $input.val(fulldateTH);
             },
         });
-
         $("#pro_birthdayE").datetimepicker({
             timepicker: false,
             maxDate: true,
@@ -90,7 +88,6 @@
                 $input.val(fulldateTH);
             },
         });
-
         $("#hissv_date").datetimepicker({
             timepicker: false,
             maxDate: true,
@@ -105,7 +102,6 @@
                 $input.val(fulldateTH);
             },
         });
-
         $("#hissvp_date").datetimepicker({
             timepicker: false,
             maxDate: true,
@@ -120,7 +116,6 @@
                 $input.val(fulldateTH);
             },
         });
-
         $("#award_date").datetimepicker({
             timepicker: false,
             maxDate: true,
@@ -135,7 +130,6 @@
                 $input.val(fulldateTH);
             },
         });
-
         $("#academic_date").datetimepicker({
             timepicker: false,
             maxDate: true,
@@ -150,7 +144,6 @@
                 $input.val(fulldateTH);
             },
         });
-
         var optsDate = {  
                     format: 'd/m/Y', // รูปแบบวันที่ 
                     formatDate: 'd/m/Y',
@@ -160,7 +153,6 @@
         var setDateFuncE = function (ct, obj) {
             var minDateSet = formatDatePK($("#pro_dateInE").val());
             var maxDateSet = formatDatePK($("#pro_dateOutE").val());
-
             if ($(obj).attr("id") == "pro_dateInE") {
                 this.setOptions({
                     minDate: false,
@@ -180,11 +172,9 @@
             onShow: setDateFuncE,
             onSelectDate: setDateFuncE,
         }));
-
         var setDateFuncA = function (ct, obj) {
             var minDateSet = formatDatePK($("#hisas_date_start").val());
             var maxDateSet = formatDatePK($("#hisas_date_end").val());
-
             if ($(obj).attr("id") == "hisas_date_start") {
                 this.setOptions({
                     minDate: false,
@@ -204,11 +194,9 @@
             onShow: setDateFuncA,
             onSelectDate: setDateFuncA,
         }));
-
         var setDateFuncPlan = function (ct, obj) {
             var minDateSet = formatDatePK($("#plan_dateStart").val());
             var maxDateSet = formatDatePK($("#plan_dateEnd").val());
-
             if ($(obj).attr("id") == "plan_dateStart") {
                 this.setOptions({
                     minDate: false,
@@ -228,11 +216,9 @@
             onShow: setDateFuncPlan,
             onSelectDate: setDateFuncPlan,
         }));
-
         var setDateFuncPlanE = function (ct, obj) {
             var minDateSet = formatDatePK($("#plan_dateStartE").val());
             var maxDateSet = formatDatePK($("#plan_dateEndE").val());
-
             if ($(obj).attr("id") == "plan_dateStartE") {
                 this.setOptions({
                     minDate: false,
@@ -252,7 +238,6 @@
             onShow: setDateFuncPlanE,
             onSelectDate: setDateFuncPlanE,
         }));
-
         $("#hisroyal_date").datetimepicker({
             timepicker: false,
             maxDate: true,
@@ -267,7 +252,6 @@
                 $input.val(fulldateTH);
             },
         });
-
         $("#hisslrup_date").datetimepicker({
             timepicker: false,
             maxDate: true,
@@ -282,11 +266,9 @@
                 $input.val(fulldateTH);
             },
         });
-
         var setDateFuncSalary = function (ct, obj) {
             var minDateSet = formatDatePK($("#salarysp_startDate").val());
             var maxDateSet = formatDatePK($("#salarysp_endDate").val());
-
             if ($(obj).attr("id") == "salarysp_startDate") {
                 this.setOptions({
                     minDate: false,
@@ -306,7 +288,6 @@
             onShow: setDateFuncSalary,
             onSelectDate: setDateFuncSalary,
         }));
-
         show_chName();
         show_marry();
         show_heir();
@@ -334,7 +315,6 @@
             var myFile = $('#academic_file').prop('files')[0];
             $('#show_fileacademic').html(myFile.name).css("color", "#777");
         });
-
         $('#address_province').change(function () {
             if ($('#address_province').val() != '') {
                 cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [$('#address_province').val()], true, function (data) {
@@ -376,7 +356,6 @@
                 $('#address_zip_code').val('');
             }
         });
-
         $('#pread_province').change(function () {
             if ($('#pread_province').val() != '') {
                 cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_amphur", [$('#pread_province').val()], true, function (data) {
@@ -418,7 +397,6 @@
                 $('#pread_zip_code').val('');
             }
         });
-
         $('#check_addr').click(function () {
             if (document.getElementById('check_addr').checked) {
 //                if ($('#address_number').val() != '') {
@@ -478,7 +456,6 @@
                 $('#pread_fhone').val('');
             }
         });
-
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_address", [dataID], true, function (data) {
 //            console.log(data);
             if (data != 0) {
@@ -509,7 +486,6 @@
                 $('#address_zip_code').val(data[0].address_zip_code);
                 $('#address_call').val(data[0].address_call);
                 $('#address_fhone').val(data[0].address_fhone);
-
                 $('#pread_number').val(data[0].pread_number);
                 $('#pread_swine').val(data[0].pread_swine);
                 $('#pread_soi').val(data[0].pread_soi);
@@ -543,7 +519,6 @@
             $('#address_district').select2();
             $('#pread_province').select2();
         });
-
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_geninfo", [dataID], true, function (data) {
             if (data != 0) {
                 $('#gen_prefix option[value="' + data[0].gen_prefix + '"]').prop('selected', true);
@@ -576,7 +551,6 @@
             $('#gen_soldier').select2();
             $('#bank_id').select2();
         });
-
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [dataID], true, function (data) {
             if (data[0].pro_picture == '') {
                 $('#imgSE').attr('src', NoImg);
@@ -2069,9 +2043,15 @@
         $(".table_plan").html('');
         var dataSet = [];
         var a = 0;
+        var tag = '';
         $.each(data, function (i, k) {
             a++;
-            dataSet.push(['<center>' + a + '</center>', data[i].plan_name, data[i].plan_detail, DateThai(data[i].plan_dateStart), DateThai(data[i].plan_dateEnd), '<center><img class="btn-edit" id="' + data[i].plan_id + '" data-toggle="modal" data-target="#editPlan" onclick="javascript: slEditPlan(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].plan_id + '" onclick="javascript: delPlan(this)"/></center>']);
+            if (data[i].plan_status == 1) {
+                tag = '<center><span class="label bg-green">ดำเนินการเสร็จสิ้น</span></center>';
+            } else {
+                tag = '<center><span class="label bg-orange">กำลังดำเนินการ</span></center>';
+            }
+            dataSet.push(['<center>' + a + '</center>', data[i].plan_name, data[i].plan_detail, DateThai(data[i].plan_dateStart), DateThai(data[i].plan_dateEnd), tag, '<center><img class="btn-edit" id="' + data[i].plan_id + '" data-toggle="modal" data-target="#editPlan" onclick="javascript: slEditPlan(this)"/>' + ' ' + '<img class="btn-delete" id="' + data[i].plan_id + '" onclick="javascript: delPlan(this)"/></center>']);
         });
         $('#table_plan_show').html('<table class="table table-bordered table-striped table-hover table_plan dataTable" width="100%"></table>');
         $('.table_plan').DataTable({
@@ -2124,6 +2104,7 @@
                 {title: "รายละเอียด"},
                 {title: "วันที่เริ่มต้น"},
                 {title: "วันที่สิ้นสุด"},
+                {title: "สถานะ"},
                 {title: "..."},
             ],
             "columnDefs": [
@@ -2156,6 +2137,9 @@
                     $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
                 }
                 $('#calendar').fullCalendar('unselect');
+            },
+            eventClick: function (calEvent, jsEvent, view) {
+                slEditPlan(calEvent.id, 1200);
             },
             defaultDate: formatDateToday(),
             locale: initialLocaleCode,
@@ -2209,24 +2193,28 @@
             });
         });
     }
-
     function sl_data_plan() {
         cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_table_plan", [dataID], true, function (data) {
             var dateCalandar = [];
             $.each(data, function (i, k) {
                 if (data[i].plan_status == '1') {
-                    dateCalandar.push({'title': data[i].plan_name, 'start': data[i].plan_dateStart, 'end': endDate(data[i].plan_dateEnd), color: '#009900'});
+                    dateCalandar.push({'title': data[i].plan_name, 'start': data[i].plan_dateStart, 'end': endDate(data[i].plan_dateEnd), color: '#009900', id: data[i].plan_id});
                 } else {
-                    dateCalandar.push({'title': data[i].plan_name, 'start': data[i].plan_dateStart, 'end': endDate(data[i].plan_dateEnd), color: '#ff9900'});
+                    dateCalandar.push({'title': data[i].plan_name, 'start': data[i].plan_dateStart, 'end': endDate(data[i].plan_dateEnd), color: '#ff9900', id: data[i].plan_id});
                 }
             });
             calandar_plan('th', dateCalandar);
         });
     }
 
-    function slEditPlan(data) {
-
-        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_plan", [$(data).attr("id")], true, function (data) {
+    function slEditPlan(data, test) {
+        var value = '';
+        if (test == 1200) {
+            value = data;
+        } else {
+            value = $(data).attr("id");
+        }
+        cls.GetJSON("../../PS_processDB/personnal/per_manageDataProfile.php", "sl_data_plan", [value], true, function (data) {
             $('#plan_nameE').val(data[0].plan_name);
             $('#plan_detailE').val(data[0].plan_detail);
             $('#plan_dateStartE').val(formatDateShow(data[0].plan_dateStart));
@@ -2244,6 +2232,9 @@
                 $('#show_statusE2').hide();
                 $('#show_statusE').html('กำลังดำเนินตามแผนงาน');
                 $('#show_statusE').show();
+            }
+            if (test == 1200) {
+                $('#editPlan').modal('show');
             }
         });
     }

@@ -661,9 +661,9 @@ function sl_table_plan() {
         $get_data = explode("|", $_POST["PARM"]);
         $id = $get_data[0];
         if ($id == '') {
-            $sql = "SELECT * FROM ps_plan ORDER BY plan_dateStart  DESC";
+            $sql = "SELECT * FROM ps_plan ORDER BY plan_status ASC, plan_dateStart DESC";
         } else {
-            $sql = "SELECT * FROM ps_plan WHERE pro_id = '$id' ORDER BY plan_dateStart DESC";
+            $sql = "SELECT * FROM ps_plan WHERE pro_id = '$id' ORDER BY plan_status ASC, plan_dateStart DESC";
         }
         $rs = $cn->select($sql);
         $json = json_encode($rs);
