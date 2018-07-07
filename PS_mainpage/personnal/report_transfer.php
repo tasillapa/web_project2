@@ -14,48 +14,25 @@
                         <div class="card">
                             <div class="header">
                                 <h2 text-center>
-                                    จัดการข้อมูลเกษียณอายุราชการ
+                                    รายงานการโอนย้าย
                                 </h2>
                             </div>
                             <div class="body">
                                 <div class="row clearfix">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <select id="datein" class="form-control show-tick" style="width: 100%" data-live-search="true" onchange="secdatein()">
-                                            <option value ="">เลือก</option>
-                                            <?php
-                                            $cn = new management;
-                                            $cn->con_db();
-                                            $sql = "SELECT * ,YEAR(pro_dateOut)+543 AS year FROM `ps_profile` GROUP BY year(pro_dateOut)";
-                                            $query = $cn->Connect->query($sql);
+                                        <select id="idchoose" class="form-control show-tick" style="width: 100%" data-live-search="true" onchange="choose(this)">
 
-                                            while ($row = mysqli_fetch_array($query)) {
-                                                if ($row["year"] != '543') {
-                                                    echo '<option value ="' . $row["year"] . '">' . $row["year"] . '</option>';
-                                                }
-                                            };
-                                            ?>
-                                        </select> 
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <select id="dateout" class="form-control show-tick" style="width: 100%" data-live-search="true" onchange="secdateout()">
                                             <option value ="">เลือก</option>
-                                            <?php
-                                            $cn = new management;
-                                            $cn->con_db();
-                                            $sql = "SELECT * ,YEAR(pro_dateOut)+543 AS year FROM `ps_profile` GROUP BY year(pro_dateOut)";
-                                            $query = $cn->Connect->query($sql);
-                                            while ($row = mysqli_fetch_array($query)) {
-                                                if ($row["year"] != '543') {
-                                                    echo '<option value ="' . $row["year"] . '">' . $row["year"] . '</option>';
-                                                }
-                                            };
-                                            ?>
-                                        </select>                                                          
+                                            <option value ="0">การโอนย้ายเข้า</option>
+                                            <option value ="1">การโอนย้ายออก</option>
+                                            <option value ="2">ลาออก</option>
+
+                                        </select> 
                                     </div>
                                 </div>
                                 <div class="body" style="center" >
                                     <div class="row clearfix align-center"> 
-                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="card align-center">
                                                 <div class="header">
                                                     <h2>BAR CHART</h2>  
@@ -65,11 +42,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row clearfix"> 
-                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="card">
-                                                <div class="header">
+                                                <div class="header align-center">
                                                     <h2>DONUT CHART</h2>
                                                 </div>
                                                 <div class="body">
@@ -79,6 +54,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row clearfix">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="card">
@@ -90,14 +66,12 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
         </section>
-        <?php include_once("../../PS_script/personnal/getchart.php"); ?>
+        <?php include_once("../../PS_script/personnal/getchart_transfer.php"); ?>
 
     </body>
 </html>

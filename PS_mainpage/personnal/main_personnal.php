@@ -326,6 +326,12 @@ if (!isset($_POST['ch_new'])) {
                                         <span>รายงานตำเเหน่ง</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="report_transfer.php">
+                                        <!--class="menu-toggle"-->
+                                        <span>รายงานการโอนย้าย และลาออก</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 

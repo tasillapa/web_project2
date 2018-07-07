@@ -234,7 +234,7 @@ function DateThai(date) {
         var strMonthCut = Array("", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤษภาคม", "ธันวาคม");
         var strMonthThai = strMonthCut[mm];
         var newdate = dd + " " + strMonthThai + " " + yyyy;
-        if (date == "0000-00-00") {
+        if ((date == "0000-00-00") || (date == '0000-00-00 00:00:00')) {
             newdate = 'ไม่ได้ระบุวันที่';
         }
         return newdate;

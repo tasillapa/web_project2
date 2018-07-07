@@ -302,7 +302,7 @@
                             doc.content[1].table.body[i][6].alignment = 'left';
                             doc.content[1].table.body[i][7].alignment = 'left';
                         }
-                        
+
                         console.log(doc); // เอาไว้ debug ดู doc object proptery เพื่ออ้างอิงเพิ่มเติม
                     }
                 }, 'print'
@@ -403,6 +403,7 @@
     }
     function slEdit(data) {
         cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "SLEPS", [$(data).attr("id")], true, function (data) {
+            console.log(data);
             if (data[0].pro_picture == '') {
                 $('#imgSE').attr('src', NoImg);
                 $('#person_imgE').attr('href', NoImg);
@@ -427,6 +428,7 @@
                 $('#sw_inputE').show();
                 $('#pro_transferE').val(data[0].pro_transfer);
             } else {
+                $('#pro_transferE').val('');
                 $('#check_tranE').prop("checked", false);
                 $('#sw_inputE').hide();
             }
@@ -527,7 +529,7 @@
                 } else {
                     $('.see_tranout').hide();
                     $('.see_out').hide();
-                    $('#tran_status  option[value="0"]').prop("selected", true);
+                    $('#tran_status  option[value=""]').prop("selected", true);
                     $('#tran_status').select2();
                     $('.see_tranout').find('.input').val('');
                 }
@@ -567,6 +569,7 @@
                 $('#sw_inputD').show();
                 $('#pro_transferD').html(data[0].pro_transfer);
             } else {
+                $('#pro_transferD').html('');
                 $('#sw_inputD').hide();
             }
             cls.GetJSON("../../PS_processDB/personnal/per_managePerson.php", "get_type", "", true, function (data2) {
