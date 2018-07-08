@@ -158,7 +158,8 @@
     padding: 3px;
     border: 2px dashed transparent;
     text-align: center;
-    width: 130px;
+    width: auto;
+    min-width: 200px;
 }
 
 .orgchart.l2r .node, .orgchart.r2l .node {
@@ -206,7 +207,7 @@
     font-size: 12px;
     font-weight: bold;
     padding-top: 20px;
-    height: 80px;
+    height: 90px;
     line-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -3,45 +3,36 @@
     $(function () {
         cls.GetJSON("../../PS_processDB/personnal/structure_classDB.php", "get_tructure_class", [class_id], true, function (data) {
 //            console.log(data);
-            var addd = [];
-            var datascource = {
-                'name': '<img class="logo-btn-trophy"/>',
-                'title': '<b>' + data[0].pro_fname + '</b><br><span>adasdasdasdsadsad</span><br><span>adasdasdasdsadsad</span>'
-//                'children': [
-//                    {'name': 'Bo Miao', 'title': 'department manager', 'className': 'middle-level',
-//                        'children': [
-//                            {'name': 'Li Jing', 'title': 'senior engineer', 'className': 'product-dept'},
-//                            {'name': 'Li Xin', 'title': 'senior engineer', 'className': 'product-dept',
-//                                'children': [
-//                                    {'name': 'To To', 'title': 'engineer', 'className': 'pipeline1'},
-//                                    {'name': 'Fei Fei', 'title': 'engineer', 'className': 'pipeline1'},
-//                                    {'name': 'Xuan Xuan', 'title': 'engineer', 'className': 'pipeline1'}
-//                                ]
-//                            }
-//                        ]
-//                    },
-//                    {'name': 'Su Miao', 'title': 'department manager', 'className': 'middle-level',
-//                        'children': [
-//                            {'name': 'Pang Pang', 'title': 'senior engineer', 'className': 'rd-dept'},
-//                            {'name': 'Hei Hei', 'title': 'senior engineer', 'className': 'rd-dept',
-//                                'children': [
-//                                    {'name': 'Xiang Xiang', 'title': 'UE engineer', 'className': 'frontend1'},
-//                                    {'name': 'Dan Dan', 'title': 'engineer', 'className': 'frontend1'},
-//                                    {'name': 'Zai Zai', 'title': 'engineer', 'className': 'frontend1'}
-//                                ]
-//                            }
-//                        ]
-//                    }
-//                ]
-
-            };
-            $.each(datascource, function (key, value) {
-                console.log(this, value, datascource[key]);
+            var boss = {};
+            var j = 0;
+            var ch_claim = 0;
+            $.each(data, function (i, value) {
+                if (data[i].lvb_claim == '0') {
+                    boss = {
+                        'name': '<center><div class="image m-t--15"><img class="img-responsive" src="' + data[0].pro_picture + '" style="height: 81px; width: 110px;"></div></center>',
+                        'title': '<h5>' + data[0].pro_fname + ' ' + data[0].pro_lname + '</h5><span>' + data[0].lvb_name + '</span>',
+                    };
+                } else if (data[i].lvb_claim != '0') {
+                    if (ch_claim < data[i].lvb_claim) {
+                        ch_claim = data[i].lvb_claim;
+                    }
+                }
             });
+            var dara = [
+                {'name': '<center><div class="image m-t--15"><img class="img-responsive" src="' + data[1].pro_picture + '" style="height: 71px; width: 110px;"></div></center>', 'title': '<h5>' + data[1].pro_fname + ' ' + data[1].pro_lname + '</h5><span>' + data[1].type_name + '</span>'},
+                {'name': '<center><div class="image m-t--15"><img class="img-responsive" src="' + data[2].pro_picture + '" style="height: 71px; width: 110px;"></div></center>', 'title': '<h5>' + data[2].pro_fname + ' ' + data[2].pro_lname + '</h5><span>' + data[2].type_name + '</span>'}
+            ];
+            var din = {
+                'children': dara
+            }
+
+            let merged = {...boss, ...din};
+
             $('#chart-container').orgchart({
-                'data': datascource,
+                'data': merged,
                 'nodeContent': 'title'
             });
         });
-    });
+    }
+    );
 </script>

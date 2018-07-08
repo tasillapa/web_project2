@@ -34,21 +34,25 @@
                                     <div class="row clearfix align-center"> 
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="card align-center">
-                                                <div class="header">
-                                                    <h2>BAR CHART</h2>  
-                                                </div>
-                                                <div class="body">
-                                                    <div id="bar_chart" class="graph"></div>
+                                                <div class="table-responsive">
+                                                    <div class="header">
+                                                        <h2>BAR CHART</h2>  
+                                                    </div>
+                                                    <div class="body">
+                                                        <div id="bar_chart" class="graph"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="card">
-                                                <div class="header align-center">
-                                                    <h2>DONUT CHART</h2>
-                                                </div>
-                                                <div class="body">
-                                                    <div id="donut_chart" class="graph"></div>
+                                                <div class="table-responsive">
+                                                    <div class="header align-center">
+                                                        <h2>DONUT CHART</h2>
+                                                    </div>
+                                                    <div class="body">
+                                                        <div id="donut_chart" class="graph"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

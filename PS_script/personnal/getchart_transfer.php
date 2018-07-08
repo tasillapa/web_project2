@@ -1,6 +1,4 @@
-
 <script>
-
     $(function () {
 
         cls.GetJSON("../../PS_processDB/personnal/re_transfer.php", "getre_tran", '', true, function (data) {
@@ -29,21 +27,21 @@
             }
         });
         if (value == 'all') {
-            dataDonut.push({label: 'โอนย้านเข้า', value: In});
-            dataDonut.push({label: 'โอนย้านออก', value: Out});
+            dataDonut.push({label: 'โอนย้ายเข้า', value: In});
+            dataDonut.push({label: 'โอนย้ายออก', value: Out});
             dataDonut.push({label: 'ลาออก', value: Lev});
-            dataBar.push({x: 'โอนย้านเข้า', y: In});
-            dataBar.push({x: 'โอนย้านออก', y: Out});
+            dataBar.push({x: 'โอนย้ายเข้า', y: In});
+            dataBar.push({x: 'โอนย้ายออก', y: Out});
             dataBar.push({x: 'ลาออก', y: Lev});
         } else if (value == '0') {
-            dataDonut.push({label: 'โอนย้านเข้า', value: In});
-            dataBar.push({x: 'โอนย้านเข้า', y: In});
+            dataDonut.push({label: 'โอนย้ายเข้า', value: In, color: '#FF00FF'});
+            dataBar.push({x: 'โอนย้ายเข้า', y: In, color: '#FF00FF'});
         } else if (value == '1') {
-            dataDonut.push({label: 'โอนย้านออก', value: Out});
-            dataBar.push({x: 'โอนย้านออก', y: Out});
+            dataDonut.push({label: 'โอนย้ายออก', value: Out, color: '#7FFF00'});
+            dataBar.push({x: 'โอนย้ายออก', y: Out, color: '#7FFF00'});
         } else if (value == '2') {
-            dataDonut.push({label: 'ลาออก', value: Lev});
-            dataBar.push({x: 'ลาออก', y: Lev});
+            dataDonut.push({label: 'ลาออก', value: Lev, color: '#FF8C00'});
+            dataBar.push({x: 'ลาออก', y: Lev, color: '#FF8C00'});
         }
 
         if (type === 'bar') {
@@ -102,7 +100,7 @@
         $.each(data, function (i, k) {
             a++;
             if (data[i].tran_status == '1') {
-                type = 'โอนย้านออก';
+                type = 'โอนย้ายออก';
                 date = data[i].tran_date;
             } else if (data[i].tran_status == '2') {
                 type = 'ลาออก';
@@ -268,7 +266,6 @@
         var dataSet = [];
         var a = 0;
         $.each(data, function (i, k) {
-            console.log(data[i].tran_date);
             a++;
             dataSet.push(['<center>' + a + '</center>', data[i].card_id, data[i].pro_prefix + '  ' + data[i].pro_fname + ' ' + data[i].pro_lname, data[i].pos_name, data[i].class_name, data[i].tran_note, DateThai(data[i].tran_date)]);
         });

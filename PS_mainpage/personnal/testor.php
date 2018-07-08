@@ -43,7 +43,7 @@ ob_start();
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="table-responsive">
+                    <div class="table-responsive align-center">
                         <div id="chart-container"></div>
                     </div>
                 </div>
